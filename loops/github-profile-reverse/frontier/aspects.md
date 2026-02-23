@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 12
-- Analyzed: 4
-- Pending: 8
-- Convergence: 33%
+- Analyzed: 5
+- Pending: 7
+- Convergence: 42%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -13,7 +13,7 @@
 - [x] profile-snapshot — Capture current GitHub profile state (bio, pins, contributions, first impression)
 - [x] monorepo-deep-scan — Read the actual monorepo to surface hidden impressive work (projects, loops, automations)
 - [x] repo-readme-scan — Fetch and evaluate READMEs for all original repos; assess quality and gaps
-- [ ] org-contributions — Scan GitHub orgs for private/org work; cross-reference monorepo project cards
+- [x] org-contributions — Scan GitHub orgs for private/org work; cross-reference monorepo project cards
 
 ### Wave 2: Pattern Analysis (depends on Wave 1)
 - [ ] repo-clustering — Cluster repos into thematic groups; assess signal strength per cluster
@@ -34,6 +34,7 @@
 - [x] profile-snapshot (2026-02-23) — Profile is a blank slate: no bio, no pins, no profile README, no topics, no website. Only 2/8 profile fields set. Public activity sparse (1 fork event in recent history). Stranger's gut reaction: "inactive student account."
 - [x] monorepo-deep-scan (2026-02-23) — Enormous public/private gap. Cheerful: 13,100 LOC, 5,570 commits, Temporal.io + MCP + Claude Agent SDK. Decision Orchestrator: 36,400 LOC, custom protocol-level MCP registry, FCIS, deployed at PyMC Labs. Ralph loop engine in CI (30min cron, convergence detection, GitHub issue creation). 14-skill Claude Code framework (~2,975 lines). Platform thesis: same arch (Claude SDK + MCP + Supabase + Langfuse) across two domains. All invisible from public profile.
 - [x] repo-readme-scan (2026-02-23) — 6/8 original repos have usable READMEs. Critical gaps: blocked-floyd-warshall-gpu (no README despite impressive GPU/HPC work benchmarked to 10k nodes), derwells.github.io (has template README that actively misleads visitors). Best README: crowNNs (results table vs SOTA). wordhack has an .rst stub. Writing a README for blocked-floyd-warshall-gpu is highest-leverage single action.
+- [x] org-contributions (2026-02-23) — No public org memberships. Only org activity: 1 open PR to pymc-devs/pymc-examples (#844, +1,872 lines, ZeroSumNormal notebook). All professional org work (PyMC Labs, Nuts and Bolts AI) is private. Starred repos confirm GPU/CUDA and probabilistic modeling interests. PyMC Labs employment + OSS contribution = deep ecosystem integration that should be named in bio.
 
 ## Discovered Aspects
 (Empty — no new aspects discovered yet)
