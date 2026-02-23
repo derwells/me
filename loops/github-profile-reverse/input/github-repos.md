@@ -1,0 +1,51 @@
+# GitHub Repos for derwells
+- **me** —  | original | TypeScript | 0 stars | created 2026-02-23 | updated 2026-02-23
+- **pymc-examples** — Examples of PyMC models, including a library of Jupyter notebooks. | fork | Python | 0 stars | created 2026-02-13 | updated 2026-02-13
+- **qabot** —  | original | Python | 0 stars | created 2024-11-25 | updated 2024-11-26
+- **monolith-notes** — Repository of all my Obsidian notes | original | unknown | 0 stars | created 2022-09-30 | updated 2023-04-04
+- **azc4** —  | original | C++ | 0 stars | created 2023-06-20 | updated 2023-07-03
+- **derwells.github.io** — Github Pages template for academic personal websites, forked from mmistakes/minimal-mistakes | original | JavaScript | 0 stars | created 2022-07-23 | updated 2025-08-02
+- **multithreaded-fileserver** — Multithreaded mock file server | original | C | 0 stars | created 2022-01-25 | updated 2023-07-07
+- **cs155exam** —  | original | Yacc | 0 stars | created 2023-06-18 | updated 2023-06-18
+- **crowNNs** — Tree Crown Detection in Airborne RGB imagery | original | Python | 1 stars | created 2022-05-06 | updated 2023-07-27
+- **LPRNet** — Keras implementation of LPRNet: https://arxiv.org/abs/1806.10447 | original | Jupyter Notebook | 0 stars | created 2022-02-13 | updated 2024-06-30
+- **short** —  | original | unknown | 0 stars | created 2023-06-08 | updated 2023-06-08
+- **short-paper** —  | original | unknown | 0 stars | created 2023-06-08 | updated 2023-06-08
+- **cs155_ps2** — CS 155 Probset 2 | original | Lex | 0 stars | created 2023-04-18 | updated 2023-05-04
+- **hsq-docker-benchmark** —  | original | Shell | 0 stars | created 2023-04-12 | updated 2023-04-12
+- **hs-dev-quickstart** —  | original | Solidity | 0 stars | created 2022-12-18 | updated 2022-12-18
+- **cs155-bf-to-mips** —  | original | Rust | 0 stars | created 2023-03-22 | updated 2023-03-22
+- **distributed-ml-notes** — Monolithic notes repo | original | unknown | 0 stars | created 2023-02-01 | updated 2023-02-01
+- **kompakt** —  | original | Python | 0 stars | created 2022-12-09 | updated 2022-12-09
+- **tsvjhub** —  | original | PHP | 0 stars | created 2020-07-15 | updated 2021-08-28
+- **blocked-floyd-warshall-gpu** —  | original | Cuda | 0 stars | created 2022-12-28 | updated 2023-07-07
+- **eth1-quorum-port** —  | original | Go | 0 stars | created 2022-11-25 | updated 2022-12-20
+- **hs-network-shell** —  | original | Shell | 0 stars | created 2022-12-18 | updated 2022-12-18
+- **cs171-ejer-2** —  | original | Cuda | 0 stars | created 2022-11-11 | updated 2022-11-11
+- **eth1-geth-hs** —  | original | Go | 0 stars | created 2022-11-27 | updated 2022-11-27
+- **eth1-quorum-old** —  | original | Go | 0 stars | created 2022-11-23 | updated 2022-11-23
+- **eth1-setup-generator** —  | original | Python | 0 stars | created 2022-11-12 | updated 2022-11-12
+- **eth1-testbench** —  | original | Shell | 0 stars | created 2022-11-06 | updated 2022-11-06
+- **besu-test** —  | original | Shell | 0 stars | created 2022-10-24 | updated 2022-10-24
+- **besu-ibft-test** — Initial test for Besu using IBFT 2.0 | original | Shell | 0 stars | created 2022-10-20 | updated 2022-10-22
+- **cs171-ejer1** —  | original | Cuda | 0 stars | created 2022-10-03 | updated 2022-10-03
+- **halleys-comet** — Halley's comet plotter using fourth-order Runge-Kutta. | original | Python | 1 stars | created 2021-03-16 | updated 2023-01-05
+- **lotka-volterra** — Lotka-Volterra predator-prey dynamics solved using root-finding methods. | original | Python | 0 stars | created 2021-03-16 | updated 2022-09-06
+- **moodle** — Moodle - the world's open source learning platform | fork | PHP | 0 stars | created 2022-07-29 | updated 2022-07-28
+- **cs145-project** —  | original | Python | 0 stars | created 2022-05-24 | updated 2022-05-24
+- **custom-udp** —  | original | Python | 0 stars | created 2022-05-17 | updated 2022-05-17
+- **uvle-docs** —  | original | unknown | 0 stars | created 2022-02-08 | updated 2022-02-08
+- **stocksbot** — Made for the completion of CS 192 | original | Python | 0 stars | created 2022-02-25 | updated 2023-01-28
+- **fileserver-cs140-2122** — Naive concurrent file server implementation. | original | C | 0 stars | created 2021-11-30 | updated 2022-09-06
+- **cs138-2122** —  | original | Python | 0 stars | created 2021-10-27 | updated 2022-01-25
+- **cs140-2122** —  | original | C | 0 stars | created 2021-11-05 | updated 2022-01-25
+- **cpsolns** — My programming problems solutions | original | Python | 0 stars | created 2021-10-09 | updated 2021-10-09
+- **dagster_starter** —  | original | HCL | 0 stars | created 2021-07-01 | updated 2022-01-25
+- **tsvj-website** —  | original | Vue | 0 stars | created 2021-03-21 | updated 2021-06-23
+- **mipsscp-cs21-2021** —  | original | Python | 0 stars | created 2021-06-19 | updated 2022-01-25
+- **mipsinc-cs21-2021** —  | original | C | 0 stars | created 2021-05-24 | updated 2022-01-25
+- **mipsinmips-cs21-2021** —  | original | Assembly | 0 stars | created 2021-05-24 | updated 2022-01-25
+- **tweety-sample** —  | original | PHP | 0 stars | created 2020-12-11 | updated 2021-03-21
+- **property_hub** —  | original | PHP | 0 stars | created 2020-08-09 | updated 2020-08-09
+- **tsvj_dorm** —  | original | PHP | 0 stars | created 2020-05-25 | updated 2023-01-28
+- **shalltear** — A general-purpose Discord bot. | fork | Python | 0 stars | created 2020-05-11 | updated 2020-05-11

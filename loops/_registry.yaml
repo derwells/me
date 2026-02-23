@@ -8,4 +8,20 @@
 #   created: YYYY-MM-DD
 #   converged_at: YYYY-MM-DD (when applicable)
 
-loops: {}
+loops:
+  github-profile-reverse:
+    description: "Audit GitHub profile → profile spec"
+    type: reverse
+    schedule: "*/30 * * * *"
+    max_iterations: 25
+    timeout_minutes: 10
+    status: active
+    created: 2026-02-24
+  linkedin-profile-reverse:
+    description: "Mine repos + work projects → full LinkedIn profile spec"
+    type: reverse
+    schedule: "*/30 * * * *"
+    max_iterations: 25
+    timeout_minutes: 15
+    status: active
+    created: 2026-02-24
