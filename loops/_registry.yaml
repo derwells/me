@@ -1,0 +1,11 @@
+# Ralph Loop Registry
+# Track active, paused, and converged loops.
+#
+# Fields:
+#   description: What the loop does
+#   type: reverse | forward
+#   status: active | paused | converged
+#   created: YYYY-MM-DD
+#   converged_at: YYYY-MM-DD (when applicable)
+
+loops: {}

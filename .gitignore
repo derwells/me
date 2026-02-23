@@ -1,0 +1,28 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Loop artifacts
+/loops/*/raw/
+/loops/*/input/**/*.mp4
+/loops/*/input/**/*.wav
+/loops/*/input/**/*.mp3
+
+# Cloned repos inside loops (private code)
+/loops/*/input/decision-orchestrator/
+/loops/*/input/cheerful/
+
+# Python (loops may generate scripts)
+__pycache__/
+*.pyc
+.venv/
+
+# Temp
+/tmp/

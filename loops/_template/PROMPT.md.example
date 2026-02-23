@@ -1,0 +1,56 @@
+# {{Idea Name}} — Reverse Ralph Loop
+
+You are an analysis agent in a ralph loop. Each time you run, you do ONE unit of work, then exit.
+
+## Your Working Directory
+
+You are running from `loops/{{idea-name}}/`. All paths below are relative to this directory.
+
+## Your Goal
+
+{{Describe what this loop should explore/analyze/produce. Be specific about the final output — a spec, a report, a dataset, etc.}}
+
+## Reference Material
+
+{{List input sources. These might be URLs to fetch in Wave 1, local files in input/, or external APIs to query.}}
+
+### Cached Sources (after Wave 1)
+{{List the files that Wave 1 will produce in input/ — later waves read from these instead of re-fetching.}}
+
+## What To Do This Iteration
+
+1. **Read the frontier**: Open `frontier/aspects.md`
+2. **Find the first unchecked `- [ ]` aspect** in dependency order (Wave 1 before Wave 2 before Wave 3...)
+   - If a later-wave aspect depends on data that doesn't exist yet, skip to an earlier-wave aspect
+   - If ALL aspects are checked `- [x]`: write convergence summary to `status/converged.txt` and exit
+3. **Analyze that ONE aspect** using the appropriate method (see below)
+4. **Write findings** to `analysis/{{aspect-name}}.md`
+5. **Update the frontier**:
+   - Mark the aspect as `- [x]` in `frontier/aspects.md`
+   - Update Statistics (increment Analyzed, decrement Pending, update Convergence %)
+   - If you discovered new aspects worth analyzing, add them to the appropriate Wave
+   - Add a row to `frontier/analysis-log.md`
+6. **Commit**: `git add -A && git commit -m "loop({{idea-name}}): {{aspect-name}}"`
+7. **Exit**
+
+## Analysis Methods By Wave
+
+### Wave 1: {{Data Acquisition / Initial Exploration}}
+{{Describe what tools and methods to use for initial data gathering. Examples: fetch URLs, clone repos, parse files, run extraction scripts.}}
+
+### Wave 2: {{Pattern Analysis / Deep Dive}}
+Depends on Wave 1 data.
+{{Describe how to analyze patterns from Wave 1 data. Examples: LLM reasoning over raw data, statistical analysis, cross-referencing sources.}}
+
+### Wave 3: {{Synthesis / Output}}
+Depends on all Wave 2 analysis.
+{{Describe how to synthesize findings into the final output. Typically: draft the spec/report, then self-review it.}}
+
+## Rules
+
+- Do ONE aspect per run, then exit. Do not analyze multiple aspects.
+- Always check if required source files exist before starting a later-wave aspect.
+- Write findings in markdown with specific numbers, examples, and citations.
+- When you discover a new aspect worth analyzing, add it to the frontier in the appropriate wave.
+- Keep analysis files focused. One aspect = one file.
+- {{Add any domain-specific rules here.}}
