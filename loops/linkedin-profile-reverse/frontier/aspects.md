@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 13
-- Analyzed: 6
-- Pending: 7
-- Convergence: 46%
+- Analyzed: 7
+- Pending: 6
+- Convergence: 54%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -17,7 +17,7 @@
 - [x] current-profile-snapshot — Capture current LinkedIn profile state via WebFetch; identify what's missing or outdated
 
 ### Wave 2: Pattern Analysis (depends on Wave 1)
-- [ ] reference-formula-extraction — Extract the formula: what makes reference profiles compelling? How do polymaths avoid looking scattered?
+- [x] reference-formula-extraction — Extract the formula: what makes reference profiles compelling? How do polymaths avoid looking scattered?
 - [ ] career-narrative-arc — Map chronological arc from actual data; find the through-line connecting everything
 - [ ] experience-entry-design — Design each LinkedIn experience entry: title, company, date range, bullet points, what to emphasize
 - [ ] identity-synthesis — Synthesize headline drafts, about section draft, featured recommendations, skills list, tone calibration
