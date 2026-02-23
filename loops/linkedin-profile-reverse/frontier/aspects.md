@@ -30,7 +30,7 @@
 (Empty — spec-review hasn't run yet)
 
 ## Recently Analyzed
-(Empty — loop hasn't started yet)
+- [x] reference-profile-scan — Profiles of swyx, Simon Willison, Pieter Levels, Addy Osmani + generic developer examples. Key insight: top builders own concepts, not job titles. Named products > generic responsibilities. Hook in first 2 lines is critical.
 
 ## Discovered Aspects
 (Empty — no new aspects discovered yet)
