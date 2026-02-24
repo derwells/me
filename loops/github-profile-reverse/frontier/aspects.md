@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 12
-- Analyzed: 10
-- Pending: 2
-- Convergence: 83%
+- Analyzed: 11
+- Pending: 1
+- Convergence: 92%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -23,7 +23,7 @@
 - [x] identity-synthesis — Synthesize cohesive identity: bio, archetype, narrative bullets, tone
 
 ### Wave 3: Synthesis (depends on all Wave 2)
-- [ ] profile-spec — Complete actionable spec: README content, pin list, archive list, descriptions, topics, execution script
+- [x] profile-spec — Complete actionable spec: README content, pin list, archive list, descriptions, topics, execution script
 - [ ] spec-review — Review spec against quality bar; check for personality, signal clarity, completeness
 
 ### Wave 4: Spec Fixes (populated during spec-review if needed)
