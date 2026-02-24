@@ -1,0 +1,54 @@
+CONVERGED
+Date: 2026-02-24
+Loop: github-profile-reverse
+
+## Summary
+
+12 aspects analyzed across 3 waves. The loop converged after spec-review confirmed the generated spec passes the quality bar.
+
+## What Was Found
+
+The gap between Derick Wells' public GitHub presence ("inactive student account") and actual work (49,500+ LOC of production AI infrastructure across two companies) is as large as it gets. The loop surfaced:
+
+- Two production AI systems (Cheerful @ Nuts and Bolts AI, Decision Orchestrator @ PyMC Labs) — completely invisible from public profile
+- A platform thesis: same architecture (Claude Agent SDK + custom MCP + Supabase + Langfuse) applied to two different domains
+- A protocol-level custom MCP tool registry with scope-based credential gating (built from scratch, not FastMCP)
+- GPU competency from kernel-level (CUDA, blocked Floyd-Warshall) through framework-level (crowNNs, LPRNet)
+- PyMC Labs employment + active OSS contribution to pymc-devs/pymc-examples (PR #844, +1,872 lines)
+- Ralph loop engine and 14-skill Claude Code framework — hidden meta-systems in the private monorepo
+
+## What the Spec Does
+
+1. Profile README: Complete markdown content for derwells/derwells — tells the real story since the repo list never will
+2. Bio: 118-char bio naming both employers, specific technologies, one personality beat
+3. 6 pins: crowNNs, blocked-floyd-warshall-gpu, LPRNet, multithreaded-fileserver, halleys-comet, pymc-examples
+4. 3 archives: moodle, shalltear, wordhack (pure noise, all < 2/12 on signal rubric)
+5. 8 description updates: all punchy, specific, non-generic
+6. 8 topic tag sets: zero repos had topics before
+7. Pre-work: blocked-floyd-warshall-gpu README (flips KEEP→SHOWCASE), derwells.github.io README fix
+8. Execution script: complete bash script using gh CLI — archives, descriptions, topics, bio, pinning via GraphQL
+
+## Spec Quality
+
+- README passes personality check: specific technologies, named employers, "GPU when it counts" personality beat
+- 30-second legibility: stranger understands the story from bio + opening README section
+- Descriptions: all 8 are specific (name algorithms, scales, datasets) — not generic
+- Archive list: decisive, no borderline calls
+- Execution: all changes are automatable via gh CLI except profile README git push (handled in pre-work)
+
+## Forward Ralph Can Execute
+
+The spec is concrete enough for zero-ambiguity execution. A fresh Claude Code session reading analysis/github-profile-spec.md has:
+- Complete file contents to commit (README, derwells.github.io fix)
+- Complete bash script to run
+- Specific ordering of operations
+- No decisions left to make
+
+## One Flag for Profile Owner
+
+Three internal tools are extractable as public projects (not required for spec):
+- ralph loop engine — frontier-based iterative analysis for CI
+- Claude Code skills framework — 14 skills for disciplined AI agent behavior
+- Custom MCP registry — scope-based credential gating
+
+These would each attract meaningful attention from the AI developer community. Extraction requires sanitizing private monorepo content.
