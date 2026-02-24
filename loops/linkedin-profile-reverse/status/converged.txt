@@ -1,0 +1,49 @@
+CONVERGED
+Date: 2026-02-24
+Iterations: 12 aspects analyzed across 4 waves
+Final spec: analysis/linkedin-profile-spec.md
+
+---
+
+CONVERGENCE SUMMARY
+
+The loop produced a complete, ready-to-paste LinkedIn profile spec for derwells (Derick Wells).
+
+WHAT THE LOOP FOUND:
+- Both current production roles (Nuts and Bolts AI / Cheerful, PyMC Labs / Decision Orchestrator)
+  are completely absent from the current LinkedIn profile. 50,000+ LOC of production AI
+  infrastructure is invisible.
+- The through-line across the entire career: "goes one layer deeper than required."
+  Same orientation in CUDA kernels (university) → protocol-level MCP registry (production).
+- The central differentiator: same platform (Claude Agent SDK + custom MCP + Supabase + Langfuse)
+  deployed deliberately at two production companies in different domains. Proven twice = a thesis,
+  not a coincidence.
+- The PyMC Labs connection is earned (numerical methods, statistical computing background).
+
+WHAT THE SPEC DELIVERS:
+- Headline: "AI Infrastructure Engineer | Claude Agent SDK · Temporal.io · MCP | Nuts & Bolts AI · PyMC Labs" (97 chars, copy-paste ready)
+- About section: 1,520 chars. Hook = "Most AI apps sit on top of LLMs. I build the layer that makes them reliable." (76 chars, mobile-safe)
+- Experience: 3 entries (Nuts & Bolts AI, PyMC Labs, Education) + 1 optional
+- Featured: GitHub + crowNNs (minimum viable); enhanced path with LinkedIn post
+- Skills: 30 skills ordered by differentiation; Tier 1 pins = Claude Agent SDK, MCP, Temporal.io
+- Custom URL recommendation: linkedin.com/in/derwells
+- Execution checklist: 14 steps, top-to-bottom, each item independent
+
+SPEC QUALITY BAR (all criteria passed):
+[x] Headline makes you want to click the profile — swap-test-failing, niche stack + named orgs
+[x] About hook lands in first 2 lines — contrast hook, social proof before mobile fold
+[x] Experience entries show range AND depth — both bullets confirmed
+[x] Personality, not generic LinkedIn slop — opinionated, specific, builder-first voice
+[x] Nothing missing — all 9 required spec sections present
+[x] Stranger understands breadth + depth in 30 seconds — confirmed via Signal Summary
+
+MINOR ITEM DERICK MUST VERIFY:
+- "Next.js 16+" in the Nuts and Bolts AI entry is likely incorrect (Next.js 15 is current).
+  Verify the actual version used and update before pasting.
+
+FIELDS DERICK MUST FILL IN:
+- Nuts and Bolts AI: start date, employment type
+- PyMC Labs: start date, end date, employment type
+- University: school name (for LinkedIn school page link), degree field, start/end years
+- Profile photo (if not current)
+- Custom URL (check availability of `derwells` first)
