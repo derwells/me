@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 13
-- Analyzed: 10
-- Pending: 3
-- Convergence: 77%
+- Analyzed: 11
+- Pending: 2
+- Convergence: 85%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -23,7 +23,7 @@
 - [x] identity-synthesis — Synthesize headline drafts, about section draft, featured recommendations, skills list, tone calibration
 
 ### Wave 3: Synthesis (depends on all Wave 2)
-- [ ] linkedin-profile-spec — Complete actionable spec: headline, about, all experience entries, featured, skills, execution checklist
+- [x] linkedin-profile-spec — Complete actionable spec: headline, about, all experience entries, featured, skills, execution checklist
 - [ ] spec-review — Review spec against quality bar; check for personality, range, signal clarity, completeness
 
 ### Wave 4: Spec Fixes (populated during spec-review if needed)
