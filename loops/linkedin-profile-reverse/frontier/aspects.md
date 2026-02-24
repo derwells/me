@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 13
-- Analyzed: 8
-- Pending: 5
-- Convergence: 62%
+- Analyzed: 9
+- Pending: 4
+- Convergence: 69%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -19,7 +19,7 @@
 ### Wave 2: Pattern Analysis (depends on Wave 1)
 - [x] reference-formula-extraction — Extract the formula: what makes reference profiles compelling? How do polymaths avoid looking scattered?
 - [x] career-narrative-arc — Map chronological arc from actual data; find the through-line connecting everything
-- [ ] experience-entry-design — Design each LinkedIn experience entry: title, company, date range, bullet points, what to emphasize
+- [x] experience-entry-design — Design each LinkedIn experience entry: title, company, date range, bullet points, what to emphasize
 - [ ] identity-synthesis — Synthesize headline drafts, about section draft, featured recommendations, skills list, tone calibration
 
 ### Wave 3: Synthesis (depends on all Wave 2)
