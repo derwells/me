@@ -2,7 +2,8 @@ name: Ralph Loops
 
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    # Offset from :00/:30 to avoid GitHub Actions cron stampede
+    - cron: "7,37 * * * *"
   workflow_dispatch:
     inputs:
       loop:
