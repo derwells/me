@@ -2,18 +2,22 @@
 
 ## Statistics
 - Total aspects discovered: 28
-- Analyzed: 0
-- Pending: 28
-- Convergence: 0%
+- Analyzed: 1
+- Pending: 27
+- Convergence: 4%
 
 ## Pending Aspects (ordered by dependency)
 
 ### Wave 1: Source Acquisition (9 aspects)
 
 - [ ] crispina-models — Extract all SQLAlchemy models from tsvjph/crispina: lease, tenant, charge, payment, transaction, charge_type, property, room, rentable. Document fields, relationships, and constraints.
+  **BLOCKED: tsvjph/crispina is a private GitHub repository. Requires GH_TOKEN with repo access to proceed. Skip until token is available; Wave 2 process analyses will note "Crispina: Unknown" where applicable.**
 - [ ] crispina-services — Extract math.py (compound interest), date.py (date splitting), and any other service logic. Document formulas and helper functions.
+  **BLOCKED: same as crispina-models.**
 - [ ] crispina-water-calculator — Extract the standalone water/ billing calculator. Document its inputs, outputs, rate tables, and billing logic.
-- [ ] rent-control-rules — Fetch RA 9653, latest NHSB resolution (2024-01), and Civil Code lease articles. Extract: allowable increase caps by rent bracket, deposit limits, advance rent limits, grace period rules.
+  **BLOCKED: same as crispina-models.**
+- [x] rent-control-rules — Fetch RA 9653, latest NHSB resolution (2024-01), and Civil Code lease articles. Extract: allowable increase caps by rent bracket, deposit limits, advance rent limits, grace period rules.
+  → `input/rent-control-rules.md`
 - [ ] corporate-rental-tax — Fetch BIR rules for SEC-registered rental corporations: RCIT/MCIT, VAT threshold (3M), percentage tax (3%), EWT (5%), DST on leases. Document forms, deadlines, and computation formulas.
 - [ ] utility-billing-regulations — Fetch Meralco rate schedules and Maynilad sub-metering rules for Las Piñas. Document: rate tiers, allowable markups, billing statement requirements.
 - [ ] security-deposit-rules — Fetch PH deposit laws: residential controlled (2 months max) vs commercial (no cap). Document: deduction rules, return timeline (30 days), interest obligations, tax treatment.
@@ -57,4 +61,7 @@ Depends on all Wave 3 analysis.
 - [ ] catalog-review — Self-review the catalog for completeness: all processes covered, specs are actionable, regulatory citations are accurate, no gaps in the pipeline from operations to filings.
 
 ## Recently Analyzed
-(Empty — loop hasn't started yet)
+
+| # | Aspect | Wave | Output | Date |
+|---|---|---|---|---|
+| 1 | rent-control-rules | 1 | input/rent-control-rules.md | 2026-02-25 |
