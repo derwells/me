@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 24
-- Analyzed: 9
-- Pending: 15
-- Convergence: 38%
+- Analyzed: 10
+- Pending: 14
+- Convergence: 42%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -21,7 +21,7 @@ Depends on Wave 1 data.
 - [x] cgt-computation — 6% capital gains tax on real property sale (BIR Form 1706); inputs, formula, deadline rules, surcharge/interest computation
 - [x] dst-on-sale — 1.5% documentary stamp tax on conveyance (NIRC Section 196); base, rate, deadline (5 days post-notarization)
 - [x] dst-on-mortgage — DST on mortgage instruments (NIRC Section 195); separate rate schedule, triggers, computation
-- [ ] vat-real-property — 12% VAT on real property; ₱3.6M threshold test, ordinary asset determination, exempt vs taxable classification
+- [x] vat-real-property — 12% VAT on real property; ₱3.6M threshold test, ordinary asset determination, exempt vs taxable classification
 - [ ] installment-vat-schedule — Output VAT recognition per collection on installment sales (RMC 99-2023); payment schedule tracking, recognition timing
 - [ ] cwt-rate-and-timing — CWT rate selection (1.5-6%) based on seller type and price; 25%-of-price threshold test for installment withholding timing
 - [ ] ewt-rate-classification — Real estate subset of 80+ EWT categories under RR 2-98; decision tree for rate selection on rent, commissions, professional fees, contractor payments
