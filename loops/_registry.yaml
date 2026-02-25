@@ -15,9 +15,8 @@ loops:
     schedule: "*/30 * * * *"
     max_iterations: 25
     timeout_minutes: 10
-    status: converged
+    status: active
     created: 2026-02-24
-    converged_at: "2026-02-24"
   linkedin-profile-reverse:
     description: "Mine repos + work projects → full LinkedIn profile spec"
     type: reverse
