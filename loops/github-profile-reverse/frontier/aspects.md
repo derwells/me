@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 12
-- Analyzed: 5
-- Pending: 7
-- Convergence: 42%
+- Analyzed: 6
+- Pending: 6
+- Convergence: 50%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -16,7 +16,7 @@
 - [x] org-contributions — Scan GitHub orgs for private/org work; cross-reference monorepo project cards
 
 ### Wave 2: Pattern Analysis (depends on Wave 1)
-- [ ] repo-clustering — Cluster repos into thematic groups; assess signal strength per cluster
+- [x] repo-clustering — Cluster repos into thematic groups; assess signal strength per cluster
 - [ ] signal-vs-noise — Score every repo (originality, activity, story value, README quality) → SHOWCASE / KEEP / ARCHIVE verdict
 - [ ] fork-audit — Evaluate each fork for meaningful contributions vs empty clones
 - [ ] narrative-gaps — Identify invisible work, delta between "what's built" vs "what GitHub shows"
