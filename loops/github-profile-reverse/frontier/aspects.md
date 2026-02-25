@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 12
-- Analyzed: 4
-- Pending: 8
-- Convergence: 33%
+- Analyzed: 5
+- Pending: 7
+- Convergence: 42%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -13,7 +13,7 @@
 - [x] profile-snapshot — Capture current GitHub profile state (bio, pins, contributions, first impression)
 - [x] monorepo-deep-scan — Read the actual monorepo to surface hidden impressive work (projects, loops, automations)
 - [x] repo-readme-scan — Fetch and evaluate READMEs for all original repos; assess quality and gaps
-- [ ] org-contributions — Scan GitHub orgs for private/org work; cross-reference monorepo project cards
+- [x] org-contributions — Scan GitHub orgs for private/org work; cross-reference monorepo project cards
 
 ### Wave 2: Pattern Analysis (depends on Wave 1)
 - [ ] repo-clustering — Cluster repos into thematic groups; assess signal strength per cluster
@@ -30,6 +30,7 @@
 (Empty — spec-review hasn't run yet)
 
 ## Recently Analyzed
+- [x] org-contributions (2026-02-25) — 5 orgs found. BHS-GQ: serious blockchain consensus research (Basic HotStuff + BLS threshold sigs in Go, 5 merged PRs, 2022–2023). pymc-devs: 1 open PR adding ZeroSumNormal notebook (Feb 2026, only public professional trace). Nuts & Bolts AI + PyMC Labs: current production work, all private. stocksbot/tusvi: noise (coursework/student).
 - [x] repo-readme-scan (2026-02-25) — 8 original repos scanned. crowNNs (B+) and multithreaded-fileserver (B) are pin-ready. blocked-floyd-warshall-gpu has NO README — critical gap for the only GPU/CUDA repo. derwells.github.io README is verbatim template boilerplate that misleads visitors.
 - [x] monorepo-deep-scan (2026-02-25) — Two production AI systems (Cheerful: 13,100 LOC, Temporal.io; Decision Orchestrator: 36,400 LOC, custom MCP protocol). Ralph loop engine runs on GitHub Actions CI, 6 loops active. Zero public visibility for any of it.
 - [x] profile-snapshot (2026-02-25) — No profile README, no pins, no blog link, stale personal site says "graduating student". 4 impressive recent gists (OOM postmortem, design docs) completely invisible. Stranger impression: junior ML hobbyist.
