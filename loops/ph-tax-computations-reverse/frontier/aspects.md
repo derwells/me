@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 24
-- Analyzed: 12
-- Pending: 12
-- Convergence: 50%
+- Analyzed: 13
+- Pending: 11
+- Convergence: 54%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -24,7 +24,7 @@ Depends on Wave 1 data.
 - [x] vat-real-property — 12% VAT on real property; ₱3.6M threshold test, ordinary asset determination, exempt vs taxable classification
 - [x] installment-vat-schedule — Output VAT recognition per collection on installment sales (RMC 99-2023); payment schedule tracking, recognition timing
 - [x] cwt-rate-and-timing — CWT rate selection (1.5-6%) based on seller type and price; 25%-of-price threshold test for installment withholding timing
-- [ ] ewt-rate-classification — Real estate subset of 80+ EWT categories under RR 2-98; decision tree for rate selection on rent, commissions, professional fees, contractor payments
+- [x] ewt-rate-classification — Real estate subset of 80+ EWT categories under RR 2-98; decision tree for rate selection on rent, commissions, professional fees, contractor payments
 - [ ] rpt-computation — Real property tax: FMV × assessment level × tax rate; per-LGU variation, property classification tiers, SEF levy
 - [ ] transfer-tax — LGU-level transfer tax on real property sale; rate variation by locality, base computation
 - [ ] form-2307-issuance — Who withholds, when to issue, amount computation, reconciliation logic (issued vs received for tax credit claims)
