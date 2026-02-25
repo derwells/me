@@ -16,14 +16,21 @@ The loop will discover and synthesize what that story is — based on the actual
 
 - **Repo inventory**: `input/github-repos.md` (all public repos with metadata)
 - **Monorepo codebase**: `../../` (the actual monorepo — read projects/, loops/, CLAUDE.md for context)
-- **GitHub API**: `curl -s https://api.github.com/users/derwells/repos?per_page=100` (live data, 60 req/hr unauthenticated)
-- **Individual repo API**: `curl -s https://api.github.com/repos/derwells/{repo}`
-- **README fetching**: `curl -s https://raw.githubusercontent.com/derwells/{repo}/main/README.md`
-- **Org repos**: Check what GitHub orgs the user belongs to and scan for contributions:
-  ```bash
-  gh api /user/orgs --jq '.[].login' 2>/dev/null
-  ```
-  For each org, list repos and check for the user's contributions.
+
+### GitHub API Access (IMPORTANT: Use `gh` CLI for ALL GitHub API calls)
+
+The `gh` CLI is authenticated with full repo/org scopes. **Always use `gh api` instead of `curl`** for GitHub API calls — this gives authenticated access, higher rate limits, and visibility into private repos and org memberships.
+
+- **User's public repos**: `gh api /users/derwells/repos --paginate -q '.[] | {name, description, language, stargazers_count, forks_count, fork, created_at, updated_at, topics, archived}'`
+- **ALL repos (including private)**: `gh api /user/repos --paginate -f type=all -q '.[] | select(.owner.login == "derwells") | {name, description, language, private, stargazers_count, fork, created_at, updated_at}'`
+- **User profile**: `gh api /users/derwells`
+- **Individual repo**: `gh api /repos/derwells/{repo}`
+- **Repo commits by user**: `gh api /repos/{owner}/{repo}/commits --jq '.[].commit.message' -f author=derwells -f per_page=10`
+- **README fetching**: `gh api /repos/derwells/{repo}/readme --jq '.content' | base64 -d` (or fall back to `curl -s https://raw.githubusercontent.com/derwells/{repo}/main/README.md`)
+- **Pinned repos (GraphQL)**: `gh api graphql -f query='{ user(login: "derwells") { pinnedItems(first: 6) { nodes { ... on Repository { name description url stargazerCount } } } } }'`
+- **Org memberships (authenticated — sees private orgs)**: `gh api /user/orgs --jq '.[].login'`
+- **Org repos**: `gh api /orgs/{org}/repos --paginate --jq '.[].full_name'`
+- **User's PRs in a repo**: `gh api /repos/{owner}/{repo}/pulls --jq '.[] | select(.user.login == "derwells") | {title, state, html_url}'`
 
 ## What To Do This Iteration
 
@@ -46,13 +53,15 @@ The loop will discover and synthesize what that story is — based on the actual
 ### Wave 1: Raw Data Extraction
 
 **repo-inventory**:
-Read `input/github-repos.md` for the pre-seeded snapshot. Optionally enrich with live GitHub API data:
+Read `input/github-repos.md` for the pre-seeded snapshot. Enrich with live authenticated GitHub API data:
 ```bash
-curl -s "https://api.github.com/users/derwells/repos?per_page=100&sort=updated" > raw/repos.json
+gh api /users/derwells/repos --paginate > raw/repos-public.json
+gh api /user/repos --paginate -f type=all > raw/repos-all.json
 ```
-For each repo, extract: name, description, language, stars, forks, is_fork, created_at, updated_at, topics.
-Write a structured inventory to `analysis/repo-inventory.md` with a table of ALL repos including:
+For each repo, extract: name, description, language, stars, forks, is_fork, private, created_at, updated_at, topics.
+Write a structured inventory to `analysis/repo-inventory.md` with a table of ALL repos (public AND private personal repos) including:
 - Original vs fork
+- Public vs private
 - Has README (yes/no)
 - Has description (yes/no)
 - Last activity (date)
@@ -62,11 +71,12 @@ Write a structured inventory to `analysis/repo-inventory.md` with a table of ALL
 **profile-snapshot**:
 Capture the current state of the GitHub profile. Use:
 ```bash
-curl -s "https://api.github.com/users/derwells" > raw/profile.json
+gh api /users/derwells > raw/profile.json
+gh api graphql -f query='{ user(login: "derwells") { pinnedItems(first: 6) { nodes { ... on Repository { name description url stargazerCount } } } } }' > raw/pinned.json
 ```
 Document in `analysis/profile-snapshot.md`:
 - Bio / company / location / blog (or lack thereof)
-- Current pinned repos (if any)
+- Current pinned repos (query via GraphQL above — **do not guess**)
 - Contribution activity level
 - Profile README existence (check if `derwells/derwells` repo exists)
 - Overall first impression: what story does this profile tell a stranger?
@@ -86,9 +96,9 @@ Write findings to `analysis/monorepo-deep-scan.md` focusing on:
 **repo-readme-scan**:
 For each ORIGINAL (non-fork) repo, fetch and evaluate its README:
 ```bash
-for repo in $(curl -s "https://api.github.com/users/derwells/repos?per_page=100" | python3 -c "import sys,json; [print(r['name']) for r in json.load(sys.stdin) if not r['fork']]"); do
+for repo in $(gh api /users/derwells/repos --paginate --jq '.[] | select(.fork == false) | .name'); do
   echo "=== $repo ===" >> raw/readmes.txt
-  curl -s "https://raw.githubusercontent.com/derwells/$repo/main/README.md" >> raw/readmes.txt 2>&1
+  gh api "/repos/derwells/$repo/readme" --jq '.content' 2>/dev/null | base64 -d >> raw/readmes.txt 2>&1 || echo "(no README)" >> raw/readmes.txt
   echo -e "\n\n" >> raw/readmes.txt
 done
 ```
@@ -98,16 +108,28 @@ Write assessment to `analysis/repo-readme-scan.md`:
 - Which repos have misleading/stale descriptions
 
 **org-contributions**:
-Scan GitHub orgs for private/org work:
+Scan ALL GitHub orgs (authenticated endpoint reveals private memberships):
 ```bash
-gh api /user/orgs --jq '.[].login' 2>/dev/null
+gh api /user/orgs --jq '.[].login'
 ```
-For each org found, list repos and check for meaningful contributions. Also check the monorepo project cards (`../../projects/`) for context on org work.
+For each org found, list repos and check for meaningful contributions:
+```bash
+for org in $(gh api /user/orgs --jq '.[].login'); do
+  echo "=== $org ===" >> raw/org-repos.txt
+  gh api "/orgs/$org/repos" --paginate --jq '.[].full_name' >> raw/org-repos.txt 2>&1
+  echo "" >> raw/org-repos.txt
+done
+```
+Also check the monorepo project cards (`../../projects/`) for context on org work.
+
+**Priority guidance**: Focus analysis on recent work and repos related to **distributed systems and backend engineering**. Older/irrelevant orgs can be briefly noted and moved on.
+
 Write findings to `analysis/org-contributions.md`:
 - What orgs does the user contribute to?
-- What projects/repos in those orgs?
+- What projects/repos in those orgs? (For large orgs, focus on repos with derwells's contributions)
 - What's the role/contribution?
 - What tech stack and domain?
+- Which org work is most relevant to the profile narrative (prioritize distributed systems + backend)?
 
 ### Wave 2: Pattern Analysis
 
@@ -143,7 +165,7 @@ Read `analysis/repo-inventory.md`. For each forked repo, determine:
 
 Use the GitHub API to check:
 ```bash
-curl -s "https://api.github.com/repos/derwells/{repo}/commits?author=derwells&per_page=5"
+gh api "/repos/derwells/{repo}/commits" -f author=derwells -f per_page=5
 ```
 
 Verdict for each fork: KEEP (meaningful work), ARCHIVE (just a clone), SHOWCASE (substantial modification).
@@ -160,7 +182,7 @@ Read ALL Wave 2 analysis files. Synthesize into a cohesive identity:
 - One-line bio draft (max 160 chars)
 - 3-5 bullet narrative ("This person builds X, ships Y, automates Z")
 - Primary archetype: what's the memorable label? Discover this from the data.
-- What to emphasize vs downplay
+- What to emphasize vs downplay — **prioritize LLMs, recent professional work, and maybe distributed systems, and backend engineering**
 - Tone calibration
 
 ### Wave 3: Synthesis
