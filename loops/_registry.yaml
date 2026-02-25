@@ -27,3 +27,11 @@ loops:
     status: converged
     created: 2026-02-24
     converged_at: "2026-02-24"
+  ph-tax-computations-reverse:
+    description: "Survey PH real estate tax computations → ranked automation opportunity catalog"
+    type: reverse
+    schedule: "*/30 * * * *"
+    max_iterations: 30
+    timeout_minutes: 15
+    status: active
+    created: 2026-02-25
