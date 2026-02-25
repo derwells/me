@@ -47,3 +47,10 @@ loops:
     timeout_minutes: 15
     status: active
     created: 2026-02-26
+  tsvj-backoffice-automation-reverse:
+    description: "Survey back-office tasks for Las Piñas SEC-registered rental property business → process catalog with feature specs"
+    type: reverse
+    max_iterations: 40
+    timeout_minutes: 15
+    status: active
+    created: 2026-02-26
