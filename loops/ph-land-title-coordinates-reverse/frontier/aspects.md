@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 15
-- Analyzed: 4
-- Pending: 11
-- Convergence: 27%
+- Analyzed: 5
+- Pending: 10
+- Convergence: 33%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -13,7 +13,7 @@
 - [x] luzon1911-transformation — Fetch Luzon 1911 datum parameters, DENR MC 2010-06 transformation procedures, residual error expectations
 - [x] tech-description-samples — Collect 5-8 real technical description texts spanning different vintages, regions, and survey types as test corpus
 - [x] bllm-database-sources — Identify all publicly accessible BLLM coordinate sources; inspect Title Plotter PH repo and Geoportal Lot Plotter
-- [ ] traverse-computation-references — Fetch geodetic traverse computation methods: bearing-distance formulas, closure adjustment
+- [x] traverse-computation-references — Fetch geodetic traverse computation methods: bearing-distance formulas, closure adjustment
 
 ### Wave 2: Core Computation Extraction
 Depends on Wave 1 data.
@@ -40,3 +40,4 @@ Depends on all prior waves.
 - luzon1911-transformation (Wave 1, 2026-02-25) — EPSG:1161/1162 3-param Helmert (17m/44m accuracy); DENR MC 2010-06 4-param local transform (<1m residuals); typical 10–30m grid shift Luzon 1911→PRS92; detection via explicit datum label on plan.
 - tech-description-samples (Wave 1, 2026-02-25) — 8 real samples collected (1916–2015) from Luzon, Visayas (Leyte), and Mindanao (GenSan). Key findings: 7 bearing format variants, 7 tie point monument code variants, Grid bearings pre-1993=Luzon 1911 PTM / post-1993=PRS92; "Due North" and degrees-only bearings require special casing; datum never explicit in TD body text.
 - bllm-database-sources (Wave 1, 2026-02-25) — 4 sources identified: tiepoints.json (TitlePlotterPH, 15.9 MB, ~50k records, fields: Name/Province/Municipality/Northing/Easting); Geoportal Lot Plotter (same LMB data, WGS84 output, web UI only); GeoIDEx (demonstration data, Region III only, PRS92 lat/lng + PTM grid); DENR-LMB via FOI. Key gaps: no zone tag per record, no datum tag, rural municipalities and BARMM severely underrepresented. Engine must support caller-provided BLLM coordinates.
+- traverse-computation-references (Wave 1, 2026-02-25) — Core formulas confirmed: ΔN=dist×cos(az), ΔE=dist×sin(az); shoelace area with floating-point note; Bowditch closure adjustment (for validation only, not applied to title data); Philippine tolerance 1:5000 (urban)/1:3000 (rural) from DAO 2007-29. Key finding: convert bearing→azimuth before all computation to avoid quadrant sign tables.
