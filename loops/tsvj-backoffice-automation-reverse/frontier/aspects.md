@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 28
-- Analyzed: 1
-- Pending: 27
-- Convergence: 4%
+- Analyzed: 2
+- Pending: 26
+- Convergence: 7%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -18,7 +18,8 @@
   **BLOCKED: same as crispina-models.**
 - [x] rent-control-rules — Fetch RA 9653, latest NHSB resolution (2024-01), and Civil Code lease articles. Extract: allowable increase caps by rent bracket, deposit limits, advance rent limits, grace period rules.
   → `input/rent-control-rules.md`
-- [ ] corporate-rental-tax — Fetch BIR rules for SEC-registered rental corporations: RCIT/MCIT, VAT threshold (3M), percentage tax (3%), EWT (5%), DST on leases. Document forms, deadlines, and computation formulas.
+- [x] corporate-rental-tax — Fetch BIR rules for SEC-registered rental corporations: RCIT/MCIT, VAT threshold (3M), percentage tax (3%), EWT (5%), DST on leases. Document forms, deadlines, and computation formulas.
+  → `input/corporate-rental-tax.md`
 - [ ] utility-billing-regulations — Fetch Meralco rate schedules and Maynilad sub-metering rules for Las Piñas. Document: rate tiers, allowable markups, billing statement requirements.
 - [ ] security-deposit-rules — Fetch PH deposit laws: residential controlled (2 months max) vs commercial (no cap). Document: deduction rules, return timeline (30 days), interest obligations, tax treatment.
 - [ ] lease-contract-requirements — Fetch Civil Code lease provisions + corporate requirements: board resolution, secretary's certificate, notarization for >1 year, mandatory clauses, DST on execution.

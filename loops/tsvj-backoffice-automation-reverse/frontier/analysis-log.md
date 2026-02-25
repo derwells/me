@@ -6,3 +6,4 @@
 | — | crispina-models | 1 | 2026-02-25 | BLOCKED — tsvjph/crispina is private; no GH_TOKEN available. Skip until token provided. |
 | — | crispina-services | 1 | 2026-02-25 | BLOCKED — same as crispina-models. |
 | — | crispina-water-calculator | 1 | 2026-02-25 | BLOCKED — same as crispina-models. |
+| 2 | corporate-rental-tax | 1 | 2026-02-25 | RCIT 25% (20% for SMEs ≤P5M income/P100M assets). MCIT 2% from 4th year. VAT 12% above P3M threshold; OPT 3% below. EWT 5% withheld by corporate lessees (Form 2307). DST on leases: P3/first P2K + P1/P1K annual rent × years of term. Mixed-use trap: if any resi rent >P15K/unit AND combined >P3M, ALL receipts are VAT-able (RR 13-2018). Key forms: 1702Q/RT, 2550Q, 2551Q, 1601-EQ, 2000. CREATE Act rates in effect as of 2026. |
