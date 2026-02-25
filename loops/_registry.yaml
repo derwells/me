@@ -5,6 +5,8 @@
 #   description: What the loop does
 #   type: reverse | forward
 #   status: active | paused | converged
+#   max_iterations: N (safety cap)
+#   timeout_minutes: N (per iteration)
 #   created: YYYY-MM-DD
 #   converged_at: YYYY-MM-DD (when applicable)
 
@@ -12,7 +14,6 @@ loops:
   github-profile-reverse:
     description: "Audit GitHub profile → profile spec"
     type: reverse
-    schedule: "*/30 * * * *"
     max_iterations: 25
     timeout_minutes: 10
     status: active
@@ -20,7 +21,6 @@ loops:
   linkedin-profile-reverse:
     description: "Mine repos + work projects → full LinkedIn profile spec"
     type: reverse
-    schedule: "*/30 * * * *"
     max_iterations: 25
     timeout_minutes: 15
     status: converged
@@ -29,8 +29,21 @@ loops:
   ph-tax-computations-reverse:
     description: "Survey PH real estate tax computations → ranked automation opportunity catalog"
     type: reverse
-    schedule: "*/30 * * * *"
     max_iterations: 30
     timeout_minutes: 15
     status: active
     created: 2026-02-25
+  ph-land-title-coordinates-reverse:
+    description: "PH land title technical description → WGS84 lat/lng computation engine spec"
+    type: reverse
+    max_iterations: 20
+    timeout_minutes: 15
+    status: active
+    created: 2026-02-26
+  ph-realestate-calcs-reverse:
+    description: "Survey PH non-tax real estate calculations (financing, regulatory, valuation, fees) → ranked automation opportunity catalog"
+    type: reverse
+    max_iterations: 40
+    timeout_minutes: 15
+    status: active
+    created: 2026-02-26
