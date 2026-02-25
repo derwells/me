@@ -2,15 +2,15 @@
 
 ## Statistics
 - Total aspects discovered: 15
-- Analyzed: 1
-- Pending: 14
-- Convergence: 7%
+- Analyzed: 2
+- Pending: 13
+- Convergence: 13%
 
 ## Pending Aspects (ordered by dependency)
 
 ### Wave 1: Source Acquisition
 - [x] prs92-datum-parameters — Fetch PRS92 zone definitions (EPSG 3121-3125), ellipsoid constants, projection parameters, 7-parameter Helmert shift to WGS84
-- [ ] luzon1911-transformation — Fetch Luzon 1911 datum parameters, DENR MC 2010-06 transformation procedures, residual error expectations
+- [x] luzon1911-transformation — Fetch Luzon 1911 datum parameters, DENR MC 2010-06 transformation procedures, residual error expectations
 - [ ] tech-description-samples — Collect 5-8 real technical description texts spanning different vintages, regions, and survey types as test corpus
 - [ ] bllm-database-sources — Identify all publicly accessible BLLM coordinate sources; inspect Title Plotter PH repo and Geoportal Lot Plotter
 - [ ] traverse-computation-references — Fetch geodetic traverse computation methods: bearing-distance formulas, closure adjustment
@@ -37,3 +37,4 @@ Depends on all prior waves.
 
 ## Recently Analyzed
 - prs92-datum-parameters (Wave 1, 2026-02-25) — All 5 PTM zone definitions, Clarke 1866 constants, 7-parameter Helmert EPSG:15708 confirmed. Key finding: sign convention is Coordinate Frame (EPSG:9607), accuracy 0.05m.
+- luzon1911-transformation (Wave 1, 2026-02-25) — EPSG:1161/1162 3-param Helmert (17m/44m accuracy); DENR MC 2010-06 4-param local transform (<1m residuals); typical 10–30m grid shift Luzon 1911→PRS92; detection via explicit datum label on plan.
