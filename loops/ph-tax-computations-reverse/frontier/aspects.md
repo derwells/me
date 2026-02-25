@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 24
-- Analyzed: 5
-- Pending: 19
-- Convergence: 21%
+- Analyzed: 6
+- Pending: 18
+- Convergence: 25%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -17,7 +17,7 @@
 
 ### Wave 2: Computation Extraction
 Depends on Wave 1 data.
-- [ ] highest-of-three-base — Tax base resolution: max(selling price, zonal value, assessed FMV); lookup sources, comparison logic, which taxes use this base
+- [x] highest-of-three-base — Tax base resolution: max(selling price, zonal value, assessed FMV); lookup sources, comparison logic, which taxes use this base
 - [ ] cgt-computation — 6% capital gains tax on real property sale (BIR Form 1706); inputs, formula, deadline rules, surcharge/interest computation
 - [ ] dst-on-sale — 1.5% documentary stamp tax on conveyance (NIRC Section 196); base, rate, deadline (5 days post-notarization)
 - [ ] dst-on-mortgage — DST on mortgage instruments (NIRC Section 195); separate rate schedule, triggers, computation
@@ -48,3 +48,4 @@ Depends on Wave 3 data.
 - practitioner-guides (Wave 1, 2026-02-25)
 - bir-form-structures (Wave 1, 2026-02-25)
 - zonal-value-samples (Wave 1, 2026-02-25)
+- highest-of-three-base (Wave 2, 2026-02-25)
