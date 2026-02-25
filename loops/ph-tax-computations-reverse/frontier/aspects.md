@@ -2,14 +2,14 @@
 
 ## Statistics
 - Total aspects discovered: 24
-- Analyzed: 0
-- Pending: 24
-- Convergence: 0%
+- Analyzed: 1
+- Pending: 23
+- Convergence: 4%
 
 ## Pending Aspects (ordered by dependency)
 
 ### Wave 1: Source Acquisition
-- [ ] nirc-tax-titles — Fetch NIRC Title II (income tax on real property), Title IV (VAT), Title VI (stamp taxes); extract computation-relevant provisions
+- [x] nirc-tax-titles — Fetch NIRC Title II (income tax on real property), Title IV (VAT), Title VI (stamp taxes); extract computation-relevant provisions
 - [ ] bir-revenue-regulations — Fetch key RRs: RR 7-2003 (asset classification criteria), RR 2-98 as amended (EWT rates), RR 16-2005 (withholding on real property), TRAIN law amendments to real property taxation
 - [ ] practitioner-guides — Fetch worked examples from Grant Thornton PH, PwC PH, BDB Law, Respicio & Co. tax alerts covering real estate tax computations
 - [ ] bir-form-structures — Fetch BIR form instructions for Forms 1706 (CGT), 2000-OT (DST), 2550Q (VAT), 1601-EQ (EWT), 2307 (withholding certificate)
@@ -43,4 +43,4 @@ Depends on Wave 3 data.
 - [ ] catalog-review — Self-review for completeness, actionability, and correctness of scoring
 
 ## Recently Analyzed
-(Empty — loop hasn't started yet)
+- nirc-tax-titles (Wave 1, 2026-02-25)
