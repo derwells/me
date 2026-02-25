@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 24
-- Analyzed: 8
-- Pending: 16
-- Convergence: 33%
+- Analyzed: 9
+- Pending: 15
+- Convergence: 38%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -20,7 +20,7 @@ Depends on Wave 1 data.
 - [x] highest-of-three-base — Tax base resolution: max(selling price, zonal value, assessed FMV); lookup sources, comparison logic, which taxes use this base
 - [x] cgt-computation — 6% capital gains tax on real property sale (BIR Form 1706); inputs, formula, deadline rules, surcharge/interest computation
 - [x] dst-on-sale — 1.5% documentary stamp tax on conveyance (NIRC Section 196); base, rate, deadline (5 days post-notarization)
-- [ ] dst-on-mortgage — DST on mortgage instruments (NIRC Section 195); separate rate schedule, triggers, computation
+- [x] dst-on-mortgage — DST on mortgage instruments (NIRC Section 195); separate rate schedule, triggers, computation
 - [ ] vat-real-property — 12% VAT on real property; ₱3.6M threshold test, ordinary asset determination, exempt vs taxable classification
 - [ ] installment-vat-schedule — Output VAT recognition per collection on installment sales (RMC 99-2023); payment schedule tracking, recognition timing
 - [ ] cwt-rate-and-timing — CWT rate selection (1.5-6%) based on seller type and price; 25%-of-price threshold test for installment withholding timing
@@ -51,3 +51,4 @@ Depends on Wave 3 data.
 - highest-of-three-base (Wave 2, 2026-02-25)
 - cgt-computation (Wave 2, 2026-02-25)
 - dst-on-sale (Wave 2, 2026-02-25)
+- dst-on-mortgage (Wave 2, 2026-02-25)
