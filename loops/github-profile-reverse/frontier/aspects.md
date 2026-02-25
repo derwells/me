@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 12
-- Analyzed: 6
-- Pending: 6
-- Convergence: 50%
+- Analyzed: 7
+- Pending: 5
+- Convergence: 58%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -17,7 +17,7 @@
 
 ### Wave 2: Pattern Analysis (depends on Wave 1)
 - [x] repo-clustering — Cluster repos into thematic groups; assess signal strength per cluster
-- [ ] signal-vs-noise — Score every repo (originality, activity, story value, README quality) → SHOWCASE / KEEP / ARCHIVE verdict
+- [x] signal-vs-noise — Score every repo (originality, activity, story value, README quality) → SHOWCASE / KEEP / ARCHIVE verdict
 - [ ] fork-audit — Evaluate each fork for meaningful contributions vs empty clones
 - [ ] narrative-gaps — Identify invisible work, delta between "what's built" vs "what GitHub shows"
 - [ ] identity-synthesis — Synthesize cohesive identity: bio, archetype, narrative bullets, tone
@@ -30,6 +30,7 @@
 (Empty — spec-review hasn't run yet)
 
 ## Recently Analyzed
+- [x] signal-vs-noise (2026-02-25) — 11 repos scored. SHOWCASE: crowNNs (9/12), multithreaded-fileserver (8/12). KEEP: blocked-floyd-warshall-gpu (7→10 after README — highest leverage action), pymc-examples fork (6), LPRNet (5), halleys-comet (4), lotka-volterra (4). ARCHIVE: derwells.github.io (3), wordhack (3), moodle (0), shalltear (0). Write README for blocked-floyd-warshall-gpu to unlock 3rd SHOWCASE slot.
 - [x] org-contributions (2026-02-25) — 5 orgs found. BHS-GQ: serious blockchain consensus research (Basic HotStuff + BLS threshold sigs in Go, 5 merged PRs, 2022–2023). pymc-devs: 1 open PR adding ZeroSumNormal notebook (Feb 2026, only public professional trace). Nuts & Bolts AI + PyMC Labs: current production work, all private. stocksbot/tusvi: noise (coursework/student).
 - [x] repo-readme-scan (2026-02-25) — 8 original repos scanned. crowNNs (B+) and multithreaded-fileserver (B) are pin-ready. blocked-floyd-warshall-gpu has NO README — critical gap for the only GPU/CUDA repo. derwells.github.io README is verbatim template boilerplate that misleads visitors.
 - [x] monorepo-deep-scan (2026-02-25) — Two production AI systems (Cheerful: 13,100 LOC, Temporal.io; Decision Orchestrator: 36,400 LOC, custom MCP protocol). Ralph loop engine runs on GitHub Actions CI, 6 loops active. Zero public visibility for any of it.
