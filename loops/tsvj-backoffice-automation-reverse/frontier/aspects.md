@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 28
-- Analyzed: 4
-- Pending: 24
-- Convergence: 14%
+- Analyzed: 5
+- Pending: 23
+- Convergence: 18%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -24,7 +24,8 @@
   → `input/utility-billing-regulations.md`
 - [x] security-deposit-rules — Fetch PH deposit laws: residential controlled (2 months max) vs commercial (no cap). Document: deduction rules, return timeline (30 days), interest obligations, tax treatment.
   → `input/security-deposit-rules.md`
-- [ ] lease-contract-requirements — Fetch Civil Code lease provisions + corporate requirements: board resolution, secretary's certificate, notarization for >1 year, mandatory clauses, DST on execution.
+- [x] lease-contract-requirements — Fetch Civil Code lease provisions + corporate requirements: board resolution, secretary's certificate, notarization for >1 year, mandatory clauses, DST on execution.
+  → `input/lease-contract-requirements.md`
 - [ ] accounting-agency-handoff — Research what data a PH external accountant needs monthly/quarterly/annually from a rental corporation: rent roll, 2307 certificates, expense vouchers, bank statements, OR stubs.
 
 ### Wave 2: Process Analysis & Feature Specs (14 aspects)
