@@ -77,6 +77,13 @@ loops/<name>/
     └── paused.txt         # Create to pause the loop
 ```
 
+## GitHub Access
+
+The `gh` CLI is available and authenticated. Use it for GitHub API access in loops and tasks:
+- `gh api` for raw API queries (supports `--jq` for filtering)
+- `gh repo`, `gh issue`, `gh pr`, `gh release` for structured queries
+- In headless/CI environments, set `GH_TOKEN` env var — `loop.sh` passes it through automatically
+
 ## Conventions
 
 - `[[wikilinks]]` are a lightweight cross-reference convention. Not rendered — just greppable.

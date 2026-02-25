@@ -9,6 +9,12 @@ set -uo pipefail
 # Allow nested Claude Code sessions
 unset CLAUDECODE 2>/dev/null || true
 
+# Pass GH_TOKEN to Claude for GitHub API access (gh CLI)
+# Set GH_TOKEN in your environment or .env for headless/CI use
+if [ -n "${GH_TOKEN:-}" ]; then
+    export GH_TOKEN
+fi
+
 WORK_DIR="$(cd "$(dirname "$0")" && pwd)"
 LOOP_NAME="$(basename "$WORK_DIR")"
 PROMPT_FILE="$WORK_DIR/PROMPT.md"

@@ -46,6 +46,15 @@ Depends on Wave 1 data.
 Depends on all Wave 2 analysis.
 {{Describe how to synthesize findings into the final output. Typically: draft the spec/report, then self-review it.}}
 
+## Available Tools
+
+- **`gh` CLI** — authenticated GitHub access. Use for repos, issues, PRs, releases, API queries.
+  - `gh repo view <owner/repo>` — repo metadata
+  - `gh api repos/<owner/repo>/...` — raw GitHub API access
+  - `gh release list`, `gh issue list`, `gh pr list` — structured queries
+  - Prefer `gh api` with `--jq` for precise data extraction
+  - Save raw API responses to `raw/` for later-wave analysis
+
 ## Rules
 
 - Do ONE aspect per run, then exit. Do not analyze multiple aspects.
