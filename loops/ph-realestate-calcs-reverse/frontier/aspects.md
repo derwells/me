@@ -2,16 +2,16 @@
 
 ## Statistics
 - Total aspects discovered: 28
-- Analyzed: 2
-- Pending: 26
-- Convergence: 7%
+- Analyzed: 3
+- Pending: 25
+- Convergence: 11%
 
 ## Pending Aspects (ordered by dependency)
 
 ### Wave 1: Source Acquisition
 - [x] pagibig-housing-loan-circulars — Fetch Pag-IBIG Fund Circular No. 423 and amendments; extract loan eligibility rules, loan limits, interest rates, MRI/FGI rates
 - [x] bsp-residential-lending — Fetch BSP circulars on residential real estate lending; LTV limits, stress test requirements, repricing rules
-- [ ] maceda-law-text — Fetch RA 6552 full text + key Supreme Court rulings (Rillo v. CA, Active Realty v. Daroya); extract refund/grace period computation rules
+- [x] maceda-law-text — Fetch RA 6552 full text + key Supreme Court rulings (Rillo v. CA, Active Realty v. Daroya); extract refund/grace period computation rules
 - [ ] rent-control-act — Fetch RA 9653 + DHSUD implementing rules; extract allowable rent increase formula and coverage thresholds
 - [ ] condo-act-common-areas — Fetch RA 4726 (Condominium Act) + HLURB/DHSUD rules; extract common area percentage computation requirements
 - [ ] dhsud-price-ceilings — Fetch current DHSUD issuances on socialized/economic/low-cost housing price ceilings and lot size standards
