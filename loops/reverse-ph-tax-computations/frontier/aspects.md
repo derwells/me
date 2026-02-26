@@ -1,10 +1,10 @@
 # Analysis Frontier — PH Tax Computations Survey
 
 ## Statistics
-- Total aspects discovered: 24
-- Analyzed: 22
-- Pending: 2
-- Convergence: 92%
+- Total aspects discovered: 23
+- Analyzed: 23
+- Pending: 0
+- Convergence: 100%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -40,7 +40,7 @@ Depends on Wave 2 data.
 Depends on Wave 3 data.
 - [x] opportunity-scoring — Score each computation: automation_gap × market_frequency × moat_defensibility (1-5 each)
 - [x] catalog-draft — Produce ranked opportunity catalog at output/opportunity-catalog.md
-- [ ] catalog-review — Self-review for completeness, actionability, and correctness of scoring
+- [x] catalog-review — Self-review for completeness, actionability, and correctness of scoring
 
 ## Recently Analyzed
 - nirc-tax-titles (Wave 1, 2026-02-25)
@@ -61,3 +61,4 @@ Depends on Wave 3 data.
 - complexity-scoring (Wave 3, 2026-02-26)
 - opportunity-scoring (Wave 4, 2026-02-26)
 - catalog-draft (Wave 4, 2026-02-26)
+- catalog-review (Wave 4, 2026-02-26)

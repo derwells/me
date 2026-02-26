@@ -2,7 +2,7 @@
 
 **Produced by:** PH Tax Computations Survey (reverse ralph loop)
 **Date:** 2026-02-26
-**Status:** Draft (pending self-review)
+**Status:** Final (self-reviewed 2026-02-26)
 **Methodology:** 12 deterministic computations surveyed across 4 waves — source acquisition, computation extraction with mandatory verification, competitive/workflow gap analysis, and composite scoring (automation_gap × market_frequency × moat_defensibility, each 1–5, composite 1–125).
 
 ---

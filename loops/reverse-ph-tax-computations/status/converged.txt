@@ -1,0 +1,30 @@
+CONVERGED
+Date: 2026-02-26
+Iterations: 23
+Waves completed: 4/4
+
+Loop: PH Tax Computations Survey (reverse ralph loop)
+Goal: Survey every deterministic computation in Philippine real estate taxation and produce a ranked opportunity catalog for building automation engines.
+
+Final Output: output/opportunity-catalog.md
+Status: Final (self-reviewed)
+
+Summary:
+- 12 deterministic computations surveyed across 4 waves
+- All computations verified against 2+ independent sources (Wave 2 protocol)
+- 12 tools/platforms mapped for competitive gap analysis (Wave 3)
+- Scored by automation_gap x market_frequency x moat_defensibility (1-125)
+
+Top Findings:
+- TIER 1 (score 125): Zonal Value Lookup Engine, RPT Computation Engine
+- TIER 2 (score 60-75): Installment VAT, VAT on Real Property, CWT, Transfer Tax
+- TIER 3 (score 40-45): CGT, Highest-of-Three Base, DST on Mortgage
+- TIER 4 (score 10-20): EWT, Form 2307, DST on Conveyance
+
+Recommended Deep-Dive Loops:
+- P0: Zonal Value Lookup Engine (RPVARA first-mover window through mid-2026)
+- P1: RPT Computation Engine (1,700-LGU database)
+- P2: ONETT Transaction Tax Engine (CGT/CWT/VAT/DST unified)
+- P3: Installment VAT Schedule Engine (developer-focused, highest moat)
+
+Analysis artifacts: 22 files in analysis/, 3 files in input/, 1 catalog in output/
