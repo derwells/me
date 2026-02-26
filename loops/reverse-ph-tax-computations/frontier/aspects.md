@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 24
-- Analyzed: 15
-- Pending: 9
-- Convergence: 63%
+- Analyzed: 16
+- Pending: 8
+- Convergence: 67%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -27,7 +27,7 @@ Depends on Wave 1 data.
 - [x] ewt-rate-classification — Real estate subset of 80+ EWT categories under RR 2-98; decision tree for rate selection on rent, commissions, professional fees, contractor payments
 - [x] rpt-computation — Real property tax: FMV × assessment level × tax rate; per-LGU variation, property classification tiers, SEF levy
 - [x] transfer-tax — LGU-level transfer tax on real property sale; rate variation by locality, base computation
-- [ ] form-2307-issuance — Who withholds, when to issue, amount computation, reconciliation logic (issued vs received for tax credit claims)
+- [x] form-2307-issuance — Who withholds, when to issue, amount computation, reconciliation logic (issued vs received for tax credit claims)
 - [ ] zonal-value-lookup — Resolution logic for BIR zonal values by location; RDO jurisdiction mapping, format parsing, update frequency
 
 ### Wave 3: Competitive & Automation Gap Analysis
@@ -54,3 +54,4 @@ Depends on Wave 3 data.
 - dst-on-mortgage (Wave 2, 2026-02-25)
 - rpt-computation (Wave 2, 2026-02-26)
 - transfer-tax (Wave 2, 2026-02-26)
+- form-2307-issuance (Wave 2, 2026-02-26)
