@@ -1,10 +1,10 @@
 # Frontier — PH Land Title Coordinates
 
 ## Statistics
-- Total aspects discovered: 15
-- Analyzed: 14
+- Total aspects discovered: 16
+- Analyzed: 15
 - Pending: 1
-- Convergence: 93%
+- Convergence: 94%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -32,7 +32,7 @@ Depends on Wave 2 data.
 
 ### Wave 4: Synthesis
 Depends on all prior waves.
-- [ ] engine-spec-draft — Assemble complete spec at output/engine-spec.md
+- [x] engine-spec-draft — Assemble complete spec at output/engine-spec.md
 - [ ] spec-review — Self-review for completeness, correctness, implementability
 
 ## Recently Analyzed
@@ -49,3 +49,4 @@ Depends on all prior waves.
 - validation-rules (Wave 2, 2026-02-26) — 6 validation checks: linear closure (1:5,000 tertiary per DAO 2007-29 §28b, engine tiers 5k/3k/1k), area cross-check (shoelace vs stated, ≤0.5%/2%/5%), angular closure ((n-2)×180°, 30″√n), geometry sanity (self-intersection, bearing range, winding), BLLM confidence (5-tier), datum consistency (6 rules). Key correction: 1:3,000 rural NOT in DAO 2007-29 (engine-defined). Control tiers corrected: Primary=1:20,000, Secondary=1:10,000, Tertiary=1:5,000. All formulas verified ≥2 sources via subagent.
 - format-variations (Wave 3, 2026-02-26) — 13-section catalog of TD format variations across survey types. Key findings: (1) subdivision/consolidation/free-patent TDs all use identical canonical format — no separate code paths needed; (2) tie point is ALWAYS a geodetic monument even in subdivisions (NOT parent lot corners); (3) old vs new plan numbers have NO bearing/datum implications; (4) reconstituted titles more likely to have degraded data — 3 new error codes (TieDistanceMissing, MissingCorners, DuplicateCorner); (5) graphical-origin TDs (Cadm/PCadm) have lower precision and need relaxed validation; (6) "floating parcels" (no tie point) can compute relative polygon only; (7) coordinate-based modern TDs (lat/lng per corner) bypass traverse pipeline entirely. 18 survey plan prefixes cataloged (up from 10). New regex for conversion computation footer note and coordinate-based corner detection.
 - error-handling (Wave 3, 2026-02-26) — Comprehensive error handling spec across all 5 pipeline stages. 42 error codes defined (31 parse, 6 BLLM, 6 traverse, 7 transform, 2 output). 4 severity levels (FATAL/ERROR/WARNING/INFO). Key additions: (1) closure failure diagnostics with quadrant-flip detection heuristic; (2) bearing recovery algorithm for missing prefix/suffix (try both, pick by closure impact); (3) BLLM 5-tier fuzzy matching (exact → code+number → province filter → trigram similarity → caller-provided); (4) 6-level graceful degradation hierarchy (full WGS84 → PRS92-only → relative polygon → coordinate-based → parsed fields → total failure); (5) confidence scoring model (1.0 base, −0.3/error, −0.1/warning); (6) source quality inference (clean/good/degraded/poor/reconstituted_likely); (7) typo catalog with specific recovery strategies for N↔S swap, E↔W swap, missing decimal, minutes>59. New error codes: BearingMinutesOutOfRange, TieMonumentUnparseable, DistanceUnreasonable, TraverseOverflow, DegeneratePolygon, CoordinateClampWarning, InverseTMConvergenceFail.
+- engine-spec-draft (Wave 4, 2026-02-26) — Complete engine spec assembled at output/engine-spec.md. Synthesizes all 14 prior analyses into single implementable document organized by 5 pipeline stages + error handling + 6 test vectors + 4 appendices. All PROMPT.md requirements covered.
