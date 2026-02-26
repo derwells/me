@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 24
-- Analyzed: 21
-- Pending: 3
-- Convergence: 88%
+- Analyzed: 22
+- Pending: 2
+- Convergence: 92%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -39,7 +39,7 @@ Depends on Wave 2 data.
 ### Wave 4: Scoring & Synthesis
 Depends on Wave 3 data.
 - [x] opportunity-scoring — Score each computation: automation_gap × market_frequency × moat_defensibility (1-5 each)
-- [ ] catalog-draft — Produce ranked opportunity catalog at output/opportunity-catalog.md
+- [x] catalog-draft — Produce ranked opportunity catalog at output/opportunity-catalog.md
 - [ ] catalog-review — Self-review for completeness, actionability, and correctness of scoring
 
 ## Recently Analyzed
@@ -60,3 +60,4 @@ Depends on Wave 3 data.
 - practitioner-workflow (Wave 3, 2026-02-26)
 - complexity-scoring (Wave 3, 2026-02-26)
 - opportunity-scoring (Wave 4, 2026-02-26)
+- catalog-draft (Wave 4, 2026-02-26)
