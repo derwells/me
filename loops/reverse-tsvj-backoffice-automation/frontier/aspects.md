@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 28
-- Analyzed: 22
-- Pending: 6
-- Convergence: 78%
+- Analyzed: 23
+- Pending: 5
+- Convergence: 82%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -50,7 +50,7 @@ Depends on Wave 1 data.
 - [x] rent-roll-preparation — Monthly rent roll spreadsheet: tenant, unit, gross rent, VAT, EWT withheld, net collected, OR number, date. Format the accountant expects.
 - [x] tax-data-compilation — Preparing data for BIR quarterly/annual filings: 2307 tracking, gross receipts summary for VAT/percentage tax, EWT summary, DST register.
 - [x] official-receipt-data — Data needed to generate BIR-registered official receipts: sequential numbering, tenant TIN, amount breakdown, VAT component.
-- [ ] expense-tracking — Recording disbursements (repairs, maintenance, utilities, permits) with receipts for deduction claims. What the accountant needs for books of accounts.
+- [x] expense-tracking — Recording disbursements (repairs, maintenance, utilities, permits) with receipts for deduction claims. What the accountant needs for books of accounts.
 
 ### Wave 3: Handoff & Integration Analysis (3 aspects)
 Depends on Wave 2 data.
