@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 28
-- Analyzed: 9
-- Pending: 19
-- Convergence: 32%
+- Analyzed: 10
+- Pending: 18
+- Convergence: 36%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -33,7 +33,7 @@
 Depends on Wave 1 data.
 
 **Day-to-day operations (highest priority):**
-- [ ] tenant-payment-tracking — How to track who has paid, who hasn't, running balances per tenant. Partial payment allocation. Dashboard visibility into payment status across all units.
+- [x] tenant-payment-tracking — How to track who has paid, who hasn't, running balances per tenant. Partial payment allocation. Dashboard visibility into payment status across all units.
 - [ ] monthly-billing-generation — How to generate monthly bills for all tenants: rent + utilities + other charges. Statement format, delivery, due dates.
 - [ ] rent-escalation-calculation — Annual rent increase computation: NHSB caps for controlled units, contractual % or CPI-linked for commercial. When and how escalation triggers.
 - [ ] late-payment-penalties — Penalty computation: residential (capped at 1 month/year) vs commercial (contractual, subject to Art. 1229). Compounding rules, grace periods.
@@ -73,3 +73,4 @@ Depends on all Wave 3 analysis.
 | 2 | corporate-rental-tax | 1 | input/corporate-rental-tax.md | 2026-02-25 |
 | 3 | utility-billing-regulations | 1 | input/utility-billing-regulations.md | 2026-02-25 |
 | 9 | crispina-water-calculator | 1 | input/crispina-water-calculator.md | 2026-02-26 |
+| 10 | tenant-payment-tracking | 2 | analysis/tenant-payment-tracking.md | 2026-02-26 |
