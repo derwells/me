@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 28
-- Analyzed: 10
-- Pending: 18
-- Convergence: 36%
+- Analyzed: 11
+- Pending: 17
+- Convergence: 39%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -34,7 +34,7 @@ Depends on Wave 1 data.
 
 **Day-to-day operations (highest priority):**
 - [x] tenant-payment-tracking — How to track who has paid, who hasn't, running balances per tenant. Partial payment allocation. Dashboard visibility into payment status across all units.
-- [ ] monthly-billing-generation — How to generate monthly bills for all tenants: rent + utilities + other charges. Statement format, delivery, due dates.
+- [x] monthly-billing-generation — How to generate monthly bills for all tenants: rent + utilities + other charges. Statement format, delivery, due dates.
 - [ ] rent-escalation-calculation — Annual rent increase computation: NHSB caps for controlled units, contractual % or CPI-linked for commercial. When and how escalation triggers.
 - [ ] late-payment-penalties — Penalty computation: residential (capped at 1 month/year) vs commercial (contractual, subject to Art. 1229). Compounding rules, grace periods.
 - [ ] water-billing — Meter reading → per-unit consumption → bill. Rate application, common area apportionment, statement generation. Compare Crispina water calculator vs regulatory requirements.
@@ -74,3 +74,4 @@ Depends on all Wave 3 analysis.
 | 3 | utility-billing-regulations | 1 | input/utility-billing-regulations.md | 2026-02-25 |
 | 9 | crispina-water-calculator | 1 | input/crispina-water-calculator.md | 2026-02-26 |
 | 10 | tenant-payment-tracking | 2 | analysis/tenant-payment-tracking.md | 2026-02-26 |
+| 11 | monthly-billing-generation | 2 | analysis/monthly-billing-generation.md | 2026-02-26 |
