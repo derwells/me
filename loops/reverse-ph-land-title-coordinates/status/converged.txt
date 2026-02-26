@@ -1,0 +1,26 @@
+CONVERGED
+Date: 2026-02-26
+Iterations: 16 (5 Wave 1 + 7 Wave 2 + 3 Wave 3 + 2 Wave 4, including 1 supplementary)
+
+Output: output/engine-spec.md (v1.1)
+
+Summary:
+The Philippine Land Title Coordinate Engine computation spec is complete and ready
+for implementation. It covers the full pipeline from raw technical description text
+to WGS84 lat/lng coordinates:
+
+  Stage 1: Text Parser — BNF grammar + regex for all TD fields (9 subsections)
+  Stage 2: BLLM Resolution — 5-tier lookup against 85,303-record dataset
+  Stage 3: Traverse Computation — bearing/distance → PRS92 grid coordinates
+  Stage 4: Datum Transformation — PRS92 → WGS84 (inverse TM + Helmert)
+                                  Luzon 1911 → WGS84 (3-param or DENR MC 2010-06)
+  Stage 5: Validation — closure, area, angular, geometry (42 error codes)
+
+Spec review (final iteration) found and fixed:
+  - 3 factual errors (BLLM counts, JSON field names, dead code)
+  - 4 specification gaps (angular formula, edge case thresholds, precision)
+
+Test coverage: 6 test vectors (3 full pipeline + 1 error detection + 1 inverse TM + 1 parser)
+
+All formulas verified against ≥2 independent sources.
+All PROMPT.md requirements satisfied.

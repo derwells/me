@@ -1,6 +1,6 @@
 # Philippine Land Title Coordinate Engine — Computation Spec
 
-**Version:** 1.0 (2026-02-26)
+**Version:** 1.1 (2026-02-26)
 **Purpose:** Convert Philippine land title technical descriptions into WGS84 latitude/longitude coordinates.
 **Audience:** Developer implementing the computation engine.
 
@@ -413,21 +413,24 @@ Resolve the tie point monument name from the parsed TD to absolute PRS92 grid co
 
 The primary BLLM dataset is derived from the Title Plotter PH QGIS plugin's `tiepoints.json` file (GitHub: `isaacenage/TitlePlotterPH`).
 
-**Dataset structure:**
+**Dataset structure (actual `tiepoints.json` field names):**
 
 | Field | Description | Example |
 |-------|-------------|---------|
-| Name | Monument full name | `"BLLM NO. 1, PLS-1110"` |
-| Northing | PRS92 grid Northing (m) | `1882450.000` |
-| Easting | PRS92 grid Easting (m) | `447320.000` |
-| Province | Province name | `"ILOCOS SUR"` |
-| Municipality | Municipality name | `"ALILEM"` |
+| Tie Point Name | Monument short name | `"BLLM 1"` |
+| Description | Monument full description (used for datum inference) | `"BLLM No. 1, Cad 614-D, Municipality of Botolan, Province of Zambales"` |
+| Northing | PRS92 grid Northing (m) | `1691760.514` |
+| Easting | PRS92 grid Easting (m) | `394854.244` |
+| Province | Province name (ALL CAPS) | `"ZAMBALES"` |
+| Municipality | Municipality name (ALL CAPS) | `"BOTOLAN"` |
 
 **Coverage statistics (from analysis):**
-- ~1,200+ monument records across all provinces
-- Strongest coverage: Metro Manila, CALABARZON, Central Luzon, Central Visayas
-- Weakest coverage: BARMM, CAR, MIMAROPA, some Mindanao provinces
-- Most records are BLLM and BBM types; LW, MBM coverage is sparse
+- **85,303 total records** across 117 provinces (15.9 MB JSON file)
+- Record types: 19,568 BLLMs, 26,155 BBMs, 15,609 PRS92 control points, 9,174 MBMs, 4,850 BLBMs, 1,085 triangulation stations, 788 PBMs, ~8,074 other
+- Datum inference from Description field: 18.4% PRS92, 66% Luzon 1911, 15.5% unknown
+- Strongest coverage: NCR, Region III, Region IV-A, Region VII (Iloilo 4,618 records, Pangasinan 4,363)
+- Weakest coverage: BARMM, CAR, MIMAROPA, post-2006 provinces
+- 2,907 records have null Municipality
 
 ### 3.3 Lookup Algorithm
 
@@ -436,7 +439,7 @@ Five-tier progressive matching:
 ```
 Tier 1: Exact normalized name match
   Normalize input: strip periods, collapse whitespace, uppercase
-  "BLLM NO. 1, PLS-1110" → exact match in Name field
+  "BLLM NO. 1, PLS-1110" → exact match in "Tie Point Name" or "Description" field
 
 Tier 2: Monument code + number only (drop descriptor)
   "BLLM 1" → match across all records with monument type BLLM, number 1
@@ -852,9 +855,7 @@ def geocentric_to_geographic(X, Y, Z,
     lam = math.atan2(Y, X)
 
     p = math.sqrt(X*X + Y*Y)
-    # Bowring initial approximation
-    theta = math.atan2(Z * a, p * a * math.sqrt(1.0 - e2))
-    # Note: using parametric latitude approximation
+    # Bowring initial approximation (parametric latitude)
     b = a * math.sqrt(1.0 - e2)
     theta = math.atan2(Z * a, p * b)
 
@@ -923,6 +924,8 @@ Same Clarke 1866 ellipsoid, same projection parameters (k₀, E₀, N₀). Only 
 
 **Relaxed thresholds:** For graphical-origin surveys (detected by `Cadm`/`PCadm` prefix or conversion note), use 1:1,000 as the PASS threshold.
 
+**Short-perimeter edge case:** For lots with perimeter < 100 m, precision ratios are sensitive to rounding. If absolute misclosure e < 0.05 m and k ≥ 1,000, override to PASS regardless of ratio. Always include both the ratio (1:k) and the absolute misclosure (e in metres) in output.
+
 ### 6.2 Area Cross-Check
 
 Compare computed shoelace area against stated area:
@@ -934,9 +937,39 @@ Compare computed shoelace area against stated area:
 | 2% – 5% | FLAG | Possible missing leg or wrong bearing |
 | > 5% | FAIL | Likely parsing error |
 
+**Small-lot absolute floor:** For lots with stated area < 100 m², if the absolute difference is ≤ 1 m², override to PASS regardless of percentage (avoids false flags from percentage amplification on tiny lots).
+
 ### 6.3 Angular Closure
 
-For n-sided polygon, theoretical angular sum = (n - 2) × 180°:
+For n-sided polygon, theoretical angular sum = (n - 2) × 180°.
+
+**Interior angle computation from sequential azimuths:**
+
+```python
+def compute_interior_angles(azimuths_deg: list[float]) -> list[float]:
+    """
+    Compute interior angles from sequential traverse azimuths.
+    azimuths_deg: list of azimuth for each leg, in traverse order.
+    Returns: list of interior angles in degrees (one per corner).
+    """
+    n = len(azimuths_deg)
+    angles = []
+    for i in range(n):
+        incoming_az = azimuths_deg[(i - 1) % n]
+        outgoing_az = azimuths_deg[i]
+        angle = incoming_az - outgoing_az + 180.0
+        angle = angle % 360.0  # normalize to [0, 360)
+        angles.append(angle)
+    return angles
+```
+
+**Angular misclosure:**
+
+```
+θ_measured = sum(interior_angles)
+θ_theoretical = (n - 2) × 180°
+angular_misclosure = |θ_measured - θ_theoretical|   (in arc-seconds for comparison)
+```
 
 | Angular Error | Status |
 |--------------|--------|
@@ -945,7 +978,7 @@ For n-sided polygon, theoretical angular sum = (n - 2) × 180°:
 | 60″√n – 120″√n | FLAG |
 | > 120″√n | FAIL |
 
-Where n is the number of corners.
+Where n is the number of corners. Note: since the engine computes angles from the same bearings used for the traverse, angular closure is primarily a cross-check for parsing errors (e.g., flipped quadrant), missing legs, or concave polygon detection (any interior angle > 180°).
 
 ### 6.4 Geometry Sanity
 
@@ -1194,10 +1227,10 @@ Bearings: Grid; date of original survey was April-May, 1983.
 
 | Corner | Latitude | Longitude |
 |--------|----------|-----------|
-| 1 | 17.017655° | 120.509492° |
-| 2 | 17.017686° | 120.509341° |
-| 3 | 17.017958° | 120.509392° |
-| 4 | 17.017906° | 120.509540° |
+| 1 | 17.017654819° | 120.509491642° |
+| 2 | 17.017686040° | 120.509340976° |
+| 3 | 17.017957993° | 120.509392369° |
+| 4 | 17.017906101° | 120.509540248° |
 
 **Validation:** Closure 1:13,061 PASS. Area 484.65 vs 485.0 m² (0.07%) PASS.
 
@@ -1467,8 +1500,9 @@ Palawan (eastern portion), Calamian Islands, Busuanga
 
 Primary: Title Plotter PH QGIS plugin (`tiepoints.json`)
 - GitHub: `isaacenage/TitlePlotterPH`
+- File: `resources/tiepoints.json` (15.9 MB, 85,303 records)
 - Coordinates: PRS92 grid (Northing, Easting)
-- Fields: Name, Northing, Easting, Province, Municipality
+- Fields: `Tie Point Name`, `Description`, `Northing`, `Easting`, `Province`, `Municipality`
 
 Supplementary: Geoportal Philippines Lot Plotter (embedded BLLM database)
 - Web application with BLLM lookup functionality
@@ -1486,13 +1520,17 @@ The BLLM database has uneven coverage:
 
 ### Monument Types in Dataset
 
-| Type | Count (approximate) | Notes |
-|------|-------------------|-------|
-| BLLM | ~800+ | Best coverage |
-| BBM | ~200+ | Second best |
-| MBM | ~50+ | Municipal boundary monuments |
-| LW (Liwasan) | ~30+ | Estate survey monuments |
-| Other | ~50+ | Miscellaneous (PBM, GPS, etc.) |
+| Type | Count | Notes |
+|------|-------|-------|
+| BBM (Barangay Boundary Monument) | 26,155 | Largest category |
+| BLLM (Bureau of Lands Location Monument) | 19,568 | Primary tie point type |
+| PRS92 Control Points | 15,609 | Explicit PRS92 datum |
+| MBM (Municipal Boundary Monument) | 9,174 | — |
+| BLBM (Bureau of Lands Barrio Monument) | 4,850 | — |
+| General Monuments (MON) | 1,372 | — |
+| Triangulation Stations (TS) | 1,085 | C&GS stations |
+| PBM (Provincial Boundary Monument) | 788 | — |
+| Other (P-points, misc) | 6,702 | — |
 
 ### Data Quality Notes
 
@@ -1508,6 +1546,7 @@ The BLLM database has uneven coverage:
 | Version | Date | Changes |
 |---------|------|---------|
 | 1.0 | 2026-02-26 | Initial complete spec assembled from 14 analysis iterations |
+| 1.1 | 2026-02-26 | Spec review fixes: corrected BLLM dataset counts (85,303 records, not ~1,200), fixed JSON field names to match tiepoints.json, removed dead code in Bowring function, added angular closure computation formula, added short-perimeter and small-lot edge case thresholds, updated TV-1 WGS84 to full precision |
 
 ## Source Analyses
 
