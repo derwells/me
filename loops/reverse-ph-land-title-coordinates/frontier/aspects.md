@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 15
-- Analyzed: 13
-- Pending: 2
-- Convergence: 87%
+- Analyzed: 14
+- Pending: 1
+- Convergence: 93%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -28,7 +28,7 @@ Depends on Wave 1 data.
 Depends on Wave 2 data.
 - [x] format-variations — Catalog format variations: cardinal directions, curved boundaries, natural features, subdivision vs original survey
 - [x] error-handling — Error handling spec: typos, missing corners, impossible bearings, BLLM not found, ambiguous zone
-- [ ] test-vectors — Build 5+ test cases with known input/output; verify against Geoportal or Title Plotter PH
+- [x] test-vectors — Build 5+ test cases with known input/output; verify against Geoportal or Title Plotter PH
 
 ### Wave 4: Synthesis
 Depends on all prior waves.
