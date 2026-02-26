@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 28
-- Analyzed: 8
-- Pending: 20
-- Convergence: 29%
+- Analyzed: 9
+- Pending: 19
+- Convergence: 32%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -14,7 +14,8 @@
   → `input/crispina-models.md`
 - [x] crispina-services — Extract math.py (compound interest), date.py (date splitting), and any other service logic. Document formulas and helper functions.
   → `input/crispina-services.md`
-- [ ] crispina-water-calculator — Extract the standalone water/ billing calculator. Document its inputs, outputs, rate tables, and billing logic.
+- [x] crispina-water-calculator — Extract the standalone water/ billing calculator. Document its inputs, outputs, rate tables, and billing logic.
+  → `input/crispina-water-calculator.md`
 - [x] rent-control-rules — Fetch RA 9653, latest NHSB resolution (2024-01), and Civil Code lease articles. Extract: allowable increase caps by rent bracket, deposit limits, advance rent limits, grace period rules.
   → `input/rent-control-rules.md`
 - [x] corporate-rental-tax — Fetch BIR rules for SEC-registered rental corporations: RCIT/MCIT, VAT threshold (3M), percentage tax (3%), EWT (5%), DST on leases. Document forms, deadlines, and computation formulas.
@@ -71,3 +72,4 @@ Depends on all Wave 3 analysis.
 | 1 | rent-control-rules | 1 | input/rent-control-rules.md | 2026-02-25 |
 | 2 | corporate-rental-tax | 1 | input/corporate-rental-tax.md | 2026-02-25 |
 | 3 | utility-billing-regulations | 1 | input/utility-billing-regulations.md | 2026-02-25 |
+| 9 | crispina-water-calculator | 1 | input/crispina-water-calculator.md | 2026-02-26 |
