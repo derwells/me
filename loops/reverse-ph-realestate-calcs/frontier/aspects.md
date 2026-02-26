@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 29
-- Analyzed: 14
-- Pending: 15
-- Convergence: 48%
+- Analyzed: 15
+- Pending: 14
+- Convergence: 52%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -26,7 +26,7 @@ Depends on Wave 1 data.
 - [x] pagibig-amortization — Amortization schedule: declining balance method, interest rate tiers by loan amount, MRI premium computation, FGI premium computation
 - [x] bank-mortgage-amortization — Standard bank mortgage amortization: fixed vs variable rate, repricing mechanics, early termination penalty formulas
 - [x] developer-equity-schedule — Developer equity/downpayment computation: spot cash discount, installment penalty/surcharge, reservation fee deduction, turnover balance
-- [ ] ltv-ratio — Loan-to-value ratio computation per BSP circular: appraisal basis, LTV caps by property type, additional collateral rules
+- [x] ltv-ratio — Loan-to-value ratio computation per BSP circular: appraisal basis, LTV caps by property type, additional collateral rules
 - [ ] maceda-refund — Maceda Law refund computation: 2-year threshold test, 50% + 5%/yr formula, surrender value, grace period calculation
 - [ ] rent-increase-computation — Rent Control Act: allowable annual increase percentage by unit rental value bracket, coverage determination (residential ≤ ₱10K/month)
 - [ ] condo-common-area-pct — Condominium common area allocation: percentage computation, undivided interest formula, master deed requirements
@@ -65,3 +65,4 @@ Depends on Wave 3 data.
 - pagibig-amortization (Wave 2, 2026-02-26) — verified via 15 independent sources + independent computation
 - bank-mortgage-amortization (Wave 2, 2026-02-26) — verified via 15+ sources; 3 key corrections to common claims
 - developer-equity-schedule (Wave 2, 2026-02-26) — 8 core computations verified via 25+ sources; 3 critical corrections (VAT threshold, BSP 957 attribution, PD 957 escalation cap)
+- ltv-ratio (Wave 2, 2026-02-26) — verified via 24+ sources across 5 categories; 5 corrections to primary extraction (wrong circular number, outdated tiers, missing bracket value, LTV cap oversimplification, Circular 688 characterization)
