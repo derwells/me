@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 15
-- Analyzed: 12
-- Pending: 3
-- Convergence: 80%
+- Analyzed: 13
+- Pending: 2
+- Convergence: 87%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -27,7 +27,7 @@ Depends on Wave 1 data.
 ### Wave 3: Edge Cases & Test Vectors
 Depends on Wave 2 data.
 - [x] format-variations — Catalog format variations: cardinal directions, curved boundaries, natural features, subdivision vs original survey
-- [ ] error-handling — Error handling spec: typos, missing corners, impossible bearings, BLLM not found, ambiguous zone
+- [x] error-handling — Error handling spec: typos, missing corners, impossible bearings, BLLM not found, ambiguous zone
 - [ ] test-vectors — Build 5+ test cases with known input/output; verify against Geoportal or Title Plotter PH
 
 ### Wave 4: Synthesis
@@ -48,3 +48,4 @@ Depends on all prior waves.
 - bllm-dataset-compilation (Wave 2, 2026-02-26) — 85,303 records from tiepoints.json: 19,568 BLLMs + 26,155 BBMs + 15,609 PRS92 control points + others. Zone inference via DAO 98-12 province lookup (verified ≥4 sources). Datum inference from Description field: 18.4% PRS92, 66% Luzon 1911, 15.5% unknown. Luzon1911→PRS92 grid shift empirically confirmed ~7–13m (corrected from 100–300m claim). Coverage: 117 provinces, gaps in BARMM/CAR/post-2006 provinces. BBM corrected to Barangay Boundary Monument. 3-tier lookup algorithm. 3 GeoIDEx cross-reference points for test vectors.
 - validation-rules (Wave 2, 2026-02-26) — 6 validation checks: linear closure (1:5,000 tertiary per DAO 2007-29 §28b, engine tiers 5k/3k/1k), area cross-check (shoelace vs stated, ≤0.5%/2%/5%), angular closure ((n-2)×180°, 30″√n), geometry sanity (self-intersection, bearing range, winding), BLLM confidence (5-tier), datum consistency (6 rules). Key correction: 1:3,000 rural NOT in DAO 2007-29 (engine-defined). Control tiers corrected: Primary=1:20,000, Secondary=1:10,000, Tertiary=1:5,000. All formulas verified ≥2 sources via subagent.
 - format-variations (Wave 3, 2026-02-26) — 13-section catalog of TD format variations across survey types. Key findings: (1) subdivision/consolidation/free-patent TDs all use identical canonical format — no separate code paths needed; (2) tie point is ALWAYS a geodetic monument even in subdivisions (NOT parent lot corners); (3) old vs new plan numbers have NO bearing/datum implications; (4) reconstituted titles more likely to have degraded data — 3 new error codes (TieDistanceMissing, MissingCorners, DuplicateCorner); (5) graphical-origin TDs (Cadm/PCadm) have lower precision and need relaxed validation; (6) "floating parcels" (no tie point) can compute relative polygon only; (7) coordinate-based modern TDs (lat/lng per corner) bypass traverse pipeline entirely. 18 survey plan prefixes cataloged (up from 10). New regex for conversion computation footer note and coordinate-based corner detection.
+- error-handling (Wave 3, 2026-02-26) — Comprehensive error handling spec across all 5 pipeline stages. 42 error codes defined (31 parse, 6 BLLM, 6 traverse, 7 transform, 2 output). 4 severity levels (FATAL/ERROR/WARNING/INFO). Key additions: (1) closure failure diagnostics with quadrant-flip detection heuristic; (2) bearing recovery algorithm for missing prefix/suffix (try both, pick by closure impact); (3) BLLM 5-tier fuzzy matching (exact → code+number → province filter → trigram similarity → caller-provided); (4) 6-level graceful degradation hierarchy (full WGS84 → PRS92-only → relative polygon → coordinate-based → parsed fields → total failure); (5) confidence scoring model (1.0 base, −0.3/error, −0.1/warning); (6) source quality inference (clean/good/degraded/poor/reconstituted_likely); (7) typo catalog with specific recovery strategies for N↔S swap, E↔W swap, missing decimal, minutes>59. New error codes: BearingMinutesOutOfRange, TieMonumentUnparseable, DistanceUnreasonable, TraverseOverflow, DegeneratePolygon, CoordinateClampWarning, InverseTMConvergenceFail.
