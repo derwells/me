@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 15
-- Analyzed: 9
-- Pending: 6
-- Convergence: 60%
+- Analyzed: 10
+- Pending: 5
+- Convergence: 67%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -21,7 +21,7 @@ Depends on Wave 1 data.
 - [x] traverse-algorithm — Specify corner-to-corner traverse computation: polar→rectangular, cumulative coordinates, closed polygon; include worked example
 - [x] prs92-to-wgs84-transform — Full pipeline: PRS92 zone N/E → PRS92 geographic → WGS84 geographic; inverse TM + Helmert formulas; zone selection logic
 - [x] luzon1911-to-prs92-transform — Legacy datum handling: detection, zone mapping, transformation method per DENR MC 2010-06, error bounds
-- [ ] bllm-dataset-compilation — Extract and compile BLLM coordinates from identified sources; structure as dataset with coverage analysis
+- [x] bllm-dataset-compilation — Extract and compile BLLM coordinates from identified sources; structure as dataset with coverage analysis
 - [ ] validation-rules — Closure error computation, area cross-check (shoelace vs stated), bearing consistency, tolerance thresholds
 
 ### Wave 3: Edge Cases & Test Vectors
@@ -45,3 +45,4 @@ Depends on all prior waves.
 - traverse-algorithm (Wave 2, 2026-02-26) — Full algorithm spec: tie-line (BLLM→C1), traverse loop, closure metrics, shoelace area with FP precision fix. Complete pseudocode + worked example (Sample 1: 4-corner lot, closure e=0.014m at 1:6,575, area=484.85m² vs stated 485m²). All 7 formulas verified ≥2 independent sources (Jerrymahun Ch. A/D/E/F/G/I + John D. Cook + ArcGIS Esri). Bowditch as non-default optional documented.
 - prs92-to-wgs84-transform (Wave 2, 2026-02-26) — Complete 3-stage pipeline: geographic→geocentric (Clarke 1866) + Helmert 7-param (EPSG:15708 Coordinate Frame) + geocentric→geographic (WGS84 via Bowring 1976). h=0 convention for 2D confirmed by OS Guide, RDNAPTRANS, PROJ push/pop. Three reverse methods compared (Bowring/EPSG closed-form/OS iterative); Bowring recommended (single iteration, sub-mm, ~30% faster). All 6 formula sets verified ≥2 independent sources. Full pseudocode with inline constants.
 - luzon1911-to-prs92-transform (Wave 2, 2026-02-26) — Two transform paths: Path A (global 3-param EPSG:1161/1162, 17–44m accuracy) always available; Path B (DENR MC 2010-06 4-param conformal, ~10cm) requires caller-provided CE/CN. Datum detection via plan metadata (regex + era heuristics). Zone mapping 1:1 (same ellipsoid/projection). BLLM datum mismatch handling documented. Regional split logic (Luzon/Visayas vs Mindanao). All params verified ≥2 sources (EPSG.io, EPSG.org, PROJ DB, ESRI, DMA TR8350.2). Worked example: Zone III Manila area, shift ≈ −5.4" lat / +5.1" lon.
+- bllm-dataset-compilation (Wave 2, 2026-02-26) — 85,303 records from tiepoints.json: 19,568 BLLMs + 26,155 BBMs + 15,609 PRS92 control points + others. Zone inference via DAO 98-12 province lookup (verified ≥4 sources). Datum inference from Description field: 18.4% PRS92, 66% Luzon 1911, 15.5% unknown. Luzon1911→PRS92 grid shift empirically confirmed ~7–13m (corrected from 100–300m claim). Coverage: 117 provinces, gaps in BARMM/CAR/post-2006 provinces. BBM corrected to Barangay Boundary Monument. 3-tier lookup algorithm. 3 GeoIDEx cross-reference points for test vectors.
