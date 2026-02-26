@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 29
-- Analyzed: 19
-- Pending: 10
-- Convergence: 66%
+- Analyzed: 20
+- Pending: 9
+- Convergence: 69%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -31,7 +31,7 @@ Depends on Wave 1 data.
 - [x] rent-increase-computation — Rent Control Act: allowable annual increase percentage by unit rental value bracket, coverage determination (residential ≤ ₱10K/month)
 - [x] condo-common-area-pct — Condominium common area allocation: percentage computation, undivided interest formula, master deed requirements
 - [x] socialized-housing-compliance — DHSUD price ceiling compliance check: per-unit and per-sqm limits by housing type, annual escalation rules
-- [ ] bp220-lot-compliance — BP 220 standards compliance: minimum lot area, floor area ratio, open space percentage by development type
+- [x] bp220-lot-compliance — BP 220 standards compliance: minimum lot area, floor area ratio, open space percentage by development type
 - [ ] assessment-level-lookup — Property assessment level by classification and LGU: residential/commercial/industrial/agricultural tiers per Local Government Code
 - [ ] improvement-depreciation — Depreciation schedule for building improvements: straight-line method, useful life by construction type, residual value rules per local assessor
 - [ ] rod-registration-fees — Registry of Deeds fee computation: fee schedule by property value bracket, annotation fees, additional charges
@@ -70,3 +70,4 @@ Depends on Wave 3 data.
 - rent-increase-computation (Wave 2, 2026-02-26) — verified via 12 independent sources; 1 critical correction (2018-2020 three-tier rates); 6 sub-computations extracted; Respicio Joint Resolution claims rejected as unverifiable
 - condo-common-area-pct (Wave 2, 2026-02-26) — verified via 16 independent sources; 1 critical correction (RA 7899 voting scope overstated); 3 high-severity corrections (parking CCT denominator, missing par value method, multi-unit voting); 6 additional sub-computations discovered
 - socialized-housing-compliance (Wave 2, 2026-02-26) — 5 sub-computations verified via 20+ sources; all ceiling figures confirmed; labeling discrepancy for L2/L3 classification noted; lot-only ceiling sub-rule discovered (40% of house-and-lot); HGC→PhilGuarantee entity correction; BOI 20% SHR distinguished from balanced housing requirement
+- bp220-lot-compliance (Wave 2, 2026-02-26) — 12 compliance checks verified against 9 independent sources; all 12 CONFIRMED with zero corrections needed; 10 additional deterministic checks identified (firewall, drainage, road pavement, block length, completion level, tree planting, elevator, fire suppression, roof eave clearance, water supply); full decision tree with 12-step compliance algorithm produced; VIZCODE pre-2008 values flagged as outdated; JMC floor area layering (18→32→28→24 sqm) fully documented
