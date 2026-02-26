@@ -9,9 +9,10 @@ Personal knowledge base and ralph loop system. Project context for things I'm wo
 ├── projects/              # Context cards for things I'm working on
 │   ├── nutsandbolts--cheerful.md
 │   └── pymc--decision-orchestrator.md
+├── ralph/                 # Typed loop runner (Python CLI)
 └── loops/                 # Ralph loop system
-    ├── _template/         # Copy this to start a new loop
-    └── _registry.yaml     # Loop status tracker
+    ├── _templates/reverse/ # Copy this to start a new reverse loop
+    └── registry.py        # Loop registry (typed, importable)
 ```
 
 Other directories (`docs/plans/`, `data/`, `research/`) are created when needed — not pre-scaffolded.
@@ -47,25 +48,24 @@ The only loop type currently templated. Takes something (a video, a codebase, a 
 
 **Claude Code web (primary):** Open session, point at the loop's `PROMPT.md`, say "run one iteration." You are the outer loop.
 
-**Claude Code CLI:** `cd loops/<name> && ./loop.sh [max_iterations]` — bash runner handles iteration, timeouts (1800s), failure detection (3 consecutive = stop), and convergence checks.
+**Claude Code CLI:** `ralph run <loop>` (or `cd ralph && uv run ralph run <loop>`) — typed runner handles iteration, timeouts, failure detection, and convergence checks.
 
 ### Starting a New Loop
 
 ```bash
-cp -r loops/_template loops/<name>
-cd loops/<name>
+cp -r loops/_templates/reverse loops/reverse-<name>
+cd loops/reverse-<name>
 mv PROMPT.md.example PROMPT.md        # Fill in {{placeholders}}
 mv frontier/aspects.md.example frontier/aspects.md  # Seed your waves
 ```
 
-Add entry to `loops/_registry.yaml`. Run it.
+Add entry to `loops/registry.py`. Run it.
 
 ### Loop Directory Structure (per loop)
 
 ```
 loops/<name>/
 ├── PROMPT.md              # Loop instructions (Claude reads this each iteration)
-├── loop.sh                # Bash runner (or symlink to _template/loop.sh)
 ├── frontier/
 │   ├── aspects.md         # Wave-based checklist (the frontier)
 │   └── analysis-log.md    # Iteration history
@@ -87,5 +87,6 @@ The `gh` CLI is available and authenticated. Use it for GitHub API access in loo
 ## Conventions
 
 - `[[wikilinks]]` are a lightweight cross-reference convention. Not rendered — just greppable.
-- Commit messages for loop iterations: `loop(<name>): <aspect-name>`
+- Commit messages for loop iterations: `loop(reverse-<topic>): <aspect-name>`
+- Loop directories use `reverse-<topic>` prefix
 - Project file naming: `company--project.md` (double-dash separator)

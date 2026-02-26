@@ -1,3 +1,4 @@
+<!-- Run via: ralph run reverse-<name> | or interactively in Claude Code -->
 # {{Idea Name}} — Reverse Ralph Loop
 
 You are an analysis agent in a ralph loop. Each time you run, you do ONE unit of work, then exit.

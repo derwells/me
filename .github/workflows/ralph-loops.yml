@@ -2,7 +2,6 @@ name: Ralph Loops
 
 on:
   schedule:
-    # Offset from :00/:30 to avoid GitHub Actions cron stampede
     - cron: "7,37 * * * *"
   workflow_dispatch:
     inputs:
@@ -15,38 +14,34 @@ jobs:
   discover:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.parse.outputs.matrix }}
-      has_loops: ${{ steps.parse.outputs.has_loops }}
+      matrix: ${{ steps.discover.outputs.matrix }}
+      has_loops: ${{ steps.discover.outputs.has_loops }}
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install yq
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      - name: Install ralph
+        run: cd ralph && uv sync --locked
+
+      - name: Type check and test
+        run: cd ralph && uv run pyright && uv run pytest -v
+
+      - name: Discover active loops
+        id: discover
         run: |
-          sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
-          sudo chmod +x /usr/local/bin/yq
-
-      - name: Parse registry for active loops
-        id: parse
-        run: |
-          FILTER="${{ github.event.inputs.loop || 'all' }}"
-
-          if [ "$FILTER" = "all" ]; then
-            # Get all reverse loops with status 'active' (forward loops run elsewhere)
-            LOOPS=$(yq -o=json '.loops | to_entries | map(select(.value.status == "active" and .value.type == "reverse")) | map(.key)' loops/_registry.yaml)
+          if [ "${{ github.event.inputs.loop || 'all' }}" = "all" ]; then
+            cd ralph && uv run ralph discover --output github-matrix
           else
-            # Run a specific loop (regardless of status, for manual override)
-            LOOPS=$(echo "[\"$FILTER\"]" | yq -o=json)
-          fi
-
-          COUNT=$(echo "$LOOPS" | yq 'length')
-          if [ "$COUNT" -eq 0 ]; then
-            echo "No active loops found."
-            echo "has_loops=false" >> "$GITHUB_OUTPUT"
-            echo "matrix={\"loop\":[]}" >> "$GITHUB_OUTPUT"
-          else
-            echo "Active loops: $LOOPS"
+            # Manual override: run specific loop regardless of status
+            echo 'matrix={"loop":["${{ github.event.inputs.loop }}"]}' >> "$GITHUB_OUTPUT"
             echo "has_loops=true" >> "$GITHUB_OUTPUT"
-            echo "matrix={\"loop\":$(echo $LOOPS)}" >> "$GITHUB_OUTPUT"
           fi
 
   run-loop:
@@ -67,87 +62,30 @@ jobs:
           git config user.name "ralph-loop[bot]"
           git config user.email "ralph-loop[bot]@users.noreply.github.com"
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      - name: Install ralph
+        run: cd ralph && uv sync --locked
+
       - name: Install Claude Code
         run: npm install -g @anthropic-ai/claude-code
 
-      - name: Check loop status
-        id: check
-        run: |
-          LOOP_DIR="loops/${{ matrix.loop }}"
-          if [ -f "$LOOP_DIR/status/converged.txt" ]; then
-            echo "Loop ${{ matrix.loop }} already converged. Skipping."
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-          elif [ -f "$LOOP_DIR/status/paused.txt" ]; then
-            echo "Loop ${{ matrix.loop }} is paused. Skipping."
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "skip=false" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Run one iteration
-        if: steps.check.outputs.skip != 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GH_TOKEN: ${{ secrets.GH_PAT }}
-        run: |
-          cd "loops/${{ matrix.loop }}"
-          # Run one iteration — CI is the outer loop
-          timeout 1800 bash -c '
-            unset CLAUDECODE
-            cat PROMPT.md | claude --print --dangerously-skip-permissions
-          ' || {
-            EXIT_CODE=$?
-            if [ "$EXIT_CODE" -eq 124 ]; then
-              echo "WARNING: Iteration timed out after 1800s"
-            else
-              echo "WARNING: Iteration exited with code $EXIT_CODE"
-            fi
-          }
+        run: cd ralph && uv run ralph run ${{ matrix.loop }}
 
       - name: Commit results
-        if: steps.check.outputs.skip != 'true'
         run: |
           cd "loops/${{ matrix.loop }}"
           git add -A
           git diff --cached --quiet || git commit -m "loop(${{ matrix.loop }}): iteration"
-          git pull --rebase origin "${{ github.ref_name }}" || true
-          git push || echo "WARNING: Push failed, will retry next iteration"
-
-      - name: Check convergence and notify
-        if: steps.check.outputs.skip != 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GH_PAT }}
-        run: |
-          LOOP_DIR="loops/${{ matrix.loop }}"
-          if [ -f "$LOOP_DIR/status/converged.txt" ]; then
-            echo "Loop ${{ matrix.loop }} has converged!"
-
-            # Count iterations from git log
-            ITER_COUNT=$(git log --oneline --grep="loop(${{ matrix.loop }})" | wc -l)
-
-            # Create GitHub issue
-            gh issue create \
-              --title "[ralph] ${{ matrix.loop }} converged ($ITER_COUNT iterations)" \
-              --label "ralph-converged" \
-              --body "$(cat <<ISSUEEOF
-          ## Loop Converged
-
-          **Loop:** ${{ matrix.loop }}
-          **Iterations:** ~$ITER_COUNT
-          **Output:** \`$LOOP_DIR/analysis/\`
-
-          The frontier is exhausted. Review the results and decide next steps.
-
-          ### Convergence Summary
-          \`\`\`
-          $(cat "$LOOP_DIR/status/converged.txt")
-          \`\`\`
-          ISSUEEOF
-            )" || echo "WARNING: Could not create issue (label may not exist yet)"
-
-            # Update registry
-            yq -i ".loops[\"${{ matrix.loop }}\"].status = \"converged\" | .loops[\"${{ matrix.loop }}\"].converged_at = \"$(date -u +%Y-%m-%d)\"" loops/_registry.yaml
-            git add loops/_registry.yaml
-            git commit -m "loop(${{ matrix.loop }}): mark converged in registry"
-            git push || true
-          fi
+          git pull --rebase origin "${{ github.ref_name }}"
+          git push
