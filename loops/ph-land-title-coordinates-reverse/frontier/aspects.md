@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 15
-- Analyzed: 6
-- Pending: 9
-- Convergence: 40%
+- Analyzed: 7
+- Pending: 8
+- Convergence: 47%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -18,7 +18,7 @@
 ### Wave 2: Core Computation Extraction
 Depends on Wave 1 data.
 - [x] text-parser-grammar — Define parsing rules for technical description format: tie point, tie line, bearing/distance sequence, area, survey plan number; cover format variations
-- [ ] traverse-algorithm — Specify corner-to-corner traverse computation: polar→rectangular, cumulative coordinates, closed polygon; include worked example
+- [x] traverse-algorithm — Specify corner-to-corner traverse computation: polar→rectangular, cumulative coordinates, closed polygon; include worked example
 - [ ] prs92-to-wgs84-transform — Full pipeline: PRS92 zone N/E → PRS92 geographic → WGS84 geographic; inverse TM + Helmert formulas; zone selection logic
 - [ ] luzon1911-to-prs92-transform — Legacy datum handling: detection, zone mapping, transformation method per DENR MC 2010-06, error bounds
 - [ ] bllm-dataset-compilation — Extract and compile BLLM coordinates from identified sources; structure as dataset with coverage analysis
@@ -42,3 +42,4 @@ Depends on all prior waves.
 - bllm-database-sources (Wave 1, 2026-02-25) — 4 sources identified: tiepoints.json (TitlePlotterPH, 15.9 MB, ~50k records, fields: Name/Province/Municipality/Northing/Easting); Geoportal Lot Plotter (same LMB data, WGS84 output, web UI only); GeoIDEx (demonstration data, Region III only, PRS92 lat/lng + PTM grid); DENR-LMB via FOI. Key gaps: no zone tag per record, no datum tag, rural municipalities and BARMM severely underrepresented. Engine must support caller-provided BLLM coordinates.
 - traverse-computation-references (Wave 1, 2026-02-25) — Core formulas confirmed: ΔN=dist×cos(az), ΔE=dist×sin(az); shoelace area with floating-point note; Bowditch closure adjustment (for validation only, not applied to title data); Philippine tolerance 1:5000 (urban)/1:3000 (rural) from DAO 2007-29. Key finding: convert bearing→azimuth before all computation to avoid quadrant sign tables.
 - text-parser-grammar (Wave 2, 2026-02-25) — BNF grammar + regex for all 9 fields (monument, bearing, distance, tie block, traverse legs, area, footer, survey plan, lot ID). Covers all 7 bearing variants incl. Due-cardinal and degrees-only. Verified against TitlePlotterPH source (4 regex strategies in plugin; area regex is engine addition not in plugin). Monument normalization 3-tier lookup documented. 14 error/warning codes defined.
+- traverse-algorithm (Wave 2, 2026-02-26) — Full algorithm spec: tie-line (BLLM→C1), traverse loop, closure metrics, shoelace area with FP precision fix. Complete pseudocode + worked example (Sample 1: 4-corner lot, closure e=0.014m at 1:6,575, area=484.85m² vs stated 485m²). All 7 formulas verified ≥2 independent sources (Jerrymahun Ch. A/D/E/F/G/I + John D. Cook + ArcGIS Esri). Bowditch as non-default optional documented.
