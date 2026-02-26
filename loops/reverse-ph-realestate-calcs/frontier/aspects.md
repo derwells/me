@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 29
-- Analyzed: 12
-- Pending: 17
-- Convergence: 41%
+- Analyzed: 13
+- Pending: 16
+- Convergence: 45%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -24,7 +24,7 @@
 Depends on Wave 1 data.
 - [x] pagibig-loan-eligibility — Eligibility decision tree: contribution months, age limits, salary cap, property type, loan-on-top-of-loan rules
 - [x] pagibig-amortization — Amortization schedule: declining balance method, interest rate tiers by loan amount, MRI premium computation, FGI premium computation
-- [ ] bank-mortgage-amortization — Standard bank mortgage amortization: fixed vs variable rate, repricing mechanics, early termination penalty formulas
+- [x] bank-mortgage-amortization — Standard bank mortgage amortization: fixed vs variable rate, repricing mechanics, early termination penalty formulas
 - [ ] developer-equity-schedule — Developer equity/downpayment computation: spot cash discount, installment penalty/surcharge, reservation fee deduction, turnover balance
 - [ ] ltv-ratio — Loan-to-value ratio computation per BSP circular: appraisal basis, LTV caps by property type, additional collateral rules
 - [ ] maceda-refund — Maceda Law refund computation: 2-year threshold test, 50% + 5%/yr formula, surrender value, grace period calculation
@@ -63,3 +63,4 @@ Depends on Wave 3 data.
 - developer-payment-terms (Wave 1, 2026-02-26)
 - pagibig-loan-eligibility (Wave 2, 2026-02-26)
 - pagibig-amortization (Wave 2, 2026-02-26) — verified via 15 independent sources + independent computation
+- bank-mortgage-amortization (Wave 2, 2026-02-26) — verified via 15+ sources; 3 key corrections to common claims
