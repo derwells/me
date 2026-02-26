@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 29
-- Analyzed: 10
-- Pending: 19
-- Convergence: 34%
+- Analyzed: 11
+- Pending: 18
+- Convergence: 38%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -22,7 +22,7 @@
 
 ### Wave 2: Computation Extraction
 Depends on Wave 1 data.
-- [ ] pagibig-loan-eligibility — Eligibility decision tree: contribution months, age limits, salary cap, property type, loan-on-top-of-loan rules
+- [x] pagibig-loan-eligibility — Eligibility decision tree: contribution months, age limits, salary cap, property type, loan-on-top-of-loan rules
 - [ ] pagibig-amortization — Amortization schedule: declining balance method, interest rate tiers by loan amount, MRI premium computation, FGI premium computation
 - [ ] bank-mortgage-amortization — Standard bank mortgage amortization: fixed vs variable rate, repricing mechanics, early termination penalty formulas
 - [ ] developer-equity-schedule — Developer equity/downpayment computation: spot cash discount, installment penalty/surcharge, reservation fee deduction, turnover balance
@@ -61,3 +61,4 @@ Depends on Wave 3 data.
 - bp220-standards (Wave 1, 2026-02-26)
 - prc-broker-regulations (Wave 1, 2026-02-26)
 - developer-payment-terms (Wave 1, 2026-02-26)
+- pagibig-loan-eligibility (Wave 2, 2026-02-26)
