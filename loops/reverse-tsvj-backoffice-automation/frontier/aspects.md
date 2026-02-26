@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 28
-- Analyzed: 7
-- Pending: 21
-- Convergence: 25%
+- Analyzed: 8
+- Pending: 20
+- Convergence: 29%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -12,7 +12,8 @@
 
 - [x] crispina-models — Extract all SQLAlchemy models from tsvjph/crispina: lease, tenant, charge, payment, transaction, charge_type, property, room, rentable. Document fields, relationships, and constraints.
   → `input/crispina-models.md`
-- [ ] crispina-services — Extract math.py (compound interest), date.py (date splitting), and any other service logic. Document formulas and helper functions.
+- [x] crispina-services — Extract math.py (compound interest), date.py (date splitting), and any other service logic. Document formulas and helper functions.
+  → `input/crispina-services.md`
 - [ ] crispina-water-calculator — Extract the standalone water/ billing calculator. Document its inputs, outputs, rate tables, and billing logic.
 - [x] rent-control-rules — Fetch RA 9653, latest NHSB resolution (2024-01), and Civil Code lease articles. Extract: allowable increase caps by rent bracket, deposit limits, advance rent limits, grace period rules.
   → `input/rent-control-rules.md`

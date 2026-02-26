@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 29
-- Analyzed: 7
-- Pending: 22
-- Convergence: 24%
+- Analyzed: 8
+- Pending: 21
+- Convergence: 28%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -16,7 +16,7 @@
 - [x] condo-act-common-areas — Fetch RA 4726 (Condominium Act) + HLURB/DHSUD rules; extract common area percentage computation requirements
 - [x] dhsud-price-ceilings — Fetch current DHSUD issuances on socialized/economic/low-cost housing price ceilings and lot size standards
 - [x] bp220-standards — Fetch BP 220 implementing rules; extract minimum lot area, floor area, and open space standards per housing type
-- [ ] rod-fee-schedules — Fetch Registry of Deeds fee schedules for title registration and annotation
+- [x] rod-fee-schedules — Fetch Registry of Deeds fee schedules for title registration and annotation
 - [ ] prc-broker-regulations — Fetch PRC and RESA (RA 9646) rules on real estate broker commission structures and splits
 - [ ] developer-payment-terms — Fetch published payment computation terms from 3-4 major developers (Ayala Land, SMDC, DMCI, Megaworld) to identify common equity schedule patterns
 
