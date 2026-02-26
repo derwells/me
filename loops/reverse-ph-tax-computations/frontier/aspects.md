@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 24
-- Analyzed: 14
-- Pending: 10
-- Convergence: 58%
+- Analyzed: 15
+- Pending: 9
+- Convergence: 63%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -26,7 +26,7 @@ Depends on Wave 1 data.
 - [x] cwt-rate-and-timing — CWT rate selection (1.5-6%) based on seller type and price; 25%-of-price threshold test for installment withholding timing
 - [x] ewt-rate-classification — Real estate subset of 80+ EWT categories under RR 2-98; decision tree for rate selection on rent, commissions, professional fees, contractor payments
 - [x] rpt-computation — Real property tax: FMV × assessment level × tax rate; per-LGU variation, property classification tiers, SEF levy
-- [ ] transfer-tax — LGU-level transfer tax on real property sale; rate variation by locality, base computation
+- [x] transfer-tax — LGU-level transfer tax on real property sale; rate variation by locality, base computation
 - [ ] form-2307-issuance — Who withholds, when to issue, amount computation, reconciliation logic (issued vs received for tax credit claims)
 - [ ] zonal-value-lookup — Resolution logic for BIR zonal values by location; RDO jurisdiction mapping, format parsing, update frequency
 
@@ -53,3 +53,4 @@ Depends on Wave 3 data.
 - dst-on-sale (Wave 2, 2026-02-25)
 - dst-on-mortgage (Wave 2, 2026-02-25)
 - rpt-computation (Wave 2, 2026-02-26)
+- transfer-tax (Wave 2, 2026-02-26)
