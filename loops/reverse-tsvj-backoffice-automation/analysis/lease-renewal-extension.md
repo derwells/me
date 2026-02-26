@@ -95,14 +95,21 @@ PH law recognizes three distinct ways a lease can continue beyond its original t
 ### Rule 4: Art. 1673(1) Suspension for Controlled Units (RA 9653 Sec. 12)
 
 For rent-controlled residential units (NCR, monthly rent ≤ PHP 10,000):
-- **Period expiry alone is NOT grounds for ejectment** — Art. 1673(1) is suspended
-- This applies to BOTH original and tacitly renewed leases
-- Lessor cannot eject simply because the lease term ended
-- Valid ejectment grounds: non-payment (3 months arrears), unauthorized subletting, owner-use (with 3-month notice), condemnation order
 
-**Practical implication:** Even if the lessor gives a non-renewal notice for a controlled unit, they can only eject for specific RA 9653 grounds. Simply not wanting to renew is insufficient unless it's for owner's use.
+**RA 9653 Sec. 12 reads:** "**Except when the lease is for a definite period**, the provisions of paragraph (1) of Article 1673 of the Civil Code of the Philippines, insofar as they refer to residential units covered under this Act, shall be suspended during the effectivity of this Act."
 
-**Verification:** CONFIRMED — RA 9653 Sec. 12 text on lawphil.net; respicio.ph commentary; thecorpusjuris.com.
+**Two-track system:**
+
+| Lease Type | Expiry as Ejectment Ground? | Basis |
+|------------|----------------------------|-------|
+| **Definite-term** (e.g., 1-year, 2-year fixed) | YES — expiration is a valid ground under Sec. 9 | Sec. 12 exception: "Except when the lease is for a definite period" |
+| **Indefinite/month-to-month** (including tacit reconduction) | NO — Art. 1673(1) suspended | Sec. 12 main rule |
+
+**Critical implication for tacit reconduction:** Once a controlled lease enters tacit reconduction (month-to-month), it becomes an indefinite-period lease → Sec. 12 suspension kicks in → the lessor CANNOT eject merely because the month ended. This makes tacit reconduction especially sticky for controlled units. The lessor must invoke a specific Sec. 9 ground (non-payment, unauthorized subletting, owner-use with 3-month notice, condemnation order).
+
+**For definite-term controlled leases:** The lessor CAN eject upon expiration, but still subject to Sec. 9 procedural requirements. The system must track whether a lease has a definite term to determine which rule applies.
+
+**Verification:** CONFIRMED with CORRECTION — RA 9653 Sec. 12 text on lawphil.net; SC E-Library (elibrary.judiciary.gov.ph); respicio.ph commentary. Original analysis was overbroad — Sec. 12 only suspends Art. 1673(1) for leases WITHOUT a definite period, not all controlled leases.
 
 ### Rule 5: DST on Renewals and Extensions (NIRC Sec. 194, TRAIN Law)
 
@@ -252,10 +259,15 @@ LEASE APPROACHING EXPIRY (60-90 days before end date):
 │  │
 │  └─ NO → NON-RENEWAL
 │     │
-│     ├─ IF controlled unit:
-│     │   ├─ Can only eject for RA 9653 grounds
-│     │   ├─ Owner-use: 3-month advance written notice (Sec. 9(c))
-│     │   └─ 1-year no-re-lease restriction after repossession
+│     ├─ IF controlled unit (definite-term):
+│     │   ├─ Expiration IS valid ejectment ground (Sec. 12 exception)
+│     │   ├─ BUT: owner-use repossession still needs 3-month notice (Sec. 9(c))
+│     │   └─ 1-year no-re-lease restriction after owner-use repossession
+│     │
+│     ├─ IF controlled unit (month-to-month / reconduccion):
+│     │   ├─ Art. 1673(1) SUSPENDED — cannot eject on period expiry alone
+│     │   ├─ Must invoke specific RA 9653 Sec. 9 ground
+│     │   └─ Owner-use: 3-month advance written notice (Sec. 9(c))
 │     │
 │     └─ IF commercial:
 │         ├─ Send written notice of non-renewal BEFORE expiry
@@ -348,7 +360,7 @@ def validate_renewal(lease, new_terms, is_controlled):
 
 ## 5. Edge Cases and Special Rules
 
-1. **Tacit reconduction + controlled unit:** Even after tacit reconduction creates a month-to-month lease, Art. 1673(1) remains suspended. The lessor cannot eject simply because the month ended. They need an RA 9653 ground. This makes tacit reconduction particularly sticky for controlled units.
+1. **Tacit reconduction + controlled unit:** Once tacit reconduction converts a definite-term controlled lease into a month-to-month (indefinite) lease, Art. 1673(1) suspension kicks in (RA 9653 Sec. 12). The lessor can no longer eject on period expiry — they need a specific Sec. 9 ground. This is a **one-way trap**: a definite-term controlled lease CAN be terminated at expiry (Sec. 12 exception), but if the lessor misses the 15-day window and reconduction occurs, ejectment becomes dramatically harder. The system must aggressively alert before this transition happens.
 
 2. **Guaranty/surety loss on reconduction (Art. 1672):** If the original lease had a guarantor (common for commercial tenants), the guaranty is extinguished upon tacit reconduction. The lessor loses this security without realizing it. System must alert: "WARNING: Guarantor obligation will not survive if lease enters tacit reconduction."
 
@@ -664,7 +676,7 @@ def execute_renewal(old_lease, new_terms, renewal_type):
 | 2 | Tacit reconduction elements (Art. 1670) | **CONFIRMED** | *Samelo v. Manotok* (G.R. 170509), *Buce v. Galeon* (G.R. 222785), lawphil.net |
 | 3 | Art. 1672 — guaranty extinguished on reconduction | **CONFIRMED** | Art. 1672 text (lawphil.net, chanrobles.com) |
 | 4 | Notice requirements to prevent reconduction | **CONFIRMED** | *Buce v. Galeon* (G.R. 222785, 2020), alburolaw.com, legalresource.ph |
-| 5 | Art. 1673(1) suspension for controlled units | **CONFIRMED** | RA 9653 Sec. 12, lawphil.net, thecorpusjuris.com |
+| 5 | Art. 1673(1) suspension for controlled units | **CORRECTED** | RA 9653 Sec. 12 (lawphil.net, SC E-Library): suspension applies ONLY to leases WITHOUT a definite period. Definite-term leases can be terminated at expiry under Sec. 9. |
 | 6 | DST on renewals (TRAIN rates: PHP 6/PHP 2) | **CONFIRMED** | RR 4-2018 (SC E-Library), NIRC Sec. 194/198, respicio.ph |
 | 7 | No DST on tacit reconduction | **CONFIRMED (reasoning)** | NIRC Sec. 194 taxes documents; no document = no DST. No contrary BIR ruling found. |
 | 8 | NHSB cap on renewal | **CONFIRMED** | NHSB 2024-01 (dhsud.gov.ph), PNA, RA 9653 Sec. 4 |
@@ -675,7 +687,7 @@ def execute_renewal(old_lease, new_terms, renewal_type):
 | 13 | Standing resolution validity | **CONFIRMED** | RA 11232 Sec. 39 ordinary course exception; sample Secretary's Certificates |
 | 14 | Renewal vs. extension distinction | **CONFIRMED (practice-based)** | No bright-line statute; established through BIR DST treatment and market practice |
 
-**14/14 rules verified. 1 gap documented (deposit at renewal). No unresolved source conflicts.**
+**14/14 rules verified. 1 correction applied (Art. 1673(1) suspension scope narrowed to indefinite-period leases only). 1 gap documented (deposit at renewal). No unresolved source conflicts.**
 
 ---
 
