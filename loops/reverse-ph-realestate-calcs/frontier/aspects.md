@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 29
-- Analyzed: 17
-- Pending: 12
-- Convergence: 59%
+- Analyzed: 18
+- Pending: 11
+- Convergence: 62%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -29,7 +29,7 @@ Depends on Wave 1 data.
 - [x] ltv-ratio — Loan-to-value ratio computation per BSP circular: appraisal basis, LTV caps by property type, additional collateral rules
 - [x] maceda-refund — Maceda Law refund computation: 2-year threshold test, 50% + 5%/yr formula, surrender value, grace period calculation
 - [x] rent-increase-computation — Rent Control Act: allowable annual increase percentage by unit rental value bracket, coverage determination (residential ≤ ₱10K/month)
-- [ ] condo-common-area-pct — Condominium common area allocation: percentage computation, undivided interest formula, master deed requirements
+- [x] condo-common-area-pct — Condominium common area allocation: percentage computation, undivided interest formula, master deed requirements
 - [ ] socialized-housing-compliance — DHSUD price ceiling compliance check: per-unit and per-sqm limits by housing type, annual escalation rules
 - [ ] bp220-lot-compliance — BP 220 standards compliance: minimum lot area, floor area ratio, open space percentage by development type
 - [ ] assessment-level-lookup — Property assessment level by classification and LGU: residential/commercial/industrial/agricultural tiers per Local Government Code
@@ -68,3 +68,4 @@ Depends on Wave 3 data.
 - ltv-ratio (Wave 2, 2026-02-26) — verified via 24+ sources across 5 categories; 5 corrections to primary extraction (wrong circular number, outdated tiers, missing bracket value, LTV cap oversimplification, Circular 688 characterization)
 - maceda-refund (Wave 2, 2026-02-26) — verified via 8 independent sources; 3 corrections (interest exclusion too broad, years counting is value-based per Orbe v. Filinvest, Section 4 notice must be notarized); 6 computations extracted
 - rent-increase-computation (Wave 2, 2026-02-26) — verified via 12 independent sources; 1 critical correction (2018-2020 three-tier rates); 6 sub-computations extracted; Respicio Joint Resolution claims rejected as unverifiable
+- condo-common-area-pct (Wave 2, 2026-02-26) — verified via 16 independent sources; 1 critical correction (RA 7899 voting scope overstated); 3 high-severity corrections (parking CCT denominator, missing par value method, multi-unit voting); 6 additional sub-computations discovered
