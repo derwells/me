@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 24
-- Analyzed: 18
-- Pending: 6
-- Convergence: 75%
+- Analyzed: 19
+- Pending: 5
+- Convergence: 79%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -33,7 +33,7 @@ Depends on Wave 1 data.
 ### Wave 3: Competitive & Automation Gap Analysis
 Depends on Wave 2 data.
 - [x] existing-tools-survey — Map each Wave 2 computation against JuanTax, Taxumo, QNE Cloud, generic ERPs; document feature coverage
-- [ ] practitioner-workflow — Document current manual/Excel workflows per computation; interview-style synthesis from practitioner guide examples
+- [x] practitioner-workflow — Document current manual/Excel workflows per computation; interview-style synthesis from practitioner guide examples
 - [ ] complexity-scoring — Score each computation by number of branching rules, lookup tables, external data dependencies
 
 ### Wave 4: Scoring & Synthesis
@@ -57,3 +57,4 @@ Depends on Wave 3 data.
 - form-2307-issuance (Wave 2, 2026-02-26)
 - zonal-value-lookup (Wave 2, 2026-02-26)
 - existing-tools-survey (Wave 3, 2026-02-26)
+- practitioner-workflow (Wave 3, 2026-02-26)
