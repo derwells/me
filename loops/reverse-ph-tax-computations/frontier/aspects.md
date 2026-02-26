@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 24
-- Analyzed: 16
-- Pending: 8
-- Convergence: 67%
+- Analyzed: 18
+- Pending: 6
+- Convergence: 75%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -28,11 +28,11 @@ Depends on Wave 1 data.
 - [x] rpt-computation — Real property tax: FMV × assessment level × tax rate; per-LGU variation, property classification tiers, SEF levy
 - [x] transfer-tax — LGU-level transfer tax on real property sale; rate variation by locality, base computation
 - [x] form-2307-issuance — Who withholds, when to issue, amount computation, reconciliation logic (issued vs received for tax credit claims)
-- [ ] zonal-value-lookup — Resolution logic for BIR zonal values by location; RDO jurisdiction mapping, format parsing, update frequency
+- [x] zonal-value-lookup — Resolution logic for BIR zonal values by location; RDO jurisdiction mapping, format parsing, update frequency
 
 ### Wave 3: Competitive & Automation Gap Analysis
 Depends on Wave 2 data.
-- [ ] existing-tools-survey — Map each Wave 2 computation against JuanTax, Taxumo, QNE Cloud, generic ERPs; document feature coverage
+- [x] existing-tools-survey — Map each Wave 2 computation against JuanTax, Taxumo, QNE Cloud, generic ERPs; document feature coverage
 - [ ] practitioner-workflow — Document current manual/Excel workflows per computation; interview-style synthesis from practitioner guide examples
 - [ ] complexity-scoring — Score each computation by number of branching rules, lookup tables, external data dependencies
 
@@ -55,3 +55,5 @@ Depends on Wave 3 data.
 - rpt-computation (Wave 2, 2026-02-26)
 - transfer-tax (Wave 2, 2026-02-26)
 - form-2307-issuance (Wave 2, 2026-02-26)
+- zonal-value-lookup (Wave 2, 2026-02-26)
+- existing-tools-survey (Wave 3, 2026-02-26)
