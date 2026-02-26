@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 28
-- Analyzed: 17
-- Pending: 11
-- Convergence: 61%
+- Analyzed: 18
+- Pending: 10
+- Convergence: 64%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -43,7 +43,7 @@ Depends on Wave 1 data.
 
 **Contracts & lease management:**
 - [x] lease-contract-generation — Generating new lease contracts: template system, variable substitution, mandatory PH clauses, board resolution reference, notarization tracking. PDF output.
-- [ ] lease-renewal-extension — Renewal vs extension vs tacit reconduccion (15 days post-expiry). New DST obligation, deposit top-up, escalation on renewal, holdover penalty rates.
+- [x] lease-renewal-extension — Renewal vs extension vs tacit reconduccion (15 days post-expiry). New DST obligation, deposit top-up, escalation on renewal, holdover penalty rates.
 - [ ] lease-status-visibility — Dashboard showing all active leases: tenant, unit, term dates, monthly rate, escalation schedule, upcoming renewals, expiring leases alert.
 
 **Accounting agency handoff:**
@@ -81,3 +81,4 @@ Depends on all Wave 3 analysis.
 | 15 | electric-billing | 2 | analysis/electric-billing.md | 2026-02-26 |
 | 16 | security-deposit-lifecycle | 2 | analysis/security-deposit-lifecycle.md | 2026-02-26 |
 | 17 | lease-contract-generation | 2 | analysis/lease-contract-generation.md | 2026-02-26 |
+| 18 | lease-renewal-extension | 2 | analysis/lease-renewal-extension.md | 2026-02-26 |
