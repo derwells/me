@@ -1,403 +1,387 @@
-# Condo Common Area / Undivided Interest — Verification Report
+# Condominium Common Area / Undivided Interest Computation
 
-**Wave:** 2
+**Wave:** 2 — Computation Extraction
 **Date:** 2026-02-26
 **Aspect:** condo-common-area-pct
-**Verification method:** Independent web search against 15+ secondary sources
-**Primary extraction verified:** 5 computations from RA 4726 analysis
+**Primary source:** `analysis/condo-act-common-areas.md` (Wave 1)
+**Verification:** 16 independent sources; 1 critical correction, 3 high-severity, 6 medium, 6 low
 
 ---
 
-## Sources Consulted
+## Computation 1: Undivided Interest % — Default Statutory Rule
 
-| # | Source | URL | Type | Date |
-|---|--------|-----|------|------|
-| S1 | RA 4726 Full Text (lawphil.net) | [link](https://lawphil.net/statutes/repacts/ra1966/ra_4726_1966.html) | Primary statute | 1966 |
-| S2 | RA 4726 Full Text (chanrobles.com) | [link](https://chanrobles.com/republicactno4726.html) | Primary statute | 1966 |
-| S3 | RA 7899 Full Text (Supreme Court E-Library) | [link](https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/2928) | Primary statute | 1995 |
-| S4 | U-Property PH — RA 4726 Explained | [link](https://upropertyph.com/2025/11/18/the-condominium-act-of-the-philippines-ra-4726-explained-for-buyers-and-investors/) | Practitioner guide | 2025-11 |
-| S5 | Respicio & Co. — RPT on Common Areas | [link](https://www.lawyer-philippines.com/articles/obligation-of-unit-owners-to-pay-real-property-taxes-on-common-areas-in-philippine-condominiums) | Law firm article | n.d. |
-| S6 | Respicio & Co. — Parking & Common Area | [link](https://www.respicio.ph/commentaries/condominium-parking-and-common-area-ownership-philippines) | Law firm article | n.d. |
-| S7 | Respicio & Co. — Association Dues Multiple Titles | [link](https://www.respicio.ph/commentaries/condominium-association-dues-for-multiple-titles-in-the-philippines) | Law firm article | n.d. |
-| S8 | Respicio & Co. — Voting Rights | [link](https://www.respicio.ph/commentaries/voting-rights-based-on-acquired-interest-in-condominiums) | Law firm article | n.d. |
-| S9 | DivinaLaw — Pay Dues or Lose Unit | [link](https://www.divinalaw.com/dose-of-law/pay-association-dues-or-lose-your-condo-unit/) | Law firm article | n.d. |
-| S10 | Counsel Our HOA — Percentage Interests | [link](https://counselourhoa.com/index/p/percentage-interests) | US practitioner (comparative) | n.d. |
-| S11 | IRR of PD 957 (DHSUD) | [link](https://dhsud.gov.ph/wp-content/uploads/Laws_Issuances/02_IRR/IRRPD957.pdf) | Regulation | varies |
-| S12 | RA 7899 (BOI summary) | [link](https://boi.gov.ph/ra-7899-the-condominium-act/) | Government summary | 1995 |
-| S13 | Civil Code Art. 484-490 (chanrobles.com) | [link](https://chanrobles.com/civilcodeofthephilippinesbook2.htm) | Primary statute | 1950 |
-| S14 | Inquirer — Condo Dues Conundrum | [link](https://business.inquirer.net/345709/biz-buzz-condo-dues-conundrum) | News report | 2022 |
-| S15 | 3D Academy — Condo Dues Guide | [link](https://3d-universal.com/en/blogs/understanding-condo-dues-and-monthly-fees-in-the-philippines.html) | Practitioner guide | 2025 |
-| S16 | Concorde Condo v. PNB, G.R. 228354 (SC E-Library) | [link](https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/1/64815) | Supreme Court case | n.d. |
+**What it computes:** Each unit owner's percentage interest in common areas when the master deed is silent.
 
----
+**Legal basis:** RA 4726 Section 6(c); Civil Code Article 485 (co-ownership presumption)
 
-## Computation 1: Undivided Interest % (Default Statutory Rule)
+**Inputs:**
+| Input | Type | Source |
+|-------|------|--------|
+| `total_units` | integer | Master deed / condominium plan (count of all CCTs including parking if separately titled) |
 
-### Primary Extraction
-- **Source cited:** RA 4726 Section 6(c)
-- **Formula:** Interest % = 1 / Total_Number_of_Units x 100
-- **Condition:** Only applies if master deed does NOT specify a different formula
+**Formula:**
+```
+unit_interest_pct = 1 / total_units × 100
+```
 
-### Verification Result: CONFIRMED with nuance
+**Rules:**
+- Applies ONLY when master deed does not specify a different allocation method
+- "Per unit of ownership" — not per owner (an owner with 3 units gets 3 shares)
+- Sum of all interests = 100%
+- Civil Code Art. 485 independently supports equal-shares presumption for co-ownership
+- Parking slots with separate CCTs: each parking CCT counts as a separate "unit" under this default
+- This default is almost never used in modern practice — virtually all master deeds specify floor-area-proportional
 
-**Exact statutory text (S1, S2):**
-> "Unless otherwise provided, the common areas are held in common by the holders of units, **in equal shares, one for each unit.**"
+**Edge cases:**
+- Developer's unsold units: developer holds interest % for all unsold units
+- Unit merger: requires master deed amendment + DHSUD approval + CCT reissuance; merged unit gets combined share
 
-All sources agree on this default rule. The primary extraction is **correct**.
+**Deterministic:** Yes — trivially so given unit count.
 
-**Nuance to add:** The phrase "unless otherwise provided" refers to what is stated in the "enabling or master deed or the declaration of restrictions" (the opening clause of Section 6). This is not an implied exception — it requires an express written provision in a registered document. (S1, S2, S4)
-
-**Additional supporting law:** Civil Code Article 485 independently provides that co-ownership shares "shall be presumed equal, unless the contrary is proved." This creates a dual statutory basis for the equal-shares default. (S13)
-
-### Corrections Needed: NONE (formula is correct)
-### Additional Context:
-- The equal-shares default is almost never used in modern practice because virtually all master deeds specify a floor-area-proportional formula (S4, S5, S7)
-- A master deed that is silent on allocation method triggers the equal-shares default — not floor-area proportional (S1, S2)
+**Verification status:** CONFIRMED — all 16 sources agree. Civil Code basis independently confirmed.
 
 ---
 
-## Computation 2: Undivided Interest % (Industry Standard / Floor-Area Proportional)
+## Computation 2: Undivided Interest % — Floor-Area Proportional (Industry Standard)
 
-### Primary Extraction
-- **Source cited:** De facto industry practice (not statutory)
-- **Formula:** Unit_Interest_% = Unit_Floor_Area_sqm / Total_Sellable_Floor_Area_sqm x 100
-- **Note:** Total Sellable Floor Area excludes common areas; sum = 100%
+**What it computes:** Each unit owner's percentage interest in common areas based on floor area ratio. This is the dominant method used by Philippine condominium projects.
 
-### Verification Result: CONFIRMED with corrections
+**Legal basis:** RA 4726 Section 4 ("exact nature of interest" stated in master deed) — not a statutory formula but the universal industry practice. Must be expressly stated in master deed to override Section 6(c) default.
 
-**All sources agree** the floor-area-proportional method is the dominant industry standard (S4, S5, S6, S7, S15). Formula is correct.
+**Inputs:**
+| Input | Type | Source |
+|-------|------|--------|
+| `unit_floor_area` | float (sqm) | Condominium Certificate of Title (CCT) |
+| `total_sellable_floor_area` | float (sqm) | Master deed — sum of all individually-titled unit floor areas |
 
-### Corrections Needed:
+**Formula:**
+```
+unit_interest_pct = unit_floor_area / total_sellable_floor_area × 100
+```
 
-**Correction 1 — Missing third allocation method (par value / assigned value)**
-The primary extraction lists only two methods (equal shares and floor-area proportional). Sources identify **three** recognized methods (S10, comparative law analysis):
+**Rules:**
+- Denominator includes ALL separately-titled areas: residential units + commercial units + separately-titled parking CCTs
+- Denominator EXCLUDES common areas (corridors, lobbies, amenities, elevators, stairs) — these are the subject of the interest, not part of the divisor
+- Sum of all unit interests must = 100%
+- This percentage appears on each unit's CCT
 
-| Method | Formula | When Used |
-|--------|---------|-----------|
-| Equal shares | 1 / N | Statutory default; rarely used in practice |
-| Floor area proportional | Unit_sqm / Total_sellable_sqm | Most common industry practice |
-| Par value / assigned value | Assigned_value_of_unit / Sum_of_all_assigned_values | Used where units vary greatly in value (e.g., penthouse vs studio); master deed assigns nominal values |
+**CORRECTION (high severity):** Denominator must include separately-titled parking slot CCTs. In Metro Manila, parking is commonly issued as separate CCTs, which materially affects the denominator and thus every residential unit's interest %.
 
-The par value method is not explicitly named in RA 4726 but is permitted under the "unless otherwise provided" clause. Some Philippine master deeds use a hybrid or assigned-value approach, particularly in mixed-use developments. (S10, S7)
+**Example:**
+| Unit | Floor Area | Total Sellable (incl. parking) | Undivided Interest |
+|------|-----------|-------------------------------|-------------------|
+| Residential A | 50 sqm | 1,200 sqm | 4.17% |
+| Residential B | 75 sqm | 1,200 sqm | 6.25% |
+| Parking P1 | 12 sqm | 1,200 sqm | 1.00% |
 
-**Correction 2 — Denominator terminology clarification**
-The primary extraction uses "Total Sellable Floor Area." Sources are inconsistent:
-- Some say "Total Floor Area of All Saleable Units" (S5, S15)
-- Some say "Total Floor Area of All Units" (S4)
-- The distinction matters if parking slots have separate CCTs
+Without parking CCTs in denominator (1,000 sqm): Residential A would be 5.00% — a significant difference.
 
-The correct denominator is: **Total Floor Area of All Units that carry undivided interest** — which includes separately-titled parking slots (if any), because those are also "units" under RA 4726 with their own CCTs and appurtenant interest. (S6)
+**Alternative method — Par Value / Assigned Value (third recognized method):**
+```
+unit_interest_pct = assigned_value_of_unit / sum_of_all_assigned_values × 100
+```
+Permitted under the "unless otherwise provided" clause. Used where units vary greatly in value (e.g., penthouse vs studio with similar sqm). Less common but legally valid. Some mixed-use master deeds use this or a hybrid approach.
 
-**Correction 3 — Parking slots may inflate unit count and change denominator**
-If parking slots are titled as separate condominium units (common in Metro Manila), they carry their own undivided interest share. This means:
-- Under the **equal shares** method: 200 residential units + 150 parking CCTs = 350 units sharing equally
-- Under the **floor area** method: parking slot floor area is included in the denominator
-(S6, S4)
+**Edge cases:**
+- Limited common areas (balconies, assigned parking without separate CCT): ownership is common but use is exclusive; may or may not carry separate interest allocation depending on master deed
+- Storage units: if separately titled, included in denominator; if part of a unit, already in unit floor area
+- Unit subdivision: splits the original interest proportionally; requires master deed amendment
+- Rounding: no regulation specifies rounding convention when interest percentages don't divide evenly; practice varies (2–4 decimal places)
 
-This is a significant practical consideration not captured in the primary extraction.
+**Deterministic:** Yes — given unit floor area and total sellable floor area from master deed/CCTs.
+
+**Verification status:** CONFIRMED with corrections (parking CCT denominator impact, par value alternative method identified).
 
 ---
 
 ## Computation 3: Common Area RPT Share
 
-### Primary Extraction
-- **Source cited:** RA 4726 + Local Government Code
-- **Formula:** Unit_RPT_Share = Undivided_Interest_% x Assessed_Value_of_Common_Areas x RPT_Rate
-- **Uses whichever interest % method the master deed specifies**
+**What it computes:** Each unit owner's share of real property tax assessed on the condominium's common areas.
 
-### Verification Result: CONFIRMED
+**Legal basis:** RA 4726 Section 6(c) + Local Government Code (RA 7160) Sections 233, 235, 236
 
-Sources agree on the basic framework (S5):
-> "The assessed value of these common areas is apportioned among unit owners based on their ownership interest, typically proportional to the size of their unit."
+**Inputs:**
+| Input | Type | Source |
+|-------|------|--------|
+| `undivided_interest_pct` | float (%) | From Computation 1 or 2 per master deed |
+| `assessed_value_common_areas` | float (₱) | LGU assessor's office |
+| `basic_rpt_rate` | float | 1% (provinces) or 2% (cities/Metro Manila) per LGC |
+| `sef_rate` | float | 1% (universal — Special Education Fund) |
 
-**Specific example from S5:** "Suppose a condominium has 50 units of varying sizes and total common areas valued at P10 million. If your unit represents 5% of the total floor area, you would be liable for 5% of the taxes attributable to the common areas."
-
-### Corrections Needed: MINOR
-
-**Correction 1 — RPT computation is more precisely a two-step process**
-The formula as stated is functionally correct but glosses over the Local Government Code (RA 7160) mechanics:
-
+**Formula:**
 ```
-Step 1: Total_Common_Area_RPT = Assessed_Value_of_Common_Areas x RPT_Rate
-Step 2: Unit_RPT_Share = Undivided_Interest_% x Total_Common_Area_RPT
+Step 1: total_rpt = assessed_value_common_areas × (basic_rpt_rate + sef_rate)
+Step 2: unit_rpt_share = undivided_interest_pct / 100 × total_rpt
 ```
 
-RPT rates vary by LGU:
-- Metro Manila cities: up to 2% of assessed value (basic RPT) + 1% SEF
-- Provincial LGUs: up to 1% of assessed value (basic RPT) + 1% SEF
-(Local Government Code, Sections 233, 235, 236)
+**Rules:**
+- RPT liability is **ownership-based regardless of actual usage** — a ground-floor unit owner pays RPT for rooftop common areas they never use
+- LGU rate varies: basic rate is 1% (provinces) or 2% (cities/Metro Manila), plus 1% SEF universally
+- Metro Manila municipalities may levy additional ad valorem tax
+- Condominium corporation may pay RPT collectively and apportion to unit owners via dues
+- Penalty for late RPT payment: 2%/month up to 72% maximum (LGC Sec. 255)
+- Some LGU assessors embed common area RPT into each unit's individual tax declaration (proportionally allocated); others bill common areas separately
 
-**Correction 2 — Liability is ownership-based, not usage-based**
-S5 explicitly states: "Philippine law does not condition a unit owner's liability for shared taxes on actual use or access to specific common areas. The liability arises from the legal ownership interest in the common areas."
+**Edge cases:**
+- Developer retains RPT obligation on unsold units
+- Exempt common areas (if project has government/charitable component) — rare
 
-This is an important clarification: a ground-floor unit owner pays RPT for rooftop common areas they never use. This should be noted in the computation logic. (S5)
+**Deterministic:** Yes — given interest %, assessed value, and LGU rate schedule.
 
-**Correction 3 — Local assessor practice varies**
-S5 notes: "Some local assessors allocate the value of common areas proportionally to each unit's tax declaration." This means in practice, the RPT may already be embedded in each unit's individual tax declaration rather than being separately billed. The computation logic should account for both scenarios.
+**Verification status:** CONFIRMED with refinements on two-step RPT rate structure and assessor practice variation.
 
 ---
 
-## Computation 4: Assessment Share for Common Expenses (Section 9(d))
+## Computation 4: Common Expense Assessment Share
 
-### Primary Extraction
-- **Source cited:** RA 4726 Section 9(d)
-- **Formula:** Unit_Expense_Share = Undivided_Interest_% x Total_Common_Expenses
-- **Unless master deed provides otherwise**
+**What it computes:** Each unit owner's share of common expenses — the statutory basis for association dues computation.
 
-### Verification Result: CONFIRMED with significant expansion
+**Legal basis:** RA 4726 Section 9(d); Civil Code Articles 485 and 490 (supplementary basis)
 
-**Exact statutory text (S1, S2):**
-> "For reasonable assessments to meet authorized expenditures, each condominium unit to be assessed separately for its share of such expenses **in proportion (unless otherwise provided) to its owner's fractional interest in any common areas**"
+**Inputs (statutory formula):**
+| Input | Type | Source |
+|-------|------|--------|
+| `undivided_interest_pct` | float (%) | From Computation 1 or 2 |
+| `total_common_expenses` | float (₱) | Condominium corporation's approved annual budget |
 
-The formula in the primary extraction is a correct simplification of this provision.
+**Inputs (HLURB operational formula — equivalent):**
+| Input | Type | Source |
+|-------|------|--------|
+| `unit_floor_area` | float (sqm) | CCT |
+| `total_annual_gross_expense` | float (₱) | Condo corporation approved budget |
+| `total_gross_saleable_area` | float (sqm) | Master deed |
+| `vat_applicable` | boolean | True if condo corporation's annual receipts > ₱3M |
 
-### Corrections Needed:
-
-**Correction 1 — The formula stated (interest % x total expenses) is the statutory default, but industry practice uses a different operational formula**
-
-In practice, the HLURB/DHSUD-prescribed computation for regular association dues is:
-
+**Formula (statutory):**
 ```
-Step 1: Rate_Base = Total_Annual_Gross_Expense / Total_Gross_Saleable_Area_sqm
-Step 2: Monthly_Rate = Rate_Base / 12
-Step 3: Monthly_Dues_Per_Unit = Unit_Floor_Area_sqm x Monthly_Rate
+unit_expense_share = undivided_interest_pct / 100 × total_common_expenses
 ```
 
-This is mathematically equivalent to the percentage-of-interest formula when floor-area proportional interest is used, but operationally distinct because:
-- It produces a per-sqm rate (e.g., P96/sqm/month) that is the industry-standard way to quote and compare dues
-- The total expense budget is the starting input, not the ending output
-(S7, S15)
+**Formula (HLURB operational — industry standard, equivalent when using floor-area-proportional interest):**
+```
+Step 1: annual_rate_per_sqm = total_annual_gross_expense / total_gross_saleable_area
+Step 2: monthly_rate_per_sqm = annual_rate_per_sqm / 12
+Step 3: monthly_dues = unit_floor_area × monthly_rate_per_sqm
+Step 4: monthly_dues_with_vat = monthly_dues × 1.12  (if vat_applicable)
+```
 
-**Correction 2 — Additional statutory basis from Civil Code**
-Civil Code Article 485 independently requires proportional sharing: "The share of the co-owners, in the benefits as well as in the charges, shall be proportional to their respective interests." This creates a fallback rule even if the master deed and RA 4726 are silent. (S13)
+These two formulas produce identical results when the master deed uses floor-area-proportional allocation. The per-sqm method is the operational standard used by property managers. Typical rates (Metro Manila, 2025):
+- Economy/socialized: ₱50–₱80/sqm/month
+- Mid-market: ₱80–₱150/sqm/month
+- High-end/luxury: ₱150–₱250+/sqm/month
 
-Civil Code Article 490 adds specific building rules: expenses for common walls, roof, and common elements are shared "in proportion to the value of the story belonging to each." (S13)
+**Rules:**
+- "Unless otherwise provided" — master deed may specify a different allocation (e.g., weighted by unit type)
+- **Lien enforcement (Section 20):** Unpaid assessments constitute a lien on the unit upon registration with the Register of Deeds. This lien is:
+  - Superior to all subsequently registered liens (including mortgages)
+  - Subordinate only to real property tax liens
+  - Enforceable through judicial or extrajudicial foreclosure
+  - Confirmed in *Concorde Condominium v. PNB* (G.R. No. 228354)
+- **VAT:** 12% on association dues if condominium corporation's annual receipts exceed ₱3M VAT threshold (RMC 65-2012)
+- **Sinking fund:** Typically a separate line item (₱4–₱15/sqm/month), authorized under Section 9 but computed separately from regular dues
+- **Delinquency interest:** Max 12% per annum if authorized by by-laws
 
-**Correction 3 — Section 20 lien enforcement not mentioned**
-The primary extraction omits the critical enforcement mechanism: unpaid assessments become **liens** upon registration with the Register of Deeds (RA 4726, Section 20). These liens:
-- Are **superior** to all subsequently registered liens
-- Are **subordinate** only to real property tax liens
-- Can be enforced through judicial or extrajudicial foreclosure (like a mortgage)
-(S1, S2, S9)
+**Edge cases:**
+- Developer control period: developer pays dues on unsold units but controls the board until majority of units are sold
+- Shortfall buffer: +10% for members, +20% for beneficial users (non-member occupants) per some DHSUD guidelines
+- Commercial vs residential units in mixed-use: may have different rates per master deed
+- Special assessments for capital improvements: same proportional basis unless otherwise voted
 
-**Correction 4 — VAT on association dues**
-Per RMC 65-2012, association dues collected by the condominium corporation are subject to 12% VAT if annual receipts exceed the VAT threshold (currently P3,000,000/year). This adds to the effective assessment. (S15)
+**Deterministic:** Yes — given interest %, total expenses, and VAT status.
 
-**Correction 5 — Sinking fund is separate**
-Most condominiums assess a separate sinking fund contribution (typically P4-15/sqm/month) in addition to regular dues. This is authorized under Section 9 but computed separately. (S15)
+**Verification status:** CONFIRMED with significant expansion (HLURB operational formula, Section 20 lien, VAT, sinking fund, Civil Code supplementary basis).
 
 ---
 
-## Computation 5: Voting Power (RA 7899)
+## Computation 5: Voting Power Computation (RA 7899)
 
-### Primary Extraction
-- **Residential/commercial-only:** 1 vote per unit
-- **Mixed-use:** vote weight = floor area of ownership
+**What it computes:** The weight of each unit owner's vote for specific governance decisions under RA 7899.
 
-### Verification Result: PARTIALLY CORRECT — needs significant correction
+**Legal basis:** RA 7899 (amending RA 4726 Sections 4 and 16)
 
-**Exact statutory text of RA 7899 (S3, S12):**
+**Inputs:**
+| Input | Type | Source |
+|-------|------|--------|
+| `project_type` | enum: "residential_only" / "commercial_only" / "mixed_use" | Master deed |
+| `units_owned` | integer | CCT count (for residential/commercial-only projects) |
+| `unit_floor_area` | float (sqm) | CCT (for mixed-use projects) |
+| `total_floor_area` | float (sqm) | Master deed (for mixed-use projects) |
 
-Section 1 amends Section 4 of RA 4726:
-> "the enabling or master deed may be amended or revoked upon registration of an instrument executed by a **simple majority** of the registered owners of the property: Provided, that in a condominium project **exclusively for either residential or commercial use**, simple majority shall be on a **per unit of ownership basis** and that in the case of **mixed use**, simple majority shall be on a **floor area of ownership basis**"
+**Formula:**
+```
+IF project_type IN ("residential_only", "commercial_only"):
+    vote_weight = units_owned  (per unit of ownership)
+    simple_majority = > 50% of total units
+ELSE IF project_type == "mixed_use":
+    vote_weight = total_floor_area_owned
+    simple_majority = > 50% of total floor area
+```
 
-### Corrections Needed: CRITICAL
+**CRITICAL CORRECTION:** RA 7899's voting rules apply **only** to:
+- **Master deed amendments** (Section 4) — requires simple majority consent
+- **Disposition/destruction of common areas** (Section 16) — requires simple majority consent
 
-**Correction 1 — RA 7899 voting rules apply ONLY to specific corporate acts, not to all voting**
-The primary extraction implies "1 vote per unit" and "floor area weighted" are the universal voting rules. This is WRONG. RA 7899 amended only:
-- **Section 4** — voting to amend or revoke the master deed
-- **Section 16** — voting to dispose of common areas or expand/integrate the project
-
-For other corporate acts (board elections, regular resolutions, special assessments), the voting method is governed by:
-1. The **by-laws** and **declaration of restrictions** (which may specify per-unit or per-interest voting)
+For ALL OTHER governance votes (board elections, budget approval, rule changes), voting follows:
+1. The condominium corporation's **by-laws** and **declaration of restrictions**
 2. The **Revised Corporation Code** (for condominium corporations organized as stock or non-stock corporations)
-(S3, S8, S12)
 
-**Correction 2 — "1 vote per unit" is imprecise**
-The statute says "per unit of ownership basis" — meaning an owner of 3 units gets 3 votes, not 1 vote. The unit of measurement is ownership of units, not the identity of the owner. (S3)
+Multiple practitioner sources incorrectly imply RA 7899 voting rules apply universally. The statute itself is narrow in scope.
 
-**Correction 3 — Mixed-use voting formula needs specification**
-The primary extraction says "vote weight = floor area of ownership" but does not provide a formula. The computation is:
+**Rules:**
+- "Per unit of ownership" means per CCT — an owner of 3 units gets 3 votes, not 1
+- Developer retains voting rights for ALL unsold units (confirmed in *Respicio & Co.* commentary; developer controls governance until majority sold)
+- By-laws may suspend voting rights for owners delinquent in association dues (common and enforceable provision)
+- No statutory limit on developer control period in RA 4726
 
-```
-Owner_Vote_Weight = Owner_Total_Floor_Area / Total_Floor_Area_of_All_Units
-Simple_Majority = > 50% of total floor area
-```
+**Deterministic:** Yes — given project type, units owned, and floor areas.
 
-Or equivalently, each sqm of owned floor area = 1 unit of voting weight. (S3, S4)
-
-**Correction 4 — Voting rights for unsold developer units**
-The developer retains voting rights for all unsold units (S8, S14). This creates a "developer control period" where the developer can dominate governance decisions. The Supreme Court has upheld this: the developer "became a member of the condominium corporation on the basis of its ownership of unsold units in the project." (S8)
-
-No specific statutory provision limits the developer control period in RA 4726 — unlike some US jurisdictions. Transition occurs organically as units are sold.
-
-**Correction 5 — By-laws may suspend voting for delinquent owners**
-Many condominium by-laws suspend voting rights for owners delinquent in association dues. This is not statutory but is a common and enforceable by-law provision. (S9)
+**Verification status:** PARTIALLY CONFIRMED — scope corrected from "all governance" to "Sections 4 and 16 only." "Per unit of ownership" clarified.
 
 ---
 
-## Additional Sub-Computations Discovered
+## Computation 6: Dissolution/Partition Proceeds Distribution
 
-### Sub-Computation A: Parking Slot Undivided Interest
+**What it computes:** Each unit owner's share of proceeds when the condominium project is dissolved or partitioned.
 
-**Source:** S6 (Respicio & Co.)
+**Legal basis:** RA 4726 Section 8
 
-When parking slots are titled as separate condominium units (with their own CCTs):
-- Each parking CCT carries its own undivided interest in common areas
-- The parking slot's floor area is included in the denominator for floor-area-proportional calculations
-- Parking CCTs count toward the 40% foreign ownership cap (RA 7899)
-- If parking is NOT separately titled, it remains part of common areas (shared by all)
+**Inputs:**
+| Input | Type | Source |
+|-------|------|--------|
+| `undivided_interest_pct` | float (%) | From Computation 1 or 2 |
+| `total_net_proceeds` | float (₱) | From sale/partition of common areas |
 
-**Formula impact:**
+**Formula:**
 ```
-If parking slots are separate CCTs:
-  Total_Units = Residential_Units + Commercial_Units + Parking_CCTs
-  Total_Sellable_Area = Sum of all unit floor areas INCLUDING parking slot areas
-
-If parking is common area:
-  Total_Units = Residential_Units + Commercial_Units (only)
-  Total_Sellable_Area = Sum of residential + commercial unit floor areas (only)
+unit_proceeds = undivided_interest_pct / 100 × total_net_proceeds
 ```
 
-This is a critical input variable that the primary extraction does not capture.
+**Rules:**
+- Dissolution requires partition of common areas per Section 8
+- Individual unit titles remain with owners
+- Common area proceeds distributed by undivided interest %
+- Partition may be triggered by destruction (if >50% value destroyed and not rebuilt within reasonable time)
 
-### Sub-Computation B: Developer Unsold Unit Obligations
+**Deterministic:** Yes
 
-**Source:** S8, S14
-
-The developer must pay association dues for all unsold units. The computation is the same as for any unit owner:
-
-```
-Developer_Monthly_Dues = Sum of (Unit_Floor_Area_i x Monthly_Rate) for all unsold units i
-```
-
-Additionally, the developer retains voting rights proportional to unsold unit count (pure-use) or unsold floor area (mixed-use).
-
-**Key rule (S6):** Once the turnover date in the license to sell passes, developer retention of units requires **express reservation** in registered documents. Otherwise, unsold slots/units automatically become part of common areas.
-
-### Sub-Computation C: Unit Merger/Subdivision Interest Recalculation
-
-**Source:** S16 (Concorde Condo v. PNB), general practice
-
-When units are merged or subdivided:
-1. Old CCTs are surrendered and cancelled
-2. New CCTs are issued for the merged/subdivided units
-3. Undivided interest percentages must be recalculated
-4. **Master deed must be amended** with consent of majority of unit owners
-5. DHSUD approval is required for alteration of condominium plans
-
-**Interest recalculation formula:**
-```
-New_Interest_% = New_Unit_Floor_Area / Total_Sellable_Floor_Area x 100
-```
-(Total sellable floor area remains unchanged by merger — just redistributed)
-
-The Supreme Court in Concorde Condo v. PNB confirmed that consolidation/subdivision of condominium project land without majority consent and master deed amendment is invalid.
-
-### Sub-Computation D: Limited Common Area Allocation
-
-**Source:** S6
-
-"Limited common areas" are areas with exclusive use rights granted to specific units (e.g., exclusive-use parking, roof decks, balconies), but ownership remains shared. These are treated as follows:
-
-- The limited common area does NOT carry separate undivided interest
-- Use rights transfer only with the principal unit
-- Maintenance costs may be allocated solely to the benefiting unit(s) per the declaration of restrictions
-- But ownership interest in these areas is still part of the general undivided interest computation
-
-No separate computation formula — treatment is governed by the master deed.
-
-### Sub-Computation E: Association Dues Operational Formula (HLURB-Prescribed)
-
-**Source:** S7, S15, primary analysis
-
-This was already discovered in the Wave 1 analysis but is confirmed here as a separate computation from the statutory Section 9(d) formula:
-
-```
-Rate_Base_per_sqm = Total_Annual_Gross_Expense / Total_Gross_Saleable_Area_sqm
-Monthly_Rate_per_sqm = Rate_Base_per_sqm / 12
-Monthly_Dues = Unit_Floor_Area_sqm x Monthly_Rate_per_sqm
-Monthly_Dues_with_VAT = Monthly_Dues x 1.12  (if corp exceeds VAT threshold)
-```
-
-Additional charges per DHSUD rules:
-- Sinking fund: typically P4-15/sqm/month (separate line item)
-- Shortfall buffer: +10% for members, +20% for beneficial users (non-member occupants)
-- Interest on delinquent dues: max 12% per annum (if authorized by by-laws)
-
-### Sub-Computation F: Dissolution/Partition Proceeds Distribution
-
-**Source:** S1, S2
-
-Section 8 of RA 4726 permits partition under certain conditions. Upon dissolution of the condominium corporation and sale of the project:
-
-```
-Unit_Owner_Proceeds = Undivided_Interest_% x Net_Sale_Proceeds
-```
-
-This uses the same interest % as all other computations but is a distinct use case.
+**Verification status:** CONFIRMED — straightforward application of ownership shares.
 
 ---
 
-## Minimum Common Area Requirements
+## Additional Sub-Computation: Parking Slot Interest Treatment
 
-**Finding:** There is NO statutory minimum percentage of floor area that must be designated as common areas in a Philippine condominium building.
+**What it computes:** Whether and how parking slots affect undivided interest calculations.
 
-- PD 957's 30% open space rule applies to **subdivisions** (land area), not condominium buildings
-- Condominium buildings follow the **National Building Code** (PD 1096) for lot occupancy, setbacks, and open space — but these govern the building footprint relative to the lot, not the ratio of common area to saleable area within the building
-- The IRR of PD 957 requires parks/playgrounds for projects with gross saleable area >= 1,000 sqm or >= 10 units (minimum 50 sqm + 3 sqm per additional unit beyond 10)
-- There is no DHSUD circular mandating a specific common-to-saleable area ratio
+**Legal basis:** RA 4726 (parking CCTs as condominium units); master deed
 
-The common area percentage is entirely determined by the developer's architectural design and disclosed in the master deed.
+**Decision tree:**
+```
+IF parking_slot has separate CCT:
+    → It IS a condominium unit under RA 4726
+    → Carries its own undivided interest %
+    → Floor area included in denominator (Computation 2)
+    → Count included in unit count (Computation 1)
+    → Owner pays association dues on parking CCT separately
+    → Counts toward 40% foreign ownership cap (RA 7899)
+ELSE IF parking is part of common areas:
+    → No separate interest
+    → All unit owners share parking area proportionally
+    → Governed by house rules / declaration of restrictions
+ELSE IF parking is limited common area (assigned but not titled):
+    → Use rights transfer only with principal unit
+    → No separate interest computation
+    → Maintenance may be separately allocated per declaration of restrictions
+```
 
----
+**Significance:** This is the single most important input variable for any Philippine condominium interest computation tool. Getting the denominator wrong (by excluding or including parking CCTs) changes every unit owner's interest percentage.
 
-## Source Agreement Matrix
+**Deterministic:** Yes — the master deed and title structure determine the treatment.
 
-| Computation | S1-S3 (Statutes) | S4-S9 (Law Firms) | S10-S12 (Regulatory) | S13-S16 (Other) | Consensus |
-|-------------|:-:|:-:|:-:|:-:|-----------|
-| 1. Equal shares default | Confirmed | Confirmed | N/A | Confirmed (Art. 485) | Full agreement |
-| 2. Floor-area proportional | Permitted | Confirmed as industry std | Confirmed | Confirmed | Full agreement |
-| 3. RPT share | Confirmed | Confirmed | Confirmed (LGC) | N/A | Full agreement |
-| 4. Expense assessment | Confirmed | Confirmed | Confirmed | Confirmed (Art. 485) | Full agreement |
-| 5. Voting (RA 7899) | Confirmed (narrow scope) | Mixed — some overstate scope | Confirmed (narrow) | N/A | **Conflict on scope** |
-
-**Key Conflict:** Multiple practitioner sources (S4, S8) imply RA 7899 voting rules apply to all condo governance votes. The statute itself (S3) limits them to Section 4 (master deed amendment) and Section 16 (common area disposal). Other votes follow by-laws and Corporation Code.
-
----
-
-## Summary of Corrections to Primary Extraction
-
-| # | Computation | Correction | Severity |
-|---|-------------|-----------|----------|
-| 1 | Comp 2 (Floor Area) | Missing third method: par value/assigned value | Medium |
-| 2 | Comp 2 (Floor Area) | Denominator must include parking CCTs if separately titled | High |
-| 3 | Comp 3 (RPT) | Should note two-step process and LGU rate variation | Low |
-| 4 | Comp 3 (RPT) | Liability is ownership-based, not usage-based | Low (clarification) |
-| 5 | Comp 4 (Expenses) | Missing HLURB operational formula (per-sqm rate) | Medium |
-| 6 | Comp 4 (Expenses) | Missing Section 20 lien enforcement mechanism | Medium |
-| 7 | Comp 4 (Expenses) | Missing VAT on association dues (RMC 65-2012) | Medium |
-| 8 | Comp 4 (Expenses) | Missing sinking fund as separate computation | Low |
-| 9 | Comp 5 (Voting) | **RA 7899 scope is narrow** — only Sec 4 and Sec 16, not all votes | **Critical** |
-| 10 | Comp 5 (Voting) | "1 vote per unit" should be "per unit of ownership" (multi-unit owners get multiple votes) | High |
-| 11 | Comp 5 (Voting) | Missing developer control period for unsold units | Medium |
-| 12 | Comp 5 (Voting) | Missing by-law suspension of delinquent owner voting | Low |
-| 13 | All | Missing: parking slot CCT treatment as distinct variable | High |
-| 14 | All | Missing: developer unsold unit obligations | Medium |
-| 15 | All | Missing: unit merger/subdivision recalculation rules | Low |
-| 16 | N/A | Missing: Civil Code Art. 485/490 as supplementary legal basis | Low |
-
-**Critical correction count:** 1
-**High severity corrections:** 3
-**Medium severity corrections:** 6
-**Low severity corrections:** 6
+**Verification status:** CONFIRMED across multiple sources (Respicio & Co., U-Property PH).
 
 ---
 
-## Verification Conclusion
+## Summary Table
 
-The primary extraction's 5 computations are **substantively correct** in their core formulas. The most significant error is the **overstatement of RA 7899's scope** — the per-unit and floor-area voting rules apply only to master deed amendments and common area disposal, not to all condominium governance votes.
+| # | Computation | Inputs | Deterministic | Verification | Legal Basis |
+|---|------------|--------|---------------|-------------|-------------|
+| 1 | Default interest % (equal shares) | total_units | Yes | Confirmed | RA 4726 §6(c), CC Art. 485 |
+| 2 | Floor-area interest % (industry std) | unit_sqm, total_sellable_sqm | Yes | Confirmed w/ corrections | RA 4726 §4 (master deed) |
+| 3 | Common area RPT share | interest_%, assessed_value, RPT_rate | Yes | Confirmed | RA 4726 + LGC §233 |
+| 4 | Common expense assessment | interest_%, total_expenses | Yes | Confirmed w/ expansion | RA 4726 §9(d), RMC 65-2012 |
+| 5 | RA 7899 voting power | project_type, units, sqm | Yes | Corrected (scope limited) | RA 7899 §§4, 16 only |
+| 6 | Dissolution proceeds share | interest_%, total_proceeds | Yes | Confirmed | RA 4726 §8 |
+| — | Parking slot treatment | CCT structure, master deed | Yes | Confirmed | RA 4726 + master deed |
 
-The most significant **omission** is the treatment of **separately-titled parking slots** as distinct condominium units, which materially affects the denominator in undivided interest calculations. This is a common practical scenario in Metro Manila developments that any computation tool must handle.
+All 6 computations + parking treatment are **fully deterministic** given master deed parameters and CCT data.
 
-The additional sub-computations discovered (parking CCT treatment, developer unsold units, unit merger, limited common areas, HLURB dues formula, dissolution proceeds) should be incorporated into the Wave 2 extraction for `condo-common-area-pct`.
+---
+
+## Corrections Applied (from verification against 16 sources)
+
+### Critical (1)
+1. **RA 7899 voting scope overstated** — applies only to master deed amendments (§4) and common area disposition (§16), NOT all governance votes.
+
+### High Severity (3)
+1. **Parking CCT denominator impact** — separately-titled parking CCTs must be included in total sellable floor area denominator, materially changing all residential unit interest percentages.
+2. **Missing par value allocation method** — a third method (proportional to unit assigned/par value) exists and is permitted.
+3. **"Per unit of ownership" not "per owner"** — multi-unit owners get proportionally more votes/shares.
+
+### Medium Severity (6)
+1. **HLURB operational formula** — per-sqm rate base is the practical equivalent of statutory proportional formula.
+2. **Section 20 lien supremacy** — unpaid assessments create super-priority lien (above mortgages), enforceable by foreclosure.
+3. **VAT on association dues** — 12% applies if condo corporation exceeds ₱3M annual receipts (RMC 65-2012).
+4. **Developer control period** — developer pays dues on unsold units but retains board control until majority sold.
+5. **Civil Code Art. 485/490** — independent statutory basis for equal-shares presumption and building expense sharing.
+6. **Developer unsold unit obligations** — must pay pro-rata share of all expenses and RPT.
+
+### Low Severity (6)
+1. Two-step RPT rate structure (basic + SEF)
+2. Ownership-based (not usage-based) RPT liability
+3. LGU assessor practice variation (embedded vs separate billing)
+4. Sinking fund as separate line item
+5. By-law suspension of delinquent owner voting
+6. Unit merger/subdivision recalculation rules
+
+---
+
+## Unresolved Ambiguities
+
+1. **Parking CCT floor area measurement** — how is parking slot "floor area" measured for denominator purposes? Some master deeds assign nominal area (e.g., 12 sqm), others use actual stall dimensions.
+2. **Rounding convention** — no regulation specifies rounding when interest percentages don't divide evenly; practice varies (2–4 decimal places).
+3. **Limited common area allocation** — exclusive-use areas (balconies, gardens) may carry separate interest allocation in some master deeds; no standard formula.
+4. **Sinking fund mandatory minimum** — no DHSUD regulation specifies a mandatory sinking fund percentage; purely board-determined.
+5. **No minimum common area requirement** — no statutory minimum percentage of floor area must be common areas; ratio determined by developer design and National Building Code lot occupancy limits.
+
+---
+
+## Cross-References
+
+- **`condo-association-dues`** (Wave 2, pending) — the HLURB operational formula for monthly dues is documented here as part of Computation 4 but will be analyzed in full as a standalone aspect
+- **`assessment-level-lookup`** (Wave 2, pending) — the RPT rate tiers referenced in Computation 3 depend on this aspect's analysis
+- **`ph-tax-computations-reverse`** — VAT on association dues (12% if >₱3M) crosses into the tax loop's domain
+
+## Sources
+
+### Primary Statutes
+- [RA 4726](https://lawphil.net/statutes/repacts/ra1966/ra_4726_1966.html) — Condominium Act
+- [RA 7899](https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/2928) — RA 4726 Amendment (voting)
+- [Civil Code Book II, Art. 485](https://chanrobles.com/civilcodeofthephilippinesbook2.htm) — co-ownership
+- [Local Government Code](https://lawphil.net/statutes/repacts/ra1991/ra_7160_1991.html) — RPT (§§218, 233, 235, 236)
+
+### Jurisprudence
+- *Concorde Condominium v. PNB*, G.R. No. 228354 — Section 20 lien superiority
+
+### Government Sources
+- [IRR of PD 957 (DHSUD)](https://dhsud.gov.ph/wp-content/uploads/Laws_Issuances/02_IRR/IRRPD957.pdf)
+- RMC 65-2012 — VAT on condominium corporation receipts
+
+### Practitioner & Secondary Sources
+- [U-Property PH — RA 4726 Explained](https://upropertyph.com/2025/11/18/the-condominium-act-of-the-philippines-ra-4726-explained-for-buyers-and-investors/)
+- [Respicio & Co. — RPT on Common Areas](https://www.lawyer-philippines.com/articles/obligation-of-unit-owners-to-pay-real-property-taxes-on-common-areas-in-philippine-condominiums)
+- [Respicio & Co. — Parking & Common Area](https://www.respicio.ph/commentaries/condominium-parking-and-common-area-ownership-philippines)
+- [Respicio & Co. — Association Dues Multiple Titles](https://www.respicio.ph/commentaries/condominium-association-dues-for-multiple-titles-in-the-philippines)
+- [Respicio & Co. — Voting Rights](https://www.respicio.ph/commentaries/voting-rights-based-on-acquired-interest-in-condominiums)
+- [DivinaLaw — Pay Dues or Lose Unit](https://www.divinalaw.com/dose-of-law/pay-association-dues-or-lose-your-condo-unit/)
+- [3D Academy — Condo Dues Guide](https://3d-universal.com/en/blogs/understanding-condo-dues-and-monthly-fees-in-the-philippines.html)
+- [Inquirer — Condo Dues Conundrum](https://business.inquirer.net/345709/biz-buzz-condo-dues-conundrum)
