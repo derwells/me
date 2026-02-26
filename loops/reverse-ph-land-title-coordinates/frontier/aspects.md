@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 15
-- Analyzed: 11
-- Pending: 4
-- Convergence: 73%
+- Analyzed: 12
+- Pending: 3
+- Convergence: 80%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -26,7 +26,7 @@ Depends on Wave 1 data.
 
 ### Wave 3: Edge Cases & Test Vectors
 Depends on Wave 2 data.
-- [ ] format-variations — Catalog format variations: cardinal directions, curved boundaries, natural features, subdivision vs original survey
+- [x] format-variations — Catalog format variations: cardinal directions, curved boundaries, natural features, subdivision vs original survey
 - [ ] error-handling — Error handling spec: typos, missing corners, impossible bearings, BLLM not found, ambiguous zone
 - [ ] test-vectors — Build 5+ test cases with known input/output; verify against Geoportal or Title Plotter PH
 
@@ -47,3 +47,4 @@ Depends on all prior waves.
 - luzon1911-to-prs92-transform (Wave 2, 2026-02-26) — Two transform paths: Path A (global 3-param EPSG:1161/1162, 17–44m accuracy) always available; Path B (DENR MC 2010-06 4-param conformal, ~10cm) requires caller-provided CE/CN. Datum detection via plan metadata (regex + era heuristics). Zone mapping 1:1 (same ellipsoid/projection). BLLM datum mismatch handling documented. Regional split logic (Luzon/Visayas vs Mindanao). All params verified ≥2 sources (EPSG.io, EPSG.org, PROJ DB, ESRI, DMA TR8350.2). Worked example: Zone III Manila area, shift ≈ −5.4" lat / +5.1" lon.
 - bllm-dataset-compilation (Wave 2, 2026-02-26) — 85,303 records from tiepoints.json: 19,568 BLLMs + 26,155 BBMs + 15,609 PRS92 control points + others. Zone inference via DAO 98-12 province lookup (verified ≥4 sources). Datum inference from Description field: 18.4% PRS92, 66% Luzon 1911, 15.5% unknown. Luzon1911→PRS92 grid shift empirically confirmed ~7–13m (corrected from 100–300m claim). Coverage: 117 provinces, gaps in BARMM/CAR/post-2006 provinces. BBM corrected to Barangay Boundary Monument. 3-tier lookup algorithm. 3 GeoIDEx cross-reference points for test vectors.
 - validation-rules (Wave 2, 2026-02-26) — 6 validation checks: linear closure (1:5,000 tertiary per DAO 2007-29 §28b, engine tiers 5k/3k/1k), area cross-check (shoelace vs stated, ≤0.5%/2%/5%), angular closure ((n-2)×180°, 30″√n), geometry sanity (self-intersection, bearing range, winding), BLLM confidence (5-tier), datum consistency (6 rules). Key correction: 1:3,000 rural NOT in DAO 2007-29 (engine-defined). Control tiers corrected: Primary=1:20,000, Secondary=1:10,000, Tertiary=1:5,000. All formulas verified ≥2 sources via subagent.
+- format-variations (Wave 3, 2026-02-26) — 13-section catalog of TD format variations across survey types. Key findings: (1) subdivision/consolidation/free-patent TDs all use identical canonical format — no separate code paths needed; (2) tie point is ALWAYS a geodetic monument even in subdivisions (NOT parent lot corners); (3) old vs new plan numbers have NO bearing/datum implications; (4) reconstituted titles more likely to have degraded data — 3 new error codes (TieDistanceMissing, MissingCorners, DuplicateCorner); (5) graphical-origin TDs (Cadm/PCadm) have lower precision and need relaxed validation; (6) "floating parcels" (no tie point) can compute relative polygon only; (7) coordinate-based modern TDs (lat/lng per corner) bypass traverse pipeline entirely. 18 survey plan prefixes cataloged (up from 10). New regex for conversion computation footer note and coordinate-based corner detection.
