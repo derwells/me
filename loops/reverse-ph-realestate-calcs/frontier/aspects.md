@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 29
-- Analyzed: 8
-- Pending: 21
-- Convergence: 28%
+- Analyzed: 9
+- Pending: 20
+- Convergence: 31%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -17,7 +17,7 @@
 - [x] dhsud-price-ceilings — Fetch current DHSUD issuances on socialized/economic/low-cost housing price ceilings and lot size standards
 - [x] bp220-standards — Fetch BP 220 implementing rules; extract minimum lot area, floor area, and open space standards per housing type
 - [x] rod-fee-schedules — Fetch Registry of Deeds fee schedules for title registration and annotation
-- [ ] prc-broker-regulations — Fetch PRC and RESA (RA 9646) rules on real estate broker commission structures and splits
+- [x] prc-broker-regulations — Fetch PRC and RESA (RA 9646) rules on real estate broker commission structures and splits
 - [ ] developer-payment-terms — Fetch published payment computation terms from 3-4 major developers (Ayala Land, SMDC, DMCI, Megaworld) to identify common equity schedule patterns
 
 ### Wave 2: Computation Extraction
@@ -59,3 +59,4 @@ Depends on Wave 3 data.
 - condo-act-common-areas (Wave 1, 2026-02-25)
 - dhsud-price-ceilings (Wave 1, 2026-02-25)
 - bp220-standards (Wave 1, 2026-02-26)
+- prc-broker-regulations (Wave 1, 2026-02-26)
