@@ -11,11 +11,8 @@
 ### Wave 1: Source Acquisition (9 aspects)
 
 - [ ] crispina-models — Extract all SQLAlchemy models from tsvjph/crispina: lease, tenant, charge, payment, transaction, charge_type, property, room, rentable. Document fields, relationships, and constraints.
-  **BLOCKED: tsvjph/crispina is a private GitHub repository. Requires GH_TOKEN with repo access to proceed. Skip until token is available; Wave 2 process analyses will note "Crispina: Unknown" where applicable.**
 - [ ] crispina-services — Extract math.py (compound interest), date.py (date splitting), and any other service logic. Document formulas and helper functions.
-  **BLOCKED: same as crispina-models.**
 - [ ] crispina-water-calculator — Extract the standalone water/ billing calculator. Document its inputs, outputs, rate tables, and billing logic.
-  **BLOCKED: same as crispina-models.**
 - [x] rent-control-rules — Fetch RA 9653, latest NHSB resolution (2024-01), and Civil Code lease articles. Extract: allowable increase caps by rent bracket, deposit limits, advance rent limits, grace period rules.
   → `input/rent-control-rules.md`
 - [x] corporate-rental-tax — Fetch BIR rules for SEC-registered rental corporations: RCIT/MCIT, VAT threshold (3M), percentage tax (3%), EWT (5%), DST on leases. Document forms, deadlines, and computation formulas.
