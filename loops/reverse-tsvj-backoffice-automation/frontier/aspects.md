@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 28
-- Analyzed: 23
-- Pending: 5
-- Convergence: 82%
+- Analyzed: 24
+- Pending: 4
+- Convergence: 86%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -55,7 +55,7 @@ Depends on Wave 1 data.
 ### Wave 3: Handoff & Integration Analysis (3 aspects)
 Depends on Wave 2 data.
 
-- [ ] data-flow-mapping — Map the full pipeline: daily operations → monthly close → accountant handoff → BIR/SEC filings. Identify which Wave 2 processes feed which.
+- [x] data-flow-mapping — Map the full pipeline: daily operations → monthly close → accountant handoff → BIR/SEC filings. Identify which Wave 2 processes feed which.
 - [ ] process-dependencies — Identify which processes generate data consumed by other processes (e.g., payment tracking feeds rent roll, rent roll feeds tax data).
 - [ ] compliance-calendar — Annual calendar of all filing deadlines: BIR monthly/quarterly/annual, SEC GIS/AFS, LGU business permits, RPT, fire safety. Alert triggers.
 
