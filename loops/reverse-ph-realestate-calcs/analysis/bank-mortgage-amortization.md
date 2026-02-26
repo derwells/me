@@ -446,6 +446,333 @@ Some banks offer "step-up" or "graduated" rate structures (e.g., BPI Step-Up Pay
 
 ---
 
+## 7. Bank-Specific Rate Schedules (2025-2026)
+
+This section documents the actual interest rate schedules offered by major Philippine commercial banks, sourced from official bank websites and comparison platforms in February 2026.
+
+### 7.1 BPI (Bank of the Philippine Islands)
+
+**Source:** BPI official website (bpi.com.ph/personal/loans/housing-loan/buy), fetched February 2026
+
+| Fixing Period | Rate p.a. (new applications) |
+|---------------|------------------------------|
+| 1 year | 7.00% |
+| 2 years | 7.25% |
+| 3 years | 7.75% |
+| 4 years | 8.00% |
+| 5 years | 8.00% |
+| 10 years | 10.25% |
+| 15 years | 10.50% |
+| 20 years | 12.00% |
+
+**Key terms:**
+- LTV: Up to 90% (house & lot), 60% (vacant lot/condo)
+- Loan term: 1-20 years (house & lot), max 10 years (vacant lot/condo)
+- Minimum loan: PHP 400,000
+- Minimum household income: PHP 40,000/month
+- Down payment: as low as 10%
+- Age: 18-70 at maturity
+
+**Promo (valid through mid-2025):** "5678" -- 6.7% for 5-year fixing, up to PHP 80,000 in fees waived
+
+**Fees:**
+- Processing and handling fee: PHP 10,000
+- Appraisal fee: PHP 5,000 (inclusive of title verification)
+- Notarial fee: PHP 1,300
+- DST: PHP 1.50 per PHP 200 of loan amount (~0.75%)
+- Group Financial Security Plan (MRI): varies by age and loan amount
+- Fire insurance: varies
+- BPI offers "All-In Financing" that rolls bank fees into the loan amount
+
+### 7.2 BDO Unibank
+
+**Source:** BDO official website (bdo.com.ph/personal/loans/home-loan/interest-rate), rate sheet PDF, MoneySense
+
+| Fixing Period | Rate p.a. (existing clients) | Rate p.a. (new clients) |
+|---------------|------------------------------|------------------------|
+| 1 year | ~6.75% | ~7.00% |
+| 2 years | ~7.00% | ~7.25% |
+| 3 years | ~7.50% | ~7.75% |
+| 5 years | ~8.00% | ~8.25% |
+| 10 years | Available | Available |
+
+*BDO distinguishes rates for existing vs. new clients, with existing clients receiving lower rates.*
+
+**Key terms:**
+- LTV: Up to 80% of appraised value
+- Loan term: up to 25 years
+- Grace period option: 60-day grace OR interest-only for first 6 months
+
+**Repricing formula (specific to BDO, from official rate sheet):**
+```
+New rate = HIGHEST of:
+  (1) Latest awarded 364-day Treasury Bill 1-year Reference Rate + 4.00%
+  (2) Latest available 1-year BVAL rate or Benchmark Rate + 3.00%
+  (3) Board Rate at time of repricing
+```
+
+**BDO Fees:**
+- Appraisal: PHP 5,000 (within 30km), PHP 5,500 (outside 30km)
+- Handling fee: PHP 3,000
+- Notarial fee: PHP 100-200 per document
+- DST: ~0.75% of loan amount
+- CLI premium: PHP 4.75 per PHP 1,000 of loan (ages up to 49); PHP 6.50 per PHP 1,000 (ages 50-69)
+- Fire insurance: variable, based on appraised value of improvements
+- Pre-termination processing fee: PHP 3,500
+
+**Promo (Jan 15 - Mar 31, 2026):** Low rates, waived fees, free fire insurance. 5-year lock-in; pre-termination triggers chargeback of waived fees and fire insurance premium.
+
+### 7.3 Metrobank
+
+**Source:** Metrobank official rates page (metrobank.com.ph/articles/loan-rates-and-fees), fetched February 2026. Rates effective as of June 26, 2025.
+
+| Fixing Period | Rate p.a. |
+|---------------|-----------|
+| 1 year | 6.25% |
+| 2 years | 7.25% |
+| 3 years | 7.75% |
+| 4 years | 8.00% |
+| 5 years | 8.25% |
+
+*Additional 1% for Home Equity products.*
+
+**Key terms:**
+- LTV: 70-80% of evaluated value
+- Loan term: up to 25 years (house & lot), 20 years (renovation), 15 years (refinancing/OFWs), 10 years (vacant lot)
+- Minimum loan: PHP 500,000
+- Minimum income: PHP 40,000/month
+- Payment: strictly via ADA (Automatic Debit Arrangement)
+
+**Metrobank Fees:**
+- Handling fee: PHP 5,000
+- Takeout/refinancing processing: PHP 15,000
+- Appraisal (in-town): PHP 4,000; (out-of-town): PHP 4,500; re-appraisal: PHP 2,000
+- Notarial: PHP 400 per document (notarized); PHP 300 (non-notarized)
+- Late penalty: 3% per month
+- Full prepayment processing: PHP 5,000
+- Collateral modifications: PHP 5,000
+
+**Promos:** "Goals Made Real" (2025): 6.75% with up to PHP 60,000 in waived fees. Later promo: 6.50% with up to PHP 100,000 waived.
+
+### 7.4 RCBC
+
+**Source:** RCBC official website (rcbc.com/home-loans), comparison sites
+
+| Fixing Period | Rate p.a. (indicative) |
+|---------------|----------------------|
+| 1 year | ~6.38% |
+| 2-3 years | ~6.50% |
+| 5 years | ~6.50-7.00% (promo dependent) |
+
+**Key terms:**
+- LTV: up to 80% of appraised value
+- Loan term: up to 20 years
+- Minimum loan: PHP 300,000 (construction/renovation), PHP 1,000,000 (purchase)
+- Fixing options: 1 year up to 20 years
+- Approval: as fast as 3 days
+
+**Promos (2025-2026):**
+- "Home for the Holidays" (Nov 2025 - Jan 2026): 6.5% fixed 1-5 yr (Tier 1-2 developers); 7.0% (Tier 3-4)
+- Online promo: as low as 5.25% fixed 1-5 yr (with 5-year lock-in)
+- "Home Loan Switch" (refinancing, Sep 2025 - Aug 2026): 8% fixed 5 yr
+
+### 7.5 Security Bank
+
+**Source:** Security Bank official website (securitybank.com), PhilNews
+
+| Fixing Period | Rate p.a. |
+|---------------|-----------|
+| 1 year | Starting at 6.50-7.00% |
+| 3 years | ~8.25% (from comparison sources) |
+| 5 years | ~6.75-6.80% (promo rate; board rate likely higher) |
+
+**Key terms:**
+- LTV: up to 90% selling price (top-tier developer primary), 80% appraised (individual seller), 60% (investment/equity/vacant lot)
+- Loan term: max 25 years (house & lot), 20 years (townhouse/duplex/condo), 15 years (vacant lot)
+- Minimum loan: PHP 1,000,000
+- Minimum joint gross monthly income: PHP 50,000
+- Maximum loan: PHP 20,000,000
+- Other fees: estimated 2.5-3% of approved loan amount
+
+### 7.6 UnionBank
+
+**Source:** UnionBank website (unionbankph.com/homeloan), comparison sites
+
+| Fixing Period | Rate p.a. (indicative) |
+|---------------|----------------------|
+| 1 year | ~6.75% |
+| 1-5 years | 6.0-11.0% range |
+
+**Key terms:**
+- LTV: up to 99% of property value (highest in Philippine market)
+- Loan term: up to 20 years
+- Minimum loan: PHP 200,000
+- 100% digital application; AI-driven evaluation
+- Accredited developers: Avida, Ayala, Camella, Filinvest, Megaworld, SMDC
+
+### 7.7 Chinabank (China Banking Corporation)
+
+**Source:** Chinabank website (chinabank.ph/loans-homeplus), EasyPropertyMatch comparison
+
+| Fixing Period | Rate p.a. (from comparison sources) |
+|---------------|--------------------------------------|
+| 3 years | ~7.50% |
+| 5 years | ~8.00% |
+
+*Rates not publicly listed on website; provided upon application.*
+
+**Key terms:**
+- Rate fixing options: 1, 3, 5 years
+- Terms: vacant lot/renovation/refinancing up to 10 yr; condo up to 15 yr; house & lot up to 20 yr
+- Payment via ADA on Chinabank account
+
+### 7.8 PSBank
+
+**Source:** EasyPropertyMatch comparison table
+
+| Fixing Period | Rate p.a. |
+|---------------|-----------|
+| 3 years | 7.25% |
+| 5 years | 7.50% |
+| 10 years | 9.25% |
+| 15 years | 10.00% |
+| 20 years | 10.50% |
+
+### 7.9 Consolidated Rate Comparison (Board/Regular Rates)
+
+| Bank | 1-yr Fixed | 3-yr Fixed | 5-yr Fixed | 10-yr Fixed | Max Term | Max LTV |
+|------|-----------|-----------|-----------|------------|----------|---------|
+| **BPI** | 7.00% | 7.75% | 8.00% | 10.25% | 20 yr | 90% |
+| **BDO** | ~7.00% | ~7.75% | ~8.25% | Available | 25 yr | 80% |
+| **Metrobank** | 6.25% | 7.75% | 8.25% | N/A | 25 yr | 80% |
+| **RCBC** | ~6.38% | ~6.50% | ~6.50-7.00% | N/A | 20 yr | 80% |
+| **Security Bank** | ~7.00% | ~8.25% | ~6.75%* | N/A | 25 yr | 90%** |
+| **UnionBank** | ~6.75% | N/A | N/A | N/A | 20 yr | 99% |
+| **Chinabank** | N/A | ~7.50% | ~8.00% | N/A | 20 yr | N/A |
+| **PSBank** | N/A | 7.25% | 7.50% | 9.25% | 20 yr | N/A |
+
+*Security Bank 5-yr rate is promo; board rate likely higher
+**90% only for primary acquisition from top-tier developers
+
+**Market context:** Despite BSP cutting rates by 225 bps (from 6.50% to 4.25% between Aug 2024 and Feb 2026), housing loan rates remain "sticky" at 6-8%+ (Bloomberg, Nov 2025).
+
+---
+
+## 8. Mortgage Redemption Insurance (MRI) / Credit Life Insurance (CLI)
+
+### 8.1 Requirement
+MRI is **mandatory** for all Philippine housing loans. It is a term life insurance naming the bank as beneficiary. Upon borrower death or total permanent disability, the insurer pays off the remaining loan balance.
+
+### 8.2 Types
+1. **Declining MRI** -- coverage decreases as loan balance decreases; lower premiums
+2. **Level MRI** -- coverage remains at original loan amount throughout; higher premiums
+
+### 8.3 Bank-Specific Rates
+
+**BDO (documented):**
+```
+Annual CLI = (loan_amount / 1,000) * rate_per_1000
+
+Rate per PHP 1,000:
+  Ages up to 49:   PHP 4.75 (annualized: 0.475% of loan)
+  Ages 50 to 69:   PHP 6.50 (annualized: 0.650% of loan)
+```
+BDO offers "Built-In Insurance" (BII): annual premium split into 12 monthly installments at 0% interest.
+
+**Other banks:** Premium rates are generally not publicly listed. Factors: borrower age, loan amount, insurer.
+
+**Comparison with Pag-IBIG:**
+| Feature | Commercial Bank CLI/MRI | Pag-IBIG MRI |
+|---------|----------------------|-------------|
+| Documented rate | PHP 4.75-6.50/PHP 1,000 (BDO) | PHP 0.23/PHP 1,000 (uniform) |
+| Annualized | 0.475%-0.650% | 0.023% |
+| Payment | Annual lump sum or monthly BII | Monthly as part of amortization |
+| Age factor | Yes (50+ pays more) | Unclear (conflict: uniform vs. age-bracket) |
+
+Commercial bank MRI premiums are approximately **20-28x higher** than Pag-IBIG's documented rate.
+
+### 8.4 MRI Alternatives
+Borrowers may substitute an existing life insurance policy (assigned to bank as beneficiary) if coverage is sufficient per the loan amount. Providers like Pru Life UK and Sun Life offer assignable policies.
+
+---
+
+## 9. Effective Interest Rate (EIR) Computation
+
+### 9.1 BSP Circular 730 Requirement
+All lenders must compute and disclose the EIR, defined as:
+> "The rate that exactly discounts estimated future cash flows through the life of the loan to the net amount of loan proceeds." (per Philippine Accounting Standards)
+
+### 9.2 What Is Included in EIR
+**Finance charge** includes ALL of:
+- Nominal interest
+- Processing/handling fees
+- Service charges
+- Appraisal fees
+- Any other charges incident to credit extension
+
+EIR is always >= nominal rate because upfront fees reduce net proceeds.
+
+### 9.3 EIR Computation Formula
+The EIR is the rate `i` that solves:
+```
+Net_Proceeds = sum(Payment_k / (1 + i)^k for k = 1..n)
+
+Where:
+  Net_Proceeds = loan_amount - all_upfront_fees_deducted
+  Payment_k    = monthly payment for month k
+  i            = monthly EIR (annualize: EIR_annual = (1 + i)^12 - 1)
+```
+
+This is the IRR (Internal Rate of Return) of the borrower's cash flow series.
+
+### 9.4 EIR Disclosure Requirements
+- Must appear in loan disclosure statement
+- Must appear in loan amortization schedule
+- Must appear in marketing materials
+- Must be consistent across all loan documents
+- May be quoted annually (term > 1 year) or monthly (term <= 1 year)
+
+### 9.5 Worked Example
+Scenario: PHP 3,000,000 loan, 6.25% nominal, 25 years, PHP 30,000 upfront fees deducted.
+```
+Net proceeds: PHP 2,970,000
+Monthly P+I at 6.25%: PHP 19,821.89
+Solving for monthly EIR: i_monthly ~= 0.5260%
+EIR_annual = (1.005260)^12 - 1 = 6.494%
+```
+EIR (6.494%) exceeds nominal rate (6.25%) due to upfront fees.
+
+---
+
+## 10. Processing Fees Comparison
+
+| Fee | BPI | BDO | Metrobank |
+|-----|-----|-----|-----------|
+| **Processing/handling** | PHP 10,000 | PHP 3,000 | PHP 5,000 + PHP 15,000 (takeout) |
+| **Appraisal** | PHP 5,000 | PHP 5,000-5,500 | PHP 4,000-4,500 |
+| **Notarial** | PHP 1,300 | PHP 100-200/doc | PHP 400/doc |
+| **DST on mortgage** | ~0.75% of loan | ~0.75% of loan | ~0.75% of loan |
+| **CLI/MRI (annual)** | Varies | 0.475%-0.650% | Varies |
+| **Fire insurance** | Varies | Varies | Varies |
+| **Late penalty** | Not published | Not published | 3%/month |
+| **Pre-termination** | Not published | PHP 3,500 | PHP 5,000 |
+
+Fees are NOT standardized across banks. DST is the only statutory (uniform) charge.
+
+Fee waiver promos are a major competitive tool: BPI waives up to PHP 80,000; Metrobank up to PHP 60,000-100,000; BDO waives fees + free fire insurance.
+
+---
+
+## 11. BSP Policy Rate Context (February 2026)
+
+- BSP target reverse repurchase rate: **4.25%** (after 25 bps cut on Feb 19, 2026)
+- Total easing since August 2024: **225 basis points** (from 6.50% to 4.25%)
+- Metrobank Research projects terminal rate of **4.00%** by end-2026
+- Philippine economy grew 4.4% in 2025 (below expectations)
+- Housing loan rates remain "sticky" at 6-8%+ despite aggressive easing
+
+---
+
 ## Summary of Verification Results
 
 | Computation | Claim | Verdict | Key Qualification |
