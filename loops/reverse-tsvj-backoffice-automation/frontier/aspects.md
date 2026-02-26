@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 28
-- Analyzed: 15
-- Pending: 13
-- Convergence: 53%
+- Analyzed: 16
+- Pending: 12
+- Convergence: 57%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -39,7 +39,7 @@ Depends on Wave 1 data.
 - [x] late-payment-penalties — Penalty computation: residential (capped at 1 month/year) vs commercial (contractual, subject to Art. 1229). Compounding rules, grace periods.
 - [x] water-billing — Meter reading → per-unit consumption → bill. Rate application, common area apportionment, statement generation. Compare Crispina water calculator vs regulatory requirements.
 - [x] electric-billing — Electric bill splitting across units. Sub-metering, Meralco rate application, common area allocation methods (by floor area vs equal split vs actual).
-- [ ] security-deposit-lifecycle — Collection at lease start, tracking during lease, deductions at end (itemized), refund with interest (controlled) or per contract (commercial). Tax reclassification on application.
+- [x] security-deposit-lifecycle — Collection at lease start, tracking during lease, deductions at end (itemized), refund with interest (controlled) or per contract (commercial). Tax reclassification on application.
 
 **Contracts & lease management:**
 - [ ] lease-contract-generation — Generating new lease contracts: template system, variable substitution, mandatory PH clauses, board resolution reference, notarization tracking. PDF output.
@@ -79,3 +79,4 @@ Depends on all Wave 3 analysis.
 | 13 | late-payment-penalties | 2 | analysis/late-payment-penalties.md | 2026-02-26 |
 | 14 | water-billing | 2 | analysis/water-billing.md | 2026-02-26 |
 | 15 | electric-billing | 2 | analysis/electric-billing.md | 2026-02-26 |
+| 16 | security-deposit-lifecycle | 2 | analysis/security-deposit-lifecycle.md | 2026-02-26 |
