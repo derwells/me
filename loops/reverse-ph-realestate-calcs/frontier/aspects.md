@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 29
-- Analyzed: 30
-- Pending: 0 (Wave 4: 1 of 3 complete)
-- Convergence: 100% (Wave 1–3), 33% (Wave 4)
+- Analyzed: 31
+- Pending: 0 (Wave 4: 2 of 3 complete)
+- Convergence: 100% (Wave 1–3), 67% (Wave 4)
 
 ## Pending Aspects (ordered by dependency)
 
@@ -48,7 +48,7 @@ Depends on Wave 2 data.
 ### Wave 4: Scoring & Synthesis
 Depends on Wave 3 data.
 - [x] opportunity-scoring — Score each computation: automation_gap × market_frequency × moat_defensibility (1-5 each)
-- [ ] catalog-draft — Produce ranked opportunity catalog at output/opportunity-catalog.md; cross-reference with ph-tax-computations-reverse catalog
+- [x] catalog-draft — Produce ranked opportunity catalog at output/opportunity-catalog.md; cross-reference with ph-tax-computations-reverse catalog
 - [ ] catalog-review — Self-review for completeness, actionability, and correctness of scoring
 
 ## Recently Analyzed
@@ -79,3 +79,4 @@ Depends on Wave 3 data.
 - practitioner-workflow (Wave 3, 2026-02-27, EXPANDED) — 8 computation workflows + full 6-stage developer sales lifecycle documented from 130+ sources; BP 220 compliance entirely manual; LGU assessment radically non-standardized; notarial fees non-deterministic; broker commission newly tooled (iRealtee Jan 2026); end-to-end closing has no single integrated tool. LIFECYCLE ADDITIONS: pre-sale sample computation (5-30 min/instance, high error rate, no multi-developer unified tool), equity-to-loan-takeout restructuring (10+ working days gating document at DMCI), Maceda refund (ZERO tools, very high error rate), closing cost aggregation (5+ fees, no single-pass tool), PDC schedule preparation as friction point, Pag-IBIG 20-30 day evaluation timeline, bank appraisal 3-15 day range, LOG 90-day validity window. Summary table mapping all 16 computations to lifecycle stages + error rates produced.
 - complexity-scoring (Wave 3, 2026-02-27) — all 16 computations scored on 4 dimensions (1–5 scale each); composite ranking: assessment-level-lookup (17) leads; 7 heavy-infrastructure (≥14), 8 moderate (10–12), 1 light (maceda-refund at 6); LGU variability is dominant complexity driver; shared data layer opportunity identified across BIR zonal values, LGU assessment data, DHSUD JMC ceilings. Wave 3 COMPLETE.
 - opportunity-scoring (Wave 4, 2026-02-27) — all 16 computations scored on 3 dimensions (A×F×M, 1–5 each, multiplicative composite max 125); TOP 5: assessment-level-lookup (100), socialized-housing-compliance (80), condo-association-dues (80), bp220-lot-compliance (75), improvement-depreciation (75); 3 tiers identified; 6 data layer clusters; 6 deep-dive loop recommendations produced; quick wins vs infrastructure plays strategy documented.
+- catalog-draft (Wave 4, 2026-02-27) — Ranked opportunity catalog produced at output/opportunity-catalog.md; 16 entries with full inputs/outputs/legal basis/scoring; 3 tiers (5 high-opportunity, 5 medium, 6 lower); 6 shared data layers mapped; 6 deep-dive loop recommendations; 8 tax loop cross-references documented; ph-tax-computations-reverse catalog not yet produced (noted for future reconciliation).
