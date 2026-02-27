@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 29
-- Analyzed: 23
-- Pending: 6
-- Convergence: 79%
+- Analyzed: 25
+- Pending: 4
+- Convergence: 86%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -35,8 +35,8 @@ Depends on Wave 1 data.
 - [x] assessment-level-lookup — Property assessment level by classification and LGU: residential/commercial/industrial/agricultural tiers per Local Government Code
 - [x] improvement-depreciation — Depreciation schedule for building improvements: straight-line method, useful life by construction type, residual value rules per local assessor
 - [x] rod-registration-fees — Registry of Deeds fee computation: fee schedule by property value bracket, annotation fees, additional charges
-- [ ] notarial-fees — Notarial fee computation: fee schedule per notarial rules, percentage-of-value basis for real estate documents
-- [ ] broker-commission — Real estate broker commission: standard rates, split computation (listing broker vs selling broker), VAT implications on commission
+- [x] notarial-fees — Notarial fee computation: fee schedule per notarial rules, percentage-of-value basis for real estate documents
+- [x] broker-commission — Real estate broker commission: standard rates, split computation (listing broker vs selling broker), VAT implications on commission
 - [ ] condo-association-dues — HLURB-prescribed monthly condo dues computation: rate base = gross expense / gross area; dues per unit = unit sqm × monthly rate; VAT implications; discovered in condo-act-common-areas analysis
 
 ### Wave 3: Competitive & Automation Gap Analysis
@@ -72,3 +72,5 @@ Depends on Wave 3 data.
 - socialized-housing-compliance (Wave 2, 2026-02-26) — 5 sub-computations verified via 20+ sources; all ceiling figures confirmed; labeling discrepancy for L2/L3 classification noted; lot-only ceiling sub-rule discovered (40% of house-and-lot); HGC→PhilGuarantee entity correction; BOI 20% SHR distinguished from balanced housing requirement
 - bp220-lot-compliance (Wave 2, 2026-02-26) — 12 compliance checks verified against 9 independent sources; all 12 CONFIRMED with zero corrections needed; 10 additional deterministic checks identified (firewall, drainage, road pavement, block length, completion level, tree planting, elevator, fire suppression, roof eave clearance, water supply); full decision tree with 12-step compliance algorithm produced; VIZCODE pre-2008 values flagged as outdated; JMC floor area layering (18→32→28→24 sqm) fully documented
 - assessment-level-lookup (Wave 2, 2026-02-26) — 8 sub-computations extracted (classification, land/building/machinery/special assessment levels, total AV, RPT pipeline, payment penalties); all 34 table values verified against 9 sources with zero corrections; RA 12001 impact analyzed (preserves Section 218 maximums, adds 6% transition cap); 5 unresolved ambiguities (1991 bracket thresholds unadjusted, mixed-use allocation, LGU rate database gap)
+- notarial-fees (Wave 2, 2026-02-27) — 5 computations extracted (OCA per-page ceiling, notarial foreclosure fee, IBP-based DOAS/REM fee, market heuristic, unattributed tiered table); CRITICAL CORRECTION: A.M. No. 19-08-15-SC is Rules on Evidence, NOT a notarial fee amendment — tiered table attribution fabricated; OCA Circular 73-2014 ₱200/₱50 ceiling confirmed; foreclosure fee 5%/2.5% + ₱100K cap confirmed; 2 fully deterministic, 1 conditional, 2 non-deterministic
+- broker-commission (Wave 2, 2026-02-27) — 11 computations extracted (sale/lease/commercial commission, broker-agent split, multi-tier distribution, MLS co-broke, EWT, VAT, net commission, finder's fee, rent-to-own); verified via 22+ sources; 2 CRITICAL CORRECTIONS: EWT rates superseded by RR 11-2018 (5%/10% at ₱3M, not 10%/15% at ₱720K); SMDC 4.75% UNVERIFIED; 8 BIR forms documented; finder's fee vs. commission legal distinction mapped
