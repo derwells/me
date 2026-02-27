@@ -2,13 +2,14 @@
 
 **Wave:** 3 (Competitive & Automation Gap Analysis)
 **Date:** 2026-02-27
-**Method:** Web search across 50+ queries; manual tool review; mapping against 16 Wave 2 computations
+**Method:** Web search across 50+ queries; manual tool review; direct site inspection; mapping against 16 Wave 2 computations
+**Updated:** 2026-02-27 — expanded to 50+ tools across 7 categories (added listing platforms, developer portals, PropTech startups, additional Pag-IBIG calculators, LGU government tools)
 
 ---
 
 ## Summary
 
-28 tools were identified across 5 categories: generic international calculators, Philippine bank calculators, PH-native aggregator/calculator sites, government tools, and professional/broker platforms. No single tool covers more than 4 of the 16 Wave 2 computations. The deepest coverage is in mortgage amortization (11+ tools) and Pag-IBIG loan computation (8+ tools). Zero tools were found for Maceda refund computation, BP 220 compliance checking, socialized housing compliance, condo common area percentage, assessment level lookup, improvement depreciation, or rent increase computation.
+50+ tools were identified across 7 categories: generic international calculators, Philippine bank calculators, PH-native aggregator/calculator sites, government tools (national + LGU), professional/broker platforms, property listing platforms, and PropTech startups. No single tool covers more than 4 of the 16 Wave 2 computations. The deepest coverage is in mortgage amortization (15+ tools) and Pag-IBIG loan computation (8+ tools). **Zero tools were found for 8 of 16 computations:** Maceda refund, rent increase, condo common area percentage, socialized housing compliance, BP 220 compliance, improvement depreciation, notarial fees, and condo association dues. All 4 major developer portals (Ayala Land, SMDC, DMCI, Megaworld) confirmed to have NO publicly accessible computation tools. PropTech startups (uwi, Homebase, Carousell Property) focus on transaction facilitation, not computation engines.
 
 ---
 
