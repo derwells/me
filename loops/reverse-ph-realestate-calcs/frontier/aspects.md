@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 29
-- Analyzed: 22
-- Pending: 7
-- Convergence: 76%
+- Analyzed: 23
+- Pending: 6
+- Convergence: 79%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -34,7 +34,7 @@ Depends on Wave 1 data.
 - [x] bp220-lot-compliance — BP 220 standards compliance: minimum lot area, floor area ratio, open space percentage by development type
 - [x] assessment-level-lookup — Property assessment level by classification and LGU: residential/commercial/industrial/agricultural tiers per Local Government Code
 - [x] improvement-depreciation — Depreciation schedule for building improvements: straight-line method, useful life by construction type, residual value rules per local assessor
-- [ ] rod-registration-fees — Registry of Deeds fee computation: fee schedule by property value bracket, annotation fees, additional charges
+- [x] rod-registration-fees — Registry of Deeds fee computation: fee schedule by property value bracket, annotation fees, additional charges
 - [ ] notarial-fees — Notarial fee computation: fee schedule per notarial rules, percentage-of-value basis for real estate documents
 - [ ] broker-commission — Real estate broker commission: standard rates, split computation (listing broker vs selling broker), VAT implications on commission
 - [ ] condo-association-dues — HLURB-prescribed monthly condo dues computation: rate base = gross expense / gross area; dues per unit = unit sqm × monthly rate; VAT implications; discovered in condo-act-common-areas analysis
