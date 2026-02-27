@@ -400,6 +400,7 @@ Every process in this catalog depends on a shared set of master data entities. T
 - *DST (Form 2000):* NIRC Sec. 194, 200. Per-event, within 5 days after close of month of lease execution.
 - *SAWT:* RR 02-2006. Filed with 1702Q and 2550Q. Generated from collected 2307 certificates.
 - *2307 reconciliation:* Match received certificates against expected EWT. Follow up missing certificates.
+- *SLSP (Summary List of Sales/Purchases):* RR 1-2012 — VAT-registered corporations must file quarterly alongside 2550Q. Sales list extracted from P5 (billing); purchases list from P14 (expenses). Adds 4 deadlines/year.
 
 **Automability: 4/5** — Data aggregation and summary computation are deterministic. Deducted for: 2307 receipt is external (depends on tenant compliance), VAT-exempt vs. VATable split requires unit type data, input VAT creditability assessment (mixed-operation apportionment), DST is event-driven (depends on lease execution tracking).
 
@@ -409,7 +410,7 @@ Every process in this catalog depends on a shared set of master data entities. T
 
 **Feature spec summary:**
 - New entities: `OutputVATSummary` (quarterly: VATable sales, exempt sales, output VAT, input VAT, net payable), `IncomeTaxQuarterlyData`, `SAWTRecord` (from 2307s), `EWTWithheldSummary` (on supplier payments), `DSTRegister` (per lease execution)
-- 6 compilation workflows: (1) Output VAT → 2550Q, (2) Income → 1702Q, (3) SAWT → attachment, (4) EWT → 0619-E/1601-EQ/1604-E, (5) DST → Form 2000, (6) 2307 tracking
+- 7 compilation workflows: (1) Output VAT → 2550Q, (2) Income → 1702Q, (3) SAWT → attachment, (4) EWT → 0619-E/1601-EQ/1604-E, (5) DST → Form 2000, (6) 2307 tracking, (7) SLSP → quarterly attachment to 2550Q (sales from P5, purchases from P14; RR 1-2012)
 - Feeds directly from: P5 (billing → output VAT), P6 (payments → collections), P11 (rent roll → comprehensive summary), P14 (expenses → input VAT, EWT withheld on suppliers)
 
 *Full analysis: `analysis/tax-data-compilation.md`*
@@ -426,7 +427,7 @@ Every process in this catalog depends on a shared set of master data entities. T
 - *EOPT dual-document:* RA 11976 (EOPT Act); RR 7-2024 — Invoice is primary (supports input VAT claims), issued at accrual. Receipt is supplementary, issued at payment.
 - *Invoice requirements:* RR 7-2024 Sec. 6(B) — 16 mandatory fields. Sequential numbering per ATP.
 - *Separate numbering:* Invoices and receipts maintain SEPARATE sequential series.
-- *ATP management:* RR 18-2012 — 3-year validity or until series exhausted. Printer accreditation required.
+- *ATP management:* RR 6-2022 — 5-year validity (extended from 3-year under RR 18-2012; validity period is CONFLICTING — RMC 123-2022 removed expiry entirely, but later RRs are silent). Printer accreditation required.
 - *EIS compliance:* RR 26-2025 — Electronic Invoicing System deadline December 31, 2026. Large taxpayers first; smaller entities phased in.
 - *Penalties:* PHP 1,000-50,000 for non-issuance; up to PHP 10M for printing without ATP.
 
@@ -674,7 +675,7 @@ The corporation faces ~43 recurring compliance deadlines per year across four re
 | March 1 | Annual EWT alphalist (1604-E) | P14 → P12 |
 | April 15 | Annual ITR (1702-RT) | P12 |
 | 30 days after ASM | SEC GIS + AFS | Corporate governance |
-| July 15 / January 15 | LIS (semi-annual) | P11 |
+| January 31 / July 31 | LIS (semi-annual) | P11 |
 | December 31, 2026 | EIS compliance deadline (RR 26-2025) | P13 |
 
 ### Alert System
@@ -823,12 +824,13 @@ Entities that serve as integration points between multiple processes:
 |--------|:-----:|-------------|
 | CONFIRMED | ~95 rules | Verified against 2+ independent sources |
 | CONFIRMED WITH CORRECTION | ~8 rules | Verified but initial source contained errors; corrected |
-| CONFLICTING | 2 rules | Authoritative sources disagree; flagged for advisor |
+| CONFLICTING | 3 rules | Authoritative sources disagree; flagged for advisor |
 | UNVERIFIED | 1 rule | No authoritative source found (defective meter estimated billing) |
 
 **Conflicting rules requiring advisor determination:**
 1. VAT on electricity pass-throughs — EOPT Act exclusion vs. earlier BIR RRs (P3)
 2. Specific ERC cap on electric admin fees — no published regulation, informal reference ranges only (P3)
+3. ATP validity period — RR 18-2012 (3 years) vs. RR 6-2022/RMC 123-2022 (5 years / removal of expiry) vs. RR 7-2024 (silent) (P13)
 
 **Hallucinated citations corrected:**
 - "Radiowealth Finance v. Palacol" — no such PH SC case exists (P7, from Wave 1 input)
@@ -836,4 +838,4 @@ Entities that serve as integration points between multiple processes:
 
 ---
 
-*Generated from 14 Wave 2 process analyses and 3 Wave 3 integration analyses. Each analysis cross-checked regulatory rules against 2+ independent sources using verification subagents. Full analyses available in `analysis/` directory.*
+*Generated from 14 Wave 2 process analyses and 3 Wave 3 integration analyses. Each analysis cross-checked regulatory rules against 2+ independent sources using verification subagents. Self-reviewed (Wave 4) with 3 corrections applied: ATP validity updated, LIS deadlines corrected, SLSP added to P12. Full analyses available in `analysis/` directory.*

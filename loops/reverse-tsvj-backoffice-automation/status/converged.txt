@@ -1,0 +1,17 @@
+Loop converged: 2026-02-27
+
+28 aspects analyzed across 4 waves:
+- Wave 1: 9 source acquisition (Crispina codebase + PH regulatory research)
+- Wave 2: 14 process analyses with lightweight feature specs
+- Wave 3: 3 integration analyses (data flow, dependencies, compliance calendar)
+- Wave 4: 2 synthesis (catalog draft + self-review)
+
+Final output: output/process-catalog.md
+- 14 back-office processes cataloged (P1-P14) + foundation entity (F0)
+- ~95 regulatory rules verified against 2+ independent sources
+- 3 conflicting rules documented for advisor determination
+- 2 hallucinated citations caught and flagged
+- 3 corrections applied during self-review
+- Pipeline verified gapless: data entry → computation → reporting → BIR filing
+
+Self-review: PASSED (analysis/catalog-review.md)

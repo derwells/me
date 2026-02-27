@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 28
-- Analyzed: 27
-- Pending: 1
-- Convergence: 96%
+- Analyzed: 28
+- Pending: 0
+- Convergence: 100%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -64,7 +64,7 @@ Depends on all Wave 3 analysis.
 
 - [x] catalog-draft — Compile all analyses into output/process-catalog.md. Group by category, include cross-cutting concerns, map dependencies, leave pain/frequency columns blank for owner scoring.
   → `output/process-catalog.md`
-- [ ] catalog-review — Self-review the catalog for completeness: all processes covered, specs are actionable, regulatory citations are accurate, no gaps in the pipeline from operations to filings.
+- [x] catalog-review — Self-review the catalog for completeness: all processes covered, specs are actionable, regulatory citations are accurate, no gaps in the pipeline from operations to filings.
 
 ## Recently Analyzed
 
