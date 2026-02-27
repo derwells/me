@@ -3,7 +3,7 @@
 **Generated:** 2026-02-27
 **Loop:** `loops/reverse-ph-realestate-calcs/`
 **Scope:** Every deterministic computation in Philippine real estate outside taxation — financing, regulatory compliance, property valuation, fees, and government housing programs.
-**Complementary loop:** `loops/reverse-ph-tax-computations/` (covers CGT, DST, VAT, CWT, RPT, transfer tax, withholding) — catalog not yet produced.
+**Complementary loop:** `loops/reverse-ph-tax-computations/` (covers CGT, DST, VAT, CWT, RPT, transfer tax, withholding) — catalog produced 2026-02-26, cross-referenced below.
 
 ---
 
@@ -428,20 +428,24 @@ Key stat:  EVERY high-moat computation is also underserved.
 
 ### Cross-Reference: Tax Computations Loop
 
-The `loops/reverse-ph-tax-computations/` loop covers CGT, DST, VAT, CWT, RPT, transfer tax, and withholding. Its opportunity catalog has not yet been produced. Key bridge points:
+The `loops/reverse-ph-tax-computations/` loop covers 12 tax computations (CGT, DST, VAT, CWT, RPT, transfer tax, EWT, etc.). Its opportunity catalog was produced 2026-02-26 and has been cross-referenced in the catalog-review self-review. Key bridge points:
 
-| This Loop's Computation | Tax Loop Connection | Shared Data |
-|------------------------|--------------------|-|
-| assessment-level-lookup | Determines RPT tax base | LGU assessment data |
-| rod-registration-fees | "Higher value rule" determines CGT/DST/transfer tax bases | BIR zonal values |
-| broker-commission | EWT (5%/10%) and VAT (12%) on commission | EWT/VAT thresholds |
-| condo-association-dues | SC GR 215801 — dues exempt from IT/VAT/WT | BIR tax treatment |
-| socialized-housing-compliance | VAT exemption under NIRC §109(P) | Housing classification |
-| developer-equity-schedule | VAT inclusion above ₱3.6M threshold | VAT threshold |
-| notarial-fees | VAT on services if >₱3M annual | VAT threshold |
-| rent-increase-computation | CWT on rent (5%), income tax on rental income | Withholding rates |
+| This Loop's Computation | Tax Loop Entry (Score) | Bridge | Shared Data |
+|------------------------|----------------------|--------|-------------|
+| assessment-level-lookup (100) | RPT Computation (125) | Assessment level IS the RPT tax base. This loop covers §218 lookup; tax loop covers rate application + SEF + penalty. | LGU assessment database (SMV, BUCC, RPT rates) |
+| rod-registration-fees (20) | Highest-of-Three Base (40), CGT (45), Transfer Tax (60) | "Higher value rule" max(GSP, ZV, AFMV) is shared tax base | BIR zonal values |
+| broker-commission (45) | CWT Rate and Timing (60) | EWT on commission (individual brokers 5%/10% per RR 11-2018; sellers habitually engaged 1.5/3/5/6%) | EWT/VAT thresholds |
+| condo-association-dues (80) | N/A — SC settled as exempt | SC GR 215801 invalidated RMC 65-2012; TRAIN §109(1)(Y) | BIR tax treatment |
+| socialized-housing-compliance (80) | VAT on Real Property (64) | Socialized housing exemption is a VAT decision gate | Housing classification |
+| developer-equity-schedule (60) | VAT on Real Property (64) | VAT on TCP above ₱3.6M threshold (RR 1-2024) | VAT threshold |
+| notarial-fees (50) | VAT on Real Property (64) | VAT on notarial services if notary gross >₱3M | VAT threshold |
+| rent-increase-computation (60) | CWT Rate and Timing (60) | CWT 5% on rental income | Withholding rates |
 
-**When the tax loop catalog is produced, these cross-references should be reconciled to identify shared computation modules and unified data layers.**
+**Cross-loop reconciliation findings (catalog-review, 2026-02-27):**
+- All 8 bridge points verified against tax loop catalog — confirmed accurate
+- **BIR zonal values** are the highest-leverage shared data asset: 200+ composite points in this loop + 125 (ZV lookup #1 in tax loop) = **325+ combined**
+- **LGU assessment database** is the second-highest: 175 in this loop + 185 in tax loop (RPT 125 + Transfer Tax 60) = **360+ combined**
+- Assessment-level-lookup (this loop) and RPT Computation (tax loop) have a clean scope boundary: valuation vs. taxation. A deep-dive loop should coordinate both scopes.
 
 ---
 
@@ -450,7 +454,7 @@ The `loops/reverse-ph-tax-computations/` loop covers CGT, DST, VAT, CWT, RPT, tr
 - **16 computations** surveyed across financing (6), regulatory compliance (5), valuation/assessment (2), and fees/dues (3)
 - **Wave 1** (source acquisition): 10 primary legal sources fetched and processed
 - **Wave 2** (computation extraction): Each computation independently verified against 8–25+ sources via subagent cross-checking; 3+ critical corrections per computation on average
-- **Wave 3** (competitive analysis): 34+ tools surveyed; 16 practitioner workflows documented from 130+ sources; 4-dimensional complexity scoring
+- **Wave 3** (competitive analysis): 50+ tools surveyed; 16 practitioner workflows documented from 130+ sources; 4-dimensional complexity scoring
 - **Wave 4** (scoring): Three-dimensional multiplicative scoring (A×F×M), composite range 1–125
 - **Scoring calibration**: Relative within the set of 16, not absolute. Multiplicative formula intentionally penalizes weakness on any single dimension.
 - **Deterministic status**: 14 of 16 fully deterministic; 2 partially (notarial-fees, condo-common-area-pct method-dependent)
@@ -458,4 +462,4 @@ The `loops/reverse-ph-tax-computations/` loop covers CGT, DST, VAT, CWT, RPT, tr
 
 ---
 
-*Generated by ralph loop `reverse-ph-realestate-calcs`, Wave 4 catalog-draft iteration.*
+*Generated by ralph loop `reverse-ph-realestate-calcs`, Wave 4. Self-reviewed 2026-02-27 (catalog-review): all 16 entries verified for completeness, scoring correctness (16/16 consistent across all 3 dimensions), and tax loop cross-reference reconciliation. See `analysis/catalog-review.md` for full review findings.*

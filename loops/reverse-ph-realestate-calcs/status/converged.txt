@@ -1,0 +1,18 @@
+CONVERGED
+Date: 2026-02-27
+Loop: reverse-ph-realestate-calcs
+
+All 32 aspects analyzed across 4 waves:
+- Wave 1 (Source Acquisition): 10 aspects — 10 primary legal/regulatory sources fetched and processed
+- Wave 2 (Computation Extraction): 16 aspects — 16 deterministic computations extracted, each verified against 8-25+ sources
+- Wave 3 (Competitive & Automation Gap): 3 aspects — 50+ tools surveyed, 16 practitioner workflows documented from 130+ sources
+- Wave 4 (Scoring & Synthesis): 3 aspects — scoring, catalog draft, self-review
+
+Output: output/opportunity-catalog.md
+- 16 ranked computations across 3 tiers
+- Tier 1 (≥75): assessment-level-lookup (100), socialized-housing-compliance (80), condo-association-dues (80), bp220-lot-compliance (75), improvement-depreciation (75)
+- 6 deep-dive loop recommendations
+- 6 shared data layer clusters
+- Cross-referenced with reverse-ph-tax-computations catalog (8 bridge points verified)
+
+Self-review: PASSED (completeness, scoring correctness, actionability, tax loop cross-reference all verified)
