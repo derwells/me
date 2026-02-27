@@ -2,7 +2,7 @@
 
 **Aspect:** improvement-depreciation (Wave 2)
 **Date:** 2026-02-27
-**Verification status:** PENDING — verification subagent dispatched
+**Verification status:** VERIFIED — 7 claims CONFIRMED, 3 CORRECTED, 1 CONFIRMED with corrections, 1 UNVERIFIED (see Verification Summary below)
 **Deterministic:** YES (given construction type, age, maintenance degree, and LGU depreciation table)
 
 ---
@@ -17,7 +17,7 @@ Building/improvement depreciation is a critical intermediate computation in Phil
 - DOF Local Assessment Regulations No. 1-92, Sections 40-41 (implementing RA 7160 Sections 201, 219)
 - PD 1096 (National Building Code) — construction type classification
 - RA 7160 Sections 224-225 — machinery appraisal and depreciation only
-- RA 12001 (RPVARA, 2024) — mandates PVS-aligned depreciation methodology
+- RA 12001 (RPVARA, 2024) — requires depreciation consideration in valuation (Section 14); mandates SMV updates within 2 years of effectivity (by July 2026) in accordance with PVS; principle-based, does not prescribe specific depreciation methodology
 
 ---
 
@@ -25,7 +25,7 @@ Building/improvement depreciation is a critical intermediate computation in Phil
 
 ### 1. Building Construction Type Classification
 
-**What it computes:** Assigns a building construction type (Type I through Type IV) based on structural materials, which determines the applicable BUCC rate and depreciation schedule.
+**What it computes:** Assigns a building construction type based on structural materials, which determines the applicable BUCC rate and depreciation schedule.
 
 **Inputs:**
 - `structural_system: str` — primary structural material (wood, mixed, steel, concrete)
@@ -34,18 +34,30 @@ Building/improvement depreciation is a critical intermediate computation in Phil
 - `foundation_type: str` — foundation type
 - `fire_resistance: str` — fire resistance rating
 
-**Classification table (per PD 1096 National Building Code, as adopted by assessors):**
+**CRITICAL: Two distinct classification systems exist with INVERTED numbering:**
+
+**PD 1096 (National Building Code) — 5 types:**
+
+| Type | Description | Primary Material |
+|------|-------------|-----------------|
+| Type I | Wood construction | Wood/timber |
+| Type II | Wood with fire-resistant features, 1-hour fire-resistive | Mixed/wood-fire-resistant |
+| Type III | Masonry and wood, incombustible exterior walls | Masonry-wood |
+| Type IV | Steel, iron, concrete, or masonry | Steel/concrete/masonry |
+| Type V | Fire-resistive (4-hour throughout) | RC/fire-resistive |
+
+**Assessor Practice (BUCC/Depreciation) — inverted numbering:**
 
 | Type | Sub-types | Description | Primary Material |
 |------|-----------|-------------|-----------------|
-| Type I | A, B | Wood construction | Wood/timber |
-| Type II | A, B, C, D | Wood with fire-resistant features | Mixed/wood-fire-resistant |
-| Type III | A, B, C, D | Semi-concrete, steel frame | Steel frame/semi-concrete |
-| Type IV | — | Reinforced concrete, masonry | Reinforced concrete/masonry |
+| Type I | A, B | Reinforced concrete, steel (highest quality) | RC/steel |
+| Type II | A, B, C | Semi-concrete, mixed | Semi-concrete |
+| Type III | A, B, C, D | Wood construction | Wood |
+| Type IV | A | Temporary/makeshift (lowest quality) | Light materials |
 
-**Sub-type granularity:** Within each type, sub-types (A, B, C, D) differentiate by quality of finish, structural refinement, and material grade. Local assessors define standard base specifications for each sub-type in their SFMV ordinance.
+**Sub-type granularity:** Within each type, sub-types (A, B, C, D) differentiate by quality of finish, structural refinement, and material grade. Local assessors define standard base specifications for each sub-type in their SFMV ordinance. Sub-types are an **assessor convention**, NOT from PD 1096. The Batangas system has approximately 10 sub-classifications (I-A, I-B, II-A, II-B, II-C, III-A, III-B, III-C, III-D, IV-A).
 
-**Legal citation:** PD 1096 Section 401; DOF LAR 1-92 (building classification for BUCC)
+**Legal citation:** PD 1096 Section 401 (NBC types); DOF LAR 1-92 (assessor BUCC classification). The assessor classification is derived from but not identical to PD 1096.
 
 **Edge cases:**
 - Mixed construction (e.g., concrete ground floor, wood upper floor): classified by predominant material or worst-case for fire rating
@@ -232,10 +244,11 @@ def depreciation_table_lookup(actual_age, construction_type, maintenance_degree,
 - The table implies buildings never reach 0% good, even at advanced ages — no statutory minimum residual is needed because the tables effectively prevent full depreciation
 - This table applies to RC/mixed concrete; separate tables exist for wood, semi-concrete, etc. with faster depreciation
 
-**Note on Batangas format:** Some LGUs (e.g., Batangas Province) use a different table format with construction types I-A through IV-A with 8 sub-classifications and age ranges up to 80-85 years:
+**Note on format variation:** The Excellent/Average/Poor three-column format is **common and widely used** but NOT universal across all LGUs. Some LGUs (e.g., Batangas Province) use a distinctly different format — depreciation by construction sub-type and age without separate maintenance condition columns, with approximately 10 sub-classifications (I-A through IV-A) and age ranges up to 80-85 years:
 - Type I-A at 0-2 years: 2% depreciation
 - Type I-A at 20-25 years: 20% depreciation
 - Type IV-A at 0-2 years: 6% depreciation
+The BLGF inspection framework actually contemplates five condition levels (Excellent, Good, Average, Fair, Poor), though operational tables often simplify to three.
 
 **Legal citation:** DOF LAR 1-92 Section 40; individual LGU SFMV ordinances
 
@@ -463,15 +476,35 @@ This computation is a PREREQUISITE for the assessment-level-lookup computation d
 
 ---
 
-## Verification Status
+## Verification Summary
 
-Verification subagent dispatched. Awaiting cross-check against independent sources.
+Verified against 17+ independent sources including DOF LAR 1-92 (SC E-Library), LawPhil RA 7160 full text, PD 1096 (DPWH + Official Gazette), COA Circular 2003-007, BLGF Manual on RP Assessment, BLGF Estimated Useful Life of PPE, Mamburao BUCC schedule, Batangas Province 2010 RPT Code, RA 12001 full text (LawPhil), SRMO Law analysis, PwC Philippines analysis, Muntinlupa City BUCC schedule, CBAA Case No. L-11, Respicio & Co. commentary.
 
-Key claims requiring verification:
-- [ ] Economic life figures (50-60 yrs RC, 20-25 yrs wood)
-- [ ] COA useful life figures (30 yrs RC, 10-15 yrs wood)
-- [ ] Three maintenance degrees (Excellent/Average/Poor) as universal format
-- [ ] No statutory minimum residual for buildings
-- [ ] Mamburao table values accuracy
-- [ ] Batangas Type I-A through IV-A classification system
-- [ ] Adjustment factors methodology
+| # | Claim | Verdict | Key Finding |
+|---|---|---|---|
+| 1 | Economic life figures are assessor practice, not statutory | **CONFIRMED** | No statutory prescription in LGC or DOF LAR 1-92; 50-year RC figure consistent across practitioner sources |
+| 2 | COA useful life figures (RC=30, Steel=25-30, etc.) | **CONFIRMED** | Base values confirmed at RC=30, Steel=25, Mixed=20, Wood=15; ranges in analysis slightly broader than single-point COA values |
+| 3 | Three maintenance degrees as universal format | **CORRECTED** | Common and widely used (Mamburao confirmed) but NOT universal; Batangas uses different format without maintenance columns; BLGF framework has 5 levels |
+| 4 | No statutory minimum residual for buildings | **CONFIRMED** | Section 225's 20% floor is machinery-only; no equivalent for buildings anywhere in LGC or DOF LAR 1-92 |
+| 5 | Mamburao depreciation table values | **CONFIRMED** | Values match source document exactly (ages 0-2: 3/3/4%; ages 50-55: 39/43/51%) |
+| 6 | Batangas Type I-A through IV-A classification | **CONFIRMED with corrections** | System confirmed with age ranges to 80-85 years; but has ~10 sub-types (not 8); assessor numbering INVERTED from PD 1096 |
+| 7 | Adjustment factors methodology | **CONFIRMED** | Directly supported by DOF LAR 1-92 Section 39; Muntinlupa BUCC shows examples (carport 60%, mezzanine 40%) |
+| 8 | DOF LAR 1-92 Sections 40-41 govern buildings, not LGC 224-225 | **CONFIRMED** | LGC 224-225 are explicitly titled "Appraisal and Assessment of Machinery" / "Depreciation Allowance for Machinery" |
+| 9 | Building construction types per PD 1096 (4 types, sub-types A-D) | **CORRECTED** | PD 1096 has FIVE types (I-V), not four; sub-types are assessor convention, NOT from PD 1096; assessor numbering is INVERTED from PD 1096 |
+| 10 | BUCC rate ranges | **UNVERIFIED** | Plausible given PSA construction cost data, but BUCC schedules are LGU-specific and mostly not publicly available online |
+| 11 | Machinery depreciation per Section 225 (5% annual, 20% residual) | **CONFIRMED** | Verbatim from statutory text of LGC Section 225 |
+| 12 | RA 12001 mandates PVS-aligned depreciation methodology | **CORRECTED** | Law requires depreciation consideration (Section 14) and SMV updates within 2 years per PVS, but is principle-based — does not mandate specific depreciation methodology |
+
+### Critical Discovery: Assessor vs. PD 1096 Numbering Inversion
+
+The most significant finding is a **systematic numbering inversion** between two classification systems:
+- **PD 1096:** Type I = Wood (lowest) → Type V = Fire-resistive (highest)
+- **Assessor practice:** Type I = RC/steel (highest) → Type IV = Temporary (lowest)
+
+This inversion is widespread in Philippine assessor practice. The original analysis conflated these systems; corrections applied above in Sub-computation 1.
+
+### Corrections Applied to Primary Extraction
+1. **Sub-computation 1 (Construction Type Classification):** Rewritten to clearly distinguish PD 1096 (5 types) from assessor convention (4 types, inverted numbering, with sub-types)
+2. **Sub-computation 3 (Maintenance degrees):** Note added that three-column format is common but not universal
+3. **Batangas reference:** Sub-classification count corrected from 8 to ~10
+4. **RA 12001 legal basis:** Corrected to reflect principle-based mandate, not prescriptive methodology

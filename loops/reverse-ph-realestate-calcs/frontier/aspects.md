@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 29
-- Analyzed: 21
-- Pending: 8
-- Convergence: 72%
+- Analyzed: 22
+- Pending: 7
+- Convergence: 76%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -33,7 +33,7 @@ Depends on Wave 1 data.
 - [x] socialized-housing-compliance — DHSUD price ceiling compliance check: per-unit and per-sqm limits by housing type, annual escalation rules
 - [x] bp220-lot-compliance — BP 220 standards compliance: minimum lot area, floor area ratio, open space percentage by development type
 - [x] assessment-level-lookup — Property assessment level by classification and LGU: residential/commercial/industrial/agricultural tiers per Local Government Code
-- [ ] improvement-depreciation — Depreciation schedule for building improvements: straight-line method, useful life by construction type, residual value rules per local assessor
+- [x] improvement-depreciation — Depreciation schedule for building improvements: straight-line method, useful life by construction type, residual value rules per local assessor
 - [ ] rod-registration-fees — Registry of Deeds fee computation: fee schedule by property value bracket, annotation fees, additional charges
 - [ ] notarial-fees — Notarial fee computation: fee schedule per notarial rules, percentage-of-value basis for real estate documents
 - [ ] broker-commission — Real estate broker commission: standard rates, split computation (listing broker vs selling broker), VAT implications on commission
