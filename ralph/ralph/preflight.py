@@ -1,12 +1,12 @@
 import shutil
 from dataclasses import dataclass
-from enum import Enum
+from enum import StrEnum
 from pathlib import Path
 
 from ralph.config import Loop
 
 
-class CheckSeverity(str, Enum):
+class CheckSeverity(StrEnum):
     ERROR = "error"
     WARNING = "warning"
     OK = "ok"

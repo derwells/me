@@ -1,15 +1,15 @@
 from datetime import date
-from enum import Enum
+from enum import StrEnum
 
 from pydantic import BaseModel, field_validator
 
 
-class LoopType(str, Enum):
+class LoopType(StrEnum):
     REVERSE = "reverse"
     FORWARD = "forward"
 
 
-class LoopStatus(str, Enum):
+class LoopStatus(StrEnum):
     ACTIVE = "active"
     PAUSED = "paused"
     CONVERGED = "converged"

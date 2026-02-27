@@ -90,3 +90,7 @@ The `gh` CLI is available and authenticated. Use it for GitHub API access in loo
 - Commit messages for loop iterations: `loop(reverse-<topic>): <aspect-name>`
 - Loop directories use `reverse-<topic>` prefix
 - Project file naming: `company--project.md` (double-dash separator)
+
+## Notes
+- Loops run in GitHub actions for now. You may check logs using `gh` cli
+-

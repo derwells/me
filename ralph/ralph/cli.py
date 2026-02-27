@@ -1,6 +1,6 @@
 import os
 import time
-from enum import Enum
+from enum import StrEnum
 from pathlib import Path
 from typing import Annotated
 
@@ -43,7 +43,7 @@ def _load_settings() -> RalphSettings:
         raise typer.Exit(code=1) from None
 
 
-class OutputFormat(str, Enum):
+class OutputFormat(StrEnum):
     TABLE = "table"
     GITHUB_MATRIX = "github-matrix"
 
@@ -87,7 +87,7 @@ def discover(
     """Discover active loops. Use --output github-matrix for CI."""
     loops = _load_registry()
     type_filter = LoopType(loop_type) if loop_type else None
-    active = discover_active_loops(loops, loop_type=type_filter)
+    active = discover_active_loops(loops, LOOPS_DIR, loop_type=type_filter)
 
     if output == OutputFormat.GITHUB_MATRIX:
         matrix_json = format_github_matrix(active)
