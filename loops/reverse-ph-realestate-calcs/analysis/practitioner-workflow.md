@@ -1,8 +1,17 @@
-# Practitioner Workflow Analysis — PH Real Estate Regulatory & Fee Computations
+# Practitioner Workflow Analysis — PH Real Estate Computations (Full Sales Lifecycle + All Categories)
 
 ## Summary
 
-This analysis documents the actual workflows practitioners use for each computation category identified in Wave 2, covering who performs each computation, what tools/methods they use, the step-by-step process, pain points, and standardization status. Research synthesized from 40+ web sources including government portals, practitioner guides, PropTech platforms, and industry blogs.
+This analysis documents the actual workflows practitioners use for ALL 16 computation categories identified in Wave 2, organized across two complementary views: (A) per-computation deep-dives (Sections 1-8) covering who performs each computation, tools, workflows, pain points, and standardization; and (B) full developer sales lifecycle mapping (Appendix A) showing where each computation occurs across the 6 stages from pre-sale through post-turnover. Research synthesized from 130+ web sources including developer guides (DMCI, SMDC, Ayala Land, Megaworld, Federal Land), practitioner platforms (iRealtee, Filipinohomes, HousingInteractive), government portals (Pag-IBIG Fund, BIR, DHSUD, LRA), financial institutions (BDO, BPI, Metrobank, RCBC), legal commentaries (Respicio & Co., ATTYDPLaw), and real estate technology analyses.
+
+**Key finding:** Philippine real estate computations are performed by a fragmented ecosystem of practitioners — brokers, developer sales agents, Pag-IBIG loan processors, property managers, lawyers, and buyers themselves — using predominantly manual methods. The dominant tools are phone calculators, Excel/Google Sheets with custom-built templates (no standardization), developer-provided PDF computation sheets, and a small number of PH-native web calculators (Housal, Clevrr, Pag-IBIG online calculator). No single tool handles the full computation chain for any transaction type. The ecosystem is an "amortization monoculture" — 15+ tools compute basic mortgage amortization while the regulatory compliance layer is completely unserved (8 of 16 computations have ZERO tool coverage).
+
+**Pain point clusters:** (a) no single tool handles the full computation chain, (b) tax and regulatory rules change frequently and practitioners miss updates, (c) multi-variable computations (especially those requiring zonal value lookups or tiered rates) have the highest error rates, (d) pre-sale sample computation generation under time pressure requires maintaining separate templates per developer with no unified tool, (e) equity-to-loan-takeout restructuring handoff takes 10+ working days and blocks deal progression, (f) multi-tier commission splits across 49+ plan variations are error-prone in spreadsheets.
+
+**Strongest automation opportunities (from lifecycle analysis):**
+1. Pre-sale computation generation (Stage 1) — every buyer interaction requires it; no unified multi-developer tool
+2. Regulatory compliance computations (Stages 3, 5, 6) — zero tool coverage for 8 computations
+3. Closing cost aggregation (Stage 5) — 5+ separate fee/tax computations with no single-pass tool
 
 ---
 
@@ -395,3 +404,236 @@ This analysis documents the actual workflows practitioners use for each computat
 - [VIZCODE BP 220 Reference](https://vizcodeph.com/code-library/bp-220-housing-and-land-use/)
 - [Amilyar Guide (ForeclosurePhilippines)](https://www.foreclosurephilippines.com/real-property-tax-rpt-philippines/)
 - [Real Property Taxes (Grant Thornton PH)](https://www.grantthornton.com.ph/insights/articles-and-updates1/lets-talk-tax/taxes-on-sale-of-real-property/)
+
+---
+
+## APPENDIX A: Developer Sales Lifecycle — Computation Points by Stage
+
+*Added 2026-02-27 via web research across 60+ additional sources covering the full developer sales agent workflow.*
+
+This appendix maps where each of the 16 Wave 2 computations occurs in the developer sales lifecycle, from the sales agent's perspective. It documents the specific tools, timelines, and bottlenecks at each stage that are not captured in the per-computation views above.
+
+### Stage 1: Pre-Sale (Property Selection & Inquiry)
+
+**Duration:** Days to weeks (buyer-driven)
+
+**Computation: Sample Computation Sheet Generation**
+- **Who:** Sales agent / broker
+- **What:** TCP breakdown showing reservation fee, DP/equity, monthly equity installment, loanable balance, and estimated monthly amortization under 2-3 payment scheme options (spot cash, deferred cash, bank financing)
+- **Tools:** Developer-supplied Excel templates or PDF computation sheets. Each developer has proprietary templates with pricing, discount structures, and payment terms pre-loaded. Agents for smaller developers use personal Excel files.
+- **Process:**
+  1. Agent selects unit (block/lot/floor/unit) from developer inventory
+  2. Looks up TCP from developer's price list (updated per project phase/promo)
+  3. Applies payment scheme options:
+     - Spot cash: TCP x (1 - discount%). Discounts 7-32% depending on developer/promo.
+     - Deferred cash: TCP / months (24-36 months), 0% interest, less RF.
+     - Installment + bank financing: TCP x equity% = equity; equity - RF = net equity; net equity / months = monthly; TCP x (1 - equity%) = loanable; estimated bank amortization at indicative rate.
+  4. Prints or sends PDF/image to buyer
+- **Time:** 5-30 minutes (instant with configured portal; 15-30 min if computing manually from price list)
+- **Errors:** Wrong TCP (outdated price list), incorrect discount (promo expired), VAT threshold errors (units >PHP 3.6M should include 12% VAT), unrealistically low indicative bank rates
+- **Key bottleneck:** Agents managing properties across multiple developers must maintain separate templates/systems per developer. No unified computation tool exists.
+- **Wave 2 computations involved:** developer-equity-schedule, broker-commission, bank-mortgage-amortization (indicative), pagibig-amortization (indicative)
+
+**Computation: Buyer Qualification Pre-Screen**
+- **Who:** Sales agent (informal), developer credit department (formal)
+- **What:** Monthly amortization vs. 30-40% of gross monthly income (GMI). Pag-IBIG: 35% GMI. Banks: 30-40% internally.
+- **Tools:** Mental math or simple calculator. No standardized tool.
+- **Time:** 2-5 min (informal); 1-3 days (formal credit check)
+- **Errors:** Agents overestimate capacity to avoid losing deal; failure to account for existing obligations
+- **Key bottleneck:** Informal qualification leads to applications that fail at loan stage 3-6 months later
+
+**Computation: Commission Estimation**
+- **Who:** Sales agent (self), broker/team leader (network)
+- **What:** TCP x commission_rate x agent_share, less EWT and deductions
+- **Tools:** Excel, personal calculators, or iRealtee (rare). Multi-tier splits are the complexity driver.
+- **Time:** 5-15 min manual; near-instant with iRealtee
+- **Errors:** Breighton Land case: 49 compensation plan variations, manual Excel tracking "arduous and time-consuming." Errors in multi-tier splits delay payouts.
+- **Key bottleneck:** Developer payment cycles span 30-90 days. Commission release differs by financing type (7 different schedules at some brokerages).
+
+### Stage 2: Reservation (Days 1-30)
+
+**Duration:** 1-30 days
+
+**Computation: Reservation Fee Processing**
+- **Who:** Sales agent collects; developer treasury records
+- **What:** RF amount (PHP 20K-500K), deduction from DP or TCP
+- **Time:** Same-day collection; 1-7 days system recording
+- **Errors:** RF not correctly deducted from first equity payment; currency conversion for OFW buyers
+- **Key bottleneck:** 30-day document submission deadline; forfeiture if missed
+
+**Computation: Payment Scheme Finalization**
+- **Who:** Sales agent prepares; developer DIC department finalizes
+- **What:** Final computation sheet locked to chosen scheme: exact monthly amounts, due dates, penalty rates, bank financing due date, turnover balance
+- **Tools:** Developer internal system (Excel to proprietary ERP, varies)
+- **Time:** 7-15 days from reservation
+- **Errors:** Mismatch between agent's sample computation and developer's official computation (different TCP, VAT treatment, promo validity)
+- **Key bottleneck:** Manual reconciliation between agent computation and back-office computation
+
+**Computation: PDC Schedule Preparation**
+- **Who:** Buyer, guided by agent
+- **What:** Number of PDCs (min 50 at DMCI), amounts, due dates
+- **Time:** Within 15 days of CTS receipt
+- **Errors:** Wrong amounts, wrong dates, insufficient checks. Payment scheme changes require full PDC replacement.
+- **Wave 2 computations involved:** developer-equity-schedule (primary)
+
+### Stage 3: Equity Period (Months 1-60)
+
+**Duration:** 6-60 months
+
+**Computation: Monthly Equity Tracking & Penalty**
+- **Who:** Developer Credit & Collection department
+- **What:** Monthly equity amount, running balance, penalty (2-3%/month; DMCI escalating 3%/30-day tiers up to 36% p.a.)
+- **Tools:** Developer internal accounting system
+- **Errors:** Late penalties inconsistently applied; posting delays for international remittances (24+ hours)
+- **Key bottleneck:** OFW remittance timing
+
+**Computation: Account Restructuring / Recomputation**
+- **Who:** Developer Remedial Department
+- **What:** New computation sheet for changed circumstances (unit transfer, scheme change, LOG-triggered)
+- **Time:** 10 working days for DMCI restructured computation sheet
+- **Key bottleneck:** This is a gating document — loan cannot proceed without it. 5-day conformity deadline after issuance.
+
+**Computation: Financing Reminder Timeline**
+- **Who:** Developer Financing Department
+- **What:** 1-year reminder before bank financing due date; 4-month deadline for loan application
+- **Key bottleneck:** No buyer response triggers bulk bank endorsement — buyer loses lender choice
+
+**Computation: Maceda Law (if buyer defaults)**
+- **Who:** Developer legal/remedial, or buyer's counsel
+- **What:** CSV = 50% of total payments + 5%/yr after yr 5 (max 90%); grace = 1 month/year, once per 5 years
+- **Tools:** Manual from payment records. **Zero automated tools exist.**
+- **Time:** 15-30 min computation; months for dispute resolution
+- **Errors:** "Total payments" definition disputes; years counting methodology (per Orbe v. Filinvest); Section 4 notarization requirement
+- **Wave 2 computations involved:** maceda-refund, developer-equity-schedule
+
+### Stage 4: Loan Processing (1-6 months before turnover)
+
+**Computation: Loan Eligibility Assessment**
+- **Who:** Bank loan officer or Pag-IBIG assessor
+- **What:** Pag-IBIG: 7-step tree (24mo contributions, age, credit, 35% GMI, LTV). Banks: DTI 30-40%, credit scoring, employment stability.
+- **Tools:** Bank internal system; Virtual Pag-IBIG; Pag-IBIG Affordability Calculator
+- **Time:** Pag-IBIG: 20-30 days. Banks: 5-10 working days.
+- **Key bottleneck:** Documentation completeness. "Almost every stuck loan involves incomplete titles, unpaid taxes, or clarifications."
+
+**Computation: Property Appraisal**
+- **Who:** Accredited appraiser
+- **What:** FMV via income/comparable/cost approach. Determines LTV x appraised = max loanable.
+- **Fees:** BDO: PHP 5,000 (<30km) / PHP 5,500 (>30km)
+- **Time:** 3-10 days (Pag-IBIG); 5-15 days (banks)
+- **Errors:** Appraisal < TCP forces buyer to cover gap
+- **Wave 2 computations involved:** ltv-ratio, bank-mortgage-amortization, pagibig-amortization
+
+**Computation: LOG / Loan Approval**
+- **Who:** Pag-IBIG or bank
+- **What:** Approved amount, rate, term, conditions
+- **Key bottleneck:** Pag-IBIG LOG 90-day validity. Title transfer must start immediately or re-appraisal required.
+
+**Computation: Loan Release / Takeout**
+- **Who:** Bank/Pag-IBIG treasury
+- **What:** Release = approved loan - deductions (processing, insurance, DST on mortgage, appraisal). DMCI: 5-7 working days from conformed LOG.
+- **Errors:** Shortfall between release and turnover balance; PDCs within 30 days of LOG still deposited (DMCI)
+
+### Stage 5: Turnover
+
+**Duration:** 1-6 weeks
+
+**Computation: Turnover Fee Breakdown**
+- **Who:** Developer turnover/admin department
+- **What:** Move-in/joining fee + Meralco deposit + water deposit + first association dues + storage fee + closing fee component
+- **Key bottleneck:** Must be settled upon unit acceptance — no deferral
+
+**Computation: Closing Cost Aggregation**
+- **Who:** Developer documentation or buyer's lawyer
+- **What:** DST (1.5%) + transfer tax (0.5-0.75%) + registration fee (LRA graduated) + notarial (1-1.5%) + assurance fund (0.25%) + admin fees. Total: 4-7% of property value.
+- **Tools:** Developer estimate at reservation; actual at transfer. Mostly manual/Excel.
+- **Key bottleneck:** No single tool computes all closing costs. BIR zonal value verification is manual.
+- **Wave 2 computations involved:** rod-registration-fees, notarial-fees, condo-association-dues
+
+### Stage 6: Post-Turnover (months to 1+ year)
+
+**Computation: Title Transfer**
+- **Who:** Developer docs + BIR + RD + Assessor (serial pipeline)
+- **Time:** Approximately 1 year total
+- **Key bottleneck:** Serial dependency — each office must complete before next begins
+
+**Computation: RPT Assessment**
+- **Who:** Local Assessor
+- **What:** AV = FMV x Assessment Level; RPT = AV x Rate + SEF
+- **Key bottleneck:** No centralized LGU rate database
+
+**Computation: Association Dues (Ongoing)**
+- **Who:** Condo Corp / HOA
+- **What:** Monthly dues = unit_sqm x rate_base (per ECR 001-17)
+- **Errors:** SC GR 215801 invalidated prior VAT guidance; many still apply wrong tax treatment
+
+**Computation: Mortgage Tracking (Ongoing)**
+- **Who:** Buyer + bank/Pag-IBIG
+- **What:** Amortization, repricing, prepayment
+- **Key bottleneck:** No tool shows repricing scenario impact in advance; bank calculators are siloed
+
+---
+
+## APPENDIX B: Practitioner Workflow Summary Table (All 16 Computations)
+
+| # | Computation | Current Workflow | Primary Tool | Time/Instance | Error Rate | Lifecycle Stage |
+|---|-------------|-----------------|-------------|---------------|------------|-----------------|
+| 1 | pagibig-loan-eligibility | Online portal or branch visit | Virtual Pag-IBIG | 20-30 days (full) | Low | Stage 4 |
+| 2 | pagibig-amortization | Official calculator | Pag-IBIG Calculator | Minutes | Low | Stage 4 |
+| 3 | bank-mortgage-amortization | Bank calculator or generic tool | Bank portal / calculator.net | Minutes | Low (basic), High (repricing) | Stage 1 (indicative), 4 (actual), 6 (ongoing) |
+| 4 | developer-equity-schedule | Developer back-office | Developer internal ERP/Excel | 7-15 days (initial), 10 days (restructure) | Low (systemic) | Stage 2, 3 |
+| 5 | ltv-ratio | Bank internal process | Bank internal only | Part of evaluation | Low | Stage 4 |
+| 6 | maceda-refund | Manual from payment records | **None** | 15-30 min + dispute months | Very High | Stage 3 (default) |
+| 7 | rent-increase-computation | Manual (if done at all) | **None** | 5-10 min | High (rate lookup) | Stage 6 (rental) |
+| 8 | condo-common-area-pct | Manual from master deed | **None** | 10-20 min | Medium | Stage 5-6 |
+| 9 | socialized-housing-compliance | Manual from DHSUD tables | **None** | 15-30 min | Medium | Stage 1 (developer) |
+| 10 | bp220-lot-compliance | Manual from IRR tables | **None** | 30-60 min | Medium | Stage 1 (developer) |
+| 11 | assessment-level-lookup | Manual from LGU schedule | Some LGU calculators | 10-20 min | Medium | Stage 6 |
+| 12 | improvement-depreciation | Assessor process | Assessor internal | Part of assessment | Low | Stage 6 |
+| 13 | rod-registration-fees | Manual from LRA table | LRA ERCF (limited) | 10-15 min | Medium | Stage 5-6 |
+| 14 | notarial-fees | Negotiation/market rate | **None** (non-deterministic) | N/A | N/A | Stage 5 |
+| 15 | broker-commission | Excel with custom formulas | iRealtee or personal Excel | 5-15 min | High (multi-tier) | Stage 1 |
+| 16 | condo-association-dues | Condo management or Excel | Varies by condo corp | Monthly auto | Medium | Stage 6 |
+
+---
+
+## APPENDIX C: Additional Sources (Developer Sales Lifecycle Research)
+
+- [DMCI Homes Buyer's Guide](https://www.dmcihomes.com/guides/buyers-guide)
+- [SMDC Payment Guide](https://smdc.com/payment/)
+- [Filipinohomes — Real Estate Buying Process](https://filipinohomes.com/blog/real-estate-buying-process-developer/)
+- [iRealtee Client Management](https://irealtee.com/features/client-management)
+- [iRealtee Property Management](https://irealtee.com/features/property-management)
+- [iRealtee Terms & Conditions Management](https://irealtee.com/features/terms-conditions-management)
+- [iRealtee Agent Profiles](https://irealtee.com/features/agent-profiles)
+- [HousingInteractive — Bank Financing Guide](https://housinginteractive.com.ph/blog/step-by-step-guide-to-buying-property-with-bank-financing-in-the-philippines/)
+- [GreatDay HR — Pag-IBIG Housing Loan Guide 2025](https://greatdayhr.ph/blog/complete-pag-ibig-housing-loan-application-guide-in-the-philippines-2025/)
+- [BPI Housing Loan Requirements](https://www.bpi.com.ph/personal/loans/housing-loan/requirements)
+- [BDO Home Loan](https://www.bdo.com.ph/personal/loans/home-loan)
+- [Metrobank Home Loan](https://www.metrobank.com.ph/loans/home-loan)
+- [RCBC Home Loans](https://www.rcbc.com/home-loans)
+- [Respicio — CTS Timeline](https://www.respicio.ph/commentaries/timeline-for-receiving-contract-to-sell-after-condo-reservation-fee-philippines)
+- [Respicio — Delayed Turnover](https://www.lawyer-philippines.com/articles/legal-remedies-for-delayed-turnover-of-real-estate-properties)
+- [Respicio — Closing Costs](https://www.respicio.ph/commentaries/condominium-title-transfer-in-the-philippines-closing-fees-and-taxes-that-buyers-must-pay)
+- [RichestPH — Closing Costs](https://richestph.com/understanding-closing-costs-in-philippine-real-estate/)
+- [RichestPH — Payment Methods](https://richestph.com/your-guide-to-real-estate-payment-methods-in-the-philippines/)
+- [Federal Land — Condo Financing 101](https://federalland.ph/articles/condo-financing-101/)
+- [Filipinohomes — Down Payment vs Equity](https://filipinohomes.com/blog/truth-payment-equity/)
+- [Cebu House Finder — Down Payment Guide](https://cebuhousefinder.wixsite.com/cebuhousefinder/post/understanding-home-equity-and-related-issues)
+- [Condo Arena — How Long to Buy a Condo](https://condoarena.com/blog/how-long-buy-condo)
+- [Presello — Documentation Guide](https://www.presello.com/a-guide-on-documentation-of-real-estate-transactions-in-the-philippines/)
+- [Housal — Closing Fees Calculator](https://www.housal.com/calculators/sales-closing-fees)
+- [Visdum — Commission Plan Template / Breighton Land Case](https://www.visdum.com/template-library/real-estate-commission-plan-template)
+- [OmniCalculator — Pag-IBIG Housing Loan](https://www.omnicalculator.com/finance/pag-ibig-housing-loan)
+- [Pag-IBIG Mortgage Loan Calculator](https://pagibigmortgageloancalculator.com/)
+- [PhilPropertyExpert — CTS vs DOAS](https://philpropertyexpert.com/contract-to-sell-v-contract-of-sale/)
+- [PhilPropertyExpert — Maceda Law](https://philpropertyexpert.com/defaulting-payments-know-your-rights-under-republic-act-6552/)
+- [Mandani Bay — Real Estate Laws](https://www.mandanibay.com/blog/real-estate-laws-in-the-philippines/)
+- [ATTYDPLaw — CTS vs DOAS](https://www.attydplaw.com/post/understanding-contract-to-sell-vs-deed-of-sale-in-real-estate-transactions-philippines)
+- [Studocu — Sample Condo Computation](https://www.studocu.com/ph/document/rizal-technological-university/bs-architecture/condominium-estimated-price-per-unit/36240921)
+- [Condopinas — Sample Computation](https://condopinas.weebly.com/sample-computation.html)
+- [Lilian Real Estate — Condo Cost Guide](https://lilianrealestate.com/how-much-do-you-need-to-own-a-condo-in-metro-manila/)
+- [Pag-IBIG 2025 Rate Stability (Inquirer)](https://business.inquirer.net/529457/pag-ibig-home-loan-rates-unchanged-throughout-2025)
+- [Pag-IBIG 2025 Releases (PNA)](https://www.pna.gov.ph/articles/1267430)
+- [DBP CTS Financing Program](https://www.dbp.ph/developmental-banking/social-services-community-development/contract-to-sell-financing-facility-cts-program/)
+- [iRealtee Sales Wizard](https://irealtee.com/features/sales-wizard)
+- [Phinma Properties — Understanding RE Contracts](https://phinmaproperties.com/blogs-articles/phinma-properties/real-estate-philippines-guide-understanding-contracts/)
