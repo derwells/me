@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 28
-- Analyzed: 25
-- Pending: 3
-- Convergence: 89%
+- Analyzed: 26
+- Pending: 2
+- Convergence: 93%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -57,7 +57,7 @@ Depends on Wave 2 data.
 
 - [x] data-flow-mapping — Map the full pipeline: daily operations → monthly close → accountant handoff → BIR/SEC filings. Identify which Wave 2 processes feed which.
 - [x] process-dependencies — Identify which processes generate data consumed by other processes (e.g., payment tracking feeds rent roll, rent roll feeds tax data).
-- [ ] compliance-calendar — Annual calendar of all filing deadlines: BIR monthly/quarterly/annual, SEC GIS/AFS, LGU business permits, RPT, fire safety. Alert triggers.
+- [x] compliance-calendar — Annual calendar of all filing deadlines: BIR monthly/quarterly/annual, SEC GIS/AFS, LGU business permits, RPT, fire safety. Alert triggers.
 
 ### Wave 4: Synthesis & Catalog (2 aspects)
 Depends on all Wave 3 analysis.
@@ -86,3 +86,4 @@ Depends on all Wave 3 analysis.
 | 21 | tax-data-compilation | 2 | analysis/tax-data-compilation.md | 2026-02-26 |
 | 22 | official-receipt-data | 2 | analysis/official-receipt-data.md | 2026-02-26 |
 | 25 | process-dependencies | 3 | analysis/process-dependencies.md | 2026-02-27 |
+| 26 | compliance-calendar | 3 | analysis/compliance-calendar.md | 2026-02-27 |
