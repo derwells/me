@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 29
-- Analyzed: 25
-- Pending: 4
-- Convergence: 86%
+- Analyzed: 27
+- Pending: 2
+- Convergence: 93%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -37,11 +37,11 @@ Depends on Wave 1 data.
 - [x] rod-registration-fees — Registry of Deeds fee computation: fee schedule by property value bracket, annotation fees, additional charges
 - [x] notarial-fees — Notarial fee computation: fee schedule per notarial rules, percentage-of-value basis for real estate documents
 - [x] broker-commission — Real estate broker commission: standard rates, split computation (listing broker vs selling broker), VAT implications on commission
-- [ ] condo-association-dues — HLURB-prescribed monthly condo dues computation: rate base = gross expense / gross area; dues per unit = unit sqm × monthly rate; VAT implications; discovered in condo-act-common-areas analysis
+- [x] condo-association-dues — HLURB-prescribed monthly condo dues computation: rate base = gross expense / gross area; dues per unit = unit sqm × monthly rate; VAT implications; discovered in condo-act-common-areas analysis
 
 ### Wave 3: Competitive & Automation Gap Analysis
 Depends on Wave 2 data.
-- [ ] existing-tools-survey — Map each Wave 2 computation against existing PH tools: Pag-IBIG online calculator, Lamudi, Hoppler, developer portals, generic mortgage calculators, PropTech startups
+- [x] existing-tools-survey — Map each Wave 2 computation against existing PH tools: Pag-IBIG online calculator, Lamudi, Hoppler, developer portals, generic mortgage calculators, PropTech startups
 - [ ] practitioner-workflow — Document current manual/Excel workflows per computation; synthesis from practitioner guides and developer sales processes
 - [ ] complexity-scoring — Score each computation by branching rules, lookup tables, external data dependencies, update frequency
 
@@ -74,3 +74,5 @@ Depends on Wave 3 data.
 - assessment-level-lookup (Wave 2, 2026-02-26) — 8 sub-computations extracted (classification, land/building/machinery/special assessment levels, total AV, RPT pipeline, payment penalties); all 34 table values verified against 9 sources with zero corrections; RA 12001 impact analyzed (preserves Section 218 maximums, adds 6% transition cap); 5 unresolved ambiguities (1991 bracket thresholds unadjusted, mixed-use allocation, LGU rate database gap)
 - notarial-fees (Wave 2, 2026-02-27) — 5 computations extracted (OCA per-page ceiling, notarial foreclosure fee, IBP-based DOAS/REM fee, market heuristic, unattributed tiered table); CRITICAL CORRECTION: A.M. No. 19-08-15-SC is Rules on Evidence, NOT a notarial fee amendment — tiered table attribution fabricated; OCA Circular 73-2014 ₱200/₱50 ceiling confirmed; foreclosure fee 5%/2.5% + ₱100K cap confirmed; 2 fully deterministic, 1 conditional, 2 non-deterministic
 - broker-commission (Wave 2, 2026-02-27) — 11 computations extracted (sale/lease/commercial commission, broker-agent split, multi-tier distribution, MLS co-broke, EWT, VAT, net commission, finder's fee, rent-to-own); verified via 22+ sources; 2 CRITICAL CORRECTIONS: EWT rates superseded by RR 11-2018 (5%/10% at ₱3M, not 10%/15% at ₱720K); SMDC 4.75% UNVERIFIED; 8 BIR forms documented; finder's fee vs. commission legal distinction mapped
+- condo-association-dues (Wave 2, 2026-02-27) — 7 computations extracted (monthly dues via ECR 001-17, sinking fund, special assessment allocation, delinquency penalty, assessment lien per RA 4726 §20, dues increase compliance check, tax status determination); verified via 22+ sources; 3 CRITICAL CORRECTIONS: RMC 65-2012 invalidated by SC (GR 215801) — dues exempt from IT/VAT/WT; TRAIN Law subsection is §109(1)(Y) not §109(1)(L); assessment lien priority overstated (only superior to subsequent liens); DHSUD 10% reserve fund floor UNVERIFIED
+- existing-tools-survey (Wave 3, 2026-02-27) — 34 tools surveyed across 5 categories; mapped against 16 Wave 2 computations; 8 ZERO coverage, 3 POOR, 3 PARTIAL, 2 GOOD; ecosystem is "amortization monoculture" — regulatory compliance layer completely unserved
