@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 29
-- Analyzed: 6
-- Pending: 23
-- Convergence: 20.7%
+- Analyzed: 7
+- Pending: 22
+- Convergence: 24.1%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -15,7 +15,7 @@
 - [x] rpvara-transition-mechanics — Fetch RA 12001 full text + BLGF MC 001-2025 IRR, extract provisions specific to zonal value transition: SMV format, timeline, dual-source handling, LGU compliance requirements
 - [x] cta-zonal-rulings — Search for CTA cases involving zonal value disputes: classification disagreements, fallback rule application, jurisdiction conflicts, stale schedule challenges
 - [x] third-party-platform-survey — Analyze Housal (1.96M records), RealValueMaps (2.7M records), ZonalValueFinderPH, LandValuePH, REN.PH — document their search UX, data models, coverage claims, limitations
-- [ ] prior-analysis-import — Import and annotate the existing analysis from `../reverse-ph-tax-computations/analysis/zonal-value-lookup.md` — identify confirmed findings vs. areas needing deeper investigation
+- [x] prior-analysis-import — Import and annotate the existing analysis from `../reverse-ph-tax-computations/analysis/zonal-value-lookup.md` — identify confirmed findings vs. areas needing deeper investigation
 
 ### Wave 2: Data Format Analysis (7 aspects)
 Depends on Wave 1 data.
@@ -55,6 +55,7 @@ Depends on all Wave 5 analysis.
 - [ ] spec-self-review — Self-review the compiled spec: verify every complexity driver is addressed, all design decisions trace to data findings, spec is actionable for a forward loop, no gaps in coverage
 
 ## Recently Analyzed
+- [x] prior-analysis-import (Wave 1) — 2026-03-02 — All 13 sections of prior analysis annotated against 6 Wave 1 findings. No material errors found. 4 new complexity drivers discovered (footnote reversal, multi-municipality workbooks, legacy code mapping, ZV type heterogeneity). Severity upgraded for drivers #1 (format heterogeneity → EXTREME), #2 (address matching → EXTREME), #6 (RPVARA → HIGH), #8 (condo bifurcation → HIGH). Aquafresh ruling simplifies classification (#7 → LOW-MEDIUM). ~690K current rows estimated (tractable for WASM). Gap map produced: 6 critical deepening targets for Waves 3-4, 6 new aspects confirmed for Waves 2-3.
 - [x] third-party-platform-survey (Wave 1) — 2026-03-02 — 7 platforms surveyed (ZonalValueFinderPH, LandValuePH, REN.PH, Housal, RealValueMaps, ZonalValue.com, FileDocsPhil). Record counts range from 336K (REN.PH, current-only) to 2.7M (RealValueMaps, incl. historical). No platform offers a public API. Housal shows DO# per record but no effectivity date. No platform implements address matching with fallback logic. Zero platforms prepare for RPVARA (RA 12001) dual-source transition. Housal: $1.8M rev, 20 team, $1M raised (Brook Capital). REN.PH: Next.js+Supabase, 336K records benchmark for WASM bundling. 8 key competitive gaps identified.
 - [x] cta-zonal-rulings (Wave 1) — 2026-03-02 — 9 court cases analyzed (4 CTA, 5 SC). 5 dispute categories identified: classification disputes (Aquafresh — published classification prevails over actual use), missing ZV (Emiliano/Gamboa — BIR cannot substitute arbitrarily), procedural defects (consultation mandatory), stale schedules (existing values remain in force until revised), ZV vs. just compensation (ZV is "merely one index" of FMV). Key engine implications: classification resolved from published schedule only; fallback must return NULL not interpolation; schedule vintage is legally material; RPVARA transition creates temporal fork.
 - [x] rmo-31-2019-annexes (Wave 1) — 2026-03-02 — Complete Annex B (13 primary codes + 50 agricultural sub-codes = 63 total) and Annex C (4-column standard format) documented. Committee structure (STCRPV/TCRPV/ECRPV), valuation methodology (avg of 2 highest of 3), 3-year revision mandate. Critical finding: legacy workbooks (pre-2019) use non-standard A-codes (A1="Unirrigated Riceland" in 1990 vs "Riceland Irrigated" in standard). DA (Drying Area) is a 13th primary code present in provincial but not NCR workbooks. RMC 06-2021 confirms BLGF noted format non-compliance. Workbooks embed 3 fallback rules directly.
