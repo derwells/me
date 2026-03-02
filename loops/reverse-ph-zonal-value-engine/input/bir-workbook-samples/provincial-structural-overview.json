@@ -1,0 +1,618 @@
+{
+  "RDO-4": {
+    "rdo": "RDO-4",
+    "description": "Calasiao, Central Pangasinan",
+    "revenue_region": "RR1",
+    "format": ".xls",
+    "file_size_bytes": 4571136,
+    "sheet_count": 14,
+    "sheets": [
+      {
+        "index": 0,
+        "name": "Recovered_Sheet1",
+        "rows": 0,
+        "cols": 0,
+        "merged_count": 0
+      },
+      {
+        "index": 1,
+        "name": "NOTICE",
+        "rows": 41,
+        "cols": 6,
+        "merged_count": 18
+      },
+      {
+        "index": 2,
+        "name": "Sheet 12 (DO015-2023)",
+        "rows": 14609,
+        "cols": 5,
+        "merged_count": 2100
+      },
+      {
+        "index": 3,
+        "name": "Sheet 11 (DO 14-2017)",
+        "rows": 12750,
+        "cols": 5,
+        "merged_count": 302
+      },
+      {
+        "index": 4,
+        "name": "Sheet 10 (DO 2-2012)",
+        "rows": 12350,
+        "cols": 12,
+        "merged_count": 288
+      },
+      {
+        "index": 5,
+        "name": "Sheet 9 (DO 23-06)",
+        "rows": 3676,
+        "cols": 7,
+        "merged_count": 102
+      },
+      {
+        "index": 6,
+        "name": "Sheet 8 (DO 21-06)",
+        "rows": 1133,
+        "cols": 4,
+        "merged_count": 43
+      },
+      {
+        "index": 7,
+        "name": "Sheet 7 (DO 27-02)",
+        "rows": 2474,
+        "cols": 9,
+        "merged_count": 62
+      },
+      {
+        "index": 8,
+        "name": "Sheet 6 (DO 26-02)",
+        "rows": 3442,
+        "cols": 5,
+        "merged_count": 88
+      },
+      {
+        "index": 9,
+        "name": "Sheet 5 (DO 26-99)",
+        "rows": 1048,
+        "cols": 4,
+        "merged_count": 36
+      },
+      {
+        "index": 10,
+        "name": "Sheet 4 (DO 32-97)",
+        "rows": 2821,
+        "cols": 4,
+        "merged_count": 21
+      },
+      {
+        "index": 11,
+        "name": "Sheet 3 (DO 25-94)",
+        "rows": 1955,
+        "cols": 4,
+        "merged_count": 41
+      },
+      {
+        "index": 12,
+        "name": "Sheet 2 (DO 7-90)",
+        "rows": 569,
+        "cols": 4,
+        "merged_count": 24
+      },
+      {
+        "index": 13,
+        "name": "Sheet 1 (DO 6-90)",
+        "rows": 795,
+        "cols": 4,
+        "merged_count": 29
+      }
+    ]
+  },
+  "RDO-5": {
+    "rdo": "RDO-5",
+    "description": "Alaminos City, West Pangasinan",
+    "revenue_region": "RR1",
+    "format": ".xls",
+    "file_size_bytes": 3139072,
+    "sheet_count": 13,
+    "sheets": [
+      {
+        "index": 0,
+        "name": "Recovered_Sheet1",
+        "rows": 0,
+        "cols": 0,
+        "merged_count": 0
+      },
+      {
+        "index": 1,
+        "name": "NOTICE",
+        "rows": 27,
+        "cols": 8,
+        "merged_count": 25
+      },
+      {
+        "index": 2,
+        "name": "Sheet 11 (DO 082-2022)",
+        "rows": 15272,
+        "cols": 5,
+        "merged_count": 4130
+      },
+      {
+        "index": 3,
+        "name": "Sheet 10 (DO 17-2017)",
+        "rows": 9898,
+        "cols": 9,
+        "merged_count": 129
+      },
+      {
+        "index": 4,
+        "name": "Sheet 9 (DO 7-07)",
+        "rows": 697,
+        "cols": 4,
+        "merged_count": 15
+      },
+      {
+        "index": 5,
+        "name": "Sheet 8 (DO 6-07)",
+        "rows": 5191,
+        "cols": 4,
+        "merged_count": 21
+      },
+      {
+        "index": 6,
+        "name": "Sheet 7 (DO 4-07)",
+        "rows": 1381,
+        "cols": 4,
+        "merged_count": 15
+      },
+      {
+        "index": 7,
+        "name": "Sheet 6 (DO 13-2000)",
+        "rows": 2489,
+        "cols": 4,
+        "merged_count": 10
+      },
+      {
+        "index": 8,
+        "name": "Sheet 5 (DO 1-2000)",
+        "rows": 1000,
+        "cols": 4,
+        "merged_count": 9
+      },
+      {
+        "index": 9,
+        "name": "Sheet 4(DO 33-99)",
+        "rows": 983,
+        "cols": 5,
+        "merged_count": 6
+      },
+      {
+        "index": 10,
+        "name": "Sheet 3 (DO 60-97",
+        "rows": 706,
+        "cols": 4,
+        "merged_count": 6
+      },
+      {
+        "index": 11,
+        "name": "Sheet 2 (DO 9-97)",
+        "rows": 1749,
+        "cols": 256,
+        "merged_count": 11
+      },
+      {
+        "index": 12,
+        "name": "Sheet 1 (DO 25-94)",
+        "rows": 1226,
+        "cols": 4,
+        "merged_count": 16
+      }
+    ]
+  },
+  "RDO-56": {
+    "rdo": "RDO-56",
+    "description": "Calamba City, Central Laguna",
+    "revenue_region": "RR9B",
+    "format": ".xls",
+    "file_size_bytes": 1666560,
+    "sheet_count": 18,
+    "sheets": [
+      {
+        "index": 0,
+        "name": "NOTICE",
+        "rows": 45,
+        "cols": 6,
+        "merged_count": 25
+      },
+      {
+        "index": 1,
+        "name": "Sheet 17 (DO 059-23)",
+        "rows": 4742,
+        "cols": 5,
+        "merged_count": 610
+      },
+      {
+        "index": 2,
+        "name": "Sheet 16 (DO 56-17)",
+        "rows": 4330,
+        "cols": 6,
+        "merged_count": 377
+      },
+      {
+        "index": 3,
+        "name": "Sheet 15 (DO 39-10)",
+        "rows": 1340,
+        "cols": 4,
+        "merged_count": 142
+      },
+      {
+        "index": 4,
+        "name": "Sheet 14 (DO 24-10)",
+        "rows": 1498,
+        "cols": 4,
+        "merged_count": 40
+      },
+      {
+        "index": 5,
+        "name": "Sheet 13 (DO 45-03",
+        "rows": 649,
+        "cols": 4,
+        "merged_count": 27
+      },
+      {
+        "index": 6,
+        "name": "Sheet 12 (DO 69-02)",
+        "rows": 795,
+        "cols": 4,
+        "merged_count": 28
+      },
+      {
+        "index": 7,
+        "name": "Sheet 11 (DO 48-02)",
+        "rows": 660,
+        "cols": 4,
+        "merged_count": 18
+      },
+      {
+        "index": 8,
+        "name": "Sheet 10 (DO 50-2000)",
+        "rows": 2465,
+        "cols": 4,
+        "merged_count": 40
+      },
+      {
+        "index": 9,
+        "name": "Sheet 9 (DO 19-97",
+        "rows": 1155,
+        "cols": 4,
+        "merged_count": 43
+      },
+      {
+        "index": 10,
+        "name": "Sheet 8 (DO 16-97)",
+        "rows": 768,
+        "cols": 4,
+        "merged_count": 26
+      },
+      {
+        "index": 11,
+        "name": "Sheet 7 (DO 4-96)",
+        "rows": 520,
+        "cols": 10,
+        "merged_count": 13
+      },
+      {
+        "index": 12,
+        "name": "Sheet 6 (DO 128-91)",
+        "rows": 353,
+        "cols": 6,
+        "merged_count": 35
+      },
+      {
+        "index": 13,
+        "name": "Sheet  5 (DO 127-91)",
+        "rows": 1061,
+        "cols": 8,
+        "merged_count": 15
+      },
+      {
+        "index": 14,
+        "name": "Sheet 4 (DO 11-91)",
+        "rows": 333,
+        "cols": 6,
+        "merged_count": 35
+      },
+      {
+        "index": 15,
+        "name": "Sheet 3 (DO 8-91)",
+        "rows": 374,
+        "cols": 6,
+        "merged_count": 17
+      },
+      {
+        "index": 16,
+        "name": "Sheet 2 (DO 2-91)",
+        "rows": 477,
+        "cols": 6,
+        "merged_count": 19
+      },
+      {
+        "index": 17,
+        "name": "Sheet 1 (47-89)",
+        "rows": 1030,
+        "cols": 6,
+        "merged_count": 24
+      }
+    ]
+  },
+  "RDO-83": {
+    "rdo": "RDO-83",
+    "description": "Talisay City, Cebu",
+    "revenue_region": "RR13",
+    "format": ".xls",
+    "file_size_bytes": 2334208,
+    "sheet_count": 9,
+    "sheets": [
+      {
+        "index": 0,
+        "name": "NOTICE",
+        "rows": 36,
+        "cols": 6,
+        "merged_count": 29
+      },
+      {
+        "index": 1,
+        "name": "Sheet 8(060-22)",
+        "rows": 3306,
+        "cols": 8,
+        "merged_count": 28
+      },
+      {
+        "index": 2,
+        "name": "Sheet 7 (032-20)",
+        "rows": 8876,
+        "cols": 4,
+        "merged_count": 822
+      },
+      {
+        "index": 3,
+        "name": "Sheet 6 (DO-63-18)",
+        "rows": 3292,
+        "cols": 14,
+        "merged_count": 20
+      },
+      {
+        "index": 4,
+        "name": "Sheet 5 (DO 44-02)",
+        "rows": 1242,
+        "cols": 5,
+        "merged_count": 10
+      },
+      {
+        "index": 5,
+        "name": "Sheet 4 (DO 15-02)",
+        "rows": 546,
+        "cols": 4,
+        "merged_count": 12
+      },
+      {
+        "index": 6,
+        "name": "Sheet 3 (DO 30-97)",
+        "rows": 1270,
+        "cols": 4,
+        "merged_count": 9
+      },
+      {
+        "index": 7,
+        "name": "Sheet 2 (DO 29-97)",
+        "rows": 2259,
+        "cols": 11,
+        "merged_count": 12
+      },
+      {
+        "index": 8,
+        "name": "Sheet 1 (DO 21-93)",
+        "rows": 5419,
+        "cols": 22,
+        "merged_count": 118
+      }
+    ]
+  },
+  "RDO-57": {
+    "rdo": "RDO-57",
+    "description": "Bi\u00f1an City, West Laguna",
+    "revenue_region": "RR9B",
+    "format": ".xls",
+    "file_size_bytes": 1582080,
+    "sheet_count": 11,
+    "sheets": [
+      {
+        "index": 0,
+        "name": "NOTICE",
+        "rows": 35,
+        "cols": 6,
+        "merged_count": 14
+      },
+      {
+        "index": 1,
+        "name": "Sheet 10 (DO 055-24",
+        "rows": 4166,
+        "cols": 5,
+        "merged_count": 371
+      },
+      {
+        "index": 2,
+        "name": " Sheet 9 (DO 88-19)",
+        "rows": 776,
+        "cols": 10,
+        "merged_count": 515
+      },
+      {
+        "index": 3,
+        "name": "Sheet 8 (DO 32-19)",
+        "rows": 1999,
+        "cols": 6,
+        "merged_count": 1510
+      },
+      {
+        "index": 4,
+        "name": "Sheet 7 (DO 11-15)",
+        "rows": 684,
+        "cols": 4,
+        "merged_count": 14
+      },
+      {
+        "index": 5,
+        "name": "Sheet 6 (DO 11-15) ",
+        "rows": 1905,
+        "cols": 4,
+        "merged_count": 14
+      },
+      {
+        "index": 6,
+        "name": "Sheet 5 (DO 33-05)",
+        "rows": 2481,
+        "cols": 4,
+        "merged_count": 62
+      },
+      {
+        "index": 7,
+        "name": "Sheet 4 (DO 22-97)",
+        "rows": 1731,
+        "cols": 4,
+        "merged_count": 14
+      },
+      {
+        "index": 8,
+        "name": "Sheet 3 (DO 18-96)",
+        "rows": 2011,
+        "cols": 4,
+        "merged_count": 52
+      },
+      {
+        "index": 9,
+        "name": "Sheet 2 (DO 125-91)",
+        "rows": 417,
+        "cols": 4,
+        "merged_count": 15
+      },
+      {
+        "index": 10,
+        "name": "Sheet 1 (DO 8-91)",
+        "rows": 1508,
+        "cols": 4,
+        "merged_count": 45
+      }
+    ]
+  },
+  "RDO-81": {
+    "rdo": "RDO-81",
+    "description": "Cebu City North",
+    "revenue_region": "RR13",
+    "format": ".xlsx",
+    "file_size_bytes": 403262,
+    "sheet_count": 7,
+    "sheets": [
+      {
+        "index": 0,
+        "name": "NOTICE",
+        "rows": 34,
+        "cols": 6,
+        "merged_count": 6
+      },
+      {
+        "index": 1,
+        "name": "Sheet 6 (DO 054-2023)",
+        "rows": 2359,
+        "cols": 10,
+        "merged_count": 2518
+      },
+      {
+        "index": 2,
+        "name": "Sheet 5 (DO 064-18)",
+        "rows": 1982,
+        "cols": 8,
+        "merged_count": 2118
+      },
+      {
+        "index": 3,
+        "name": "Sheet 4 (DO 36-07)",
+        "rows": 1636,
+        "cols": 4,
+        "merged_count": 39
+      },
+      {
+        "index": 4,
+        "name": "Sheet 3 (DO 15-97)",
+        "rows": 1152,
+        "cols": 4,
+        "merged_count": 29
+      },
+      {
+        "index": 5,
+        "name": "Sheet 2 (DO 20-93",
+        "rows": 1499,
+        "cols": 4,
+        "merged_count": 12
+      },
+      {
+        "index": 6,
+        "name": "Sheet 1 (DO 26-89)",
+        "rows": 1349,
+        "cols": 6,
+        "merged_count": 16
+      }
+    ]
+  },
+  "RDO-113A": {
+    "rdo": "RDO-113A",
+    "description": "West Davao City",
+    "revenue_region": "RR19",
+    "format": ".xlsx",
+    "file_size_bytes": 678368,
+    "sheet_count": 6,
+    "sheets": [
+      {
+        "index": 0,
+        "name": "NOTICE",
+        "rows": 16,
+        "cols": 5,
+        "merged_count": 10
+      },
+      {
+        "index": 1,
+        "name": "Sheet 5 (DO 032-21)",
+        "rows": 3991,
+        "cols": 5,
+        "merged_count": 197
+      },
+      {
+        "index": 2,
+        "name": "Sheet 4 (DO 013-17)",
+        "rows": 6098,
+        "cols": 9,
+        "merged_count": 997
+      },
+      {
+        "index": 3,
+        "name": "Sheet 3 (DO 41-02)",
+        "rows": 4323,
+        "cols": 22,
+        "merged_count": 10
+      },
+      {
+        "index": 4,
+        "name": "Sheet 2 (DO 82-96)",
+        "rows": 2780,
+        "cols": 5,
+        "merged_count": 15
+      },
+      {
+        "index": 5,
+        "name": "Sheet 1 (DO 53-92)",
+        "rows": 2594,
+        "cols": 5,
+        "merged_count": 4
+      }
+    ]
+  }
+}

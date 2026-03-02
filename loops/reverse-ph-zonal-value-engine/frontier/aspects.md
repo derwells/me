@@ -1,16 +1,16 @@
 # Frontier — Zonal Value Lookup Engine
 
 ## Statistics
-- Total aspects discovered: 28
-- Analyzed: 1
+- Total aspects discovered: 29
+- Analyzed: 2
 - Pending: 27
-- Convergence: 3.6%
+- Convergence: 6.9%
 
 ## Pending Aspects (ordered by dependency)
 
 ### Wave 1: Source Acquisition (7 aspects)
 - [x] bir-workbook-ncr-samples — Download 3-4 BIR zonal value Excel workbooks from NCR RDOs (Makati, Taguig, Mandaluyong, QC) — these are high-density, condo-heavy, well-maintained schedules
-- [ ] bir-workbook-provincial-samples — Download 3-4 provincial RDO workbooks (mix of urban provincial like Cebu/Davao and rural agricultural like Laguna/Pangasinan) — different format patterns expected
+- [x] bir-workbook-provincial-samples — Download 3-4 provincial RDO workbooks (mix of urban provincial like Cebu/Davao and rural agricultural like Laguna/Pangasinan) — different format patterns expected
 - [ ] rmo-31-2019-annexes — Fetch RMO 31-2019 full text focusing on Annex B (classification codes) and Annex C (standard schedule format) — the normative standard that RDOs should follow
 - [ ] rpvara-transition-mechanics — Fetch RA 12001 full text + BLGF MC 001-2025 IRR, extract provisions specific to zonal value transition: SMV format, timeline, dual-source handling, LGU compliance requirements
 - [ ] cta-zonal-rulings — Search for CTA cases involving zonal value disputes: classification disagreements, fallback rule application, jurisdiction conflicts, stale schedule challenges
@@ -22,15 +22,16 @@ Depends on Wave 1 data.
 - [ ] workbook-column-layouts — Document exact column layouts across all sampled workbooks: column names, positions, data types, which columns are consistent vs. varying
 - [ ] merged-cell-patterns — Map merged cell usage across workbooks: barangay groupings, header hierarchies, multi-row entries — produce a taxonomy of merge patterns a parser must handle
 - [ ] sheet-organization — Document sheet naming, structure, and organization across RDOs: data sheets vs. notice sheets vs. revision history sheets, condo vs. land separation
-- [ ] address-vicinity-patterns — Catalog the actual vicinity descriptor patterns found in workbooks: "along [Street]", "[Street] from [X] to [Y]", "interior lots", "all other streets in [Barangay]" — build a pattern taxonomy
+- [ ] address-vicinity-patterns — Catalog the actual vicinity descriptor patterns found in workbooks: "along [Street]", "[Street] from [X] to [Y]", "interior lots", "all other streets in [Barangay]", "along national highway", "50 meters inward" — build a pattern taxonomy covering both NCR cross-street and provincial road-proximity models
 - [ ] classification-code-usage — Map which classification codes (RR, CR, RC, CC, I, A1-A50, etc.) appear in which RDOs, how they're formatted, and frequency distribution
 - [ ] condo-table-structures — Document condo-specific table formats: building name organization, tower/floor range encoding, per-unit vs. per-sqm distinction, parking slot entries
 - [ ] data-size-estimation — Estimate total dataset size when normalized: record count, storage in JSON/binary formats, compressed sizes — critical input for WASM bundling decision
+- [ ] footnote-convention-mapping — Map the per-region footnote marker conventions (* = new vs deleted, ** vs ***, ****) — required for correct parsing of classification markers and street status annotations
 
 ### Wave 3: Resolution Logic Deep-Dive (5 aspects)
 Depends on Wave 2 data.
 - [ ] rdo-jurisdiction-mapping — Formalize the city/municipality → RDO lookup with actual data: complete mapping table, edge cases (boundary disputes, newly created LGUs), update frequency
-- [ ] address-matching-algorithms — Design address matching strategy using Wave 2 pattern taxonomy: exact match, fuzzy match, vicinity segment resolution, barangay-level fallback — evaluate NLP/geocoding approaches with worked examples from actual workbook data
+- [ ] address-matching-algorithms — Design address matching strategy using Wave 2 pattern taxonomy: exact match, fuzzy match, vicinity segment resolution, barangay-level fallback — evaluate NLP/geocoding approaches with worked examples from actual workbook data. Must handle both NCR cross-street mode and provincial road-proximity mode, plus SITIO sub-barangay addressing
 - [ ] classification-resolution-logic — Formalize classification code resolution with edge cases: mixed-use properties, predominant use rule, agricultural minimum area thresholds, conversion/reclassification timing — pseudocode suitable for Rust
 - [ ] fallback-hierarchy-implementation — Implement the 6-level fallback chain with worked examples from actual RDO data: exact match → barangay general → special use → LGU FMV markup → written inquiry → zonal classification ruling
 - [ ] rpvara-dual-source-resolution — Design the dual-source resolution for 2026-2027 transition: when to use BIR ZV vs BLGF SMV, how to detect which regime applies for a given RDO, graceful degradation when SMV data is incomplete
@@ -54,4 +55,5 @@ Depends on all Wave 5 analysis.
 - [ ] spec-self-review — Self-review the compiled spec: verify every complexity driver is addressed, all design decisions trace to data findings, spec is actionable for a forward loop, no gaps in coverage
 
 ## Recently Analyzed
+- [x] bir-workbook-provincial-samples (Wave 1) — 2026-03-02 — 7 provincial RDO workbooks (Pangasinan ×2, Laguna ×2, Cebu ×2, Davao ×1) downloaded and structurally analyzed. Multi-municipality workbooks (up to 16 per RDO), heavy agricultural code usage (20-46% of data), road-proximity vicinity model (vs NCR cross-street), footnote convention variability across regions. ~690K estimated total rows across all 124 RDOs.
 - [x] bir-workbook-ncr-samples (Wave 1) — 2026-03-02 — 24 NCR RDO workbooks downloaded and structurally analyzed. 4 column layout patterns, 6 barangay header variants, 5+ date formats identified. Key emergent finding: BGC FAR-based pricing is a unique pattern requiring special handling.
