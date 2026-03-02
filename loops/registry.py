@@ -63,9 +63,19 @@ LOOPS: dict[str, Loop] = {
     "reverse-tsvj-backoffice-automation": Loop(
         description="Survey back-office tasks for Las Piñas SEC-registered rental property business → process catalog with feature specs",
         type=LoopType.REVERSE,
-        status=LoopStatus.ACTIVE,
+        status=LoopStatus.CONVERGED,
         max_iterations=40,
         timeout_seconds=900,
         created=date(2026, 2, 26),
+        converged_at=date(2026, 2, 27),
+    ),
+    "reverse-tsvj-webapp-spec": Loop(
+        description="Process catalog → web app spec (architecture + per-feature implementation specs with backpressure verification)",
+        type=LoopType.REVERSE,
+        status=LoopStatus.ACTIVE,
+        max_iterations=35,
+        timeout_seconds=900,
+        model="claude-opus-4-6",
+        created=date(2026, 3, 2),
     ),
 }
