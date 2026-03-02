@@ -2,15 +2,15 @@
 
 ## Statistics
 - Total aspects discovered: 26
-- Analyzed: 1
-- Pending: 25
-- Convergence: 3.8%
+- Analyzed: 2
+- Pending: 24
+- Convergence: 7.7%
 
 ## Pending Aspects (ordered by dependency)
 
 ### Wave 1: Source Extraction
 - [x] data-model-extract — Extract all entities, fields, relationships, and constraints from process catalog into unified data model
-- [ ] ui-requirements-extract — Extract all views, forms, dashboards, tables, exports from process catalog; group by role (admin/accountant)
+- [x] ui-requirements-extract — Extract all views, forms, dashboards, tables, exports from process catalog; group by role (admin/accountant)
 - [ ] cross-cutting-extract — Extract VAT matrix, EWT rules, tenant type bifurcation, numbering, lease lifecycle as they affect web app design
 
 ### Wave 2: Architecture Decisions
@@ -51,3 +51,4 @@ Depends on all Wave 3 specs.
 
 ## Recently Analyzed
 - data-model-extract (Wave 1) — 65 entities, 20 enums, ~300 fields extracted from process catalog
+- ui-requirements-extract (Wave 1) — ~47 views, ~19 forms, ~35 tables, ~21 exports, ~6 dashboards. Full role-based access matrix (Admin vs Accountant). ASCII mockups for all key screens.
