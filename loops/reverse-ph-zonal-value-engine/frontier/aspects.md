@@ -2,16 +2,16 @@
 
 ## Statistics
 - Total aspects discovered: 29
-- Analyzed: 2
-- Pending: 27
-- Convergence: 6.9%
+- Analyzed: 3
+- Pending: 26
+- Convergence: 10.3%
 
 ## Pending Aspects (ordered by dependency)
 
 ### Wave 1: Source Acquisition (7 aspects)
 - [x] bir-workbook-ncr-samples — Download 3-4 BIR zonal value Excel workbooks from NCR RDOs (Makati, Taguig, Mandaluyong, QC) — these are high-density, condo-heavy, well-maintained schedules
 - [x] bir-workbook-provincial-samples — Download 3-4 provincial RDO workbooks (mix of urban provincial like Cebu/Davao and rural agricultural like Laguna/Pangasinan) — different format patterns expected
-- [ ] rmo-31-2019-annexes — Fetch RMO 31-2019 full text focusing on Annex B (classification codes) and Annex C (standard schedule format) — the normative standard that RDOs should follow
+- [x] rmo-31-2019-annexes — Fetch RMO 31-2019 full text focusing on Annex B (classification codes) and Annex C (standard schedule format) — the normative standard that RDOs should follow
 - [ ] rpvara-transition-mechanics — Fetch RA 12001 full text + BLGF MC 001-2025 IRR, extract provisions specific to zonal value transition: SMV format, timeline, dual-source handling, LGU compliance requirements
 - [ ] cta-zonal-rulings — Search for CTA cases involving zonal value disputes: classification disagreements, fallback rule application, jurisdiction conflicts, stale schedule challenges
 - [ ] third-party-platform-survey — Analyze Housal (1.96M records), RealValueMaps (2.7M records), ZonalValueFinderPH, LandValuePH, REN.PH — document their search UX, data models, coverage claims, limitations
@@ -55,5 +55,6 @@ Depends on all Wave 5 analysis.
 - [ ] spec-self-review — Self-review the compiled spec: verify every complexity driver is addressed, all design decisions trace to data findings, spec is actionable for a forward loop, no gaps in coverage
 
 ## Recently Analyzed
+- [x] rmo-31-2019-annexes (Wave 1) — 2026-03-02 — Complete Annex B (13 primary codes + 50 agricultural sub-codes = 63 total) and Annex C (4-column standard format) documented. Committee structure (STCRPV/TCRPV/ECRPV), valuation methodology (avg of 2 highest of 3), 3-year revision mandate. Critical finding: legacy workbooks (pre-2019) use non-standard A-codes (A1="Unirrigated Riceland" in 1990 vs "Riceland Irrigated" in standard). DA (Drying Area) is a 13th primary code present in provincial but not NCR workbooks. RMC 06-2021 confirms BLGF noted format non-compliance. Workbooks embed 3 fallback rules directly.
 - [x] bir-workbook-provincial-samples (Wave 1) — 2026-03-02 — 7 provincial RDO workbooks (Pangasinan ×2, Laguna ×2, Cebu ×2, Davao ×1) downloaded and structurally analyzed. Multi-municipality workbooks (up to 16 per RDO), heavy agricultural code usage (20-46% of data), road-proximity vicinity model (vs NCR cross-street), footnote convention variability across regions. ~690K estimated total rows across all 124 RDOs.
 - [x] bir-workbook-ncr-samples (Wave 1) — 2026-03-02 — 24 NCR RDO workbooks downloaded and structurally analyzed. 4 column layout patterns, 6 barangay header variants, 5+ date formats identified. Key emergent finding: BGC FAR-based pricing is a unique pattern requiring special handling.
