@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 29
-- Analyzed: 3
-- Pending: 26
-- Convergence: 10.3%
+- Analyzed: 4
+- Pending: 25
+- Convergence: 13.8%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -12,7 +12,7 @@
 - [x] bir-workbook-ncr-samples — Download 3-4 BIR zonal value Excel workbooks from NCR RDOs (Makati, Taguig, Mandaluyong, QC) — these are high-density, condo-heavy, well-maintained schedules
 - [x] bir-workbook-provincial-samples — Download 3-4 provincial RDO workbooks (mix of urban provincial like Cebu/Davao and rural agricultural like Laguna/Pangasinan) — different format patterns expected
 - [x] rmo-31-2019-annexes — Fetch RMO 31-2019 full text focusing on Annex B (classification codes) and Annex C (standard schedule format) — the normative standard that RDOs should follow
-- [ ] rpvara-transition-mechanics — Fetch RA 12001 full text + BLGF MC 001-2025 IRR, extract provisions specific to zonal value transition: SMV format, timeline, dual-source handling, LGU compliance requirements
+- [x] rpvara-transition-mechanics — Fetch RA 12001 full text + BLGF MC 001-2025 IRR, extract provisions specific to zonal value transition: SMV format, timeline, dual-source handling, LGU compliance requirements
 - [ ] cta-zonal-rulings — Search for CTA cases involving zonal value disputes: classification disagreements, fallback rule application, jurisdiction conflicts, stale schedule challenges
 - [ ] third-party-platform-survey — Analyze Housal (1.96M records), RealValueMaps (2.7M records), ZonalValueFinderPH, LandValuePH, REN.PH — document their search UX, data models, coverage claims, limitations
 - [ ] prior-analysis-import — Import and annotate the existing analysis from `../reverse-ph-tax-computations/analysis/zonal-value-lookup.md` — identify confirmed findings vs. areas needing deeper investigation
