@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 26
-- Analyzed: 10
-- Pending: 16
-- Convergence: 38.5%
+- Analyzed: 11
+- Pending: 15
+- Convergence: 42.3%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -22,7 +22,7 @@ Depends on Wave 1 data.
 - [x] ui-framework — Next.js app router structure, component library choice (shadcn/ui vs alternatives), layout patterns
 - [x] state-and-data-fetching — tRPC + React Query patterns, optimistic updates, cache invalidation
 - [x] shared-computations — Where billing/tax/penalty computation logic lives (shared package), decimal handling, rounding rules
-- [ ] document-generation — PDF generation for invoices, receipts, contracts, rent roll exports (CSV/XLSX)
+- [x] document-generation — PDF generation for invoices, receipts, contracts, rent roll exports (CSV/XLSX)
 - [ ] compliance-alerts — Notification system for deadline alerts (in-app, email), scheduled jobs
 - [ ] deployment — Vercel/Railway/Supabase deployment topology, environment config, CI/CD
 
@@ -60,3 +60,4 @@ Depends on all Wave 3 specs.
 - ui-framework (Wave 2) — Next.js 16 App Router with Server Components default. shadcn/ui (Radix unified) for all primitives + 13 composed domain components (CurrencyInput, TINInput, PesoDisplay, RegimeBadge, StatusBadge, RoleGate, ExportButton, DataTable, EmptyState, ConfirmDialog, PageHeader, FormSection, AlertBanner). react-hook-form + Zod resolver for all 19 forms (shared schemas with tRPC). TanStack Table v8 for ~35 data tables with sorting, filtering, cursor-based pagination. Regime-adaptive lease form with superRefine for controlled/commercial rule enforcement. nuqs for URL filter state. sonner for toasts. date-fns for date formatting. Consistent page pattern: Server Component page → auth check → prefetch → HydrateClient → Client Component. No dark mode in MVP. Tailwind v4 with CSS-based theme config. ~42KB additional client bundle (excluding dynamic-imported SheetJS).
 - state-and-data-fetching (Wave 2) — React Query (via @trpc/tanstack-react-query) as sole data layer. useSuspenseQuery + RSC prefetch via serverTrpc for zero-loading-spinner page loads. 30s staleTime, no refetchOnWindowFocus. Invalidation-based cache updates for all mutations except alert dismiss + charge type toggle (optimistic). Cross-router invalidation map for payment/billing/lease mutations. nuqs for URL filter state, react-hook-form for form state, local useState for UI state. No global state store. httpBatchLink batches concurrent queries. "Load More" pagination pattern. Suspense boundaries on all data pages. Monetary values stay as strings end-to-end.
 - shared-computations (Wave 2) — Pure TypeScript `@tsvj/computations` package with zero internal deps (only decimal.js). Peso wrapper type + 7 context-specific rounding functions (ROUND_DOWN for NHSB, HALF_UP for water/electric/VAT/EWT/penalty, 4-decimal for electric rate). 10 computation modules: escalation (NHSB + contractual + threshold), water (tiered-billing + allocation), electric (blended-rate + allocation), penalty (simple-interest + caps), billing (VAT determination + charge builder), payment (Art. 1252-1254 allocation), deposit (validation + refund), contract (DST), tax (EWT rent + EWT supplier + VAT summary + apportionment), lease (state machine + alerts). ~20 primary functions, all pure/synchronous, string inputs/outputs. tRPC routers bridge DB↔computation. Complete test strategy with test vectors per module.
+- document-generation (Wave 2) — @react-pdf/renderer ^4 for server-side PDF via dedicated Next.js API routes (/api/pdf/[type]/[id]). 5 PDF types: VAT Sales Invoice (16 mandatory RR 7-2024 fields), Official Receipt, Lease Contract (clause assembly + variable substitution), Billing Statement, Supplier Form 2307. On-demand generation (not stored). Batch download via archiver ^7 (ZIP). SheetJS 0.20.3 (CDN install) for 13 XLSX/CSV exports via dynamic import. Inter font for ₱/ñ. pdf-parse for test assertions. PDF infra in F0, invoice/receipt templates in P5/P6, contract in P8, Form 2307 in P14.
