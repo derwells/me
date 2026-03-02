@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 26
-- Analyzed: 6
-- Pending: 20
-- Convergence: 23.1%
+- Analyzed: 7
+- Pending: 19
+- Convergence: 26.9%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -18,7 +18,7 @@ Depends on Wave 1 data.
 - [x] project-structure — Turborepo monorepo layout: packages, apps, shared code organization
 - [x] database-schema — Drizzle schema design: table organization, naming conventions, migration strategy, Supabase integration
 - [x] auth-and-roles — Supabase Auth setup, admin vs accountant role enforcement, row-level security
-- [ ] api-layer — tRPC router organization, middleware, error handling patterns
+- [x] api-layer — tRPC router organization, middleware, error handling patterns
 - [ ] ui-framework — Next.js app router structure, component library choice (shadcn/ui vs alternatives), layout patterns
 - [ ] state-and-data-fetching — tRPC + React Query patterns, optimistic updates, cache invalidation
 - [ ] shared-computations — Where billing/tax/penalty computation logic lives (shared package), decimal handling, rounding rules
@@ -56,3 +56,4 @@ Depends on all Wave 3 specs.
 - project-structure (Wave 2) — Turborepo monorepo: 1 app (apps/web: Next.js 16 + tRPC v11), 4 packages (@tsvj/db, @tsvj/computations, @tsvj/ui, @tsvj/tsconfig). tRPC routers inside Next.js app (not separate package). Schema files organized by entity category (6 files). Computations package = zero internal deps, pure functions, decimal.js for rounding. 15-step forward loop implementation order. Vitest for all test layers.
 - database-schema (Wave 2) — 44 Drizzle tables + 1 materialized view (TenantBalance) + 24 pgEnums across 8 schema files. Serial PKs (bigserial for high-volume tables). PostgreSQL numeric-only for all monetary values (never float). snake_case naming. Centralized relations.ts to avoid circular imports. Atomic document sequence increment with ATP overflow check. No RLS (middleware-based role enforcement). No soft deletes (status-based lifecycle + immutable audit logs). Push-based dev migrations, file-based production. JSONB columns with paired Zod schemas. FK indexes on all foreign keys + query-critical composite/partial indexes.
 - auth-and-roles (Wave 2) — Supabase Auth email/password (no magic links, no OAuth). Role stored in `app_metadata.role` (server-writable JWT claim). tRPC middleware: `authed` (any logged-in user) + `adminOnly` (rejects accountant). 4-layer defense: Next.js middleware (auth redirect) → page-level Server Component (role redirect) → tRPC middleware (UNAUTHORIZED/FORBIDDEN) → client-side RoleGate (UX). No RLS. No self-registration (admin creates accountant via Supabase Admin API). @supabase/ssr for cookie-based sessions. Complete role-procedure mapping: all queries = protectedProcedure, all mutations = adminProcedure (except alert.dismiss). Settings router admin-only for reads too.
+- api-layer (Wave 2) — 21 sub-routers, ~90 procedures (full inventory). domain.verb naming (e.g., tenant.list, billingRun.finalize). superjson transformer for Date serialization, monetary values stay as strings. Cursor-based pagination for all list endpoints. Zod input schemas inline per router + shared pagination/filter schemas. Transaction-wrapped multi-table mutations. Fire-and-forget audit logging middleware on all admin mutations. RSC prefetching via tRPC server caller + React Query hydration. Client-side CSV/XLSX export via SheetJS (dynamic import). pg_cron daily lifecycle job for lease state transitions + compliance deadline alerts. httpBatchLink for request batching. Cross-router cache invalidation map. 6 tRPC error codes used with structured business rule error metadata.
