@@ -2,16 +2,16 @@
 
 ## Statistics
 - Total aspects discovered: 26
-- Analyzed: 2
-- Pending: 24
-- Convergence: 7.7%
+- Analyzed: 3
+- Pending: 23
+- Convergence: 11.5%
 
 ## Pending Aspects (ordered by dependency)
 
 ### Wave 1: Source Extraction
 - [x] data-model-extract — Extract all entities, fields, relationships, and constraints from process catalog into unified data model
 - [x] ui-requirements-extract — Extract all views, forms, dashboards, tables, exports from process catalog; group by role (admin/accountant)
-- [ ] cross-cutting-extract — Extract VAT matrix, EWT rules, tenant type bifurcation, numbering, lease lifecycle as they affect web app design
+- [x] cross-cutting-extract — Extract VAT matrix, EWT rules, tenant type bifurcation, numbering, lease lifecycle as they affect web app design
 
 ### Wave 2: Architecture Decisions
 Depends on Wave 1 data.
@@ -52,3 +52,4 @@ Depends on all Wave 3 specs.
 ## Recently Analyzed
 - data-model-extract (Wave 1) — 65 entities, 20 enums, ~300 fields extracted from process catalog
 - ui-requirements-extract (Wave 1) — ~47 views, ~19 forms, ~35 tables, ~21 exports, ~6 dashboards. Full role-based access matrix (Admin vs Accountant). ASCII mockups for all key screens.
+- cross-cutting-extract (Wave 1) — 5 cross-cutting concerns (VAT matrix with 8 scenarios, EWT rules for rent + suppliers, tenant type bifurcation across 10 processes, sequential numbering with ATP management, lease lifecycle state machine with 8 event types). Plus decimal handling rules and compliance calendar summary. 3 conflicting rules flagged for accountant configuration.
