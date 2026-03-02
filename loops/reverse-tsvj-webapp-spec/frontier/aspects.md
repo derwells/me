@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 26
-- Analyzed: 8
-- Pending: 18
-- Convergence: 30.8%
+- Analyzed: 9
+- Pending: 17
+- Convergence: 34.6%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -20,7 +20,7 @@ Depends on Wave 1 data.
 - [x] auth-and-roles — Supabase Auth setup, admin vs accountant role enforcement, row-level security
 - [x] api-layer — tRPC router organization, middleware, error handling patterns
 - [x] ui-framework — Next.js app router structure, component library choice (shadcn/ui vs alternatives), layout patterns
-- [ ] state-and-data-fetching — tRPC + React Query patterns, optimistic updates, cache invalidation
+- [x] state-and-data-fetching — tRPC + React Query patterns, optimistic updates, cache invalidation
 - [ ] shared-computations — Where billing/tax/penalty computation logic lives (shared package), decimal handling, rounding rules
 - [ ] document-generation — PDF generation for invoices, receipts, contracts, rent roll exports (CSV/XLSX)
 - [ ] compliance-alerts — Notification system for deadline alerts (in-app, email), scheduled jobs
@@ -58,3 +58,4 @@ Depends on all Wave 3 specs.
 - auth-and-roles (Wave 2) — Supabase Auth email/password (no magic links, no OAuth). Role stored in `app_metadata.role` (server-writable JWT claim). tRPC middleware: `authed` (any logged-in user) + `adminOnly` (rejects accountant). 4-layer defense: Next.js middleware (auth redirect) → page-level Server Component (role redirect) → tRPC middleware (UNAUTHORIZED/FORBIDDEN) → client-side RoleGate (UX). No RLS. No self-registration (admin creates accountant via Supabase Admin API). @supabase/ssr for cookie-based sessions. Complete role-procedure mapping: all queries = protectedProcedure, all mutations = adminProcedure (except alert.dismiss). Settings router admin-only for reads too.
 - api-layer (Wave 2) — 21 sub-routers, ~90 procedures (full inventory). domain.verb naming (e.g., tenant.list, billingRun.finalize). superjson transformer for Date serialization, monetary values stay as strings. Cursor-based pagination for all list endpoints. Zod input schemas inline per router + shared pagination/filter schemas. Transaction-wrapped multi-table mutations. Fire-and-forget audit logging middleware on all admin mutations. RSC prefetching via tRPC server caller + React Query hydration. Client-side CSV/XLSX export via SheetJS (dynamic import). pg_cron daily lifecycle job for lease state transitions + compliance deadline alerts. httpBatchLink for request batching. Cross-router cache invalidation map. 6 tRPC error codes used with structured business rule error metadata.
 - ui-framework (Wave 2) — Next.js 16 App Router with Server Components default. shadcn/ui (Radix unified) for all primitives + 13 composed domain components (CurrencyInput, TINInput, PesoDisplay, RegimeBadge, StatusBadge, RoleGate, ExportButton, DataTable, EmptyState, ConfirmDialog, PageHeader, FormSection, AlertBanner). react-hook-form + Zod resolver for all 19 forms (shared schemas with tRPC). TanStack Table v8 for ~35 data tables with sorting, filtering, cursor-based pagination. Regime-adaptive lease form with superRefine for controlled/commercial rule enforcement. nuqs for URL filter state. sonner for toasts. date-fns for date formatting. Consistent page pattern: Server Component page → auth check → prefetch → HydrateClient → Client Component. No dark mode in MVP. Tailwind v4 with CSS-based theme config. ~42KB additional client bundle (excluding dynamic-imported SheetJS).
+- state-and-data-fetching (Wave 2) — React Query (via @trpc/tanstack-react-query) as sole data layer. useSuspenseQuery + RSC prefetch via serverTrpc for zero-loading-spinner page loads. 30s staleTime, no refetchOnWindowFocus. Invalidation-based cache updates for all mutations except alert dismiss + charge type toggle (optimistic). Cross-router invalidation map for payment/billing/lease mutations. nuqs for URL filter state, react-hook-form for form state, local useState for UI state. No global state store. httpBatchLink batches concurrent queries. "Load More" pagination pattern. Suspense boundaries on all data pages. Monetary values stay as strings end-to-end.
