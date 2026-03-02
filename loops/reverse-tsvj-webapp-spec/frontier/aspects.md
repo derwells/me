@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 26
-- Analyzed: 11
-- Pending: 15
-- Convergence: 42.3%
+- Analyzed: 12
+- Pending: 14
+- Convergence: 46.2%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -23,7 +23,7 @@ Depends on Wave 1 data.
 - [x] state-and-data-fetching — tRPC + React Query patterns, optimistic updates, cache invalidation
 - [x] shared-computations — Where billing/tax/penalty computation logic lives (shared package), decimal handling, rounding rules
 - [x] document-generation — PDF generation for invoices, receipts, contracts, rent roll exports (CSV/XLSX)
-- [ ] compliance-alerts — Notification system for deadline alerts (in-app, email), scheduled jobs
+- [x] compliance-alerts — Notification system for deadline alerts (in-app, email), scheduled jobs
 - [ ] deployment — Vercel/Railway/Supabase deployment topology, environment config, CI/CD
 
 ### Wave 3: Feature Specs
@@ -61,3 +61,4 @@ Depends on all Wave 3 specs.
 - state-and-data-fetching (Wave 2) — React Query (via @trpc/tanstack-react-query) as sole data layer. useSuspenseQuery + RSC prefetch via serverTrpc for zero-loading-spinner page loads. 30s staleTime, no refetchOnWindowFocus. Invalidation-based cache updates for all mutations except alert dismiss + charge type toggle (optimistic). Cross-router invalidation map for payment/billing/lease mutations. nuqs for URL filter state, react-hook-form for form state, local useState for UI state. No global state store. httpBatchLink batches concurrent queries. "Load More" pagination pattern. Suspense boundaries on all data pages. Monetary values stay as strings end-to-end.
 - shared-computations (Wave 2) — Pure TypeScript `@tsvj/computations` package with zero internal deps (only decimal.js). Peso wrapper type + 7 context-specific rounding functions (ROUND_DOWN for NHSB, HALF_UP for water/electric/VAT/EWT/penalty, 4-decimal for electric rate). 10 computation modules: escalation (NHSB + contractual + threshold), water (tiered-billing + allocation), electric (blended-rate + allocation), penalty (simple-interest + caps), billing (VAT determination + charge builder), payment (Art. 1252-1254 allocation), deposit (validation + refund), contract (DST), tax (EWT rent + EWT supplier + VAT summary + apportionment), lease (state machine + alerts). ~20 primary functions, all pure/synchronous, string inputs/outputs. tRPC routers bridge DB↔computation. Complete test strategy with test vectors per module.
 - document-generation (Wave 2) — @react-pdf/renderer ^4 for server-side PDF via dedicated Next.js API routes (/api/pdf/[type]/[id]). 5 PDF types: VAT Sales Invoice (16 mandatory RR 7-2024 fields), Official Receipt, Lease Contract (clause assembly + variable substitution), Billing Statement, Supplier Form 2307. On-demand generation (not stored). Batch download via archiver ^7 (ZIP). SheetJS 0.20.3 (CDN install) for 13 XLSX/CSV exports via dynamic import. Inter font for ₱/ñ. pdf-parse for test assertions. PDF infra in F0, invoice/receipt templates in P5/P6, contract in P8, Form 2307 in P14.
+- compliance-alerts (Wave 2) — 5 alert categories (LEASE_EXPIRY, COMPLIANCE, ATP_EXHAUSTION, ARREARS, FORM_2307_MISSING) fed by daily pg_cron PL/pgSQL function + synchronous tRPC triggers. Resend email via Supabase Edge Function for URGENT/OVERDUE (daily digest, ~5-10/month). ComplianceDeadline table tracks ~43 seeded obligations with JSONB deadline_rule computation. Deduplication via time-windowed NOT EXISTS checks. Alert UI: header bell dropdown + /alerts page + dashboard widgets + persistent AlertBanner for OVERDUE. Compliance calendar at /settings/compliance with admin mark-as-filed workflow. alert.dismiss is only mutation both roles can access. Implementation spans F0 (infra) → P5/P6 (ATP + arrears) → P10 (lease lifecycle) → P12 (compliance deadlines + calendar).
