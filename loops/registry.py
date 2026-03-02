@@ -51,6 +51,15 @@ LOOPS: dict[str, Loop] = {
         timeout_seconds=900,
         created=date(2026, 2, 26),
     ),
+    "reverse-ph-zonal-value-engine": Loop(
+        description="Zonal Value Lookup Engine → computation & data spec + Rust/WASM/TS app architecture spec",
+        type=LoopType.REVERSE,
+        status=LoopStatus.ACTIVE,
+        max_iterations=35,
+        timeout_seconds=900,
+        model="claude-opus-4-6",
+        created=date(2026, 3, 2),
+    ),
     "reverse-tsvj-backoffice-automation": Loop(
         description="Survey back-office tasks for Las Piñas SEC-registered rental property business → process catalog with feature specs",
         type=LoopType.REVERSE,
