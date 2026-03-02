@@ -2,14 +2,14 @@
 
 **Wave:** 1 — Source Acquisition
 **Date:** 2026-03-02
-**Platforms surveyed:** ZonalValueFinderPH, LandValuePH, REN.PH, Housal, RealValueMaps, ZonalValue.com
+**Platforms surveyed:** ZonalValueFinderPH, LandValuePH, REN.PH, Housal, RealValueMaps, ZonalValue.com, FileDocsPhil
 **Method:** Web search, site fetching, interface analysis, technology fingerprinting
 
 ---
 
 ## Summary
 
-Six third-party platforms were surveyed. All source their data from the same upstream: BIR Excel workbooks published on bir.gov.ph. None offer a public API. They range from ad-supported free lookup tools (ZonalValueFinderPH) to freemium property appraisal platforms (LandValuePH) to public-infrastructure verification ledgers (REN.PH). The two largest by record count are RealValueMaps (2.7M+) and Housal (1.96M+), but their records include historical revisions, not just current values. No platform solves the core engineering problem: programmatic address-to-zonal-value resolution with classification awareness and fallback logic.
+Seven third-party platforms were surveyed. All source their data from the same upstream: BIR Excel workbooks published on bir.gov.ph. **None offers a public API.** They range from ad-supported free lookup tools (ZonalValueFinderPH) to freemium property appraisal platforms (LandValuePH) to public-infrastructure verification ledgers (REN.PH) to data resellers (FileDocsPhil). The two largest by record count are RealValueMaps (2.7M+) and Housal (1.96M+), but their records include historical revisions, not just current values. No platform solves the core engineering problem: programmatic address-to-zonal-value resolution with classification awareness, fallback logic, and RPVARA dual-source readiness.
 
 ---
 
@@ -292,8 +292,14 @@ REN.PH is a much broader platform than a zonal value tool:
 **URL:** https://www.housal.com/find-zonal-value
 **Browse URL:** https://www.housal.com/find-zonal-value/browse
 **Tagline:** "Find BIR Zonal Values Philippines 2025 | Official Property Valuations"
-**Operator:** Housal (registered in BGC, Taguig City, Metro Manila)
-**Focus:** Full property marketplace (buy/sell/rent) with zonal value tool as one feature
+**Operator:** Housal Inc., BGC, Taguig City, Metro Manila
+**CEO/Founder:** Yogesh Mathur (launched April 24, 2018 at Shangri-La Fort)
+**Team:** ~20 employees
+**Revenue:** ~$1.8M (2024, per GetLatka)
+**Funding:** $1M raised (Brook Capital, Malta)
+**Founded:** 2016 (incorporated), 2018 (launched)
+**Focus:** Full property marketplace (buy/sell/rent) — zonal value tool is a **traffic acquisition feature**, not core product
+**Clients:** Vista Land, Century Properties, Alveo Land
 
 ### Search UX
 
@@ -426,6 +432,32 @@ Appeared in multiple search results but was not deeply analyzed as it is a small
 
 ---
 
+## Platform 7: FileDocsPhil (filedocsphil.com)
+
+**URL:** https://www.filedocsphil.com
+**Focus:** Document processing service for Philippine title transfers — zonal values are incidental
+**Operator:** Unknown
+
+### Unique Model
+
+FileDocsPhil sells **downloadable zonal value lists** as ZIP/Excel files for ₱560. This is literally reselling the same BIR Excel files that are freely available on bir.gov.ph. The value proposition: saves users the effort of navigating BIR's website and finding the right workbook.
+
+### Coverage
+
+- Major cities only
+- No search interface — lists sold by city/area
+
+### Monetization
+
+- Direct sale of data files (₱560 per zonal value list)
+- Document processing services (title transfer assistance)
+
+### Key Observation
+
+Most primitive model — demonstrates how poor the BIR's UX is that people will pay ₱560 to avoid navigating bir.gov.ph. The existence of this business model validates the market need for structured zonal value access.
+
+---
+
 ## Comparative Analysis
 
 ### Coverage Matrix
@@ -491,7 +523,7 @@ Every platform is a closed web application. No public endpoints for programmatic
 All platforms require exact or near-exact location selection (dropdown or text match). None implement fuzzy address matching, vicinity segment resolution, or cross-street interpretation. None handle the fallback hierarchy (street not found -> barangay general -> LGU FMV markup).
 
 ### 3. Nobody tracks legal metadata
-No platform displays Department Order numbers, effectivity dates, or revision history per record in a way that supports actual tax computation. Housal's historical filter is the closest, but it lacks DO# linking.
+No platform displays Department Order numbers, effectivity dates, or revision history per record in a way that supports actual tax computation. Housal's historical filter is the closest — their per-record data includes DO references (e.g., "DO 074-23") and they support current/historical filtering by year. But they don't expose effectivity dates or allow querying "what was the ZV on [transaction date]?"
 
 ### 4. Classification filtering is primitive
 Only Housal and REN.PH offer classification-based filtering. None handle edge cases documented in our CTA rulings analysis: mixed-use resolution, predominant use rule, reclassification timing.
@@ -502,7 +534,10 @@ No platform monitors BIR for workbook updates in real-time. "Last updated" dates
 ### 6. Privacy model is uniformly server-side
 All platforms transmit the user's property search query to their servers. No platform offers client-side computation. This means every lookup creates a record of what property the user is researching — a meaningful privacy concern for tax-sensitive transactions.
 
-### 7. REN.PH has the cleanest architecture to learn from
+### 7. RPVARA transition is invisible across all platforms
+Zero platforms mention or prepare for RPVARA (RA 12001). No dual-source (BIR ZV + BLGF SMV) architecture exists anywhere. By July 2026, some LGUs will have BLGF-approved SMVs replacing BIR zonal values — no platform is ready. First mover on RPVARA integration has a significant 12-month competitive window.
+
+### 8. REN.PH has the cleanest architecture to learn from
 Supabase + Next.js with explicit government data provenance tracking. Their 336K record count for current-revision data is a useful benchmark for our WASM bundling analysis.
 
 ---
@@ -535,4 +570,8 @@ This survey identifies what needs deeper investigation in Wave 4:
 - [Housal browse regions](https://www.housal.com/find-zonal-value/browse)
 - [Housal BIR page](https://www.housal.com/bir)
 - [RealValueMaps homepage](https://realvaluemaps.com/)
+- [Housal — GetLatka profile ($1.8M revenue, 20 team)](https://getlatka.com/companies/housalcom)
+- [Housal — Newswire launch announcement (April 2018)](https://www.newswire.com/news/the-launch-of-housal-inc-an-online-real-estate-platform-coincides-with-20445818)
+- [FileDocsPhil — BIR Zonal Value Guide](https://www.filedocsphil.com/how-to-look-for-bir-zonal-value/)
 - [BIR official zonal values](https://www.bir.gov.ph/zonal-values)
+- [Respicio & Co. — How to verify BIR zonal value online](https://www.respicio.ph/commentaries/how-to-verify-the-bir-zonal-value-of-a-property-online)

@@ -158,8 +158,15 @@
 
 ### Company
 - Located in BGC, Taguig City, Metro Manila
+- CEO/Founder: Yogesh Mathur
+- Founded: 2016 (incorporated), launched April 24, 2018 at Shangri-La Fort
+- Team: ~20 employees (2024)
+- Revenue: ~$1.8M (2024, per GetLatka)
+- Funding: $1M raised (Brook Capital, Malta)
+- Clients: Vista Land, Century Properties, Alveo Land
 - Revenue: Property listing subscriptions ("Post Unlimited Properties"), Founder's Circle membership
 - Also a full property marketplace (Buy, Sell, Rent, Projects)
+- Source: https://getlatka.com/companies/housalcom
 
 ### Technology
 - Next.js (confirmed: /_next/static/chunks/)
@@ -195,8 +202,35 @@
 
 ## ZonalValue.com (zonalvalue.com) — Brief
 
-- Organizes by district subdomains (e.g., ncr1stdistrict.zonalvalue.com)
+- Organizes by district subdomains (e.g., ncr1stdistrict.zonalvalue.com, antique.zonalvalue.com)
 - Major cities coverage
 - Free lookup
 - No record count disclosed
+- SPA with prerender.io (renders `window.prerenderReady = false;` in static fetch)
 - No further analysis performed — smaller player
+
+---
+
+## FileDocsPhil (filedocsphil.com) — Brief
+
+- Document processing service for Philippine title transfers
+- Sells downloadable zonal value lists as ZIP/Excel for ₱560
+- Essentially reselling free BIR data with convenience markup
+- Blog/guide content: "2026 Updated BIR Zonal Value in the Philippines"
+- WordPress-based site
+- Covers major cities only
+- Source: https://www.filedocsphil.com/how-to-look-for-bir-zonal-value/
+
+---
+
+## Housal Per-Record Data Fields (from web search)
+
+From specific location page fetches, Housal records include:
+- Street/Location name
+- Barangay
+- Classification code + label (e.g., "CRCommercial Regular")
+- Zonal value per sqm (₱)
+- Department Order reference (e.g., "DO 074-23", "DO 055-2024")
+- RDO reference (e.g., "BIR RDO 47")
+- Data year
+- Example record: South Drive, Makati — CR Commercial Regular ₱60,500/sqm, DO 074-23
