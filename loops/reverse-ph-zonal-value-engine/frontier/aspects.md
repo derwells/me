@@ -2,14 +2,14 @@
 
 ## Statistics
 - Total aspects discovered: 28
-- Analyzed: 0
-- Pending: 28
-- Convergence: 0%
+- Analyzed: 1
+- Pending: 27
+- Convergence: 3.6%
 
 ## Pending Aspects (ordered by dependency)
 
 ### Wave 1: Source Acquisition (7 aspects)
-- [ ] bir-workbook-ncr-samples — Download 3-4 BIR zonal value Excel workbooks from NCR RDOs (Makati, Taguig, Mandaluyong, QC) — these are high-density, condo-heavy, well-maintained schedules
+- [x] bir-workbook-ncr-samples — Download 3-4 BIR zonal value Excel workbooks from NCR RDOs (Makati, Taguig, Mandaluyong, QC) — these are high-density, condo-heavy, well-maintained schedules
 - [ ] bir-workbook-provincial-samples — Download 3-4 provincial RDO workbooks (mix of urban provincial like Cebu/Davao and rural agricultural like Laguna/Pangasinan) — different format patterns expected
 - [ ] rmo-31-2019-annexes — Fetch RMO 31-2019 full text focusing on Annex B (classification codes) and Annex C (standard schedule format) — the normative standard that RDOs should follow
 - [ ] rpvara-transition-mechanics — Fetch RA 12001 full text + BLGF MC 001-2025 IRR, extract provisions specific to zonal value transition: SMV format, timeline, dual-source handling, LGU compliance requirements
@@ -54,4 +54,4 @@ Depends on all Wave 5 analysis.
 - [ ] spec-self-review — Self-review the compiled spec: verify every complexity driver is addressed, all design decisions trace to data findings, spec is actionable for a forward loop, no gaps in coverage
 
 ## Recently Analyzed
-(Empty — loop hasn't started yet)
+- [x] bir-workbook-ncr-samples (Wave 1) — 2026-03-02 — 24 NCR RDO workbooks downloaded and structurally analyzed. 4 column layout patterns, 6 barangay header variants, 5+ date formats identified. Key emergent finding: BGC FAR-based pricing is a unique pattern requiring special handling.
