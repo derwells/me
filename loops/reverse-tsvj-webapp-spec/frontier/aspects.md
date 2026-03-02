@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 26
-- Analyzed: 3
-- Pending: 23
-- Convergence: 11.5%
+- Analyzed: 4
+- Pending: 22
+- Convergence: 15.4%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -15,7 +15,7 @@
 
 ### Wave 2: Architecture Decisions
 Depends on Wave 1 data.
-- [ ] project-structure — Turborepo monorepo layout: packages, apps, shared code organization
+- [x] project-structure — Turborepo monorepo layout: packages, apps, shared code organization
 - [ ] database-schema — Drizzle schema design: table organization, naming conventions, migration strategy, Supabase integration
 - [ ] auth-and-roles — Supabase Auth setup, admin vs accountant role enforcement, row-level security
 - [ ] api-layer — tRPC router organization, middleware, error handling patterns
@@ -53,3 +53,4 @@ Depends on all Wave 3 specs.
 - data-model-extract (Wave 1) — 65 entities, 20 enums, ~300 fields extracted from process catalog
 - ui-requirements-extract (Wave 1) — ~47 views, ~19 forms, ~35 tables, ~21 exports, ~6 dashboards. Full role-based access matrix (Admin vs Accountant). ASCII mockups for all key screens.
 - cross-cutting-extract (Wave 1) — 5 cross-cutting concerns (VAT matrix with 8 scenarios, EWT rules for rent + suppliers, tenant type bifurcation across 10 processes, sequential numbering with ATP management, lease lifecycle state machine with 8 event types). Plus decimal handling rules and compliance calendar summary. 3 conflicting rules flagged for accountant configuration.
+- project-structure (Wave 2) — Turborepo monorepo: 1 app (apps/web: Next.js 16 + tRPC v11), 4 packages (@tsvj/db, @tsvj/computations, @tsvj/ui, @tsvj/tsconfig). tRPC routers inside Next.js app (not separate package). Schema files organized by entity category (6 files). Computations package = zero internal deps, pure functions, decimal.js for rounding. 15-step forward loop implementation order. Vitest for all test layers.
