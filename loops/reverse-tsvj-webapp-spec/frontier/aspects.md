@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 26
-- Analyzed: 23
-- Pending: 3
-- Convergence: 88.5%
+- Analyzed: 24
+- Pending: 2
+- Convergence: 92.3%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -38,7 +38,7 @@ Depends on Wave 2 decisions.
 - [x] spec-P7 — Security Deposit Lifecycle (collection, holding, deduction, refund workflow)
 - [x] spec-P8 — Lease Contract Generation (template system, variable substitution, DST, PDF)
 - [x] spec-P9 — Lease Renewal & Extension (expiry workflow, reconduction detection, renewal)
-- [ ] spec-P10 — Lease Status Visibility (portfolio dashboard, state machine, alerts)
+- [x] spec-P10 — Lease Status Visibility (portfolio dashboard, state machine, alerts)
 - [ ] spec-P11 — Rent Roll Preparation (26-column report, export, accountant view)
 - [ ] spec-P12 — Tax Data Compilation (6 sub-processes, quarterly/annual summaries)
 - [ ] spec-P13 — Official Receipt / Invoice Data (dual-document, ATP tracking, numbering)
