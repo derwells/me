@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 26
-- Analyzed: 25
-- Pending: 1
-- Convergence: 96.2%
+- Analyzed: 22
+- Pending: 4
+- Convergence: 84.6%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -40,7 +40,7 @@ Depends on Wave 2 decisions.
 - [x] spec-P9 — Lease Renewal & Extension (expiry workflow, reconduction detection, renewal)
 - [x] spec-P10 — Lease Status Visibility (portfolio dashboard, state machine, alerts)
 - [x] spec-P11 — Rent Roll Preparation (26-column report, export, accountant view)
-- [ ] spec-P12 — Tax Data Compilation (6 sub-processes, quarterly/annual summaries)
+- [x] spec-P12 — Tax Data Compilation (6 sub-processes, quarterly/annual summaries)
 - [ ] spec-P13 — Official Receipt / Invoice Data (dual-document, ATP tracking, numbering)
 - [ ] spec-P14 — Expense Tracking (disbursement entry, EWT computation, categorization)
 
