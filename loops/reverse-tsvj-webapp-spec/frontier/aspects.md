@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 26
-- Analyzed: 21
-- Pending: 5
-- Convergence: 80.8%
+- Analyzed: 22
+- Pending: 4
+- Convergence: 84.6%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -36,7 +36,7 @@ Depends on Wave 2 decisions.
 - [x] spec-P5 — Monthly Billing Generation (billing run, invoice generation, statement view)
 - [x] spec-P6 — Tenant Payment Tracking (payment entry, allocation, balance dashboard)
 - [x] spec-P7 — Security Deposit Lifecycle (collection, holding, deduction, refund workflow)
-- [ ] spec-P8 — Lease Contract Generation (template system, variable substitution, DST, PDF)
+- [x] spec-P8 — Lease Contract Generation (template system, variable substitution, DST, PDF)
 - [ ] spec-P9 — Lease Renewal & Extension (expiry workflow, reconduction detection, renewal)
 - [ ] spec-P10 — Lease Status Visibility (portfolio dashboard, state machine, alerts)
 - [ ] spec-P11 — Rent Roll Preparation (26-column report, export, accountant view)
