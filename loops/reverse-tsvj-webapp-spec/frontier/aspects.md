@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 26
-- Analyzed: 15
-- Pending: 11
-- Convergence: 57.7%
+- Analyzed: 16
+- Pending: 10
+- Convergence: 61.5%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -30,7 +30,7 @@ Depends on Wave 1 data.
 Depends on Wave 2 decisions.
 - [x] spec-F0 — Foundation: Lease & Tenant Master (data model, CRUD views, admin forms)
 - [x] spec-P1 — Rent Escalation Calculation (NHSB lookup, computation engine, escalation history view)
-- [ ] spec-P2 — Water Billing (meter readings entry, per-tier computation, billing run)
+- [x] spec-P2 — Water Billing (meter readings entry, per-tier computation, billing run)
 - [ ] spec-P3 — Electric Billing (meter readings entry, blended rate computation, billing run)
 - [ ] spec-P4 — Late Payment Penalties (penalty computation, grace period, arrears alerts)
 - [ ] spec-P5 — Monthly Billing Generation (billing run, invoice generation, statement view)
@@ -50,6 +50,7 @@ Depends on all Wave 3 specs.
 - [ ] self-review — Verify completeness, consistency, forward-loop readiness
 
 ## Recently Analyzed
+- spec-P2 (Wave 3) — Water Billing: 7 new tables (water_meter, water_meter_tenant, water_meter_reading, maynilad_bill, maynilad_rate_schedule, water_billing_run, water_charge). 4 new enums (meter_type, meter_status, allocation_method, billing_run_status — shared with P3). 17 tRPC procedures in water router (listMeters, createMeter, updateMeter, assignTenant, listReadings, getPreviousReadings, saveReadings, createMayniladBill, listMayniladBills, listRateSchedules, createRateSchedule, updateRateSchedule, run, getRun, listRuns, finalize, deleteRun). Computation delegated to @tsvj/computations water module: computeWaterBilling (per-tier MWSS IRR 2008-02 compliant, NOT blended) + allocateCommonArea (FLOOR_AREA or EQUAL_SPLIT). No-markup enforcement (total_billed ≤ master bill). Sewerage commercial-only. VAT always 0 (BIR RR 16-2005). 3-tab workflow UI (Maynilad Bill entry → Meter Readings → Billing Run). Rate schedule management page. Meter management page with co-tenancy support. Defective meter estimation (avg last 3). DRAFT → FINALIZE workflow with Charge record creation. 10 edge cases. 47 acceptance criteria with backpressure verification.
 - spec-P1 (Wave 3) — Rent Escalation: 4 new tables (recurring_charge, recurring_charge_period, nhsb_cap_rate, escalation_event). 9 tRPC procedures (getUpcoming, list, getById, preview, run, runBatch, getNHSBRates, upsertNHSBRate, deleteNHSBRate). Delegates computation to @tsvj/computations escalation module (NHSB ROUND_DOWN compounding + contractual fixed/stepped/CPI). Threshold crossing detection (₱10K → regime change). Escalation dashboard with 3 sections (upcoming anniversaries, NHSB rate table, history). Preview dialog with full computation breakdown. Lease detail Escalation tab. Batch apply support. NHSB seed data (2025: 2.3%, 2026: 1.0%). 12-month enforcement, retroactive support. 39 acceptance criteria with backpressure verification.
 - spec-F0 (Wave 3) — Foundation: 7 foundation tables + 3 system tables + 2 document infra tables + 1 event table. 4 tRPC sub-routers (tenant, lease, property, chargeType) + settings + alert (~20 procedures). Full auth stack (Supabase Auth, login, middleware, role enforcement). App shell (sidebar, header, alert bell). 10 CRUD pages (tenant list/create/edit/detail, lease list/create/edit/detail, property list/detail). 13 composed UI components. Dashboard skeleton with KPI cards. Settings pages (company info, users, ATP, charge types). Seed data (9 charge types, app settings, dev data). CI/CD pipeline (lint/test/typecheck/schema-check). 44 acceptance criteria with backpressure verification.
 - data-model-extract (Wave 1) — 65 entities, 20 enums, ~300 fields extracted from process catalog
