@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 26
-- Analyzed: 13
-- Pending: 13
-- Convergence: 50.0%
+- Analyzed: 14
+- Pending: 12
+- Convergence: 53.8%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -28,7 +28,7 @@ Depends on Wave 1 data.
 
 ### Wave 3: Feature Specs
 Depends on Wave 2 decisions.
-- [ ] spec-F0 — Foundation: Lease & Tenant Master (data model, CRUD views, admin forms)
+- [x] spec-F0 — Foundation: Lease & Tenant Master (data model, CRUD views, admin forms)
 - [ ] spec-P1 — Rent Escalation Calculation (NHSB lookup, computation engine, escalation history view)
 - [ ] spec-P2 — Water Billing (meter readings entry, per-tier computation, billing run)
 - [ ] spec-P3 — Electric Billing (meter readings entry, blended rate computation, billing run)
@@ -50,6 +50,7 @@ Depends on all Wave 3 specs.
 - [ ] self-review — Verify completeness, consistency, forward-loop readiness
 
 ## Recently Analyzed
+- spec-F0 (Wave 3) — Foundation: 7 foundation tables + 3 system tables + 2 document infra tables + 1 event table. 4 tRPC sub-routers (tenant, lease, property, chargeType) + settings + alert (~20 procedures). Full auth stack (Supabase Auth, login, middleware, role enforcement). App shell (sidebar, header, alert bell). 10 CRUD pages (tenant list/create/edit/detail, lease list/create/edit/detail, property list/detail). 13 composed UI components. Dashboard skeleton with KPI cards. Settings pages (company info, users, ATP, charge types). Seed data (9 charge types, app settings, dev data). CI/CD pipeline (lint/test/typecheck/schema-check). 44 acceptance criteria with backpressure verification.
 - data-model-extract (Wave 1) — 65 entities, 20 enums, ~300 fields extracted from process catalog
 - ui-requirements-extract (Wave 1) — ~47 views, ~19 forms, ~35 tables, ~21 exports, ~6 dashboards. Full role-based access matrix (Admin vs Accountant). ASCII mockups for all key screens.
 - cross-cutting-extract (Wave 1) — 5 cross-cutting concerns (VAT matrix with 8 scenarios, EWT rules for rent + suppliers, tenant type bifurcation across 10 processes, sequential numbering with ATP management, lease lifecycle state machine with 8 event types). Plus decimal handling rules and compliance calendar summary. 3 conflicting rules flagged for accountant configuration.
