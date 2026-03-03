@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 29
-- Analyzed: 8
-- Pending: 21
-- Convergence: 27.6%
+- Analyzed: 9
+- Pending: 20
+- Convergence: 31.0%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -20,7 +20,7 @@
 ### Wave 2: Data Format Analysis (7 aspects)
 Depends on Wave 1 data.
 - [x] workbook-column-layouts — Document exact column layouts across all sampled workbooks: column names, positions, data types, which columns are consistent vs. varying
-- [ ] merged-cell-patterns — Map merged cell usage across workbooks: barangay groupings, header hierarchies, multi-row entries — produce a taxonomy of merge patterns a parser must handle
+- [x] merged-cell-patterns — Map merged cell usage across workbooks: barangay groupings, header hierarchies, multi-row entries — produce a taxonomy of merge patterns a parser must handle
 - [ ] sheet-organization — Document sheet naming, structure, and organization across RDOs: data sheets vs. notice sheets vs. revision history sheets, condo vs. land separation
 - [ ] address-vicinity-patterns — Catalog the actual vicinity descriptor patterns found in workbooks: "along [Street]", "[Street] from [X] to [Y]", "interior lots", "all other streets in [Barangay]", "along national highway", "50 meters inward" — build a pattern taxonomy covering both NCR cross-street and provincial road-proximity models
 - [ ] classification-code-usage — Map which classification codes (RR, CR, RC, CC, I, A1-A50, etc.) appear in which RDOs, how they're formatted, and frequency distribution
@@ -55,6 +55,7 @@ Depends on all Wave 5 analysis.
 - [ ] spec-self-review — Self-review the compiled spec: verify every complexity driver is addressed, all design decisions trace to data findings, spec is actionable for a forward loop, no gaps in coverage
 
 ## Recently Analyzed
+- [x] merged-cell-patterns (Wave 2) — 2026-03-03 — 52,327 total merges across 31 workbooks (31,237 in current revision sheets). 6 merge categories: VERT 72%, FULL_H 11.2%, TRIPLE_H 9.0%, PAIR_H 4.9%, BLOCK_H 2.3%, BLOCK 0.8%. Critical distinction: header repetition merges (column headers spanning 2-3 rows at barangay boundaries — safe to skip) vs. data row merges (street/vicinity spanning multiple classification rows — must resolve). 12 of 31 workbooks (39%) use data vertical merges; RDO 32 has 2,533 data merges, RDO 34 has 2,187. Pattern E (RDO 33, 81) uses horizontal merges for every data row (street spans cols 0-2, vicinity spans cols 3-4). Pattern D (RDO 30) uses multi-row block merges for condo names. Extreme cases: 17-row merge (RDO 53B, EAST SERVICE ROAD), 14-row agricultural merge (RDO 4). MergeMap data structure designed for O(1) cell resolution. Parser must construct merge map before reading data.
 - [x] workbook-column-layouts (Wave 2) — 2026-03-03 — 31 workbooks parsed for exact column positions. 6 distinct column layout patterns identified: Pattern A (standard 4-col at 0,1,2,3) covers 81% (25/31). Remaining 19%: Pattern B (5-col split vicinity, RDO 38), Pattern C (5-col offset gap, RDO 39), Pattern D (10-col comparison with prev/curr ZV, RDO 30), Pattern E (wide-gap merged, RDO 33+81), Pattern F (gap-at-2-3, RDO 42). 18 distinct Street header variants, 7 Classification header variants, 12+ ZV header variants. Critical finding: headers repeat per barangay block (10-20× per sheet), enabling dynamic re-detection. "V I C I N I T Y" letter-spacing is majority NCR convention. Multi-row header splits are common. Typos found: "CLASSSIFICATION" (triple S), "2V/SQ.M" (Z→2). Parser design recommendations produced: keyword-based detection, space normalization, multi-row combining.
 - [x] prior-analysis-import (Wave 1) — 2026-03-02 — All 13 sections of prior analysis annotated against 6 Wave 1 findings. No material errors found. 4 new complexity drivers discovered (footnote reversal, multi-municipality workbooks, legacy code mapping, ZV type heterogeneity). Severity upgraded for drivers #1 (format heterogeneity → EXTREME), #2 (address matching → EXTREME), #6 (RPVARA → HIGH), #8 (condo bifurcation → HIGH). Aquafresh ruling simplifies classification (#7 → LOW-MEDIUM). ~690K current rows estimated (tractable for WASM). Gap map produced: 6 critical deepening targets for Waves 3-4, 6 new aspects confirmed for Waves 2-3.
 - [x] third-party-platform-survey (Wave 1) — 2026-03-02 — 7 platforms surveyed (ZonalValueFinderPH, LandValuePH, REN.PH, Housal, RealValueMaps, ZonalValue.com, FileDocsPhil). Record counts range from 336K (REN.PH, current-only) to 2.7M (RealValueMaps, incl. historical). No platform offers a public API. Housal shows DO# per record but no effectivity date. No platform implements address matching with fallback logic. Zero platforms prepare for RPVARA (RA 12001) dual-source transition. Housal: $1.8M rev, 20 team, $1M raised (Brook Capital). REN.PH: Next.js+Supabase, 336K records benchmark for WASM bundling. 8 key competitive gaps identified.
