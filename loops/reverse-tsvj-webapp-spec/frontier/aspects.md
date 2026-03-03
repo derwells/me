@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 26
-- Analyzed: 20
-- Pending: 6
-- Convergence: 76.9%
+- Analyzed: 21
+- Pending: 5
+- Convergence: 80.8%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -35,7 +35,7 @@ Depends on Wave 2 decisions.
 - [x] spec-P4 — Late Payment Penalties (penalty computation, grace period, arrears alerts)
 - [x] spec-P5 — Monthly Billing Generation (billing run, invoice generation, statement view)
 - [x] spec-P6 — Tenant Payment Tracking (payment entry, allocation, balance dashboard)
-- [ ] spec-P7 — Security Deposit Lifecycle (collection, holding, deduction, refund workflow)
+- [x] spec-P7 — Security Deposit Lifecycle (collection, holding, deduction, refund workflow)
 - [ ] spec-P8 — Lease Contract Generation (template system, variable substitution, DST, PDF)
 - [ ] spec-P9 — Lease Renewal & Extension (expiry workflow, reconduction detection, renewal)
 - [ ] spec-P10 — Lease Status Visibility (portfolio dashboard, state machine, alerts)
