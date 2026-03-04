@@ -593,3 +593,323 @@ This shows the full range of property types including Agricultural (A), Governme
 
 ### Data Volume Benchmark
 Housal's ~2M records across ~124 RDOs is consistent with our estimate of ~690K current + multiple historical revisions. Their flat storage model works for simple display but cannot support the resolution logic our engine requires.
+
+---
+
+## 13. Addendum: City-Level Department Order Organization (March 4, 2026)
+
+**Method:** Web search engine snippet analysis of Google-indexed Housal pages. The city-level pages (`/find-zonal-value/city/{slug}`) render a DO-grouped intermediate layer that is NOT exposed by the three API endpoints discovered in the JS chunk analysis. This layer is visible in Google's cached snippet data even though the pages themselves client-render to "0 records" when fetched statically.
+
+### 13.1 DO-Level Grouping Discovered
+
+Housal organizes records at the city level by Department Order, showing:
+
+**Per-DO metadata fields:**
+- DO number (e.g., "DO 005-24", "DO 054-2023", "DO 26-89")
+- Year (extracted from DO number or separately stored)
+- Status: "Current" vs "Historical"
+- Record count per DO
+- Average zonal value per DO
+- Min/max range per DO
+
+**This is a significant finding** — the earlier API analysis concluded "no DO#, no effectivity date, no revision history per record." However, the city browse pages DO show DO-level organization as an intermediate grouping layer. This suggests either:
+1. A separate API endpoint exists for DO-level aggregation (not yet discovered), OR
+2. The DO metadata is injected server-side during page generation but not exposed in the records API, OR
+3. The DO grouping is computed from some field in the database not returned in the records API response (e.g., a `department_order` column exists but is not included in the records endpoint response schema).
+
+**The record-level API still returns no DO# per record** — but the city-level browse UI groups records by DO and shows DO-level statistics.
+
+### 13.2 DO Data Samples from Search Engine Snippets
+
+**City of Taguig:**
+- DO 005-24 (Current, 2024) — Avg ₱168,558, 4,243 records, Range ₱1,132–₱2,160,000
+- (Historical DOs not captured in snippet)
+
+**City of Cebu (9 DOs total: 3 current, 6 historical):**
+
+| DO | Status | Year | Avg (₱/sqm) | Records | Range |
+|----|--------|------|-------------|---------|-------|
+| DO 054-2023 | Current | 2023 | 69,734 | 1,091 | 168–249,000 |
+| DO 86-2023 | Current | 2023 | 41,727 | 2,093 | 580–130,000 |
+| DO 16-2020 | Current | 2020 | 21,880 | 1,338 | 400–105,000 |
+| DO 064-18 | Historical | 2018 | 50,626 | 769 | 123–190,000 |
+| DO 36-07 | Historical | 2007 | 11,912 | 550 | 2,875–60,000 |
+| DO 46-07 | Historical | 2007 | 11,434 | 117 | 3,800–39,000 |
+| DO 18-97 | Historical | 1997 | 6,534 | 94 | 2,350–18,500 |
+| DO 20-93 | Historical | 1993 | 3,666 | 296 | 500–22,500 |
+| DO 26-89 | Historical | 1989 | 1,314 | 780 | (range not captured) |
+
+**Key observations:**
+- Cebu City's total across all DOs: 7,128 records — less than the 10,600 returned by the API, suggesting some records may not be assigned to a DO
+- Multiple DOs can be "Current" simultaneously (DO 054-2023 + DO 86-2023 + DO 16-2020 for Cebu) — these likely correspond to different RDOs within the same city (Cebu has RDO 81 North and RDO 82 South)
+- Historical data goes back to 1989 (DO 26-89), confirming deep historical coverage
+- DO numbering format is inconsistent: "DO 054-2023" vs "DO 064-18" vs "DO 36-07" vs "DO 18-97" — reflects actual BIR naming conventions
+
+**Payao, Zamboanga Sibugay (2 Historical DOs):**
+- DO 58-2019 (2019) — Avg ₱156, 466 records, Range ₱100–₱250
+- DO 28-97 (1997) — Avg ₱109, 35 records, Range ₱0–₱200
+
+**Cagayan de Oro: 1 Current + 7 Historical DOs** (details not captured)
+
+**City of Mandaluyong:** DO 40-03 referenced in URL parameter (`?do=DO+40-03`)
+
+### 13.3 Filter and Sort Parameters
+
+The city-level pages support URL query parameters:
+
+| Parameter | Values | Description |
+|-----------|--------|-------------|
+| `filter` | `all`, `current`, `historical` | Filters DOs by status |
+| `sort` | `year`, `value`, `records` | Sorts DO listing |
+| `do` | e.g., `DO+40-03` | Selects specific DO |
+
+This confirms the "current vs historical" filter is applied at the DO level, not at the individual record level. The system categorizes DOs as either current (active) or historical (superseded).
+
+### 13.4 Search Engine Snippet Data — Per-Record Fields
+
+Google search snippets for specific street pages (`/find-zonal-value/{street}`) reveal per-record display format:
+
+**Makati (67 zonal value entries, BIR RDO 47):**
+- Makati Avenue: CR 2022, ₱500,000, DO 35-2021
+- P. De Roxas - Ayala Ave (Salcedo Subd): CR 2022, ₱500,000
+- Jupiter - Neptune (Bel Air 2 Side): CR 2022, ₱500,000
+- Gil Puyat - Jupiter: CR 2022, ₱500,000
+- Ayala Avenue: CR 2021, ₱940,000, DO 37-2021
+- Ayala Avenue: CR 2016, ₱550,000, DO 62-2016
+- Makati Avenue: CR 2017, ₱500,000, DO 22-2017
+
+**Quezon City (500 entries, BIR RDO 38):**
+- EDSA: CR, ₱350,000
+- DO references: DO 033-2024 and DO 007-2024 observed
+- Major streets: Quezon Ave., G. Araneta Ave., Katipunan Ave., Commonwealth Ave., Aurora Blvd., Timog Ave., Tomas Morato Ave.
+
+**Taguig (5th-11th Ave, 18 entries, BIR RDO 44):**
+- CR values under DO 005-24: ₱900,000, ₱750,000, ₱600,000
+
+**Per-record display format from snippets:**
+```
+[Classification Code] [Year] ₱[Value] · [Classification Description] · [DO Reference]
+```
+Example: "CR 2022 ₱500,000 · Commercial Regular · DO 35-2021"
+
+**This reveals that DO# IS stored per record and displayed in the frontend, even though the `/api/zonal-values/records` endpoint does not return it.** The per-record DO# must be either:
+1. Fetched from a different (undiscovered) API endpoint, or
+2. Injected during server-side rendering from a field not exposed in the client API
+
+### 13.5 Revised Record Schema Assessment
+
+Based on the addendum findings, the actual Housal database likely has MORE fields than the 12 discovered via API probing:
+
+| Field | In API Response | In Frontend Display | Assessment |
+|-------|----------------|--------------------|----|
+| id | Yes | N/A | Confirmed |
+| streetName | Yes | Yes | Confirmed |
+| buildingName | Yes (mostly null) | Partially | Confirmed |
+| vicinity | Yes (mostly null) | Not visible | Confirmed |
+| classification | Yes | Yes | Confirmed |
+| classificationDesc | Yes | Yes | Confirmed |
+| zonalValue | Yes | Yes | Confirmed |
+| propertyType | Yes | Not visible | Confirmed |
+| barangay | Yes (often empty) | Contextual | Confirmed |
+| city | Yes | Yes | Confirmed |
+| province | Yes (often empty) | Contextual | Confirmed |
+| region | Yes (often empty) | Contextual | Confirmed |
+| **departmentOrder** | **NO** | **YES** (e.g., "DO 35-2021") | **New: stored but not in records API** |
+| **year** | **NO** | **YES** (e.g., "2022") | **New: stored but not in records API** |
+| **doStatus** | **NO** | **YES** ("Current"/"Historical") | **New: stored but not in records API** |
+| **rdo** | **NO** | **YES** (e.g., "RDO 47") | **New: shown on street pages** |
+
+This raises the total estimated fields per record from 12 to at least 15-16. The records API is serving a reduced projection — likely for performance (excluding string fields like DO reference reduces payload size for pagination).
+
+### 13.6 Additional Coverage Data from Search Engine Snippets
+
+**BIR Info Page (/bir) additional statistics:**
+- "122 BIR RDO Offices" (vs actual 124 — 2 missing)
+- 6 classification codes listed: RR, RC, CR, CC, IR, AR
+
+**City record counts from /bir page (marketing numbers, NOT API-verified):**
+
+| City | Claimed Records | API-verified Records | Inflation Factor |
+|------|----------------|---------------------|-----------------|
+| Quezon City | 120K+ | 43,826 | 2.74x |
+| Manila | 85K+ | (not probed) | — |
+| Cebu City | 65K+ | 10,600 | 6.13x |
+| Davao City | 55K+ | (not probed) | — |
+| Makati | 45K+ | 16,843 | 2.67x |
+| Pasig | 42K+ | (not probed) | — |
+| Taguig (BGC) | 38K+ | 12,126 | 3.13x |
+| Mandaluyong | 25K+ | (not probed) | — |
+
+The inflation factor ranges from 2.67x to 6.13x. The /bir page numbers may count DO-grouped aggregations differently, or may include records from a wider query scope than the API returns.
+
+**Regional coverage claimed:**
+- NCR/Metro Manila: 17 Cities
+- Central Luzon: 7 Provinces
+- CALABARZON: 5 Provinces
+- Central Visayas: 4 Provinces
+- Western Visayas: 6 Provinces
+- Davao Region: 5 Provinces (62,155+ records)
+- Northern Mindanao: 5 Provinces
+- Ilocos Region: 4 Provinces
+- Plus 9 additional regions
+
+**Province-level examples:**
+- Pampanga: 19,265+ records across 19 cities/municipalities
+- Laguna: 33,331+ records across 25 cities/municipalities
+- CALABARZON total: 125,714+ records across 5 provinces
+
+### 13.7 Dual URL Scheme — Additional Patterns
+
+The SEO URL scheme has a deeper nesting than initially documented:
+
+```
+/zonal-values/{region}/{province}/{city}/{barangay}/{street}
+```
+
+Example discovered:
+```
+/zonal-values/mimaropa-region/palawan/el-nido/sibaltan/along-barangay-road
+```
+
+This 5-level hierarchy (region > province > city > barangay > street) is the deepest URL nesting observed. It suggests Housal generates SEO pages at the individual street level within barangays. The page for the above URL showed "0 Records" when fetched (dynamic rendering), but the URL structure confirms the intended data model granularity.
+
+**Additional URL patterns confirmed:**
+- `/find-zonal-value/province/{province-slug}` — province-level with city/municipality listing
+- `/find-zonal-value/barangay/{barangay-slug}` — direct barangay access
+- `/find-zonal-value?q={query}` — search query parameter
+
+### 13.8 Historical Data Depth
+
+Oldest DO references discovered across all cities:
+- DO 26-89 (1989) — Cebu City
+- DO 20-93 (1993) — Cebu City
+- DO 28-97 (1997) — Payao, Zamboanga Sibugay
+- DO 18-97 (1997) — Cebu City
+- DO 56-90 (1990) — referenced for Cagayan de Oro (not confirmed in snippets)
+
+This confirms Housal's historical coverage extends back to at least 1989, representing 35+ years of zonal value revision history. The 9 DOs for Cebu City alone span 1989-2023, providing a rich longitudinal dataset.
+
+### 13.9 Effectivity Date Status
+
+**No effectivity date observed anywhere in Housal's frontend or search snippets.** The `ZonalValueCard` component (from JS chunk analysis) has an `effective_from` field in its schema, but:
+- It is not populated in API responses
+- It does not appear in Google search snippets
+- The DO year serves as a rough proxy but is NOT the same as the formal effectivity date
+
+The BIR source workbooks contain effectivity dates in the NOTICE sheet. Housal appears to have extracted the DO year but NOT the specific effectivity date. This is a legally material gap — the effectivity date determines which zonal value schedule applies to a transaction on a specific date.
+
+### 13.10 PS (Parking Slot) Classification Details
+
+From legal analysis (Respicio & Co.), PS is BIR shorthand for "Parking Slot (Condominium)" or "Condominium Parking Space." Key distinction: **PS is valued per slot, not per square meter** — although in practice, BIR workbooks often list PS with a per-sqm figure that represents the slot value divided by an assumed area. PS can have its own Condominium Certificate of Title (CCT), making it separately conveyable. This aligns with our engine's PS pricing rule analysis (60-70% of RC/CC parent).
+
+### 13.11 Competitor Benchmark Update
+
+| Platform | Records | Barangays | RDOs | Historical | DO Tracking | Effectivity Date |
+|----------|---------|-----------|------|------------|-------------|-----------------|
+| **Housal** | ~2M | 30,000+ locations | 122 (claimed) | Yes (DO-grouped) | Yes (display only) | No |
+| **RealValueMaps** | 2.7M+ | 42,011 | 121 | Likely | Unknown | Unknown |
+| **REN.PH** | 336K | 46,444 | N/A | No | No | No |
+| **ZonalValueFinderPH** | ~30K+ | N/A | 111 | No | No | No |
+| **Our Engine** | ~690K current + 2.97M hist. | ~42K | 124 | Yes (versioned) | Yes (per-record) | Yes (per-record) |
+
+Housal's DO-level grouping is more sophisticated than initially assessed — they DO track Department Orders, but the tracking is at the grouping/display level, not at the individual record level in their API. Our engine's per-record DO tracking with effectivity dates remains a significant differentiator.
+
+---
+
+## 14. Business Context & Strategic Assessment
+
+### 14.1 Company Profile
+
+**Legal entity:** Housal Inc., BGC, Taguig City, Metro Manila
+**Founders:** Raneza Mathur and Yash Mathur (co-founders per Crunchbase/Tracxn); **Yogesh Mathur** (Founder/CEO, public face — "Hands-On CTO Driving Product and Technology")
+**Founded:** 2015 (incorporation per Tracxn) / 2016 (per GetLatka); launched April 26, 2018 at Shangri-La at the Fort
+**Team:** ~16-20 employees (PitchBook: 16, GetLatka: 20)
+**Operations:** Philippines (Makati, Taguig), Indonesia (Jakarta), United States (San Francisco) per Kalibrr
+
+**Revenue (self-reported via GetLatka, unverified):**
+
+| Year | Revenue |
+|------|---------|
+| 2016 | $0 |
+| 2021 | $1.2M |
+| 2023 | $1.1M (decline) |
+| 2024 | $1.8M |
+
+**Funding:** Conflicting information — GetLatka claims $1M raised; Tracxn lists "not raised any funding yet." Brook Capital (Malta) lists Housal in portfolio with a "coming soon" detail page that has been static for years. Assessment: likely a small seed/angel investment, not a formal round.
+
+**Developer clients:** Vista Land, Century Properties, Alveo Land (per Tracxn); Ayala Land, SMDC, Megaworld (per homepage 2026). These are standard listing partnerships, not exclusive data arrangements.
+
+### 14.2 Zonal Value Tool as Traffic Acquisition
+
+The zonal value tool is a **free SEO traffic acquisition feature**, not a core revenue product:
+- Free, no signup required
+- Sits at high-intent SEO URLs (`/find-zonal-value`, `/bir`, `/zonal-values`)
+- Uses **programmatic SEO** — thousands of auto-generated city/barangay/street pages
+- Pages rank for "zonal value [city name]" queries — core search pattern for property transactions
+- Cross-promotes property marketplace with CTAs to browse listings and subscribe
+
+**Revenue comes from:** property listing subscriptions ("Post Unlimited Properties"), Founder's Circle membership, CRM/marketing tools for brokers and developers.
+
+**Broader free tool suite (all traffic acquisition):** mortgage calculator, closing costs estimator, ROI calculator, affordability calculator, disaster risk checker, document templates.
+
+### 14.3 Data Ingestion Process
+
+**No public documentation exists.** No engineering blog, no technical content, no data methodology transparency. Blog content (last published September 2022) is generic real estate advice only.
+
+**Inferred process:** Manual/semi-automated ingestion of BIR Excel workbooks from bir.gov.ph. No official BIR data partnership — same upstream as all competitors.
+
+**Job listing signals:** Previous Kalibrr postings included "Data I/O Manager" (suggests dedicated data pipeline role), "Backend Developer Smartflows" (workflow automation), "Data Science" and "Data Analyst" roles — indicating some investment in data infrastructure, though likely not at the level of a purpose-built parsing pipeline for BIR's heterogeneous workbook formats.
+
+### 14.4 Current Status & RPVARA Readiness
+
+- **No blog posts since September 2022**
+- **No press coverage since 2018 launch**
+- **Zero RPVARA (RA 12001) mentions anywhere on the platform** — will be blindsided by the 2026-2027 transition from BIR zonal values to BLGF SMVs
+- **CEO's LinkedIn** (Yogesh Mathur) now lists position as "Confidential - AI Startup" rather than Housal CEO — possible reduced involvement or pivot
+- **Tracxn ranking:** #1 Real Estate IT company in Philippines (out of 15 startups)
+
+### 14.5 Strategic Assessment for Our Engine
+
+**Housal's strengths relative to other competitors:**
+1. Largest named dataset (1.96M records with historical depth back to 1989)
+2. DO-level organization (more sophisticated than most competitors)
+3. Named company with physical presence and developer clients
+4. Modern tech stack (Next.js App Router)
+5. Traffic: zonal value tool likely generates significant organic search traffic
+
+**Housal's structural weaknesses (our opportunity):**
+1. Zonal values are a traffic tool, not a product — limited investment incentive
+2. No API (despite clear demand)
+3. No address matching or fallback logic
+4. Vicinity data missing — cannot resolve "which section of this street"
+5. Record count inflation (2.67x-6.13x marketing vs API reality)
+6. BGC entirely missing from Taguig barangay hierarchy
+7. Classification coverage limited to ~9 of 63 Annex B codes
+8. No RPVARA readiness — existential risk from BIR→BLGF transition
+9. No data provenance or accuracy guarantees
+10. No privacy model — all queries server-side
+
+**Competitive window:** Housal appears to be in maintenance mode for the zonal value tool (no updates since 2022, CEO possibly disengaged). The RPVARA transition creates a 12-18 month window where first-mover advantage on dual-source architecture is significant. An API-first engine with client-side computation, address matching, and RPVARA readiness would occupy a completely different value tier.
+
+---
+
+## Sources
+
+- [Housal zonal value search](https://www.housal.com/find-zonal-value)
+- [Housal browse regions](https://www.housal.com/find-zonal-value/browse)
+- [Housal BIR page](https://www.housal.com/bir)
+- [Housal API: /api/zonal-values/barangays?city=makati](https://www.housal.com/api/zonal-values/barangays?city=makati)
+- [Housal API: /api/zonal-values/records?city=makati&limit=50](https://www.housal.com/api/zonal-values/records?city=makati&limit=50)
+- [Housal API: /api/search/universal?q=BGC&limit=10](https://www.housal.com/api/search/universal?q=BGC&limit=10)
+- [Housal sitemap.xml](https://www.housal.com/sitemap.xml)
+- [Housal robots.txt](https://www.housal.com/robots.txt)
+- [Housal JS chunk 628ed6eb9096041f.js — API endpoint discovery](https://www.housal.com/_next/static/chunks/628ed6eb9096041f.js)
+- [GetLatka — Housal revenue profile](https://getlatka.com/companies/housalcom)
+- [Brook Capital — Housal portfolio](https://www.brookcapital.co.uk/portfolio/housal)
+- [PRNewswire — Housal launch (April 2018)](https://www.prnewswire.com/news-releases/the-launch-of-housal-inc-an-online-real-estate-platform-coincides-with-world-intellectual-property-day-introducing-the-revolutionary-real-estate-tool-at-shangri-la-fort-300635085.html)
+- [Tracxn — Housal company profile](https://tracxn.com/d/companies/housal/)
+- [Crunchbase — Housal](https://www.crunchbase.com/organization/housal)
+- [Kalibrr — Housal job listings](https://www.kalibrr.id/c/housal-inc/jobs)
+- [Housal city page — Cebu City (Google snippet)](https://www.housal.com/find-zonal-value/city/city-of-cebu)
+- [Housal city page — Taguig (Google snippet)](https://www.housal.com/find-zonal-value/city/city-of-taguig)
+- [Respicio & Co. — PS classification analysis](https://www.lawyer-philippines.com/articles/meaning-of-ps-classification-in-zonal-valuation-philippines)
