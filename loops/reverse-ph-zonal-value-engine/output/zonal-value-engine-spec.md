@@ -669,6 +669,7 @@ fn detect_regime(lgu_id: LguId, transaction_date: NaiveDate) -> Regime {
 | RMC 115-2020 | Certification procedure for ONETT (no longer required as of 2020) |
 | DOF Department Orders | The actual regulatory instruments containing fallback rules, classification provisions, and zonal value schedules |
 | RMC 30-2025 | Circularizes RPVARA IRR but provides NO ONETT operational guidance for dual-source lookup |
+| BIR Ruling OT-028-2024 | Installment sale timing: zonal value fixed at date of agreement (not closing), per RR 17-2003 §3(J). Engine uses `transaction_date` input accordingly. |
 
 ### 10.3 Edge Cases from CTA Rulings
 
