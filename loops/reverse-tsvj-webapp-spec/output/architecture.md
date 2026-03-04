@@ -661,13 +661,13 @@ Resend API via Supabase Edge Function. URGENT/OVERDUE alerts only. Daily digest 
 | P3 | Electric Billing | 6 | 16 | F0 |
 | P4 | Late Payment Penalties | 2 | 10 | F0 |
 | P5 | Monthly Billing Generation | 3+2 = 5 | 11 | F0, P1, P2, P3, P4 |
-| P6 | Tenant Payment Tracking | 4+1 view | 11 | F0, P5 |
+| P6 | Tenant Payment Tracking | 4+1 view | 11 | F0, P4, P5 |
 | P7 | Security Deposit Lifecycle | — (in F0) | 7 | F0 |
-| P8 | Lease Contract Generation | — (in F0) | 6 | F0, P7 |
+| P8 | Lease Contract Generation | — (in F0) | 6 | F0, P1 |
 | P9 | Lease Renewal & Extension | 2 | 12 | F0, P1, P7, P8 |
-| P10 | Lease Status Visibility | — | 4 | F0 |
+| P10 | Lease Status Visibility | — | 4 | F0, P1, P5, P6, P9 |
 | P11 | Rent Roll Preparation | 2 | 13 | F0, P5, P6 |
-| P12 | Tax Data Compilation | — (in system) | 8 | F0, P5, P6, P11, P14 |
+| P12 | Tax Data Compilation | — (in system) | 8 | F0, P5, P6, P8, P11, P14 |
 | P13 | Official Receipt / Invoice Data | — (in F0) | 15 | F0, P5, P6 |
 | P14 | Expense Tracking | 5+2 = 7 | 17 | F0 |
 
@@ -676,13 +676,13 @@ Resend API via Supabase Edge Function. URGENT/OVERDUE alerts only. Daily digest 
 Follows the MVP pipeline from the process catalog:
 
 ```
-Phase 1 (Core Billing Pipeline):  F0 → P1 → P5 → P6 → P11
-Phase 2 (Utility Billing):        P2 + P3 + P4
-Phase 3 (Lease Lifecycle):         P8 + P9 + P10
-Phase 4 (Compliance + Expenses):   P7 + P12 + P13 + P14
+Phase 1 (Core Pipeline):    F0 → P1 → P5 → P6 → P11          (sequential)
+Phase 2 (Utilities):        P2 → P3, P4                        (P3 after P2 for shared enums; P4 parallel with either)
+Phase 3 (Lease Lifecycle):  P7 → P8 → P9 → P10                (sequential: P8 needs P7, P9 needs P7+P8, P10 needs P9)
+Phase 4 (Compliance):       P13 + P14 → P12                    (P14 before P12 for data dependency; P13 parallel with P14)
 ```
 
-Within each phase, features can be implemented in the listed order. Each feature spec is self-contained: a forward loop agent (or developer) can implement it from the spec alone + this architecture doc + the process catalog.
+Within each phase, `→` means sequential (later feature depends on earlier), `+` means parallelizable, `,` means either order. Each feature spec is self-contained: a forward loop agent (or developer) can implement it from the spec alone + this architecture doc + the process catalog.
 
 ### 13.3 Feature Spec Structure
 
@@ -853,7 +853,7 @@ Output `<task-complete>{spec-id}</task-complete>` only after ALL verification co
 ### Implementation Order
 
 ```
-F0 → P1 → P5 → P6 → P11 → P2 → P3 → P4 → P8 → P9 → P10 → P7 → P12 → P13 → P14
+F0 → P1 → P5 → P6 → P11 → P2 → P3 → P4 → P7 → P8 → P9 → P10 → P14 → P13 → P12
 ```
 
 ---
