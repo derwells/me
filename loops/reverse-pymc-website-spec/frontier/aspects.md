@@ -2,16 +2,16 @@
 
 ## Statistics
 - Total aspects discovered: 19
-- Analyzed: 2
-- Pending: 17
-- Convergence: 11%
+- Analyzed: 3
+- Pending: 16
+- Convergence: 16%
 
 ## Pending Aspects (ordered by dependency)
 
 ### Wave 1: Data Acquisition
 - [x] clone-source-repo — Clone pymc-labs-website-source, save file tree to raw/
 - [x] clone-rebranded-repo — Clone pymc-rebranded-website, save file tree to raw/
-- [ ] cache-redesign-plan — Fetch architecture redesign plan to input/ for cross-reference
+- [x] cache-redesign-plan — Fetch architecture redesign plan to input/ for cross-reference
 
 ### Wave 2: Architecture Analysis
 Depends on Wave 1 data.
@@ -42,3 +42,4 @@ Depends on all Wave 2 and Wave 3 analysis.
 ## Recently Analyzed
 - [x] clone-source-repo (Wave 1) — 522 files, 329 blog posts, Lektor CMS, Pixi deps
 - [x] clone-rebranded-repo (Wave 1) — 379 files, Next.js 16 + Strapi CMS, 22 routes, 80 components, 174 public assets
+- [x] cache-redesign-plan (Wave 1) — No formal plan document found in repos/issues. Documented known intent (Framer + Next.js + Hugo split) from loop context.
