@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 19
-- Analyzed: 9
-- Pending: 10
-- Convergence: 47%
+- Analyzed: 10
+- Pending: 9
+- Convergence: 53%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -21,7 +21,7 @@ Depends on Wave 1 data.
 - [x] nextjs-app-structure — App/pages router, route map, layouts, middleware
 - [x] nextjs-components — Component tree, shared components, UI library usage
 - [x] strapi-data-models — Content types, relations, custom controllers, lifecycle hooks
-- [ ] strapi-api-endpoints — REST/GraphQL endpoints, auth, custom routes
+- [x] strapi-api-endpoints — REST/GraphQL endpoints, auth, custom routes
 - [ ] integrations — Stripe, Mailchimp, analytics, third-party services across both repos
 - [ ] dependencies-audit — Package versions, EOL/vulnerability status across both repos
 
@@ -49,3 +49,4 @@ Depends on all Wave 2 and Wave 3 analysis.
 - [x] nextjs-app-structure (Wave 2) — Next.js 16 App Router (no src/), 22 page routes + 1 API route handler. "use client" root layout (anti-pattern). Strapi backend on Heroku, Cloudinary media. Dual team data (Strapi + hardcoded JS array with 29 members). 4 course pages fully hardcoded. 5 draft routes (industries/services/solutions) outside app/. No middleware, no error boundaries. 3 icon libraries. Wrong domain (pymc-labs.io) in contact/team JSON-LD. Wildcard image domains (security risk). 12 architectural issues documented.
 - [x] nextjs-components (Wave 2) — 80 component files across 12 subdirs. Feature-first flat structure, low reuse. 3-4 duplicate contact form implementations. Duplicate Pagination components. 3 icon libs loaded simultaneously (FA CDN + lucide-react + react-icons). Pervasive framer-motion dependency (~30 components). Hardcoded testimonials (6), team bios (29 with JSX), FAQ placeholder from payment template. Typos in component names (Vedio, Dunamic, Inovation). dangerouslySetInnerHTML, console.logs in prod, Mailchimp JSONP injection. No design system, no TypeScript, no error boundaries.
 - [x] strapi-data-models (Wave 2) — 11 content types reverse-engineered from frontend (no Strapi source in repo). Core: article (18 fields, categories/authors relations), team (16 fields, bio as JSON array, partner/isVisible booleans, specializations), certificate (PascalCase fields, verify/download custom routes), category, author. Forms: contact-user (legacy), contact-form (newer with inquiry categories), registration-form (payment link generation). Also: coupon (promo validation), promotion-bar, benchmark (model submission). 7 custom route handlers beyond CRUD. 3 duplicate contact systems. Dual team data (Strapi + hardcoded). Most endpoints unauthenticated.
+- [x] strapi-api-endpoints (Wave 2) — 15 unique Strapi endpoints (9 standard CRUD + 6 custom routes). Zero authentication on all calls. Dual fetch patterns (GetApiData wrapper vs direct fetch/axios). Draft blogs accessible without auth. Unauthenticated PUT on certificates. 3 duplicate contact form systems. Mailchimp JSONP in 2 components (deprecated, credentials exposed). Hardcoded Heroku URL in sitemap config. Wildcard image domains (SSRF risk). 12 issues documented.
