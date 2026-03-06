@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 19
-- Analyzed: 3
-- Pending: 16
-- Convergence: 16%
+- Analyzed: 4
+- Pending: 15
+- Convergence: 21%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -15,7 +15,7 @@
 
 ### Wave 2: Architecture Analysis
 Depends on Wave 1 data.
-- [ ] lektor-site-structure — Lektor models, templates, databags, flowblocks, plugins
+- [x] lektor-site-structure — Lektor models, templates, databags, flowblocks, plugins
 - [ ] lektor-content-schema — .lr file structure, fields, content types, relationships
 - [ ] lektor-build-deploy — Build pipeline, GitHub Actions, hosting config (GitHub Pages + Netlify)
 - [ ] nextjs-app-structure — App/pages router, route map, layouts, middleware
@@ -43,3 +43,4 @@ Depends on all Wave 2 and Wave 3 analysis.
 - [x] clone-source-repo (Wave 1) — 522 files, 329 blog posts, Lektor CMS, Pixi deps
 - [x] clone-rebranded-repo (Wave 1) — 379 files, Next.js 16 + Strapi CMS, 22 routes, 80 components, 174 public assets
 - [x] cache-redesign-plan (Wave 1) — No formal plan document found in repos/issues. Documented known intent (Framer + Next.js + Hugo split) from loop context.
+- [x] lektor-site-structure (Wave 2) — 10 models, 22 templates, 4 flowblocks, 2 databags, 4 plugins (1 custom). Bootstrap 4 + jQuery. Mailchimp, GA4, Wise.com integrations. 17 routes. Multiple EOL deps (Python 3.9, Mistune 0.8, MathJax 2).
