@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 19
-- Analyzed: 12
-- Pending: 7
-- Convergence: 63%
+- Analyzed: 13
+- Pending: 6
+- Convergence: 68%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -27,7 +27,7 @@ Depends on Wave 1 data.
 
 ### Wave 3: Content Audit
 Depends on Wave 2 analysis.
-- [ ] blog-posts-catalog — All blog posts: titles, dates, authors, categories, media
+- [x] blog-posts-catalog — All blog posts: titles, dates, authors, categories, media
 - [ ] team-members-catalog — All team members: names, roles, bios, headshots, social links
 - [ ] clients-catalog — Client logos, testimonials, case studies
 - [ ] courses-catalog — All courses: titles, descriptions, curricula, instructors, pricing, status
@@ -52,3 +52,4 @@ Depends on all Wave 2 and Wave 3 analysis.
 - [x] strapi-api-endpoints (Wave 2) — 15 unique Strapi endpoints (9 standard CRUD + 6 custom routes). Zero authentication on all calls. Dual fetch patterns (GetApiData wrapper vs direct fetch/axios). Draft blogs accessible without auth. Unauthenticated PUT on certificates. 3 duplicate contact form systems. Mailchimp JSONP in 2 components (deprecated, credentials exposed). Hardcoded Heroku URL in sitemap config. Wildcard image domains (SSRF risk). 12 issues documented.
 - [x] integrations (Wave 2) — 17 unique third-party services cataloged (8 Lektor, 14 Next.js, 5 shared). Payment: Wise.com (both sites, dynamic in Next.js) + Stripe (incomplete). Email: Mailchimp (both, JSONP regression in Next.js). Analytics: GA4 (Lektor direct) → GTM + HubSpot + Bing (Next.js). Backend: Strapi on Heroku + Cloudinary (2 accounts). Hosting: GitHub Pages + Netlify previews (Lektor), Heroku (Strapi). 3 icon libraries, 3 duplicate contact systems. 12 security concerns documented (zero auth, SSRF, JSONP injection, exposed credentials, plaintext API keys).
 - [x] dependencies-audit (Wave 2) — 39 npm audit vulns in Next.js (2 critical: jspdf 8 CVEs, swiper prototype pollution; 31 high from react-vertical-timeline-component → @babel/preset-es2015 chain). Lektor: Python 3.8/3.9 EOL, Flask/Werkzeug 2.3 EOL, mistune 0.8 EOL (multiple CVEs), Jinja2 3.1.2 CVE. CDN: Bootstrap 4 EOL, MathJax 2 EOL, Popper.js 1.x EOL. All 6 GH Actions outdated (v2). Lektor CI broken. Next.js has zero CI. Neither repo has tests. Wave 2 complete.
+- [x] blog-posts-catalog (Wave 3) — 52 Lektor posts (2021-02 to 2025-06), all visible. 14 video posts (27%), 30 with summaries (58%). 276 images (115 MB, mostly PNG). 22 unique authors, Thomas Wiecki leads with 12. No categories in Lektor. Next.js serves from Strapi (categories, search, pagination, featured flag, draft preview). Unused 2,822-line placeholder data.js. 5 slug conventions mixed. Date typo in one slug. JSON-LD path mismatch (/blog/ vs /blog-posts/).
