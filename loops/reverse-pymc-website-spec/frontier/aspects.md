@@ -2,14 +2,14 @@
 
 ## Statistics
 - Total aspects discovered: 19
-- Analyzed: 0
-- Pending: 19
-- Convergence: 0%
+- Analyzed: 1
+- Pending: 18
+- Convergence: 5%
 
 ## Pending Aspects (ordered by dependency)
 
 ### Wave 1: Data Acquisition
-- [ ] clone-source-repo — Clone pymc-labs-website-source, save file tree to raw/
+- [x] clone-source-repo — Clone pymc-labs-website-source, save file tree to raw/
 - [ ] clone-rebranded-repo — Clone pymc-rebranded-website, save file tree to raw/
 - [ ] cache-redesign-plan — Fetch architecture redesign plan to input/ for cross-reference
 
@@ -40,4 +40,4 @@ Depends on all Wave 2 and Wave 3 analysis.
 - [ ] spec-self-review — Review for completeness and accuracy
 
 ## Recently Analyzed
-(Empty — loop hasn't started yet)
+- [x] clone-source-repo (Wave 1) — 522 files, 329 blog posts, Lektor CMS, Pixi deps
