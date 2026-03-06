@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 19
-- Analyzed: 7
-- Pending: 12
-- Convergence: 37%
+- Analyzed: 8
+- Pending: 11
+- Convergence: 42%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -19,7 +19,7 @@ Depends on Wave 1 data.
 - [x] lektor-content-schema — .lr file structure, fields, content types, relationships
 - [x] lektor-build-deploy — Build pipeline, GitHub Actions, hosting config (GitHub Pages + Netlify)
 - [x] nextjs-app-structure — App/pages router, route map, layouts, middleware
-- [ ] nextjs-components — Component tree, shared components, UI library usage
+- [x] nextjs-components — Component tree, shared components, UI library usage
 - [ ] strapi-data-models — Content types, relations, custom controllers, lifecycle hooks
 - [ ] strapi-api-endpoints — REST/GraphQL endpoints, auth, custom routes
 - [ ] integrations — Stripe, Mailchimp, analytics, third-party services across both repos
@@ -47,3 +47,4 @@ Depends on all Wave 2 and Wave 3 analysis.
 - [x] lektor-content-schema (Wave 2) — .lr file format with `---` delimiters, flow blocks with `####` syntax. 52 blog posts (2021-2025), 26 teammates (7 hidden), 18 clients (1 hidden, 0 testimonials). Author checkboxes bypassed (26 unique free-text values vs 13 hardcoded). Ghost `_model: testimonials` reference. Dead `testimonial` flowblock. Undeclared fields silently ignored. No pagination, no tags, no relational integrity.
 - [x] lektor-build-deploy (Wave 2) — Broken CI: requirements.txt removed (migrated to Pixi) but workflows never updated. 3 GH Actions workflows (deploy, preview, merge-schedule). Deploys to pymc-labs.github.io via force-orphan push. Netlify for PR previews. CNAME www.pymc-labs.com but HTTPS not enforced. Canonical URL mismatch. PAT auth, outdated Actions (v2), Python 3.8 in CI vs 3.9 in pixi.
 - [x] nextjs-app-structure (Wave 2) — Next.js 16 App Router (no src/), 22 page routes + 1 API route handler. "use client" root layout (anti-pattern). Strapi backend on Heroku, Cloudinary media. Dual team data (Strapi + hardcoded JS array with 29 members). 4 course pages fully hardcoded. 5 draft routes (industries/services/solutions) outside app/. No middleware, no error boundaries. 3 icon libraries. Wrong domain (pymc-labs.io) in contact/team JSON-LD. Wildcard image domains (security risk). 12 architectural issues documented.
+- [x] nextjs-components (Wave 2) — 80 component files across 12 subdirs. Feature-first flat structure, low reuse. 3-4 duplicate contact form implementations. Duplicate Pagination components. 3 icon libs loaded simultaneously (FA CDN + lucide-react + react-icons). Pervasive framer-motion dependency (~30 components). Hardcoded testimonials (6), team bios (29 with JSX), FAQ placeholder from payment template. Typos in component names (Vedio, Dunamic, Inovation). dangerouslySetInnerHTML, console.logs in prod, Mailchimp JSONP injection. No design system, no TypeScript, no error boundaries.
