@@ -78,4 +78,13 @@ LOOPS: dict[str, Loop] = {
         model="claude-opus-4-6",
         created=date(2026, 3, 2),
     ),
+    "reverse-pymc-website-spec": Loop(
+        description="Both PyMC Labs website repos → unified as-is spec (architecture, data models, APIs, content inventory)",
+        type=LoopType.REVERSE,
+        status=LoopStatus.ACTIVE,
+        max_iterations=30,
+        timeout_seconds=900,
+        model="claude-opus-4-6",
+        created=date(2026, 3, 6),
+    ),
 }
