@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 19
-- Analyzed: 4
-- Pending: 15
-- Convergence: 21%
+- Analyzed: 5
+- Pending: 14
+- Convergence: 26%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -16,7 +16,7 @@
 ### Wave 2: Architecture Analysis
 Depends on Wave 1 data.
 - [x] lektor-site-structure — Lektor models, templates, databags, flowblocks, plugins
-- [ ] lektor-content-schema — .lr file structure, fields, content types, relationships
+- [x] lektor-content-schema — .lr file structure, fields, content types, relationships
 - [ ] lektor-build-deploy — Build pipeline, GitHub Actions, hosting config (GitHub Pages + Netlify)
 - [ ] nextjs-app-structure — App/pages router, route map, layouts, middleware
 - [ ] nextjs-components — Component tree, shared components, UI library usage
@@ -44,3 +44,4 @@ Depends on all Wave 2 and Wave 3 analysis.
 - [x] clone-rebranded-repo (Wave 1) — 379 files, Next.js 16 + Strapi CMS, 22 routes, 80 components, 174 public assets
 - [x] cache-redesign-plan (Wave 1) — No formal plan document found in repos/issues. Documented known intent (Framer + Next.js + Hugo split) from loop context.
 - [x] lektor-site-structure (Wave 2) — 10 models, 22 templates, 4 flowblocks, 2 databags, 4 plugins (1 custom). Bootstrap 4 + jQuery. Mailchimp, GA4, Wise.com integrations. 17 routes. Multiple EOL deps (Python 3.9, Mistune 0.8, MathJax 2).
+- [x] lektor-content-schema (Wave 2) — .lr file format with `---` delimiters, flow blocks with `####` syntax. 52 blog posts (2021-2025), 26 teammates (7 hidden), 18 clients (1 hidden, 0 testimonials). Author checkboxes bypassed (26 unique free-text values vs 13 hardcoded). Ghost `_model: testimonials` reference. Dead `testimonial` flowblock. Undeclared fields silently ignored. No pagination, no tags, no relational integrity.
