@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 19
-- Analyzed: 13
-- Pending: 6
-- Convergence: 68%
+- Analyzed: 14
+- Pending: 5
+- Convergence: 74%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -28,7 +28,7 @@ Depends on Wave 1 data.
 ### Wave 3: Content Audit
 Depends on Wave 2 analysis.
 - [x] blog-posts-catalog — All blog posts: titles, dates, authors, categories, media
-- [ ] team-members-catalog — All team members: names, roles, bios, headshots, social links
+- [x] team-members-catalog — All team members: names, roles, bios, headshots, social links
 - [ ] clients-catalog — Client logos, testimonials, case studies
 - [ ] courses-catalog — All courses: titles, descriptions, curricula, instructors, pricing, status
 - [ ] static-pages-catalog — Every standalone page (About, Contact, Privacy, etc.)
@@ -53,3 +53,4 @@ Depends on all Wave 2 and Wave 3 analysis.
 - [x] integrations (Wave 2) — 17 unique third-party services cataloged (8 Lektor, 14 Next.js, 5 shared). Payment: Wise.com (both sites, dynamic in Next.js) + Stripe (incomplete). Email: Mailchimp (both, JSONP regression in Next.js). Analytics: GA4 (Lektor direct) → GTM + HubSpot + Bing (Next.js). Backend: Strapi on Heroku + Cloudinary (2 accounts). Hosting: GitHub Pages + Netlify previews (Lektor), Heroku (Strapi). 3 icon libraries, 3 duplicate contact systems. 12 security concerns documented (zero auth, SSRF, JSONP injection, exposed credentials, plaintext API keys).
 - [x] dependencies-audit (Wave 2) — 39 npm audit vulns in Next.js (2 critical: jspdf 8 CVEs, swiper prototype pollution; 31 high from react-vertical-timeline-component → @babel/preset-es2015 chain). Lektor: Python 3.8/3.9 EOL, Flask/Werkzeug 2.3 EOL, mistune 0.8 EOL (multiple CVEs), Jinja2 3.1.2 CVE. CDN: Bootstrap 4 EOL, MathJax 2 EOL, Popper.js 1.x EOL. All 6 GH Actions outdated (v2). Lektor CI broken. Next.js has zero CI. Neither repo has tests. Wave 2 complete.
 - [x] blog-posts-catalog (Wave 3) — 52 Lektor posts (2021-02 to 2025-06), all visible. 14 video posts (27%), 30 with summaries (58%). 276 images (115 MB, mostly PNG). 22 unique authors, Thomas Wiecki leads with 12. No categories in Lektor. Next.js serves from Strapi (categories, search, pagination, featured flag, draft preview). Unused 2,822-line placeholder data.js. 5 slug conventions mixed. Date typo in one slug. JSON-LD path mismatch (/blog/ vs /blog-posts/).
+- [x] team-members-catalog (Wave 3) — 26 Lektor members (19 visible, 7 hidden), 29 Next.js hardcoded members + Strapi dual source. Only 8 overlap between sites. 5 partners in Next.js (new tier). Dual data source: libs/team.js for About TeamSlider, Strapi for /team page. 2 Cloudinary accounts. Inconsistent bio formats (Markdown vs JSX vs JSON arrays). 14 issues: wrong LinkedIn URL, missing https://, wrong domain in JSON-LD, no content sync.
