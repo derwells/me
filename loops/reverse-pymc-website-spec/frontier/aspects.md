@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 19
-- Analyzed: 5
-- Pending: 14
-- Convergence: 26%
+- Analyzed: 6
+- Pending: 13
+- Convergence: 32%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -17,7 +17,7 @@
 Depends on Wave 1 data.
 - [x] lektor-site-structure — Lektor models, templates, databags, flowblocks, plugins
 - [x] lektor-content-schema — .lr file structure, fields, content types, relationships
-- [ ] lektor-build-deploy — Build pipeline, GitHub Actions, hosting config (GitHub Pages + Netlify)
+- [x] lektor-build-deploy — Build pipeline, GitHub Actions, hosting config (GitHub Pages + Netlify)
 - [ ] nextjs-app-structure — App/pages router, route map, layouts, middleware
 - [ ] nextjs-components — Component tree, shared components, UI library usage
 - [ ] strapi-data-models — Content types, relations, custom controllers, lifecycle hooks
@@ -45,3 +45,4 @@ Depends on all Wave 2 and Wave 3 analysis.
 - [x] cache-redesign-plan (Wave 1) — No formal plan document found in repos/issues. Documented known intent (Framer + Next.js + Hugo split) from loop context.
 - [x] lektor-site-structure (Wave 2) — 10 models, 22 templates, 4 flowblocks, 2 databags, 4 plugins (1 custom). Bootstrap 4 + jQuery. Mailchimp, GA4, Wise.com integrations. 17 routes. Multiple EOL deps (Python 3.9, Mistune 0.8, MathJax 2).
 - [x] lektor-content-schema (Wave 2) — .lr file format with `---` delimiters, flow blocks with `####` syntax. 52 blog posts (2021-2025), 26 teammates (7 hidden), 18 clients (1 hidden, 0 testimonials). Author checkboxes bypassed (26 unique free-text values vs 13 hardcoded). Ghost `_model: testimonials` reference. Dead `testimonial` flowblock. Undeclared fields silently ignored. No pagination, no tags, no relational integrity.
+- [x] lektor-build-deploy (Wave 2) — Broken CI: requirements.txt removed (migrated to Pixi) but workflows never updated. 3 GH Actions workflows (deploy, preview, merge-schedule). Deploys to pymc-labs.github.io via force-orphan push. Netlify for PR previews. CNAME www.pymc-labs.com but HTTPS not enforced. Canonical URL mismatch. PAT auth, outdated Actions (v2), Python 3.8 in CI vs 3.9 in pixi.
