@@ -2,9 +2,9 @@
 
 ## Statistics
 - Total aspects discovered: 19
-- Analyzed: 15
-- Pending: 4
-- Convergence: 79%
+- Analyzed: 16
+- Pending: 3
+- Convergence: 84%
 
 ## Pending Aspects (ordered by dependency)
 
@@ -30,7 +30,7 @@ Depends on Wave 2 analysis.
 - [x] blog-posts-catalog — All blog posts: titles, dates, authors, categories, media
 - [x] team-members-catalog — All team members: names, roles, bios, headshots, social links
 - [x] clients-catalog — Client logos, testimonials, case studies
-- [ ] courses-catalog — All courses: titles, descriptions, curricula, instructors, pricing, status
+- [x] courses-catalog — All courses: titles, descriptions, curricula, instructors, pricing, status
 - [ ] static-pages-catalog — Every standalone page (About, Contact, Privacy, etc.)
 - [ ] media-assets-audit — Images, PDFs, videos: sizes, formats, optimization status
 
@@ -55,3 +55,4 @@ Depends on all Wave 2 and Wave 3 analysis.
 - [x] blog-posts-catalog (Wave 3) — 52 Lektor posts (2021-02 to 2025-06), all visible. 14 video posts (27%), 30 with summaries (58%). 276 images (115 MB, mostly PNG). 22 unique authors, Thomas Wiecki leads with 12. No categories in Lektor. Next.js serves from Strapi (categories, search, pagination, featured flag, draft preview). Unused 2,822-line placeholder data.js. 5 slug conventions mixed. Date typo in one slug. JSON-LD path mismatch (/blog/ vs /blog-posts/).
 - [x] team-members-catalog (Wave 3) — 26 Lektor members (19 visible, 7 hidden), 29 Next.js hardcoded members + Strapi dual source. Only 8 overlap between sites. 5 partners in Next.js (new tier). Dual data source: libs/team.js for About TeamSlider, Strapi for /team page. 2 Cloudinary accounts. Inconsistent bio formats (Markdown vs JSX vs JSON arrays). 14 issues: wrong LinkedIn URL, missing https://, wrong domain in JSON-LD, no content sync.
 - [x] clients-catalog (Wave 3) — 22 unique clients across both sites. 17 Lektor content records (16 visible + 1 hidden) with 0 actual testimonials. 18 Next.js logos (opaque c1-c21 naming). 6 real testimonials hardcoded in Next.js homepage. 11 placeholder/fake testimonials on course pages (including "Akari" template text). Bain & Company new in Next.js. 3 testimonial companies (Haleon, Ovative, SALK) not in any logo set. No case studies exist. 16 issues: wrong profile images, alt-text typos, orphan Colgate logo, dead flowblock.
+- [x] courses-catalog (Wave 3) — 5 offerings: 1 Lektor generic workshop page + 1 hidden ABM template + 4 Next.js course pages (ABM, Regression, Marketing Analytics, AI-Assisted DS). All 100% hardcoded (zero CMS). 12 unique instructors. Prices: $1,499-$2,249. Registration via Strapi → Wise.com payment URLs. AI course has completely different architecture (12 custom components) + 100% placeholder testimonials ("Akari" template). Swapped instructor anchor links, stale countdown timer, misspelled names. 19 issues documented.
