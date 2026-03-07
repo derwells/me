@@ -1,10 +1,10 @@
 # Frontier — PyMC Labs Website Spec
 
 ## Statistics
-- Total aspects discovered: 19
-- Analyzed: 19
+- Total aspects discovered: 20
+- Analyzed: 20
 - Pending: 0
-- Convergence: 100%
+- Convergence: 100% (CONVERGED)
 
 ## Pending Aspects (ordered by dependency)
 
@@ -37,7 +37,7 @@ Depends on Wave 2 analysis.
 ### Wave 4: Synthesis
 Depends on all Wave 2 and Wave 3 analysis.
 - [x] unified-spec-draft — Synthesize all analysis into unified spec document
-- [ ] spec-self-review — Review for completeness and accuracy
+- [x] spec-self-review — Review for completeness and accuracy
 
 ## Recently Analyzed
 - [x] clone-source-repo (Wave 1) — 522 files, 329 blog posts, Lektor CMS, Pixi deps
@@ -59,3 +59,4 @@ Depends on all Wave 2 and Wave 3 analysis.
 - [x] static-pages-catalog (Wave 3) — 10 Lektor standalone pages + 15 Next.js deployed pages + 5 draft routes. 6 CMS-managed (Lektor flow blocks), 18 hardcoded. 4 Lektor pages redirected in Next.js (what-we-do→/, impressum→/about, products→/#products, clients→/#clients). Impressum legal content lost in redirect. Privacy policy divergence (Next.js shorter, missing sections). T&C terminology mismatch (Workshop vs Course). Contact page wrong domain (pymc-labs.io). No 404, no error boundaries, no loading states. Pre-generated static sitemap. 16 issues documented.
 - [x] media-assets-audit (Wave 3) — 526 local files (165 MB) + 45 Cloudinary URLs + 158 YouTube embeds. Lektor: 306 content images (128 MB, 80% unoptimized PNG), 46 static assets (6 MB incl. deployed .afdesign source file). Next.js: 174 public files (31 MB incl. 5.85 MB hero video), 18 JSX misplaced in public/svg/. 19 identical team photos duplicated across repos. Triple-format client logos (49 files for 18 clients). 2 Cloudinary accounts with no documented split. ~80 MB savings possible from WebP + resize. Wave 3 complete. 18 issues documented.
 - [x] unified-spec-draft (Wave 4) — Synthesized all 18 analysis files into unified spec at output/pymc-website-spec.md. 12 sections covering architecture, data models, API endpoints, components, content inventory (52 blog posts, 47 unique team members, 22 clients, 5 courses), media assets (526 files, 165 MB), dependency audit (44+ vulns), and 50 documented issues. Cross-referenced against redesign plan. Identified 6 critical, 11 high, 15 medium, 18 low issues.
+- [x] spec-self-review (Wave 4) — All 20 aspects verified against spec. One counting error corrected (6→7 custom Strapi routes, 15→16 total endpoints). All numbers match source analysis. Three minor gaps noted as inherent repo-only limitations. Loop CONVERGED.

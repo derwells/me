@@ -49,7 +49,7 @@ PyMC Labs operates two website codebases in parallel:
 ### Critical Findings
 
 1. **Broken production CI** — Lektor deploy workflow references deleted `requirements.txt`. Site serves stale content.
-2. **Zero authentication** — All 15 Strapi endpoints are unauthenticated. Draft blogs, certificate state mutation, and API key submissions are publicly accessible.
+2. **Zero authentication** — All 16 Strapi endpoints are unauthenticated. Draft blogs, certificate state mutation, and API key submissions are publicly accessible.
 3. **Dual data sources** — Team members exist in both hardcoded JS (29 members) and Strapi CMS with only 8 overlapping. Content will inevitably drift.
 4. **100% hardcoded courses** — All 4 Next.js course pages are hardcoded JSX. No CMS integration for the primary revenue-generating content.
 5. **Critical vulnerabilities** — jspdf (8 CVEs), swiper (prototype pollution), axios (prototype pollution), mistune 0.8 (multiple CVEs).
@@ -340,7 +340,7 @@ No `.env.example` file exists.
 | `promotion-bar` | Unknown | Site-wide banner |
 | `benchmark` | 4 (modelName, apiUrl, apiKey, description) | LLM model submissions (**API keys in plaintext**) |
 
-### 5.3 API Endpoints (15 unique)
+### 5.3 API Endpoints (16 unique)
 
 #### Standard CRUD (9)
 
@@ -356,7 +356,7 @@ No `.env.example` file exists.
 | `GET /api/promotion-bars` | GET | Promotional banner |
 | `GET /api/articles?filters[featured][$eq]=true` | GET | Featured blog posts |
 
-#### Custom Routes (6)
+#### Custom Routes (7)
 
 | Endpoint | Method | Purpose |
 |----------|--------|---------|
@@ -583,7 +583,7 @@ Two completely divergent rosters with minimal overlap.
 
 | # | Severity | Issue |
 |---|----------|-------|
-| 1 | Critical | Zero authentication on all 15 Strapi endpoints |
+| 1 | Critical | Zero authentication on all 16 Strapi endpoints |
 | 2 | Critical | API keys submitted in plaintext (benchmark) |
 | 3 | High | Wildcard `*` image domains enable SSRF |
 | 4 | High | Unauthenticated PUT on certificates |

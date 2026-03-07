@@ -1,0 +1,8 @@
+Converged: 2026-03-07
+Aspects: 20 (19 original + 1 self-review)
+Waves: 4 (Data Acquisition, Architecture Analysis, Content Audit, Synthesis)
+Output: output/pymc-website-spec.md
+
+Self-review result: Complete and accurate. One minor counting error corrected (6→7 custom Strapi routes, 15→16 total endpoints). All 18 analysis aspects represented in unified spec. Numbers verified against source analysis files. Three minor gaps noted (Strapi DB counts, Cloudinary split rationale, Heroku plan details) — all inherent limitations of repo-only analysis and appropriately flagged.
+
+The spec is ready to serve as factual baseline for the Framer + Next.js + Hugo architecture redesign.
